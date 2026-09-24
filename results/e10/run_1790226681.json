@@ -1,0 +1,43 @@
+{
+  "experiment": "E10_Query_Length_Ablation",
+  "timestamp": 1790226681.183019,
+  "slope_ms_per_token": 0.021226957683955276,
+  "intercept_ms": 14.42264526978375,
+  "data": {
+    "LQ_16": {
+      "L_Q": 16,
+      "N": 64,
+      "mean_query_encoding_ms": 5.055769866627695,
+      "mean_scoring_ms": 4.812755600020561,
+      "mean_total_latency_ms": 9.868525466648256
+    },
+    "LQ_64": {
+      "L_Q": 64,
+      "N": 64,
+      "mean_query_encoding_ms": 5.17848720000984,
+      "mean_scoring_ms": 5.415489133338269,
+      "mean_total_latency_ms": 10.59397633334811
+    },
+    "LQ_256": {
+      "L_Q": 256,
+      "N": 64,
+      "mean_query_encoding_ms": 6.929070400019555,
+      "mean_scoring_ms": 22.24807779995596,
+      "mean_total_latency_ms": 29.177148199975516
+    },
+    "LQ_512": {
+      "L_Q": 512,
+      "N": 64,
+      "mean_query_encoding_ms": 8.421195933366713,
+      "mean_scoring_ms": 22.24961073331239,
+      "mean_total_latency_ms": 30.670806666679102
+    },
+    "LQ_1024": {
+      "L_Q": 1024,
+      "N": 64,
+      "mean_query_encoding_ms": 9.098641066687682,
+      "mean_scoring_ms": 22.440993399944393,
+      "mean_total_latency_ms": 31.539634466632076
+    }
+  }
+}

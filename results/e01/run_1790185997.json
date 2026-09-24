@@ -1,0 +1,76 @@
+{
+  "experiment": "E01_Semantic_Pointer_Retrieval",
+  "timestamp": 1790185997.4684234,
+  "embedding_model": "sentence-transformers/all-mpnet-base-v2",
+  "data": {
+    "N8_k8": {
+      "N": 8,
+      "k": 8,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "mrr_ci": [
+        1.0,
+        1.0
+      ],
+      "ndcg_at_10": 1.0,
+      "false_positive_rate": 0.0,
+      "collision_rate": 0.0,
+      "selector_latency_ms": 96.37789236876415,
+      "bm25_recall_at_1": 1.0,
+      "bm25_mrr": 1.0,
+      "h1_supported": true
+    },
+    "N16_k8": {
+      "N": 16,
+      "k": 8,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "mrr_ci": [
+        1.0,
+        1.0
+      ],
+      "ndcg_at_10": 1.0,
+      "false_positive_rate": 0.0,
+      "collision_rate": 0.06666666666666667,
+      "selector_latency_ms": 77.48288409784436,
+      "bm25_recall_at_1": 1.0,
+      "bm25_mrr": 1.0,
+      "h1_supported": true
+    },
+    "N32_k8": {
+      "N": 32,
+      "k": 8,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "mrr_ci": [
+        1.0,
+        1.0
+      ],
+      "ndcg_at_10": 1.0,
+      "false_positive_rate": 0.0,
+      "collision_rate": 0.0967741935483871,
+      "selector_latency_ms": 58.33092929678969,
+      "bm25_recall_at_1": 1.0,
+      "bm25_mrr": 1.0,
+      "h1_supported": true
+    }
+  }
+}

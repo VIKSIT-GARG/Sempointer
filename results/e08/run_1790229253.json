@@ -1,0 +1,61 @@
+{
+  "experiment": "E08_Payload_Size_Ablation",
+  "timestamp": 1790229253.1677704,
+  "data": {
+    "B_128": {
+      "B": 128,
+      "N": 32,
+      "k": 8,
+      "compression_ratio": 9.454545454545455,
+      "k_star_theoretical": 0.7161902763726082,
+      "recall_at_1": 1.0,
+      "selector_latency_ms": 11.996276249919902,
+      "linear_tokens": 4160,
+      "active_tokens": 440
+    },
+    "B_256": {
+      "B": 256,
+      "N": 32,
+      "k": 8,
+      "compression_ratio": 14.535211267605634,
+      "k_star_theoretical": 0.5290526082763538,
+      "recall_at_1": 0.85,
+      "selector_latency_ms": 5.747220700004618,
+      "linear_tokens": 8256,
+      "active_tokens": 568
+    },
+    "B_512": {
+      "B": 512,
+      "N": 32,
+      "k": 8,
+      "compression_ratio": 19.961165048543688,
+      "k_star_theoretical": 0.3584635202546748,
+      "recall_at_1": 0.85,
+      "selector_latency_ms": 5.535756450080953,
+      "linear_tokens": 16448,
+      "active_tokens": 824
+    },
+    "B_1024": {
+      "B": 1024,
+      "N": 32,
+      "k": 8,
+      "compression_ratio": 24.5748502994012,
+      "k_star_theoretical": 0.22636257456123418,
+      "recall_at_1": 0.85,
+      "selector_latency_ms": 6.63818944990453,
+      "linear_tokens": 32832,
+      "active_tokens": 1336
+    },
+    "B_2048": {
+      "B": 2048,
+      "N": 32,
+      "k": 8,
+      "compression_ratio": 27.796610169491526,
+      "k_star_theoretical": 0.13935672188387355,
+      "recall_at_1": 0.85,
+      "selector_latency_ms": 7.457424699987314,
+      "linear_tokens": 65600,
+      "active_tokens": 2360
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "experiment": "E11_Compositionality",
+  "timestamp": 1790227849.0414646,
+  "data": {
+    "N": 32,
+    "n_queries": 20,
+    "joint_resolution_em": 1.0,
+    "joint_resolution_f1": 1.0,
+    "joint_precision_both_recovered": 1.0,
+    "dense_rag_em": 1.0,
+    "dense_rag_f1": 1.0,
+    "dense_rag_both_recovered": 1.0,
+    "joint_em_improvement_pp": 0.0
+  }
+}

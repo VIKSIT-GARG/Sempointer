@@ -1,0 +1,163 @@
+{
+  "experiment": "E12_Pointer_Collision",
+  "timestamp": 1790226839.8756652,
+  "threshold": 0.95,
+  "data": {
+    "easy": {
+      "N_8": {
+        "N": 8,
+        "total_pairs": 28,
+        "collision_count": 0,
+        "empirical_collision_rate": 0.0,
+        "mean_cosine_similarity": 0.3517255187034607,
+        "max_cosine_similarity": 0.509109377861023,
+        "std_cosine_similarity": 0.07948233932256699,
+        "theoretical_uniform_p": 7.450580596923828e-09
+      },
+      "N_16": {
+        "N": 16,
+        "total_pairs": 120,
+        "collision_count": 8,
+        "empirical_collision_rate": 0.06666666666666667,
+        "mean_cosine_similarity": 0.3913029730319977,
+        "max_cosine_similarity": 0.9827719926834106,
+        "std_cosine_similarity": 0.17329049110412598,
+        "theoretical_uniform_p": 2.9802321943606103e-08
+      },
+      "N_32": {
+        "N": 32,
+        "total_pairs": 496,
+        "collision_count": 48,
+        "empirical_collision_rate": 0.0967741935483871,
+        "mean_cosine_similarity": 0.40695637464523315,
+        "max_cosine_similarity": 0.9903876781463623,
+        "std_cosine_similarity": 0.20098692178726196,
+        "theoretical_uniform_p": 1.1920928244535389e-07
+      },
+      "N_64": {
+        "N": 64,
+        "total_pairs": 2016,
+        "collision_count": 221,
+        "empirical_collision_rate": 0.10962301587301587,
+        "mean_cosine_similarity": 0.419030100107193,
+        "max_cosine_similarity": 0.9944159984588623,
+        "std_cosine_similarity": 0.21091972291469574,
+        "theoretical_uniform_p": 4.768370445162873e-07
+      },
+      "N_128": {
+        "N": 128,
+        "total_pairs": 8128,
+        "collision_count": 944,
+        "empirical_collision_rate": 0.11614173228346457,
+        "mean_cosine_similarity": 0.42318207025527954,
+        "max_cosine_similarity": 0.9965416193008423,
+        "std_cosine_similarity": 0.21653325855731964,
+        "theoretical_uniform_p": 1.9073468138230965e-06
+      }
+    },
+    "medium": {
+      "N_8": {
+        "N": 8,
+        "total_pairs": 28,
+        "collision_count": 4,
+        "empirical_collision_rate": 0.14285714285714285,
+        "mean_cosine_similarity": 0.7148949503898621,
+        "max_cosine_similarity": 0.9980165362358093,
+        "std_cosine_similarity": 0.13047809898853302,
+        "theoretical_uniform_p": 7.450580596923828e-09
+      },
+      "N_16": {
+        "N": 16,
+        "total_pairs": 120,
+        "collision_count": 24,
+        "empirical_collision_rate": 0.2,
+        "mean_cosine_similarity": 0.7333424687385559,
+        "max_cosine_similarity": 0.9980165958404541,
+        "std_cosine_similarity": 0.14254401624202728,
+        "theoretical_uniform_p": 2.9802321943606103e-08
+      },
+      "N_32": {
+        "N": 32,
+        "total_pairs": 496,
+        "collision_count": 112,
+        "empirical_collision_rate": 0.22580645161290322,
+        "mean_cosine_similarity": 0.7418734431266785,
+        "max_cosine_similarity": 0.9981414079666138,
+        "std_cosine_similarity": 0.14727315306663513,
+        "theoretical_uniform_p": 1.1920928244535389e-07
+      },
+      "N_64": {
+        "N": 64,
+        "total_pairs": 2016,
+        "collision_count": 480,
+        "empirical_collision_rate": 0.23809523809523808,
+        "mean_cosine_similarity": 0.7462866306304932,
+        "max_cosine_similarity": 0.998420238494873,
+        "std_cosine_similarity": 0.14877212047576904,
+        "theoretical_uniform_p": 4.768370445162873e-07
+      },
+      "N_128": {
+        "N": 128,
+        "total_pairs": 8128,
+        "collision_count": 1984,
+        "empirical_collision_rate": 0.2440944881889764,
+        "mean_cosine_similarity": 0.7492952346801758,
+        "max_cosine_similarity": 0.9993184804916382,
+        "std_cosine_similarity": 0.1488918960094452,
+        "theoretical_uniform_p": 1.9073468138230965e-06
+      }
+    },
+    "hard": {
+      "N_8": {
+        "N": 8,
+        "total_pairs": 28,
+        "collision_count": 28,
+        "empirical_collision_rate": 1.0,
+        "mean_cosine_similarity": 0.9974325895309448,
+        "max_cosine_similarity": 0.9988424777984619,
+        "std_cosine_similarity": 0.0011167232878506184,
+        "theoretical_uniform_p": 7.450580596923828e-09
+      },
+      "N_16": {
+        "N": 16,
+        "total_pairs": 120,
+        "collision_count": 120,
+        "empirical_collision_rate": 1.0,
+        "mean_cosine_similarity": 0.9975508451461792,
+        "max_cosine_similarity": 1.0000003576278687,
+        "std_cosine_similarity": 0.0012325455900281668,
+        "theoretical_uniform_p": 2.9802321943606103e-08
+      },
+      "N_32": {
+        "N": 32,
+        "total_pairs": 496,
+        "collision_count": 496,
+        "empirical_collision_rate": 1.0,
+        "mean_cosine_similarity": 0.9975959658622742,
+        "max_cosine_similarity": 1.0000003576278687,
+        "std_cosine_similarity": 0.0013291581999510527,
+        "theoretical_uniform_p": 1.1920928244535389e-07
+      },
+      "N_64": {
+        "N": 64,
+        "total_pairs": 2016,
+        "collision_count": 2016,
+        "empirical_collision_rate": 1.0,
+        "mean_cosine_similarity": 0.9977160096168518,
+        "max_cosine_similarity": 1.0000003576278687,
+        "std_cosine_similarity": 0.0013106518890708685,
+        "theoretical_uniform_p": 4.768370445162873e-07
+      },
+      "N_128": {
+        "N": 128,
+        "total_pairs": 8128,
+        "collision_count": 8128,
+        "empirical_collision_rate": 1.0,
+        "mean_cosine_similarity": 0.997766375541687,
+        "max_cosine_similarity": 1.0000003576278687,
+        "std_cosine_similarity": 0.0013097996124997735,
+        "theoretical_uniform_p": 1.9073468138230965e-06
+      }
+    }
+  }
+}

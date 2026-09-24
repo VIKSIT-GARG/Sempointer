@@ -1,0 +1,66 @@
+{
+  "experiment": "E06_Scaling_with_N",
+  "timestamp": 1790227607.9881966,
+  "linear_fit": {
+    "slope": 0.0004830121868966993,
+    "intercept": 7.630996422070117,
+    "r_squared": 0.00026180094766136027,
+    "p_value": 0.9757317217932605
+  },
+  "log_degradation_fit": {
+    "beta": -0.0,
+    "r_squared": NaN,
+    "fitted_values": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "data": {
+    "N_8": {
+      "N": 8,
+      "selector_latency_ms": 12.885205374914221,
+      "recall_at_1": 1.0,
+      "l_active": 632,
+      "h6_supported": true
+    },
+    "N_16": {
+      "N": 16,
+      "selector_latency_ms": 5.448058249896803,
+      "recall_at_1": 1.0,
+      "l_active": 696,
+      "h6_supported": true
+    },
+    "N_32": {
+      "N": 32,
+      "selector_latency_ms": 5.426572849978584,
+      "recall_at_1": 1.0,
+      "l_active": 824,
+      "h6_supported": true
+    },
+    "N_64": {
+      "N": 64,
+      "selector_latency_ms": 6.087072199943577,
+      "recall_at_1": 1.0,
+      "l_active": 1080,
+      "h6_supported": true
+    },
+    "N_128": {
+      "N": 128,
+      "selector_latency_ms": 7.8748236999445,
+      "recall_at_1": 1.0,
+      "l_active": 1592,
+      "h6_supported": true
+    },
+    "N_256": {
+      "N": 256,
+      "selector_latency_ms": 8.307684299938956,
+      "recall_at_1": 1.0,
+      "l_active": 2616,
+      "h6_supported": true
+    }
+  }
+}

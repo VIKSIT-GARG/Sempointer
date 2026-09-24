@@ -1,0 +1,63 @@
+{
+  "experiment": "E16_Paged_Memory_Regime",
+  "timestamp": 1790227902.79965,
+  "bandwidth_gb_s": 12.574957814816212,
+  "data": {
+    "N_32": {
+      "N": 32,
+      "full_transfer_mb": 2048.0,
+      "sp_transfer_mb": 64.0,
+      "full_paging_latency_ms": 159.04625919647515,
+      "sp_paging_latency_ms": 4.970195599889848,
+      "speedup_factor": 32.0
+    },
+    "N_64": {
+      "N": 64,
+      "full_transfer_mb": 4096.0,
+      "sp_transfer_mb": 64.0,
+      "full_paging_latency_ms": 318.0925183929503,
+      "sp_paging_latency_ms": 4.970195599889848,
+      "speedup_factor": 64.0
+    },
+    "N_128": {
+      "N": 128,
+      "full_transfer_mb": 8192.0,
+      "sp_transfer_mb": 64.0,
+      "full_paging_latency_ms": 636.1850367859006,
+      "sp_paging_latency_ms": 4.970195599889848,
+      "speedup_factor": 128.0
+    },
+    "N_256": {
+      "N": 256,
+      "full_transfer_mb": 16384.0,
+      "sp_transfer_mb": 64.0,
+      "full_paging_latency_ms": 1272.3700735718012,
+      "sp_paging_latency_ms": 4.970195599889848,
+      "speedup_factor": 256.0
+    },
+    "N_512": {
+      "N": 512,
+      "full_transfer_mb": 32768.0,
+      "sp_transfer_mb": 64.0,
+      "full_paging_latency_ms": 2544.7401471436024,
+      "sp_paging_latency_ms": 4.970195599889848,
+      "speedup_factor": 512.0
+    },
+    "N_1024": {
+      "N": 1024,
+      "full_transfer_mb": 65536.0,
+      "sp_transfer_mb": 64.0,
+      "full_paging_latency_ms": 5089.480294287205,
+      "sp_paging_latency_ms": 4.970195599889848,
+      "speedup_factor": 1024.0
+    },
+    "N_2048": {
+      "N": 2048,
+      "full_transfer_mb": 131072.0,
+      "sp_transfer_mb": 64.0,
+      "full_paging_latency_ms": 10178.96058857441,
+      "sp_paging_latency_ms": 4.970195599889848,
+      "speedup_factor": 2048.0
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "experiment": "E02_Long_Context_QA",
+  "timestamp": 1790219006.9496036,
+  "embedding_model": "sentence-transformers/all-mpnet-base-v2",
+  "data": {
+    "N8_m1": {
+      "N": 8,
+      "m": 1,
+      "k": 8,
+      "sempointer_f1": 1.0,
+      "sempointer_f1_ci": [
+        1.0,
+        1.0
+      ],
+      "sempointer_em": 1.0,
+      "sempointer_active_tokens": 189.2,
+      "sempointer_latency_ms": 23.937088809907436,
+      "full_context_f1": 1.0,
+      "full_context_em": 1.0,
+      "full_context_tokens": 430.2,
+      "full_context_latency_ms": 0.011144997552037239,
+      "dense_rag_f1": 1.0,
+      "dense_rag_em": 1.0,
+      "bm25_f1": 1.0,
+      "bm25_em": 1.0,
+      "token_savings_percent": 56.02045560204556,
+      "f1_gap_percentage_points": 0.0,
+      "mcnemar_p_value": 1.0,
+      "falsification_triggered": false,
+      "h2_supported": true
+    },
+    "N16_m1": {
+      "N": 16,
+      "m": 1,
+      "k": 8,
+      "sempointer_f1": 1.0,
+      "sempointer_f1_ci": [
+        1.0,
+        1.0
+      ],
+      "sempointer_em": 1.0,
+      "sempointer_active_tokens": 309.2,
+      "sempointer_latency_ms": 25.081637396942824,
+      "full_context_f1": 1.0,
+      "full_context_em": 1.0,
+      "full_context_tokens": 838.2,
+      "full_context_latency_ms": 0.017517199739813805,
+      "dense_rag_f1": 1.0,
+      "dense_rag_em": 1.0,
+      "bm25_f1": 1.0,
+      "bm25_em": 1.0,
+      "token_savings_percent": 63.11142925316153,
+      "f1_gap_percentage_points": 0.0,
+      "mcnemar_p_value": 1.0,
+      "falsification_triggered": false,
+      "h2_supported": true
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "experiment": "E05_Empirical_K_Star",
+  "timestamp": 1790187140.1094768,
+  "parameters": {
+    "d": 4096,
+    "B": 512,
+    "k": 8,
+    "m": 0,
+    "L_Q": 0,
+    "substrate": "M_kv"
+  },
+  "total_points": 4,
+  "passed_points": 4,
+  "falsification_triggered": false,
+  "data": {
+    "N_1": {
+      "N": 1,
+      "C_init_flops": 36509319168.0,
+      "C_linear_query_flops": 36507222016.0,
+      "C_sp_query_flops": 537399296.0,
+      "Delta_C_step_flops": 35969822720.0,
+      "K_star_theory": 1.0149985851250811,
+      "K_star_empirical": 1.0149985851250811,
+      "relative_error": 0.0,
+      "latency_linear_ms": 38.19012439344078,
+      "latency_sp_ms": 1.7391468049027026,
+      "latency_crossover_K": 1.1962103812552458,
+      "regime": "multi_turn_amortized",
+      "passed_20pct_gate": true
+    },
+    "N_2": {
+      "N": 2,
+      "C_init_flops": 73018638336.0,
+      "C_linear_query_flops": 77309411328.0,
+      "C_sp_query_flops": 1075847168.0,
+      "Delta_C_step_flops": 76233564160.0,
+      "K_star_theory": 0.9578279481036401,
+      "K_star_empirical": 0.9578279481036401,
+      "relative_error": 0.0,
+      "latency_linear_ms": 106.39508939930238,
+      "latency_sp_ms": 1.7658929980825633,
+      "latency_crossover_K": 0.7048526120219752,
+      "regime": "single_query_viable",
+      "passed_20pct_gate": true
+    },
+    "N_4": {
+      "N": 4,
+      "C_init_flops": 146037276672.0,
+      "C_linear_query_flops": 171798691840.0,
+      "C_sp_query_flops": 2155888640.0,
+      "Delta_C_step_flops": 169642803200.0,
+      "K_star_theory": 0.86085158885184,
+      "K_star_empirical": 0.86085158885184,
+      "relative_error": 0.0,
+      "latency_linear_ms": 259.07960000331514,
+      "latency_sp_ms": 3.5982967994641513,
+      "latency_crossover_K": 0.5395432694250865,
+      "regime": "single_query_viable",
+      "passed_20pct_gate": true
+    },
+    "N_8": {
+      "N": 8,
+      "C_init_flops": 292074553344.0,
+      "C_linear_query_flops": 412316860416.0,
+      "C_sp_query_flops": 4328554496.0,
+      "Delta_C_step_flops": 407988305920.0,
+      "K_star_theory": 0.7158895220915258,
+      "K_star_empirical": 0.7158895220915258,
+      "relative_error": 0.0,
+      "latency_linear_ms": 965.0529168022331,
+      "latency_sp_ms": 4.775971005437896,
+      "latency_crossover_K": 0.2330147936692102,
+      "regime": "single_query_viable",
+      "passed_20pct_gate": true
+    }
+  }
+}

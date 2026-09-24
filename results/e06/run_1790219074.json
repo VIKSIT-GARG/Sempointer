@@ -1,0 +1,50 @@
+{
+  "experiment": "E06_Scaling_with_N",
+  "timestamp": 1790219074.3682933,
+  "linear_fit": {
+    "slope": 0.00925827907295847,
+    "intercept": 22.655473113611706,
+    "r_squared": 0.9621528765077524,
+    "p_value": 0.019106082948949887
+  },
+  "log_degradation_fit": {
+    "beta": -0.0,
+    "r_squared": NaN,
+    "fitted_values": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "data": {
+    "N_8": {
+      "N": 8,
+      "selector_latency_ms": 22.76779975363752,
+      "recall_at_1": 1.0,
+      "l_active": 632,
+      "h6_supported": true
+    },
+    "N_16": {
+      "N": 16,
+      "selector_latency_ms": 22.740584204439074,
+      "recall_at_1": 1.0,
+      "l_active": 696,
+      "h6_supported": true
+    },
+    "N_32": {
+      "N": 32,
+      "selector_latency_ms": 22.97931439243257,
+      "recall_at_1": 1.0,
+      "l_active": 824,
+      "h6_supported": true
+    },
+    "N_64": {
+      "N": 64,
+      "selector_latency_ms": 23.245187592692673,
+      "recall_at_1": 1.0,
+      "l_active": 1080,
+      "h6_supported": true
+    }
+  }
+}

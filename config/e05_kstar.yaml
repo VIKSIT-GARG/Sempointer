@@ -1,0 +1,30 @@
+# E05 Empirical K* Crossover Configuration
+experiment_name: e05_kstar
+seed: 42
+device: cpu
+
+sempointer:
+  d: 4096
+  B: 512
+  k: 8
+  m: 0               # Theoretical baseline regime from Section VI-C (or m=1 for N >= 2)
+  B_res: 512
+  L_Q: 0
+  substrate: M_kv
+  generator_class: pooling
+
+sweep:
+  N: [1, 2, 4, 8, 16, 32, 64]
+
+stats:
+  n_bootstrap: 10000
+  alpha: 0.05
+
+data:
+  results_dir: results/e05
+  figures_dir: figures/
+  tables_dir: tables/
+
+wandb:
+  project: sempointer-experiments
+  enabled: false

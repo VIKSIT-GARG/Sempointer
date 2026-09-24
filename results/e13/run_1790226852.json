@@ -1,0 +1,48 @@
+{
+  "experiment": "E13_Semantic_Drift",
+  "timestamp": 1790226852.6516824,
+  "data": {
+    "drift_rate_lambda": 0.002804186244717867,
+    "decay_significant_over_100_turns": false,
+    "initial_recall_at_1": 0.96875,
+    "final_recall_at_1": 0.96875,
+    "delta_horizons": {
+      "dt_1": {
+        "delta_t": 1,
+        "mean_cosine_similarity": 1.0,
+        "min_cosine_similarity": 0.9999998807907104,
+        "recall_at_1": 0.96875
+      },
+      "dt_5": {
+        "delta_t": 5,
+        "mean_cosine_similarity": 0.9927099347114563,
+        "min_cosine_similarity": 0.9792559146881104,
+        "recall_at_1": 0.96875
+      },
+      "dt_10": {
+        "delta_t": 10,
+        "mean_cosine_similarity": 0.9806734323501587,
+        "min_cosine_similarity": 0.9622477293014526,
+        "recall_at_1": 0.96875
+      },
+      "dt_25": {
+        "delta_t": 25,
+        "mean_cosine_similarity": 0.9027087688446045,
+        "min_cosine_similarity": 0.7987643480300903,
+        "recall_at_1": 0.96875
+      },
+      "dt_50": {
+        "delta_t": 50,
+        "mean_cosine_similarity": 0.832385778427124,
+        "min_cosine_similarity": 0.6789235472679138,
+        "recall_at_1": 0.96875
+      },
+      "dt_100": {
+        "delta_t": 100,
+        "mean_cosine_similarity": 0.7772860527038574,
+        "min_cosine_similarity": 0.6458835005760193,
+        "recall_at_1": 0.96875
+      }
+    }
+  }
+}

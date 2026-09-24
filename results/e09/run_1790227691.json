@@ -1,0 +1,51 @@
+{
+  "experiment": "E09_Selected_Pointers_Ablation",
+  "timestamp": 1790227691.5832517,
+  "data": {
+    "m_1": {
+      "m": 1,
+      "N": 64,
+      "target_completeness": 0.5,
+      "l_active_predicted": 1080,
+      "c_query_gflops": 82.033246208,
+      "latency_ms": 10.67493740001737,
+      "plateau_reached": false
+    },
+    "m_2": {
+      "m": 2,
+      "N": 64,
+      "target_completeness": 1.0,
+      "l_active_predicted": 1584,
+      "c_query_gflops": 126.855151616,
+      "latency_ms": 5.603933333380458,
+      "plateau_reached": true
+    },
+    "m_4": {
+      "m": 4,
+      "N": 64,
+      "target_completeness": 1.0,
+      "l_active_predicted": 2592,
+      "c_query_gflops": 228.984356864,
+      "latency_ms": 6.221026733237522,
+      "plateau_reached": true
+    },
+    "m_8": {
+      "m": 8,
+      "N": 64,
+      "target_completeness": 1.0,
+      "l_active_predicted": 4608,
+      "c_query_gflops": 483.184345088,
+      "latency_ms": 6.708586133299832,
+      "plateau_reached": true
+    },
+    "m_16": {
+      "m": 16,
+      "N": 64,
+      "target_completeness": 1.0,
+      "l_active_predicted": 8640,
+      "c_query_gflops": 1191.350632448,
+      "latency_ms": 7.300211866731843,
+      "plateau_reached": true
+    }
+  }
+}

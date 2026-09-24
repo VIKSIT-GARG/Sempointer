@@ -1,0 +1,50 @@
+{
+  "experiment": "E17_Cross_Model_Generalization",
+  "timestamp": 1790227900.6783733,
+  "data": {
+    "Qwen 2.5": {
+      "family": "Qwen 2.5",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "hidden_dim_d": 3584,
+      "theoretical_k_star": 0.3295460083080889,
+      "compression_ratio": 19.961165048543688,
+      "token_compression_error_pct": 0.0,
+      "recall_at_1": 1.0,
+      "mrr": 1.0,
+      "selector_latency_ms": 9.73961939992781
+    },
+    "Llama 3.1": {
+      "family": "Llama 3.1",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "hidden_dim_d": 4096,
+      "theoretical_k_star": 0.3584635202546748,
+      "compression_ratio": 19.961165048543688,
+      "token_compression_error_pct": 0.0,
+      "recall_at_1": 1.0,
+      "mrr": 1.0,
+      "selector_latency_ms": 6.215977999909228
+    },
+    "Gemma 2": {
+      "family": "Gemma 2",
+      "model_id": "google/gemma-2-9b-it",
+      "hidden_dim_d": 3584,
+      "theoretical_k_star": 0.3295460083080889,
+      "compression_ratio": 19.961165048543688,
+      "token_compression_error_pct": 0.0,
+      "recall_at_1": 1.0,
+      "mrr": 1.0,
+      "selector_latency_ms": 6.562918733288825
+    },
+    "Phi 3.5": {
+      "family": "Phi 3.5",
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "hidden_dim_d": 3072,
+      "theoretical_k_star": 0.29809932518637833,
+      "compression_ratio": 19.961165048543688,
+      "token_compression_error_pct": 0.0,
+      "recall_at_1": 1.0,
+      "mrr": 1.0,
+      "selector_latency_ms": 7.23379973333067
+    }
+  }
+}

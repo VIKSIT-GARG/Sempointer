@@ -1,0 +1,22 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.pytest_cache/
+
+# Execution logs and manuscript figures/tables
+figures/
+tables/
+logs/
+PROMPT_FOR_CODE_GENERATION.md
+
+# OS / Editor artifacts
+.DS_Store
+.vscode/
+.idea/
+.agents/

@@ -1,0 +1,51 @@
+{
+  "experiment": "E03_Active_Sequence_Compression",
+  "timestamp": 1790186300.3584437,
+  "total_cells": 3,
+  "passed_cells": 3,
+  "falsification_triggered": false,
+  "cells": {
+    "N2_k8_m1_Bres512_LQ64": {
+      "N": 2,
+      "k": 8,
+      "m": 1,
+      "B_res": 512,
+      "L_Q": 64,
+      "predicted_l_active": 584,
+      "linear_l_full": 1088,
+      "mean_measured_l_active": 584.0,
+      "mean_residual": 0.0,
+      "mean_rel_error": 0.0,
+      "mean_compression_ratio": 1.8630136986301369,
+      "passed_2pct_gate": true
+    },
+    "N8_k8_m1_Bres512_LQ64": {
+      "N": 8,
+      "k": 8,
+      "m": 1,
+      "B_res": 512,
+      "L_Q": 64,
+      "predicted_l_active": 632,
+      "linear_l_full": 4160,
+      "mean_measured_l_active": 632.0,
+      "mean_residual": 0.0,
+      "mean_rel_error": 0.0,
+      "mean_compression_ratio": 6.582278481012659,
+      "passed_2pct_gate": true
+    },
+    "N32_k8_m1_Bres512_LQ64": {
+      "N": 32,
+      "k": 8,
+      "m": 1,
+      "B_res": 512,
+      "L_Q": 64,
+      "predicted_l_active": 824,
+      "linear_l_full": 16448,
+      "mean_measured_l_active": 824.0,
+      "mean_residual": 0.0,
+      "mean_rel_error": 0.0,
+      "mean_compression_ratio": 19.961165048543688,
+      "passed_2pct_gate": true
+    }
+  }
+}

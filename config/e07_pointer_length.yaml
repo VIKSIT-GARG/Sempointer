@@ -1,0 +1,40 @@
+data:
+  figures_dir: figures/
+  results_dir: results/
+  spbench_path: data/spbench.jsonl
+  tables_dir: tables/
+device: cuda
+embedding:
+  batch_size: 64
+  model: sentence-transformers/all-mpnet-base-v2
+experiment_name: e07_pointer_length
+hardware:
+  max_memory_mb: 75000
+  precision: float16
+  use_flash_attention: true
+models:
+  architecture_diverse: google/gemma-2-9b-it
+  cross_family: meta-llama/Llama-3.1-8B-Instruct
+  large: meta-llama/Llama-3.1-70B-Instruct
+  medium: Qwen/Qwen2.5-14B-Instruct
+  primary: Qwen/Qwen2.5-7B-Instruct
+  small: microsoft/Phi-3.5-mini-instruct
+seed: 42
+sempointer:
+  B: 512
+  B_res: 512
+  L_Q: 64
+  d: 4096
+  k: 8
+  m: 1
+stats:
+  alpha: 0.05
+  min_queries_per_cell: 500
+  n_bootstrap: 10000
+  n_seeds: 5
+wandb:
+  entity: null
+  project: sempointer-experiments
+  tags:
+  - sempointer
+  - phase4

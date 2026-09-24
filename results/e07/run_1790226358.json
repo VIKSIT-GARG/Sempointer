@@ -1,0 +1,79 @@
+{
+  "experiment": "E07_Pointer_Length_Ablation",
+  "timestamp": 1790226358.4773364,
+  "is_monotone": true,
+  "data": {
+    "k_2": {
+      "k": 2,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 702,
+      "selector_latency_ms": 9.057957360018918
+    },
+    "k_4": {
+      "k": 4,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 828,
+      "selector_latency_ms": 5.371631359994353
+    },
+    "k_8": {
+      "k": 8,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 1080,
+      "selector_latency_ms": 5.711665560020265
+    },
+    "k_16": {
+      "k": 16,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 1584,
+      "selector_latency_ms": 6.338220959978571
+    },
+    "k_32": {
+      "k": 32,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 2592,
+      "selector_latency_ms": 5.8905629200307885
+    },
+    "k_64": {
+      "k": 64,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 4608,
+      "selector_latency_ms": 5.794936840002265
+    }
+  }
+}

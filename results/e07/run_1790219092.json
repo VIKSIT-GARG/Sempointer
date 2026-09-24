@@ -1,0 +1,43 @@
+{
+  "experiment": "E07_Pointer_Length_Ablation",
+  "timestamp": 1790219092.8129878,
+  "is_monotone": true,
+  "data": {
+    "k_4": {
+      "k": 4,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 828,
+      "selector_latency_ms": 21.534323797095567
+    },
+    "k_8": {
+      "k": 8,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 1080,
+      "selector_latency_ms": 22.484211897244677
+    },
+    "k_16": {
+      "k": 16,
+      "N": 64,
+      "recall_at_1": 1.0,
+      "recall_at_1_ci": [
+        1.0,
+        1.0
+      ],
+      "collision_rate": 0.10962301587301587,
+      "l_active_tokens": 1584,
+      "selector_latency_ms": 23.719282494857907
+    }
+  }
+}
