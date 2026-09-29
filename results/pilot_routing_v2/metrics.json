@@ -1,0 +1,92 @@
+{
+  "benchmark": "longbench",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 30,
+  "systems": {
+    "agentic_pointer_v2": {
+      "n_scored": 30,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.02326795820116889,
+      "score_ci95": [
+        0.008257227390626046,
+        0.041624790900366804
+      ],
+      "active_tokens_mean": 3863.0,
+      "latency_ms_mean": 2812.4808147005147,
+      "peak_vram_mb_mean": 2473.628727213542,
+      "per_task": {
+        "musique": {
+          "n": 30,
+          "score_mean": 0.02326795820116889
+        }
+      }
+    },
+    "agentic_pointer": {
+      "n_scored": 30,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.02990535938983144,
+      "score_ci95": [
+        0.014599282362015282,
+        0.047317038465330405
+      ],
+      "active_tokens_mean": 3285.233333333333,
+      "latency_ms_mean": 3385.8393144333,
+      "peak_vram_mb_mean": 2475.960384114583,
+      "per_task": {
+        "musique": {
+          "n": 30,
+          "score_mean": 0.02990535938983144
+        }
+      }
+    },
+    "sempointer": {
+      "n_scored": 30,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.054122338331667366,
+      "score_ci95": [
+        0.020680020035532327,
+        0.10067538328519067
+      ],
+      "active_tokens_mean": 1058.7333333333333,
+      "latency_ms_mean": 1461.307276900455,
+      "peak_vram_mb_mean": 2309.26708984375,
+      "per_task": {
+        "musique": {
+          "n": 30,
+          "score_mean": 0.054122338331667366
+        }
+      }
+    },
+    "rag": {
+      "n_scored": 30,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.031339849930783335,
+      "score_ci95": [
+        0.015959380607909975,
+        0.049135407550844744
+      ],
+      "active_tokens_mean": 570.9333333333333,
+      "latency_ms_mean": 1445.990846633261,
+      "peak_vram_mb_mean": 2263.799853515625,
+      "per_task": {
+        "musique": {
+          "n": 30,
+          "score_mean": 0.031339849930783335
+        }
+      }
+    }
+  }
+}

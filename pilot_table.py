@@ -22,12 +22,24 @@ def load(name):
 def main():
     v1 = load("pilot_multihop")
     v2 = load("pilot_multihop_v2")
-    assert v1["engine"]["model_id"] == v2["engine"]["model_id"], "pilot model mismatch"
-    assert v1["n_examples"] == v2["n_examples"] == 30, "pilot n mismatch"
-
-    order = ["sempointer", "full", "rag", "bm25",
-             "agentic_pointer", "iterative_rag", "hybrid"]
-    merged = {**v1["systems"], **v2["systems"]}
+    v3 = load("pilot_address")
+    v4 = load("pilot_routing_v2")
+    for v in (v2, v3, v4):
+        assert v["engine"]["model_id"] == v1["engine"]["model_id"], "pilot model mismatch"
+        assert v["n_examples"] == v1["n_examples"] == 30, "pilot n mismatch"
+    # all pilots ran the same 30 musique examples: verify matched IDs
+    def sys_ids(dirname, system):
+        return sorted(
+            r["example_id"] for r in
+            map(json.loads, open(os.path.join(RESULTS, dirname, "predictions.jsonl")))
+            if r["system"] == system)
+    base = sys_ids("pilot_multihop", "sempointer")
+    assert sys_ids("pilot_address", "sempointer") == base, "address pilot examples differ"
+    assert sys_ids("pilot_routing_v2", "sempointer") == base, "routing pilot examples differ"
+    assert sys_ids("pilot_routing_v2", "rag") == sys_ids("pilot_multihop", "rag")
+    order = ["sempointer", "full", "rag", "bm25", "agentic_pointer",
+             "agentic_pointer_v2", "iterative_rag", "hybrid", "address_rag"]
+    merged = {**v1["systems"], **v2["systems"], **v3["systems"], **v4["systems"]}
 
     def fmt(x, nd=4):
         return f"{x:.{nd}f}"
@@ -49,8 +61,8 @@ def main():
         "\\begin{table}[t]\n"
         "\\centering\n"
         "\\caption{Multi-hop pilot (LongBench musique, n=30 matched examples, "
-        "Qwen2.5-3B-NF4, greedy, seed 42). v1 and v2 ran the same 30 examples "
-        "under identical config, so all seven arms are directly comparable. "
+        "Qwen2.5-3B-NF4, greedy, seed 42). all four pilots ran the same 30 examples "
+        "under identical config, so all nine arms are directly comparable. "
         "CIs are wide at n=30; no significance is claimed. "
         "session summary excluded (token-accounting defect, see text).}\n"
         "\\label{tab:N6-pilot}\n"
