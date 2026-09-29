@@ -129,9 +129,18 @@ def build_systems(args, tokenizer):
             from baselines.dense_rag import DenseRAGBaseline
             systems["rag"] = DenseRAGBaseline(tokenizer=tokenizer, m=args.rag_m,
                                               block_size=args.block_size, device=args.device)
+        elif spec == "address_rag":
+            from baselines.address_rag import AddressRAGBaseline
+            systems["address_rag"] = AddressRAGBaseline(
+                tokenizer=tokenizer, k=args.k, m=args.rag_m,
+                block_size=args.block_size, seed=args.seed, device=args.device)
         elif spec == "agentic_pointer":
             from baselines.agentic_pointer import AgenticPointerBaseline
             systems["agentic_pointer"] = AgenticPointerBaseline(
+                tokenizer=tokenizer, m=args.rag_m, block_size=args.block_size)
+        elif spec == "agentic_pointer_v2":
+            from baselines.agentic_pointer_v2 import AgenticPointerV2Baseline
+            systems["agentic_pointer_v2"] = AgenticPointerV2Baseline(
                 tokenizer=tokenizer, m=args.rag_m, block_size=args.block_size)
         elif spec == "iterative_rag":
             from baselines.iterative_rag import IterativeRAGBaseline

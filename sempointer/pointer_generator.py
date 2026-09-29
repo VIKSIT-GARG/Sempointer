@@ -42,7 +42,7 @@ def embed_long(embedder, texts):
     tok = embedder.tokenizer
     out = []
     for text in items:
-        ids = tok.encode(text, add_special_tokens=False)
+        ids = tok.encode(text, add_special_tokens=False, verbose=False)
         if len(ids) <= max_len:
             out.append(embedder.encode(text, convert_to_tensor=True))
             continue
