@@ -1,87 +1,70 @@
-import time
-from typing import List, Dict, Any, Optional
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+"""B1: Full-context baseline (uniform `System` interface).
+
+ingest() chunks the context exactly like sempointer.pipeline.chunk_text and
+answer() includes ALL blocks in the prompt, then generates the answer with a
+REAL LLM call on the shared engine (no scoring shortcuts, no heuristics).
+
+active_tokens = GenResult.prompt_tokens, i.e. the tokens of the prompt that
+was actually sent to the LLM.
+"""
+
+from __future__ import annotations
+
+from typing import Any, Dict, List, Optional
+
+from ._text_common import (
+    DEFAULT_SYSTEM_PROMPT,
+    build_memory_prompt,
+    finish_answer,
+    ingest_blocks,
+    require_ingested,
+)
+
 
 class FullContextBaseline:
-    """B1: All N memories concatenated and re-ingested each query."""
-    def __init__(self, model_name: str, tokenizer_name: Optional[str] = None, device: str = 'cuda'):
-        self.device = device
-        self.model_name = model_name
-        self.tokenizer_name = tokenizer_name or model_name
-        
-        self.tokenizer = AutoTokenizer.from_pretrained(self.tokenizer_name)
-        if self.tokenizer.pad_token is None:
-            self.tokenizer.pad_token = self.tokenizer.eos_token
-            
-        self.model = AutoModelForCausalLM.from_pretrained(
-            self.model_name,
-            torch_dtype=torch.float16,
-            device_map=self.device
-        )
-        self.model.eval()
+    """All N memory blocks are kept and re-sent for every question."""
 
-    def run_query(
+    def __init__(
         self,
-        query: str,
-        memories: List[str],
-        max_new_tokens: int = 100,
-        system_prompt: Optional[str] = None
-    ) -> Dict[str, Any]:
-        start_time = time.time()
-        
-        # Concatenate all memories
-        context = "\n".join(memories)
-        
-        # Build prompt
-        prompt = ""
-        if system_prompt:
-            prompt += f"{system_prompt}\n\n"
-        prompt += f"Context:\n{context}\n\nQuery: {query}\nAnswer:"
-        
-        inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
-        prompt_tokens = inputs["input_ids"].shape[1]
-        
-        with torch.no_grad():
-            outputs = self.model.generate(
-                **inputs,
-                max_new_tokens=max_new_tokens,
-                pad_token_id=self.tokenizer.pad_token_id,
-                eos_token_id=self.tokenizer.eos_token_id
-            )
-            
-        # Extract answer
-        generated_ids = outputs[0][prompt_tokens:]
-        answer = self.tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
-        
-        latency_ms = (time.time() - start_time) * 1000
-        flops_estimate = self.measure_flops(prompt_tokens)
-        
+        tokenizer,
+        block_size: int = 512,
+        system_prompt: Optional[str] = DEFAULT_SYSTEM_PROMPT,
+    ):
+        self.tokenizer = tokenizer
+        self.block_size = block_size
+        self.system_prompt = system_prompt
+        self.blocks: List[str] = []
+        self.ingestion: Dict[str, Any] = {}
+
+    # ------------------------------------------------------------------ #
+    def ingest(self, context: str) -> None:
+        self.blocks, self.ingestion = ingest_blocks(context, self.block_size, self.tokenizer)
+
+    def answer(self, query: str, llm) -> Dict[str, Any]:
+        require_ingested(self.blocks, type(self).__name__)
+        return finish_answer(
+            system="full_context",
+            query=query,
+            blocks=self.blocks,
+            llm=llm,
+            tokenizer=self.tokenizer,
+            system_prompt=self.system_prompt,
+            selected_ids=list(range(len(self.blocks))),  # every block is active
+            selection_scores=None,
+            selection_latency_ms=0.0,
+            extra={
+                "retrieval": "none (all blocks active)",
+                "ingestion": self.ingestion,
+            },
+        )
+
+    # ------------------------------------------------------------------ #
+    def info(self) -> Dict[str, Any]:
         return {
-            'answer': answer,
-            'prompt_tokens': prompt_tokens,
-            'latency_ms': latency_ms,
-            'flops_estimate': flops_estimate
+            "system": "full_context",
+            "block_size": self.block_size,
+            "n_blocks": len(self.blocks),
+            "ingestion_tokens": self.ingestion.get("ingestion_tokens"),
+            "ingestion_latency_ms": self.ingestion.get("ingestion_latency_ms"),
+            "has_system_prompt": bool(self.system_prompt),
         }
-        
-    def run_batch(
-        self,
-        queries: List[str],
-        memories_per_query: List[List[str]],
-        **kwargs
-    ) -> List[Dict[str, Any]]:
-        results = []
-        for q, m in zip(queries, memories_per_query):
-            results.append(self.run_query(q, m, **kwargs))
-        return results
-        
-    def measure_flops(self, prompt_token_count: int, d: int = 4096) -> float:
-        # Returns estimated FLOPs: 2 * d * seq_len^2 (attention) + other terms
-        seq_len = prompt_token_count
-        # Rough estimate for forward pass FLOPs per token
-        # C_forward = 2 * P (params) * seq_len + 2 * num_layers * seq_len^2 * d
-        # Here we just use a simplified model as requested
-        flops = 2 * d * (seq_len ** 2)
-        # Add basic feed-forward approximation (e.g. 8 * d^2 * seq_len)
-        flops += 8 * (d ** 2) * seq_len
-        return float(flops)

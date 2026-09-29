@@ -1,0 +1,18 @@
+\begin{table}
+\caption{KV Cache Footprint and Maximum Context Capacity before OOM (E15)}
+\label{tab:memory}
+\begin{tabular}{lccccc}
+\toprule
+N (Blocks) & Full History KV (MB) & SemPointer KV (MB) & Capacity Multiplier & Full Context OOM (8GB) & SemPointer OOM (8GB) \\
+\midrule
+8 & 520.0 & 79.0 & 6.6x & NO & NO \\
+16 & 1032.0 & 87.0 & 11.9x & NO & NO \\
+32 & 2056.0 & 103.0 & 20.0x & NO & NO \\
+64 & 4104.0 & 135.0 & 30.4x & NO & NO \\
+128 & 8200.0 & 199.0 & 41.2x & YES & NO \\
+256 & 16392.0 & 327.0 & 50.1x & YES & NO \\
+512 & 32776.0 & 583.0 & 56.2x & YES & NO \\
+1024 & 65544.0 & 1095.0 & 59.9x & YES & NO \\
+\bottomrule
+\end{tabular}
+\end{table}

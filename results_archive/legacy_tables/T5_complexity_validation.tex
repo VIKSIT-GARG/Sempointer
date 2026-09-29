@@ -1,0 +1,17 @@
+\begin{table}
+\caption{Theoretical vs Empirical Crossover Threshold K* across Registry Size N (E05)}
+\label{tab:kstar}
+\begin{tabular}{lcccccc}
+\toprule
+N & C_init (GFLOPs) & ΔC_step (GFLOPs) & K* Theoretical & K* Empirical & Relative Error & Regime \\
+\midrule
+1 & 36.51 & 35.97 & 1.0150 & 1.0150 & 0.00% & multi_turn_amortized \\
+2 & 73.02 & 76.23 & 0.9578 & 0.9578 & 0.00% & single_query_viable \\
+4 & 146.04 & 169.64 & 0.8609 & 0.8609 & 0.00% & single_query_viable \\
+8 & 292.07 & 407.99 & 0.7159 & 0.7159 & 0.00% & single_query_viable \\
+16 & 584.15 & 1090.79 & 0.5355 & 0.5355 & 0.00% & single_query_viable \\
+32 & 1168.30 & 3280.82 & 0.3561 & 0.3561 & 0.00% & single_query_viable \\
+64 & 2336.60 & 10958.61 & 0.2132 & 0.2132 & 0.00% & single_query_viable \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,172 @@
+{
+  "benchmark": "longbench",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 1150,
+  "systems": {
+    "sempointer": {
+      "n_scored": 1150,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.07730388676889775,
+      "score_ci95": [
+        0.07100963301967932,
+        0.08441390956116876
+      ],
+      "active_tokens_mean": 963.5026086956522,
+      "latency_ms_mean": 1527.1594353234548,
+      "peak_vram_mb_mean": 2300.534864555027,
+      "per_task": {
+        "2wikimqa": {
+          "n": 200,
+          "score_mean": 0.0460579579614109
+        },
+        "hotpotqa": {
+          "n": 200,
+          "score_mean": 0.042020469852437695
+        },
+        "multifieldqa_en": {
+          "n": 150,
+          "score_mean": 0.19974788707443888
+        },
+        "musique": {
+          "n": 200,
+          "score_mean": 0.031038520317479005
+        },
+        "narrativeqa": {
+          "n": 200,
+          "score_mean": 0.0457357245088529
+        },
+        "qasper": {
+          "n": 200,
+          "score_mean": 0.12983376097515245
+        }
+      }
+    },
+    "full": {
+      "n_scored": 1136,
+      "n_errors": 14,
+      "metric": "longbench_f1",
+      "score_mean": 0.11123426108114792,
+      "score_ci95": [
+        0.10367404339536926,
+        0.11967174300473038
+      ],
+      "active_tokens_mean": 13066.149647887323,
+      "latency_ms_mean": 8084.495363405693,
+      "peak_vram_mb_mean": 2994.419549216687,
+      "per_task": {
+        "2wikimqa": {
+          "n": 200,
+          "score_mean": 0.06228876449573951
+        },
+        "hotpotqa": {
+          "n": 200,
+          "score_mean": 0.06299336410597023
+        },
+        "multifieldqa_en": {
+          "n": 150,
+          "score_mean": 0.26954974657503206
+        },
+        "musique": {
+          "n": 200,
+          "score_mean": 0.043765037271066426
+        },
+        "narrativeqa": {
+          "n": 186,
+          "score_mean": 0.06712686253265658
+        },
+        "qasper": {
+          "n": 200,
+          "score_mean": 0.19817314498149938
+        }
+      }
+    },
+    "rag": {
+      "n_scored": 1150,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.07820939110047151,
+      "score_ci95": [
+        0.07206784764229236,
+        0.08554628816999425
+      ],
+      "active_tokens_mean": 568.8208695652174,
+      "latency_ms_mean": 1228.7994724378982,
+      "peak_vram_mb_mean": 2263.5738081691575,
+      "per_task": {
+        "2wikimqa": {
+          "n": 200,
+          "score_mean": 0.04138997587106304
+        },
+        "hotpotqa": {
+          "n": 200,
+          "score_mean": 0.037414424801730364
+        },
+        "multifieldqa_en": {
+          "n": 150,
+          "score_mean": 0.2100910156633993
+        },
+        "musique": {
+          "n": 200,
+          "score_mean": 0.027523621017460184
+        },
+        "narrativeqa": {
+          "n": 200,
+          "score_mean": 0.049160704557389
+        },
+        "qasper": {
+          "n": 200,
+          "score_mean": 0.13664701083251907
+        }
+      }
+    },
+    "bm25": {
+      "n_scored": 1150,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.0812971088955345,
+      "score_ci95": [
+        0.07463131088721663,
+        0.08807738767944275
+      ],
+      "active_tokens_mean": 572.664347826087,
+      "latency_ms_mean": 1228.1133171141594,
+      "peak_vram_mb_mean": 2263.924998726223,
+      "per_task": {
+        "2wikimqa": {
+          "n": 200,
+          "score_mean": 0.05168024683925842
+        },
+        "hotpotqa": {
+          "n": 200,
+          "score_mean": 0.04327664407770346
+        },
+        "multifieldqa_en": {
+          "n": 150,
+          "score_mean": 0.24270229340616709
+        },
+        "musique": {
+          "n": 200,
+          "score_mean": 0.02529924813212957
+        },
+        "narrativeqa": {
+          "n": 200,
+          "score_mean": 0.045812445815822674
+        },
+        "qasper": {
+          "n": 200,
+          "score_mean": 0.11936307122978401
+        }
+      }
+    }
+  }
+}

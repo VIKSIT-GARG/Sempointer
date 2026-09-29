@@ -1,0 +1,5 @@
+# Benchmark data caches are fetched at build time (network downloads) and
+# must not be committed.
+data/
+__pycache__/
+*.py[cod]

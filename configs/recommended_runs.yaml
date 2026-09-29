@@ -1,0 +1,41 @@
+# Recommended full-run configurations for the final benchmark suite.
+# The CLI (run_benchmark.py) is authoritative; these files document the
+# recommended settings so no experimental parameter is implicit.
+# All values are passed explicitly in the commands in RUNNING_EXPERIMENTS.md.
+
+defaults:
+  model: Qwen/Qwen2.5-3B-Instruct     # 4-bit NF4; ~2.6GB VRAM weights
+  dtype: nf4
+  device: cuda
+  seed: 42
+  max_new_tokens: 64
+  k: 8
+  m: 1
+  rag_m: 1
+  block_size: 512
+  systems: sempointer,full,rag,bm25
+
+ruler:
+  context_lengths: [4096, 8192, 16384]
+  tasks: [niah_single_1, niah_single_2, niah_single_3, niah_multikey_1, vt, cwe]
+  samples_per_cell: 10
+  # VRAM note: 16k tokens @ 3B bf16 KV ≈ 1.9GB; nf4 weights 2.6GB -> fits 8GB.
+
+longbench:
+  tasks: [hotpotqa, 2wikimqa, musique, multifieldqa_en, narrativeqa, qasper]
+  limit: null                          # all examples of each task (official test split)
+
+locomo:
+  conversations: [0]                   # conversation 0 first; extend if time allows
+  categories: null                     # all QA categories (1-5)
+  limit: null
+
+kv_compare:
+  # P4: equal-budget comparison on RULER haystacks
+  context_lengths: [4096]   # 8192 infeasible: kvpress eager attention needs ~4GB transient at 8k on 8GB
+  tasks: [niah_single_1, niah_multikey_1]
+  samples_per_cell: 5
+  systems: sempointer,full,kvpress:snapkv:0.3,kvpress:tova:0.3,kvpress:knorm:0.3   # PyramidKV broken under transformers 5.2 (tensor mismatch)
+  # Fairness: same model + dtype + greedy decoding for every system.
+  # H2O is NOT available in kvpress 0.5.5 (removed upstream); knorm (StreamingLLM-family)
+  # and tova are the documented substitutes.

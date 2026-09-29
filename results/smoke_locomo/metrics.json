@@ -1,0 +1,54 @@
+{
+  "benchmark": "locomo",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "dtype": "bf16",
+    "device": "cuda",
+    "max_new_tokens": 48,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 3,
+  "systems": {
+    "sempointer": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "locomo_f1",
+      "score_mean": 0.01515151515151515,
+      "score_ci95": [
+        0.0,
+        0.04545454545454545
+      ],
+      "active_tokens_mean": 987.0,
+      "latency_ms_mean": 763.0937730039781,
+      "peak_vram_mb_mean": 3152.7433268229165,
+      "per_task": {
+        "locomo_qa": {
+          "n": 3,
+          "score_mean": 0.01515151515151515
+        }
+      }
+    },
+    "full": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "locomo_f1",
+      "score_mean": 0.01515151515151515,
+      "score_ci95": [
+        0.0,
+        0.04545454545454545
+      ],
+      "active_tokens_mean": 14525.0,
+      "latency_ms_mean": 3355.7883460016456,
+      "peak_vram_mb_mean": 4382.886393229167,
+      "per_task": {
+        "locomo_qa": {
+          "n": 3,
+          "score_mean": 0.01515151515151515
+        }
+      }
+    }
+  }
+}

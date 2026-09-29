@@ -1,0 +1,16 @@
+\begin{table}
+\caption{Pointer Length k vs Retrieval Accuracy, Collisions, and Active Length (E07)}
+\label{tab:ablation_k}
+\begin{tabular}{lcccc}
+\toprule
+Pointer Tokens (k) & Recall@1 & Collision Rate & Active Sequence (tok) & Selector Latency (ms) \\
+\midrule
+2 & 1.000 & 0.1096 & 702 & 8.34 \\
+4 & 1.000 & 0.1096 & 828 & 5.79 \\
+8 & 1.000 & 0.1096 & 1080 & 5.73 \\
+16 & 1.000 & 0.1096 & 1584 & 5.54 \\
+32 & 1.000 & 0.1096 & 2592 & 5.72 \\
+64 & 1.000 & 0.1096 & 4608 & 6.16 \\
+\bottomrule
+\end{tabular}
+\end{table}

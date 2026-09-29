@@ -1,0 +1,92 @@
+{
+  "benchmark": "locomo",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 199,
+  "systems": {
+    "sempointer": {
+      "n_scored": 199,
+      "n_errors": 0,
+      "metric": "locomo_f1",
+      "score_mean": 0.05177262700555422,
+      "score_ci95": [
+        0.041709059906413756,
+        0.06319416889407702
+      ],
+      "active_tokens_mean": 987.2613065326633,
+      "latency_ms_mean": 1308.8001679440717,
+      "peak_vram_mb_mean": 2302.598841374843,
+      "per_task": {
+        "locomo_qa": {
+          "n": 199,
+          "score_mean": 0.05177262700555422
+        }
+      }
+    },
+    "full": {
+      "n_scored": 199,
+      "n_errors": 0,
+      "metric": "locomo_f1",
+      "score_mean": 0.06418624102964354,
+      "score_ci95": [
+        0.0526470926846573,
+        0.07629503662695382
+      ],
+      "active_tokens_mean": 14525.065326633166,
+      "latency_ms_mean": 5326.207766059877,
+      "peak_vram_mb_mean": 3825.057808574121,
+      "per_task": {
+        "locomo_qa": {
+          "n": 199,
+          "score_mean": 0.06418624102964354
+        }
+      }
+    },
+    "rag": {
+      "n_scored": 199,
+      "n_errors": 0,
+      "metric": "locomo_f1",
+      "score_mean": 0.05010479688209505,
+      "score_ci95": [
+        0.04022865403100944,
+        0.06070232020220423
+      ],
+      "active_tokens_mean": 571.4673366834171,
+      "latency_ms_mean": 1426.13751147745,
+      "peak_vram_mb_mean": 2263.841315954774,
+      "per_task": {
+        "locomo_qa": {
+          "n": 199,
+          "score_mean": 0.05010479688209505
+        }
+      }
+    },
+    "bm25": {
+      "n_scored": 199,
+      "n_errors": 0,
+      "metric": "locomo_f1",
+      "score_mean": 0.06273095380513212,
+      "score_ci95": [
+        0.05018868081326467,
+        0.07603657647052343
+      ],
+      "active_tokens_mean": 571.0854271356784,
+      "latency_ms_mean": 1425.7055319146307,
+      "peak_vram_mb_mean": 2263.8057327653896,
+      "per_task": {
+        "locomo_qa": {
+          "n": 199,
+          "score_mean": 0.06273095380513212
+        }
+      }
+    }
+  }
+}

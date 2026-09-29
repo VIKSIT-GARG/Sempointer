@@ -1,0 +1,27 @@
+{
+  "experiment": "E14_Resolution_Fidelity",
+  "timestamp": 1790614859.1501415,
+  "data": {
+    "M_text": {
+      "exact_match": 1.0,
+      "token_f1": 1.0,
+      "cosine_fidelity": 1.0,
+      "epsilon_loss": 0.0,
+      "fidelity_bound_satisfied": true
+    },
+    "M_kv": {
+      "exact_match": 1.0,
+      "token_f1": 1.0,
+      "cosine_fidelity": 1.0,
+      "epsilon_loss": 0.0,
+      "fidelity_bound_satisfied": true
+    },
+    "M_latent": {
+      "cosine_fidelity": -0.002995127346366644,
+      "epsilon_loss": 1.0029951273463666,
+      "mse_loss": 1.0014500617980957,
+      "compression_ratio": 12.0,
+      "fidelity_bound_satisfied": false
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "benchmark": "kv_compare",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 32,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 10,
+  "systems": {
+    "sempointer": {
+      "n_scored": 10,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 0.8,
+      "score_ci95": [
+        0.6,
+        1.0
+      ],
+      "active_tokens_mean": 725.5,
+      "latency_ms_mean": 873.0759793019388,
+      "peak_vram_mb_mean": 2191.5228515625,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 5,
+          "score_mean": 0.6
+        },
+        "niah_single_1": {
+          "n": 5,
+          "score_mean": 1.0
+        }
+      }
+    },
+    "full": {
+      "n_scored": 10,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 1.0,
+      "score_ci95": [
+        1.0,
+        1.0
+      ],
+      "active_tokens_mean": 3806.4,
+      "latency_ms_mean": 1488.3446712046862,
+      "peak_vram_mb_mean": 2513.22412109375,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 5,
+          "score_mean": 1.0
+        },
+        "niah_single_1": {
+          "n": 5,
+          "score_mean": 1.0
+        }
+      }
+    },
+    "kvpress_snapkv_0.3": {
+      "n_scored": 10,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 0.5,
+      "score_ci95": [
+        0.2,
+        0.8
+      ],
+      "active_tokens_mean": 2661.1,
+      "latency_ms_mean": 1991.8856970994966,
+      "peak_vram_mb_mean": 4395.57470703125,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 5,
+          "score_mean": 0.4
+        },
+        "niah_single_1": {
+          "n": 5,
+          "score_mean": 0.6
+        }
+      }
+    },
+    "kvpress_tova_0.3": {
+      "n_scored": 10,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 0.8,
+      "score_ci95": [
+        0.5,
+        1.0
+      ],
+      "active_tokens_mean": 2661.1,
+      "latency_ms_mean": 2037.1804276976036,
+      "peak_vram_mb_mean": 4395.57470703125,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 5,
+          "score_mean": 0.6
+        },
+        "niah_single_1": {
+          "n": 5,
+          "score_mean": 1.0
+        }
+      }
+    },
+    "kvpress_knorm_0.3": {
+      "n_scored": 10,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 0.4,
+      "score_ci95": [
+        0.1,
+        0.7
+      ],
+      "active_tokens_mean": 2661.1,
+      "latency_ms_mean": 2109.7249408980133,
+      "peak_vram_mb_mean": 4395.57470703125,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 5,
+          "score_mean": 0.0
+        },
+        "niah_single_1": {
+          "n": 5,
+          "score_mean": 0.8
+        }
+      }
+    }
+  }
+}

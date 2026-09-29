@@ -1,0 +1,5 @@
+Architecture,Model Identifier,Hidden Dim d,Theoretical K*,Active Compression,Recall@1,MRR
+Qwen 2.5,Qwen/Qwen2.5-7B-Instruct,3584,0.330,19.96x,1.000,1.000
+Llama 3.1,meta-llama/Llama-3.1-8B-Instruct,4096,0.358,19.96x,1.000,1.000
+Gemma 2,google/gemma-2-9b-it,3584,0.330,19.96x,1.000,1.000
+Phi 3.5,microsoft/Phi-3.5-mini-instruct,3072,0.298,19.96x,1.000,1.000
