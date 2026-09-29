@@ -1,0 +1,39 @@
+{
+  "experiment": "E08_Payload_Size_Ablation",
+  "timestamp": 1790614908.2755263,
+  "data": {
+    "B_128": {
+      "B": 128,
+      "N": 32,
+      "k": 8,
+      "compression_ratio": 9.454545454545455,
+      "k_star_theoretical": 0.7161902763726082,
+      "recall_at_1": 1.0,
+      "selector_latency_ms": 22.081853602139745,
+      "linear_tokens": 4160,
+      "active_tokens": 440
+    },
+    "B_512": {
+      "B": 512,
+      "N": 32,
+      "k": 8,
+      "compression_ratio": 19.961165048543688,
+      "k_star_theoretical": 0.3584635202546748,
+      "recall_at_1": 0.8,
+      "selector_latency_ms": 22.438562301977072,
+      "linear_tokens": 16448,
+      "active_tokens": 824
+    },
+    "B_1024": {
+      "B": 1024,
+      "N": 32,
+      "k": 8,
+      "compression_ratio": 24.5748502994012,
+      "k_star_theoretical": 0.22636257456123418,
+      "recall_at_1": 0.8,
+      "selector_latency_ms": 24.28493399929721,
+      "linear_tokens": 32832,
+      "active_tokens": 1336
+    }
+  }
+}

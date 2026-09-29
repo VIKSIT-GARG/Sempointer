@@ -1,0 +1,71 @@
+{
+  "experiment": "E12_Pointer_Collision",
+  "timestamp": 1790615088.4324753,
+  "threshold": 0.95,
+  "data": {
+    "easy": {
+      "N_8": {
+        "N": 8,
+        "total_pairs": 28,
+        "collision_count": 0,
+        "empirical_collision_rate": 0.0,
+        "mean_cosine_similarity": 0.3517255485057831,
+        "max_cosine_similarity": 0.5091094374656677,
+        "std_cosine_similarity": 0.07948236912488937,
+        "theoretical_uniform_p": 7.450580596923828e-09
+      },
+      "N_16": {
+        "N": 16,
+        "total_pairs": 120,
+        "collision_count": 8,
+        "empirical_collision_rate": 0.06666666666666667,
+        "mean_cosine_similarity": 0.3913029730319977,
+        "max_cosine_similarity": 0.9827719330787659,
+        "std_cosine_similarity": 0.17329047620296478,
+        "theoretical_uniform_p": 2.9802321943606103e-08
+      },
+      "N_32": {
+        "N": 32,
+        "total_pairs": 496,
+        "collision_count": 48,
+        "empirical_collision_rate": 0.0967741935483871,
+        "mean_cosine_similarity": 0.40695640444755554,
+        "max_cosine_similarity": 0.9903874397277832,
+        "std_cosine_similarity": 0.20098692178726196,
+        "theoretical_uniform_p": 1.1920928244535389e-07
+      }
+    },
+    "hard": {
+      "N_8": {
+        "N": 8,
+        "total_pairs": 28,
+        "collision_count": 28,
+        "empirical_collision_rate": 1.0,
+        "mean_cosine_similarity": 0.9974325299263,
+        "max_cosine_similarity": 0.9988424777984619,
+        "std_cosine_similarity": 0.0011167351622134447,
+        "theoretical_uniform_p": 7.450580596923828e-09
+      },
+      "N_16": {
+        "N": 16,
+        "total_pairs": 120,
+        "collision_count": 120,
+        "empirical_collision_rate": 1.0,
+        "mean_cosine_similarity": 0.9975508451461792,
+        "max_cosine_similarity": 1.000000238418579,
+        "std_cosine_similarity": 0.0012325715506449342,
+        "theoretical_uniform_p": 2.9802321943606103e-08
+      },
+      "N_32": {
+        "N": 32,
+        "total_pairs": 496,
+        "collision_count": 496,
+        "empirical_collision_rate": 1.0,
+        "mean_cosine_similarity": 0.997596025466919,
+        "max_cosine_similarity": 1.000000238418579,
+        "std_cosine_similarity": 0.0013291919603943825,
+        "theoretical_uniform_p": 1.1920928244535389e-07
+      }
+    }
+  }
+}

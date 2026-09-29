@@ -1,0 +1,41 @@
+{
+  "method": "mean n_blocks from sempointer scored rows in predictions.jsonl (cross-checked vs full); B_true = total LLM (Qwen) block-tokens / total blocks over regenerated contexts; kappa = k / B_true; k=8 pointer tokens/block, m=1 resolved block, rag_m=1, block_size=512.",
+  "k": 8,
+  "m": 1,
+  "rag_m": 1,
+  "block_size": 512,
+  "suites": {
+    "final_ruler": {
+      "n_examples": 180,
+      "mean_n_blocks_sempointer": 24.75,
+      "mean_n_blocks_full": 24.75,
+      "mean_llm_tokens_per_block_B_true": 506.6493827160494,
+      "kappa_k_over_B_true": 0.015790012329855305,
+      "crosscheck_full_active_tokens_mean": 13089.16111111111
+    },
+    "final_longbench": {
+      "n_examples": 1150,
+      "mean_n_blocks_sempointer": 26.669565217391305,
+      "mean_n_blocks_full": 25.487676056338028,
+      "mean_llm_tokens_per_block_B_true": 504.18630583632216,
+      "kappa_k_over_B_true": 0.015867150510424814,
+      "crosscheck_full_active_tokens_mean": 13066.149647887323
+    },
+    "final_locomo": {
+      "n_examples": 199,
+      "mean_n_blocks_sempointer": 28.0,
+      "mean_n_blocks_full": 28.0,
+      "mean_llm_tokens_per_block_B_true": 510.2142857142857,
+      "kappa_k_over_B_true": 0.015679686406271875,
+      "crosscheck_full_active_tokens_mean": 14525.065326633166
+    },
+    "final_kvcompare": {
+      "n_examples": 10,
+      "mean_n_blocks_sempointer": 7.5,
+      "mean_n_blocks_full": 7.5,
+      "mean_llm_tokens_per_block_B_true": 487.8666666666667,
+      "kappa_k_over_B_true": 0.01639792292976223,
+      "crosscheck_full_active_tokens_mean": 3806.4
+    }
+  }
+}

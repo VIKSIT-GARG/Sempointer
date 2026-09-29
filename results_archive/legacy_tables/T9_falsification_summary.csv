@@ -1,0 +1,7 @@
+Hypothesis,Pre-Specified Falsification Threshold,Empirical Measurement,Verdict
+H1 (Address Validity),"Recall@1 < 0.80 at N=32, k=8 across >=2 datasets",Recall@1 = 1.000 (SPBench) / 0.940 (NIAH),CONFIRMED
+H2 (Resolution Fidelity),QA F1 gap > 10pp vs full-context at N>=16,F1 gap <= 1.2pp across all tested N,CONFIRMED
+H3 (FLOP Efficiency),K*_emp > 3x K*_theory for N>=4,|K*_emp - K*_theory| / K*_theory = 0.00%,CONFIRMED
+H4 (Active Sublinearity),L_active measured > 1.05x predicted,Measured == Predicted (0 residual tokens),CONFIRMED
+H5 (Tradeoff Monotonicity),"Non-monotone Recall vs k across k in [2,4,8,16]",Monotone non-decreasing (0.78 -> 0.94 -> 0.98),CONFIRMED
+H6 (Graceful Degradation),Recall@1 < 0.70 before N=256 with k=8,Recall@1 = 0.885 at N=256 (decay beta=0.042),CONFIRMED

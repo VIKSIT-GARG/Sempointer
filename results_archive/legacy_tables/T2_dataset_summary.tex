@@ -1,0 +1,14 @@
+\begin{table}
+\caption{Empirical Evaluation Benchmarks and Substrate Specifications}
+\label{tab:datasets}
+\begin{tabular}{lccccc}
+\toprule
+Dataset & Domain & Passage Length (B) & Query Structure & Target Memories (m) & Evaluation Purpose \\
+\midrule
+SPBench-Core & Wikipedia Multi-Domain & 512 & Entity Parameter QA & 1 & Baseline Retrieval & Accuracy \\
+SPBench-Comp & Scientific Systems & 512 & 2-Hop Relational Reasoning & 2 & Axiom 7 Compositionality \\
+SPBench-Drift & Interactive Dialogue & 512 & Conversational Temporal Horizon & 1 & Axiom 3 Semantic Drift \\
+RULER-NIAH & Synthetic Haystack & 512 & Needle Retrieval at Depth & 1 & Extreme Length Robustness \\
+\bottomrule
+\end{tabular}
+\end{table}

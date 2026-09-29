@@ -1,150 +1,135 @@
-"""B2: Dense RAG Baseline.
+"""B2: Dense retrieval-augmented generation baseline (uniform `System` interface).
 
-Sentence-BERT embedding + FAISS (or exact PyTorch normalized inner product) retrieval
-followed by top-m passage concatenation into context.
+ingest() chunks the context exactly like sempointer.pipeline.chunk_text and
+embeds the blocks with sentence-transformers/all-MiniLM-L6-v2 (L2-normalized).
+answer() retrieves the top-m blocks by exact cosine similarity (PyTorch
+implementation; faiss is used only if importable and is interchangeable —
+identical rankings on normalized vectors), builds a prompt containing ONLY the
+retrieved blocks plus the question, and generates the answer with a REAL LLM
+call on the shared engine.
+
+No silent fallbacks: if sentence-transformers is missing, this module raises
+ImportError with install instructions at import time.
 """
 
+from __future__ import annotations
+
 import time
-from typing import List, Dict, Any, Tuple, Optional
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 import torch
 from sentence_transformers import SentenceTransformer
 
-try:
+from ._text_common import (
+    DEFAULT_SYSTEM_PROMPT,
+    finish_answer,
+    ingest_blocks,
+    require_ingested,
+)
+
+try:  # faiss is optional; the exact torch cosine path is the reference
     import faiss
+
+    RAG_BACKEND = "faiss.IndexFlatIP (normalized embeddings = cosine)"
 except ImportError:
     faiss = None
+    RAG_BACKEND = "torch exact cosine (faiss not installed)"
 
 
 class DenseRAGBaseline:
-    """B2: Dense Retrieval Augmented Generation baseline."""
+    """Dense cosine retrieval over memory blocks + top-m concatenation + real LLM."""
 
     def __init__(
         self,
-        embedding_model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
-        llm_model_name: Optional[str] = None,
-        device: str = "cpu",
-        embedder: Optional[Any] = None,
-    ):
-        self.device = device
-        self.llm_model_name = llm_model_name
-        if embedder is not None:
-            self.embedder = embedder
-        else:
-            try:
-                self.embedder = SentenceTransformer(embedding_model_name, device=device)
-            except Exception as e:
-                if device != "cpu":
-                    import warnings
-                    warnings.warn(f"Failed to load embedder on {device} ({e}). Falling back to CPU.")
-                    self.device = "cpu"
-                    self.embedder = SentenceTransformer(embedding_model_name, device="cpu")
-                else:
-                    raise e
-        self.memories: List[str] = []
-        self.memory_embeddings: Optional[torch.Tensor] = None
-        self.faiss_index = None
-
-        self.tokenizer = None
-        self.model = None
-
-    def _init_llm(self):
-        """Lazy loads generation model when required."""
-        if self.model is None and self.llm_model_name is not None:
-            from transformers import AutoModelForCausalLM, AutoTokenizer
-            self.tokenizer = AutoTokenizer.from_pretrained(self.llm_model_name)
-            if self.tokenizer.pad_token is None:
-                self.tokenizer.pad_token = self.tokenizer.eos_token
-            self.model = AutoModelForCausalLM.from_pretrained(
-                self.llm_model_name,
-                torch_dtype=torch.float16 if torch.cuda.is_available() and self.device != "cpu" else torch.float32,
-                device_map=self.device,
-            )
-            self.model.eval()
-
-    def build_index(self, memories: List[str]) -> None:
-        """Encodes memories into normalized embeddings and creates index."""
-        self.memories = memories
-        if not memories:
-            self.memory_embeddings = None
-            self.faiss_index = None
-            return
-
-        with torch.no_grad():
-            embs = self.embedder.encode(memories, convert_to_tensor=True, device=self.device)
-            self.memory_embeddings = torch.nn.functional.normalize(embs, p=2, dim=-1)
-
-        if faiss is not None:
-            np_embs = self.memory_embeddings.cpu().numpy().astype(np.float32)
-            d = np_embs.shape[1]
-            self.faiss_index = faiss.IndexFlatIP(d)
-            self.faiss_index.add(np_embs)
-        else:
-            self.faiss_index = None
-
-    def retrieve(self, query: str, m: int) -> Tuple[List[int], List[float]]:
-        """Retrieves top-m memories by inner product (cosine similarity)."""
-        if self.memory_embeddings is None or len(self.memories) == 0:
-            return [], []
-
-        top_m = min(m, len(self.memories))
-
-        if self.faiss_index is not None:
-            q_emb = self.embedder.encode([query], convert_to_numpy=True).astype(np.float32)
-            faiss.normalize_L2(q_emb)
-            scores, indices = self.faiss_index.search(q_emb, top_m)
-            return indices[0].tolist(), scores[0].tolist()
-        else:
-            # Exact PyTorch normalized inner product
-            with torch.no_grad():
-                q_emb = self.embedder.encode([query], convert_to_tensor=True, device=self.device)
-                q_norm = torch.nn.functional.normalize(q_emb, p=2, dim=-1)
-                scores = torch.matmul(q_norm, self.memory_embeddings.T).squeeze(0)
-                top_scores, top_indices = torch.topk(scores, k=top_m)
-            return top_indices.cpu().tolist(), top_scores.cpu().tolist()
-
-    def run_query(
-        self,
-        query: str,
+        tokenizer,
         m: int = 1,
-        max_new_tokens: int = 64,
-        system_prompt: Optional[str] = None,
-    ) -> Dict[str, Any]:
-        """Retrieves top-m memories and evaluates context."""
-        start_time = time.perf_counter()
-        retrieved_ids, retrieval_scores = self.retrieve(query, m)
-        retrieved_texts = [self.memories[i] for i in retrieved_ids]
+        block_size: int = 512,
+        embedder_id: str = "sentence-transformers/all-MiniLM-L6-v2",
+        device: str = "cuda",
+        system_prompt: Optional[str] = DEFAULT_SYSTEM_PROMPT,
+    ):
+        self.tokenizer = tokenizer
+        self.m = m
+        self.block_size = block_size
+        self.embedder_id = embedder_id
+        self.device = device
+        self.system_prompt = system_prompt
+        self.blocks: List[str] = []
+        self.ingestion: Dict[str, Any] = {}
+        self.block_embeddings: Optional[torch.Tensor] = None
+        self.faiss_index = None
+        self.backend = RAG_BACKEND
 
-        latency_ms = (time.perf_counter() - start_time) * 1000.0
-        context_str = "\n\n".join(f"[DOC {i}]: {txt}" for i, txt in zip(retrieved_ids, retrieved_texts))
+        self.embedder = SentenceTransformer(embedder_id, device=device)
 
-        prompt = ""
-        if system_prompt:
-            prompt += f"{system_prompt}\n\n"
-        prompt += f"Context:\n{context_str}\n\nQuery: {query}\nAnswer:"
+    # ------------------------------------------------------------------ #
+    def ingest(self, context: str) -> None:
+        from sempointer.pointer_generator import embed_long
 
-        answer = ""
-        prompt_tokens = len(prompt.split())
+        self.blocks, self.ingestion = ingest_blocks(context, self.block_size, self.tokenizer)
+        with torch.no_grad():
+            embs = embed_long(self.embedder, self.blocks).to(self.device)
+            self.block_embeddings = torch.nn.functional.normalize(embs, p=2, dim=-1)
 
-        if self.llm_model_name is not None:
-            self._init_llm()
-            inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
-            prompt_tokens = inputs["input_ids"].shape[1]
-            with torch.no_grad():
-                outputs = self.model.generate(
-                    **inputs,
-                    max_new_tokens=max_new_tokens,
-                    pad_token_id=self.tokenizer.pad_token_id,
-                )
-            generated_ids = outputs[0][prompt_tokens:]
-            answer = self.tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
+        self.faiss_index = None
+        if faiss is not None:
+            np_embs = self.block_embeddings.cpu().numpy().astype(np.float32)
+            self.faiss_index = faiss.IndexFlatIP(np_embs.shape[1])
+            self.faiss_index.add(np_embs)
 
+    def retrieve(self, query: str) -> Tuple[List[int], List[float]]:
+        """Top-m block indices and cosine scores for `query`."""
+        require_ingested(self.blocks, type(self).__name__)
+        top_m = min(self.m, len(self.blocks))
+        if self.faiss_index is not None:
+            q = self.embedder.encode([query], convert_to_numpy=True, show_progress_bar=False).astype(np.float32)
+            faiss.normalize_L2(q)
+            scores, indices = self.faiss_index.search(q, top_m)
+            return [int(i) for i in indices[0]], [float(s) for s in scores[0]]
+        with torch.no_grad():
+            q = self.embedder.encode([query], convert_to_tensor=True, device=self.device, show_progress_bar=False)
+            q = torch.nn.functional.normalize(q, p=2, dim=-1)
+            scores = torch.matmul(q, self.block_embeddings.T).squeeze(0)
+            top_scores, top_indices = torch.topk(scores, k=top_m)
+        return top_indices.cpu().tolist(), [float(s) for s in top_scores.cpu().tolist()]
+
+    def answer(self, query: str, llm) -> Dict[str, Any]:
+        t0 = time.perf_counter()
+        selected_ids, scores = self.retrieve(query)
+        retrieval_ms = (time.perf_counter() - t0) * 1000.0
+        retrieved_blocks = [self.blocks[i] for i in selected_ids]
+
+        return finish_answer(
+            system="rag",
+            query=query,
+            blocks=retrieved_blocks,
+            llm=llm,
+            tokenizer=self.tokenizer,
+            system_prompt=self.system_prompt,
+            selected_ids=selected_ids,
+            selection_scores=scores,
+            selection_latency_ms=retrieval_ms,
+            extra={
+                "retrieval": "dense cosine",
+                "rag_backend": self.backend,
+                "embedder_id": self.embedder_id,
+                "embedder_device": self.device,
+                "ingestion": self.ingestion,
+            },
+        )
+
+    # ------------------------------------------------------------------ #
+    def info(self) -> Dict[str, Any]:
         return {
-            "retrieved_ids": retrieved_ids,
-            "retrieval_scores": retrieval_scores,
-            "retrieved_texts": retrieved_texts,
-            "prompt": prompt,
-            "prompt_tokens": prompt_tokens,
-            "answer": answer,
-            "retrieval_latency_ms": latency_ms,
+            "system": "rag",
+            "m": self.m,
+            "block_size": self.block_size,
+            "embedder_id": self.embedder_id,
+            "embedder_device": self.device,
+            "rag_backend": self.backend,
+            "n_blocks": len(self.blocks),
+            "ingestion_tokens": self.ingestion.get("ingestion_tokens"),
+            "ingestion_latency_ms": self.ingestion.get("ingestion_latency_ms"),
+            "has_system_prompt": bool(self.system_prompt),
         }

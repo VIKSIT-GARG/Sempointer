@@ -1,0 +1,47 @@
+{
+  "experiment": "E15_Persistent_KV_Cache",
+  "timestamp": 1790614884.1680524,
+  "vram_budget_gb": 8.0,
+  "data": {
+    "N_8": {
+      "N": 8,
+      "full_seq_len": 4160,
+      "sp_seq_len": 632,
+      "full_kv_mb": 520.0,
+      "sp_kv_mb": 79.0,
+      "capacity_multiplier": 6.582278481012659,
+      "full_context_oom_at_8gb": false,
+      "sempointer_oom_at_8gb": false
+    },
+    "N_32": {
+      "N": 32,
+      "full_seq_len": 16448,
+      "sp_seq_len": 824,
+      "full_kv_mb": 2056.0,
+      "sp_kv_mb": 103.0,
+      "capacity_multiplier": 19.961165048543688,
+      "full_context_oom_at_8gb": false,
+      "sempointer_oom_at_8gb": false
+    },
+    "N_128": {
+      "N": 128,
+      "full_seq_len": 65600,
+      "sp_seq_len": 1592,
+      "full_kv_mb": 8200.0,
+      "sp_kv_mb": 199.0,
+      "capacity_multiplier": 41.20603015075377,
+      "full_context_oom_at_8gb": true,
+      "sempointer_oom_at_8gb": false
+    },
+    "N_512": {
+      "N": 512,
+      "full_seq_len": 262208,
+      "sp_seq_len": 4664,
+      "full_kv_mb": 32776.0,
+      "sp_kv_mb": 583.0,
+      "capacity_multiplier": 56.21955403087478,
+      "full_context_oom_at_8gb": true,
+      "sempointer_oom_at_8gb": false
+    }
+  }
+}

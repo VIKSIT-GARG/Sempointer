@@ -1,160 +1,183 @@
-"""B3: BM25 Lexical Retrieval Baseline.
+"""B3: BM25 lexical-retrieval baseline (uniform `System` interface).
 
-Scores memory units using exact Okapi BM25 ranking, selects top-m blocks,
-and constructs context for query resolution.
-Includes self-contained BM25 algorithm to guarantee zero missing-dependency failures.
+ingest() chunks the context exactly like sempointer.pipeline.chunk_text and
+indexes the blocks with Okapi BM25. answer() retrieves the top-m blocks,
+builds a prompt containing ONLY the retrieved blocks plus the question, and
+generates the answer with a REAL LLM call on the shared engine.
+
+Backend selection (not silent): `rank_bm25.BM25Okapi` is used when installed;
+otherwise a faithful in-repo Okapi BM25 (`_InRepoBM25Okapi`, same formula,
+k1=1.5 / b=0.75 / epsilon floor 0.25 as in rank_bm25) is used. The active
+backend is always reported in info() and in the answer's `extra`.
 """
 
-import time
+from __future__ import annotations
+
 import math
-import collections
-from typing import List, Dict, Any, Tuple, Optional
+import re
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 
+from ._text_common import (
+    DEFAULT_SYSTEM_PROMPT,
+    finish_answer,
+    ingest_blocks,
+    require_ingested,
+)
 
-class PurePythonBM25Okapi:
-    """Self-contained Okapi BM25 implementation adhering to standard IR formulation."""
+try:  # prefer the reference implementation when available
+    from rank_bm25 import BM25Okapi as _RankBM25Okapi
 
-    def __init__(self, corpus: List[List[str]], k1: float = 1.5, b: float = 0.75):
+    BM25_BACKEND = "rank_bm25.BM25Okapi"
+except ImportError:
+    _RankBM25Okapi = None
+    BM25_BACKEND = "baselines.bm25_baseline._InRepoBM25Okapi (rank_bm25 not installed)"
+
+_TOKEN_RE = re.compile(r"\w+")
+
+
+def _tokenize(text: str) -> List[str]:
+    return _TOKEN_RE.findall(text.lower())
+
+
+class _InRepoBM25Okapi:
+    """Faithful Okapi BM25 (Robertson et al.), mirroring rank_bm25.BM25Okapi.
+
+    score(D, Q) = sum_{q in Q} IDF(q) * tf(q, D) * (k1 + 1)
+                  / (tf(q, D) + k1 * (1 - b + b * |D| / avgdl))
+    IDF(q) = ln((N - df + 0.5) / (df + 0.5)); negative IDF terms (df > N/2)
+    are floored at epsilon * average_idf (epsilon = 0.25), exactly like
+    rank_bm25's BM25Okapi. k1 = 1.5, b = 0.75.
+    """
+
+    def __init__(self, corpus: List[List[str]], k1: float = 1.5, b: float = 0.75, epsilon: float = 0.25):
         self.k1 = k1
         self.b = b
+        self.epsilon = epsilon
         self.corpus_size = len(corpus)
-        self.doc_lens = [len(doc) for doc in corpus]
-        self.avg_doc_len = sum(self.doc_lens) / max(1, self.corpus_size)
-
-        # Document frequencies
-        self.doc_freqs: Dict[str, int] = collections.defaultdict(int)
-        self.term_freqs: List[Dict[str, int]] = []
-
+        if self.corpus_size == 0:
+            raise ValueError("BM25 corpus must contain at least one document")
+        self.doc_freqs: List[Dict[str, int]] = []
+        self.doc_len: List[int] = []
+        nd: Dict[str, int] = {}
+        total_len = 0
         for doc in corpus:
-            tf = collections.defaultdict(int)
-            for word in doc:
-                tf[word] += 1
-            self.term_freqs.append(tf)
-            for word in tf:
-                self.doc_freqs[word] += 1
+            dl = len(doc)
+            self.doc_len.append(dl)
+            total_len += dl
+            tf: Dict[str, int] = {}
+            for w in doc:
+                tf[w] = tf.get(w, 0) + 1
+            self.doc_freqs.append(tf)
+            for w in tf:
+                nd[w] = nd.get(w, 0) + 1
+        self.avgdl = total_len / self.corpus_size
+        self.idf = self._calc_idf(nd)
 
-        # Inverse document frequency
-        self.idf: Dict[str, float] = {}
-        for word, freq in self.doc_freqs.items():
-            # Standard Lucene/Robertson IDF
-            self.idf[word] = math.log(1.0 + (self.corpus_size - freq + 0.5) / (freq + 0.5))
+    def _calc_idf(self, nd: Dict[str, int]) -> Dict[str, float]:
+        idf = {
+            word: math.log(self.corpus_size - freq + 0.5) - math.log(freq + 0.5)
+            for word, freq in nd.items()
+        }
+        negatives = [w for w, v in idf.items() if v < 0]
+        if negatives:
+            eps = self.epsilon * (sum(idf.values()) / len(idf))
+            for w in negatives:
+                idf[w] = eps
+        return idf
 
     def get_scores(self, query: List[str]) -> np.ndarray:
-        scores = np.zeros(self.corpus_size, dtype=float)
-        for q_term in query:
-            if q_term not in self.idf:
+        scores = np.zeros(self.corpus_size, dtype=np.float64)
+        for q in query:
+            if q not in self.idf:
                 continue
-            idf_val = self.idf[q_term]
-            for i in range(self.corpus_size):
-                tf_val = self.term_freqs[i].get(q_term, 0)
-                if tf_val == 0:
+            idf_q = self.idf[q]
+            for i, tf in enumerate(self.doc_freqs):
+                f = tf.get(q, 0)
+                if f == 0:
                     continue
-                denom = tf_val + self.k1 * (1.0 - self.b + self.b * (self.doc_lens[i] / self.avg_doc_len))
-                scores[i] += idf_val * (tf_val * (self.k1 + 1.0)) / denom
+                denom = f + self.k1 * (1.0 - self.b + self.b * self.doc_len[i] / self.avgdl)
+                scores[i] += idf_q * f * (self.k1 + 1.0) / denom
         return scores
 
 
 class BM25Baseline:
-    """B3: BM25 lexical retrieval + top-m concatenation."""
+    """Okapi BM25 retrieval over memory blocks + top-m concatenation + real LLM."""
 
     def __init__(
         self,
-        llm_model_name: Optional[str] = None,
-        device: str = "cpu",
+        tokenizer,
+        m: int = 1,
+        block_size: int = 512,
         k1: float = 1.5,
         b: float = 0.75,
+        system_prompt: Optional[str] = DEFAULT_SYSTEM_PROMPT,
     ):
-        self.device = device
-        self.llm_model_name = llm_model_name
+        self.tokenizer = tokenizer
+        self.m = m
+        self.block_size = block_size
         self.k1 = k1
         self.b = b
-        self.bm25: Optional[PurePythonBM25Okapi] = None
-        self.memories: List[str] = []
-        self.tokenizer = None
-        self.model = None
+        self.system_prompt = system_prompt
+        self.blocks: List[str] = []
+        self.ingestion: Dict[str, Any] = {}
+        self.bm25 = None
+        self.backend = BM25_BACKEND
 
-    def _init_llm(self):
-        """Lazy loads generation model when required."""
-        if self.model is None and self.llm_model_name is not None:
-            import torch
-            from transformers import AutoModelForCausalLM, AutoTokenizer
-            self.tokenizer = AutoTokenizer.from_pretrained(self.llm_model_name)
-            if self.tokenizer.pad_token is None:
-                self.tokenizer.pad_token = self.tokenizer.eos_token
-            self.model = AutoModelForCausalLM.from_pretrained(
-                self.llm_model_name,
-                torch_dtype=torch.float16 if torch.cuda.is_available() and self.device != "cpu" else torch.float32,
-                device_map=self.device,
-            )
-            self.model.eval()
+    # ------------------------------------------------------------------ #
+    def ingest(self, context: str) -> None:
+        self.blocks, self.ingestion = ingest_blocks(context, self.block_size, self.tokenizer)
+        corpus = [_tokenize(b) for b in self.blocks]
+        if _RankBM25Okapi is not None:
+            self.bm25 = _RankBM25Okapi(corpus, k1=self.k1, b=self.b)
+        else:
+            self.bm25 = _InRepoBM25Okapi(corpus, k1=self.k1, b=self.b)
 
-    def build_index(self, memories: List[str]) -> None:
-        """Indexes raw text memories into the BM25 structure."""
-        self.memories = memories
-        if not memories:
-            self.bm25 = None
-            return
+    def retrieve(self, query: str) -> Tuple[List[int], List[float]]:
+        """Top-m block indices and BM25 scores for `query`."""
+        require_ingested(self.blocks, type(self).__name__)
+        scores = self.bm25.get_scores(_tokenize(query))
+        top_m = min(self.m, len(self.blocks))
+        order = np.argsort(-scores)[:top_m]
+        return [int(i) for i in order], [float(scores[i]) for i in order]
 
-        tokenized_corpus = [doc.lower().split() for doc in memories]
-        self.bm25 = PurePythonBM25Okapi(tokenized_corpus, k1=self.k1, b=self.b)
+    def answer(self, query: str, llm) -> Dict[str, Any]:
+        import time
 
-    def retrieve(self, query: str, m: int) -> Tuple[List[int], List[float]]:
-        """Scores all indexed memories against query and returns top-m indices and scores."""
-        if self.bm25 is None or not self.memories:
-            return [], []
+        t0 = time.perf_counter()
+        selected_ids, scores = self.retrieve(query)
+        retrieval_ms = (time.perf_counter() - t0) * 1000.0
+        retrieved_blocks = [self.blocks[i] for i in selected_ids]
 
-        tokenized_query = query.lower().split()
-        doc_scores = self.bm25.get_scores(tokenized_query)
+        return finish_answer(
+            system="bm25",
+            query=query,
+            blocks=retrieved_blocks,
+            llm=llm,
+            tokenizer=self.tokenizer,
+            system_prompt=self.system_prompt,
+            selected_ids=selected_ids,
+            selection_scores=scores,
+            selection_latency_ms=retrieval_ms,
+            extra={
+                "retrieval": "bm25 (Okapi)",
+                "bm25_backend": self.backend,
+                "bm25_params": {"k1": self.k1, "b": self.b, "m": self.m},
+                "ingestion": self.ingestion,
+            },
+        )
 
-        top_n = min(m, len(self.memories))
-        top_indices = np.argsort(doc_scores)[::-1][:top_n]
-        return top_indices.tolist(), doc_scores[top_indices].tolist()
-
-    def run_query(
-        self,
-        query: str,
-        m: int = 1,
-        max_new_tokens: int = 64,
-        system_prompt: Optional[str] = None,
-    ) -> Dict[str, Any]:
-        """Retrieves top-m memories and evaluates or generates an answer."""
-        start_time = time.perf_counter()
-        retrieved_ids, retrieval_scores = self.retrieve(query, m)
-        retrieved_texts = [self.memories[i] for i in retrieved_ids]
-
-        latency_ms = (time.perf_counter() - start_time) * 1000.0
-        context_str = "\n\n".join(f"[DOC {i}]: {txt}" for i, txt in zip(retrieved_ids, retrieved_texts))
-
-        prompt = ""
-        if system_prompt:
-            prompt += f"{system_prompt}\n\n"
-        prompt += f"Context:\n{context_str}\n\nQuery: {query}\nAnswer:"
-
-        answer = ""
-        prompt_tokens = len(prompt.split())
-
-        # If LLM model is configured, run generation
-        if self.llm_model_name is not None:
-            self._init_llm()
-            import torch
-            inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
-            prompt_tokens = inputs["input_ids"].shape[1]
-            with torch.no_grad():
-                outputs = self.model.generate(
-                    **inputs,
-                    max_new_tokens=max_new_tokens,
-                    pad_token_id=self.tokenizer.pad_token_id,
-                )
-            generated_ids = outputs[0][prompt_tokens:]
-            answer = self.tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
-
+    # ------------------------------------------------------------------ #
+    def info(self) -> Dict[str, Any]:
         return {
-            "retrieved_ids": retrieved_ids,
-            "retrieval_scores": retrieval_scores,
-            "retrieved_texts": retrieved_texts,
-            "prompt": prompt,
-            "prompt_tokens": prompt_tokens,
-            "answer": answer,
-            "retrieval_latency_ms": latency_ms,
+            "system": "bm25",
+            "m": self.m,
+            "block_size": self.block_size,
+            "bm25_backend": self.backend,
+            "bm25_params": {"k1": self.k1, "b": self.b},
+            "n_blocks": len(self.blocks),
+            "ingestion_tokens": self.ingestion.get("ingestion_tokens"),
+            "ingestion_latency_ms": self.ingestion.get("ingestion_latency_ms"),
+            "has_system_prompt": bool(self.system_prompt),
         }

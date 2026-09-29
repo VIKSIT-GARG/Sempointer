@@ -1,0 +1,564 @@
+{
+  "seed": 42,
+  "n_bootstrap": 10000,
+  "suites": {
+    "final_ruler": {
+      "n_scored_pairs_note": "comparisons use example_id-matched scored rows only",
+      "metrics_crosscheck": {
+        "sempointer": {
+          "n": 180,
+          "recomputed_mean": 0.33,
+          "metrics_json_mean": 0.33,
+          "match": true
+        },
+        "full": {
+          "n": 180,
+          "recomputed_mean": 0.7,
+          "metrics_json_mean": 0.7,
+          "match": true
+        },
+        "rag": {
+          "n": 180,
+          "recomputed_mean": 0.3288888888888889,
+          "metrics_json_mean": 0.3288888888888889,
+          "match": true
+        },
+        "bm25": {
+          "n": 180,
+          "recomputed_mean": 0.5777777777777777,
+          "metrics_json_mean": 0.5777777777777777,
+          "match": true
+        }
+      },
+      "comparisons": {
+        "sempointer_vs_full": {
+          "n_pairs": 180,
+          "sempointer_mean": 0.33,
+          "baseline_mean": 0.7000000000000001,
+          "delta_mean": -0.37,
+          "delta_ci95": [
+            -0.43999999999999995,
+            -0.3011111111111111
+          ],
+          "cohens_dz_paired": -0.7807752114676353,
+          "cohens_d_pooled": -0.8239116691225478,
+          "mcnemar_rule": "correct := score == 1.0 (cwe rows are fractional)",
+          "mcnemar": {
+            "b": 1,
+            "c": 61,
+            "statistic": 56.145161290322584,
+            "p_value": 6.727951529228449e-14,
+            "odds_ratio": 0.01639344262295082
+          },
+          "wilcoxon_secondary": {
+            "statistic": 50.5,
+            "p_value": 1.8371718507317985e-15,
+            "n_nonzero": 80
+          }
+        },
+        "sempointer_vs_rag": {
+          "n_pairs": 180,
+          "sempointer_mean": 0.33,
+          "baseline_mean": 0.3288888888888889,
+          "delta_mean": 0.0011111111111111111,
+          "delta_ci95": [
+            -0.003333333333333334,
+            0.005555555555555557
+          ],
+          "cohens_dz_paired": 0.033259094191428445,
+          "cohens_d_pooled": 0.0024082377231905137,
+          "mcnemar_rule": "correct := score == 1.0 (cwe rows are fractional)",
+          "mcnemar": {
+            "b": 0,
+            "c": 0,
+            "statistic": 0.0,
+            "p_value": 1.0,
+            "odds_ratio": 1.0,
+            "note": "no discordant pairs"
+          },
+          "wilcoxon_secondary": {
+            "statistic": 6.0,
+            "p_value": 0.6547208460185769,
+            "n_nonzero": 5
+          }
+        },
+        "sempointer_vs_bm25": {
+          "n_pairs": 180,
+          "sempointer_mean": 0.33,
+          "baseline_mean": 0.5777777777777778,
+          "delta_mean": -0.2477777777777778,
+          "delta_ci95": [
+            -0.3144444444444444,
+            -0.18333333333333332
+          ],
+          "cohens_dz_paired": -0.5566262926580692,
+          "cohens_d_pooled": -0.5249778034148205,
+          "mcnemar_rule": "correct := score == 1.0 (cwe rows are fractional)",
+          "mcnemar": {
+            "b": 1,
+            "c": 45,
+            "statistic": 40.19565217391305,
+            "p_value": 2.297589896116392e-10,
+            "odds_ratio": 0.022222222222222223
+          },
+          "wilcoxon_secondary": {
+            "statistic": 71.5,
+            "p_value": 6.21877001859291e-11,
+            "n_nonzero": 59
+          }
+        }
+      },
+      "error_rows": {
+        "n_superseded_retries_excluded": 10,
+        "n_truly_missing": 0,
+        "truly_missing_by_system": {}
+      }
+    },
+    "final_longbench": {
+      "n_scored_pairs_note": "comparisons use example_id-matched scored rows only",
+      "metrics_crosscheck": {
+        "sempointer": {
+          "n": 1150,
+          "recomputed_mean": 0.07730388676889775,
+          "metrics_json_mean": 0.07730388676889775,
+          "match": true
+        },
+        "full": {
+          "n": 1136,
+          "recomputed_mean": 0.11123426108114792,
+          "metrics_json_mean": 0.11123426108114792,
+          "match": true
+        },
+        "rag": {
+          "n": 1150,
+          "recomputed_mean": 0.07820939110047151,
+          "metrics_json_mean": 0.07820939110047151,
+          "match": true
+        },
+        "bm25": {
+          "n": 1150,
+          "recomputed_mean": 0.0812971088955345,
+          "metrics_json_mean": 0.0812971088955345,
+          "match": true
+        }
+      },
+      "comparisons": {
+        "sempointer_vs_full": {
+          "n_pairs": 1136,
+          "sempointer_mean": 0.07783361346145462,
+          "baseline_mean": 0.11123426108114792,
+          "delta_mean": -0.0334006476196933,
+          "delta_ci95": [
+            -0.039988352099039504,
+            -0.027123541061388486
+          ],
+          "cohens_dz_paired": -0.3005988134151499,
+          "cohens_d_pooled": -0.25109403726627927,
+          "wilcoxon": {
+            "statistic": 92010.5,
+            "p_value": 1.6292951781984716e-31,
+            "n_nonzero": 831
+          },
+          "mcnemar_note": "not computed: continuous F1 has no valid dichotomization; Wilcoxon used"
+        },
+        "sempointer_vs_rag": {
+          "n_pairs": 1150,
+          "sempointer_mean": 0.07730388676889775,
+          "baseline_mean": 0.07820939110047151,
+          "delta_mean": -0.0009055043315737434,
+          "delta_ci95": [
+            -0.004683150399743746,
+            0.0027619749842792184
+          ],
+          "cohens_dz_paired": -0.014269492973856018,
+          "cohens_d_pooled": -0.007432113920726819,
+          "wilcoxon": {
+            "statistic": 114039.0,
+            "p_value": 0.3246989295575168,
+            "n_nonzero": 690
+          },
+          "mcnemar_note": "not computed: continuous F1 has no valid dichotomization; Wilcoxon used"
+        },
+        "sempointer_vs_bm25": {
+          "n_pairs": 1150,
+          "sempointer_mean": 0.07730388676889775,
+          "baseline_mean": 0.0812971088955345,
+          "delta_mean": -0.003993222126636749,
+          "delta_ci95": [
+            -0.00996277889342751,
+            0.0017753672261340272
+          ],
+          "cohens_dz_paired": -0.039414815137149936,
+          "cohens_d_pooled": -0.03211999071771147,
+          "wilcoxon": {
+            "statistic": 124278.5,
+            "p_value": 0.15602036604024788,
+            "n_nonzero": 727
+          },
+          "mcnemar_note": "not computed: continuous F1 has no valid dichotomization; Wilcoxon used"
+        }
+      },
+      "error_rows": {
+        "n_superseded_retries_excluded": 0,
+        "n_truly_missing": 14,
+        "truly_missing_by_system": {
+          "full": 14
+        }
+      }
+    },
+    "final_locomo": {
+      "n_scored_pairs_note": "comparisons use example_id-matched scored rows only",
+      "metrics_crosscheck": {
+        "sempointer": {
+          "n": 199,
+          "recomputed_mean": 0.05177262700555422,
+          "metrics_json_mean": 0.05177262700555422,
+          "match": true
+        },
+        "full": {
+          "n": 199,
+          "recomputed_mean": 0.06418624102964354,
+          "metrics_json_mean": 0.06418624102964354,
+          "match": true
+        },
+        "rag": {
+          "n": 199,
+          "recomputed_mean": 0.05010479688209505,
+          "metrics_json_mean": 0.05010479688209505,
+          "match": true
+        },
+        "bm25": {
+          "n": 199,
+          "recomputed_mean": 0.06273095380513212,
+          "metrics_json_mean": 0.06273095380513212,
+          "match": true
+        }
+      },
+      "comparisons": {
+        "sempointer_vs_full": {
+          "n_pairs": 199,
+          "sempointer_mean": 0.05177262700555423,
+          "baseline_mean": 0.06418624102964354,
+          "delta_mean": -0.012413614024089314,
+          "delta_ci95": [
+            -0.022448125056543426,
+            -0.002643411899961008
+          ],
+          "cohens_dz_paired": -0.17516127760457023,
+          "cohens_d_pooled": -0.15379974509785838,
+          "wilcoxon": {
+            "statistic": 3648.0,
+            "p_value": 0.028240319248925953,
+            "n_nonzero": 136
+          },
+          "mcnemar_note": "not computed: continuous F1 has no valid dichotomization; Wilcoxon used"
+        },
+        "sempointer_vs_rag": {
+          "n_pairs": 199,
+          "sempointer_mean": 0.05177262700555423,
+          "baseline_mean": 0.05010479688209505,
+          "delta_mean": 0.0016678301234591718,
+          "delta_ci95": [
+            -0.004682957722293468,
+            0.008174051061293772
+          ],
+          "cohens_dz_paired": 0.03610198326577505,
+          "cohens_d_pooled": 0.02201454284029239,
+          "wilcoxon": {
+            "statistic": 3249.0,
+            "p_value": 0.6915783950381711,
+            "n_nonzero": 116
+          },
+          "mcnemar_note": "not computed: continuous F1 has no valid dichotomization; Wilcoxon used"
+        },
+        "sempointer_vs_bm25": {
+          "n_pairs": 199,
+          "sempointer_mean": 0.05177262700555423,
+          "baseline_mean": 0.0627309538051321,
+          "delta_mean": -0.010958326799577879,
+          "delta_ci95": [
+            -0.022067183413902736,
+            0.0006635232981039395
+          ],
+          "cohens_dz_paired": -0.13535837160252936,
+          "cohens_d_pooled": -0.13001013881381163,
+          "wilcoxon": {
+            "statistic": 3585.5,
+            "p_value": 0.037441217494340026,
+            "n_nonzero": 134
+          },
+          "mcnemar_note": "not computed: continuous F1 has no valid dichotomization; Wilcoxon used"
+        }
+      },
+      "error_rows": {
+        "n_superseded_retries_excluded": 0,
+        "n_truly_missing": 0,
+        "truly_missing_by_system": {}
+      }
+    },
+    "final_kvcompare": {
+      "n_scored_pairs_note": "comparisons use example_id-matched scored rows only",
+      "metrics_crosscheck": {
+        "sempointer": {
+          "n": 10,
+          "recomputed_mean": 0.8,
+          "metrics_json_mean": 0.8,
+          "match": true
+        },
+        "full": {
+          "n": 10,
+          "recomputed_mean": 1.0,
+          "metrics_json_mean": 1.0,
+          "match": true
+        },
+        "kvpress_snapkv_0.3": {
+          "n": 10,
+          "recomputed_mean": 0.5,
+          "metrics_json_mean": 0.5,
+          "match": true
+        },
+        "kvpress_tova_0.3": {
+          "n": 10,
+          "recomputed_mean": 0.8,
+          "metrics_json_mean": 0.8,
+          "match": true
+        },
+        "kvpress_knorm_0.3": {
+          "n": 10,
+          "recomputed_mean": 0.4,
+          "metrics_json_mean": 0.4,
+          "match": true
+        }
+      },
+      "comparisons": {
+        "sempointer_vs_full": {
+          "n_pairs": 10,
+          "sempointer_mean": 0.8,
+          "baseline_mean": 1.0,
+          "delta_mean": -0.2,
+          "delta_ci95": [
+            -0.5,
+            0.0
+          ],
+          "cohens_dz_paired": -0.4743416490252569,
+          "cohens_d_pooled": -0.6708203932499367,
+          "mcnemar_rule": "raw binary containment scores",
+          "mcnemar": {
+            "b": 0,
+            "c": 2,
+            "statistic": 0.5,
+            "p_value": 0.47950012218695337,
+            "odds_ratio": 0.0
+          },
+          "wilcoxon_secondary": {
+            "statistic": 0.0,
+            "p_value": 0.5,
+            "n_nonzero": 2
+          }
+        },
+        "sempointer_vs_kvpress_snapkv_0.3": {
+          "n_pairs": 10,
+          "sempointer_mean": 0.8,
+          "baseline_mean": 0.5,
+          "delta_mean": 0.3,
+          "delta_ci95": [
+            -0.1,
+            0.7
+          ],
+          "cohens_dz_paired": 0.44447831849231534,
+          "cohens_d_pooled": 0.6285872661926205,
+          "mcnemar_rule": "raw binary containment scores",
+          "mcnemar": {
+            "b": 4,
+            "c": 1,
+            "statistic": 0.8,
+            "p_value": 0.37109336952269756,
+            "odds_ratio": 4.0
+          },
+          "wilcoxon_secondary": {
+            "statistic": 3.0,
+            "p_value": 0.375,
+            "n_nonzero": 5
+          }
+        },
+        "sempointer_vs_kvpress_tova_0.3": {
+          "n_pairs": 10,
+          "sempointer_mean": 0.8,
+          "baseline_mean": 0.8,
+          "delta_mean": 0.0,
+          "delta_ci95": [
+            -0.3,
+            0.3
+          ],
+          "cohens_dz_paired": 0.0,
+          "cohens_d_pooled": 0.0,
+          "mcnemar_rule": "raw binary containment scores",
+          "mcnemar": {
+            "b": 1,
+            "c": 1,
+            "statistic": 0.5,
+            "p_value": 0.47950012218695337,
+            "odds_ratio": 1.0
+          },
+          "wilcoxon_secondary": {
+            "statistic": 1.5,
+            "p_value": 1.0,
+            "n_nonzero": 2
+          }
+        },
+        "sempointer_vs_kvpress_knorm_0.3": {
+          "n_pairs": 10,
+          "sempointer_mean": 0.8,
+          "baseline_mean": 0.4,
+          "delta_mean": 0.4,
+          "delta_ci95": [
+            0.1,
+            0.7
+          ],
+          "cohens_dz_paired": 0.7745966692414833,
+          "cohens_d_pooled": 0.8485281374238571,
+          "mcnemar_rule": "raw binary containment scores",
+          "mcnemar": {
+            "b": 4,
+            "c": 0,
+            "statistic": 2.25,
+            "p_value": 0.13361440253771584,
+            "odds_ratio": Infinity
+          },
+          "wilcoxon_secondary": {
+            "statistic": 0.0,
+            "p_value": 0.125,
+            "n_nonzero": 4
+          }
+        }
+      },
+      "error_rows": {
+        "n_superseded_retries_excluded": 0,
+        "n_truly_missing": 0,
+        "truly_missing_by_system": {}
+      },
+      "pilot_note": "kv_compare n=10: pilot scale; CIs are wide and shown as-is; no significance claimed."
+    }
+  },
+  "bonferroni": {
+    "family": "all primary paired tests (McNemar for ruler/kvcompare, Wilcoxon for longbench/locomo)",
+    "n_tests": 13,
+    "alpha": 0.05,
+    "adjusted_alpha": 0.0038461538461538464,
+    "survives": [
+      {
+        "suite": "final_ruler",
+        "comparison": "sempointer_vs_full",
+        "p_value": 6.727951529228449e-14,
+        "survives_bonferroni": true
+      },
+      {
+        "suite": "final_ruler",
+        "comparison": "sempointer_vs_rag",
+        "p_value": 1.0,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_ruler",
+        "comparison": "sempointer_vs_bm25",
+        "p_value": 2.297589896116392e-10,
+        "survives_bonferroni": true
+      },
+      {
+        "suite": "final_longbench",
+        "comparison": "sempointer_vs_full",
+        "p_value": 1.6292951781984716e-31,
+        "survives_bonferroni": true
+      },
+      {
+        "suite": "final_longbench",
+        "comparison": "sempointer_vs_rag",
+        "p_value": 0.3246989295575168,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_longbench",
+        "comparison": "sempointer_vs_bm25",
+        "p_value": 0.15602036604024788,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_locomo",
+        "comparison": "sempointer_vs_full",
+        "p_value": 0.028240319248925953,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_locomo",
+        "comparison": "sempointer_vs_rag",
+        "p_value": 0.6915783950381711,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_locomo",
+        "comparison": "sempointer_vs_bm25",
+        "p_value": 0.037441217494340026,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_kvcompare",
+        "comparison": "sempointer_vs_full",
+        "p_value": 0.47950012218695337,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_kvcompare",
+        "comparison": "sempointer_vs_kvpress_snapkv_0.3",
+        "p_value": 0.37109336952269756,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_kvcompare",
+        "comparison": "sempointer_vs_kvpress_tova_0.3",
+        "p_value": 0.47950012218695337,
+        "survives_bonferroni": false
+      },
+      {
+        "suite": "final_kvcompare",
+        "comparison": "sempointer_vs_kvpress_knorm_0.3",
+        "p_value": 0.13361440253771584,
+        "survives_bonferroni": false
+      }
+    ]
+  },
+  "oom_sensitivity": {
+    "longbench_full_narrativeqa": {
+      "n_scored": 186,
+      "n_oom_missing": 14,
+      "oom_example_ids": [
+        "longbench-narrativeqa-07dc816717f2e2e35ef0d53c75e5c1985eb54cb342416357",
+        "longbench-narrativeqa-1842b0ff1882e545a6d41d5caf67bba5312872423fa48e74",
+        "longbench-narrativeqa-38169ee3afb1356b30f468b13f180aa30364be96506f31ba",
+        "longbench-narrativeqa-3b93fd7360b75c5207a3de730296a6a1a968289c27ea1d6c",
+        "longbench-narrativeqa-7570a52d69ab93c5f54eba4c45d44a3411650c1e4694760a",
+        "longbench-narrativeqa-880269c856197f51942d2649c32e0c37955409d7fdb3f369",
+        "longbench-narrativeqa-9b448b0d8f056d1ddebb9503e4560a913dc529309759b358",
+        "longbench-narrativeqa-9b7e93c37eda3b907a9caa5eba250f8b25484613a10f8d95",
+        "longbench-narrativeqa-ac44a02780985754f0c439cdc0fa9b0ed3a9f80e76da0304",
+        "longbench-narrativeqa-b03244c8cc2681df1008d27c974d81415336396dff81f06d",
+        "longbench-narrativeqa-df6c6350671baab25c635bfa495eea90c69a7d201b5fe460",
+        "longbench-narrativeqa-e76cb4d216f09e3bab6d769ae770429fe10498e6a2ca9aad",
+        "longbench-narrativeqa-fbeb825de92309788269da33aa6bd189c7b1d46b997746f4",
+        "longbench-narrativeqa-fd7551a90b78405f6b71079bb8565a2c9f60db1b7e4179c8"
+      ],
+      "mean_scored_only": 0.06712686253265658,
+      "mean_including_errors_as_zero": 0.062427982155370626,
+      "sempointer_mean_on_same_oom_ids": 0.03432034942999772
+    },
+    "longbench_full_overall": {
+      "mean_scored_only": 0.11123426108114792,
+      "mean_including_errors_as_zero": 0.10988010485929046
+    },
+    "bias_direction": "Missingness strikes the LONGEST narrativeqa contexts (full-context OOMs on 8GB GPU); scored-only means DROP the hardest full-context cases, which FAVORS full and penalizes sparse systems that answered those ids (sempointer mean on the 14 OOM ids: 0.0343). Including-errors-as-zero instead penalizes full. Report both.",
+    "ruler_full_ooms": {
+      "note": "ruler full has 10 OOM error rows, ALL superseded by scored retries (resume-after-OOM); excluded from every analysis, not counted as missing. See suites.final_ruler.error_rows.",
+      "n_error_rows": 10,
+      "n_truly_missing": 0
+    }
+  }
+}

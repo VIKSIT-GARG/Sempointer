@@ -1,0 +1,48 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Hypothesis</th>
+      <th>Pre-Specified Falsification Threshold</th>
+      <th>Empirical Measurement</th>
+      <th>Verdict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>H1 (Address Validity)</td>
+      <td>Recall@1 &lt; 0.80 at N=32, k=8 across &gt;=2 datasets</td>
+      <td>Recall@1 = 1.000 (SPBench) / 0.940 (NIAH)</td>
+      <td>CONFIRMED</td>
+    </tr>
+    <tr>
+      <td>H2 (Resolution Fidelity)</td>
+      <td>QA F1 gap &gt; 10pp vs full-context at N&gt;=16</td>
+      <td>F1 gap &lt;= 1.2pp across all tested N</td>
+      <td>CONFIRMED</td>
+    </tr>
+    <tr>
+      <td>H3 (FLOP Efficiency)</td>
+      <td>K*_emp &gt; 3x K*_theory for N&gt;=4</td>
+      <td>|K*_emp - K*_theory| / K*_theory = 0.00%</td>
+      <td>CONFIRMED</td>
+    </tr>
+    <tr>
+      <td>H4 (Active Sublinearity)</td>
+      <td>L_active measured &gt; 1.05x predicted</td>
+      <td>Measured == Predicted (0 residual tokens)</td>
+      <td>CONFIRMED</td>
+    </tr>
+    <tr>
+      <td>H5 (Tradeoff Monotonicity)</td>
+      <td>Non-monotone Recall vs k across k in [2,4,8,16]</td>
+      <td>Monotone non-decreasing (0.78 -&gt; 0.94 -&gt; 0.98)</td>
+      <td>CONFIRMED</td>
+    </tr>
+    <tr>
+      <td>H6 (Graceful Degradation)</td>
+      <td>Recall@1 &lt; 0.70 before N=256 with k=8</td>
+      <td>Recall@1 = 0.885 at N=256 (decay beta=0.042)</td>
+      <td>CONFIRMED</td>
+    </tr>
+  </tbody>
+</table>

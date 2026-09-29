@@ -1,0 +1,172 @@
+{
+  "benchmark": "ruler",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 32,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 180,
+  "systems": {
+    "sempointer": {
+      "n_scored": 180,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 0.33,
+      "score_ci95": [
+        0.2661111111111111,
+        0.39336111111111105
+      ],
+      "active_tokens_mean": 1270.3,
+      "latency_ms_mean": 894.471110232957,
+      "peak_vram_mb_mean": 2331.175716145833,
+      "per_task": {
+        "cwe": {
+          "n": 30,
+          "score_mean": 0.006666666666666667
+        },
+        "niah_multikey_1": {
+          "n": 30,
+          "score_mean": 0.4666666666666667
+        },
+        "niah_single_1": {
+          "n": 30,
+          "score_mean": 0.9666666666666667
+        },
+        "niah_single_2": {
+          "n": 30,
+          "score_mean": 0.2
+        },
+        "niah_single_3": {
+          "n": 30,
+          "score_mean": 0.26666666666666666
+        },
+        "vt": {
+          "n": 30,
+          "score_mean": 0.07333333333333333
+        }
+      }
+    },
+    "full": {
+      "n_scored": 180,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 0.7,
+      "score_ci95": [
+        0.633875,
+        0.7594583333333332
+      ],
+      "active_tokens_mean": 13089.16111111111,
+      "latency_ms_mean": 7256.946127999173,
+      "peak_vram_mb_mean": 3462.980278862847,
+      "per_task": {
+        "cwe": {
+          "n": 30,
+          "score_mean": 0.006666666666666667
+        },
+        "niah_multikey_1": {
+          "n": 30,
+          "score_mean": 0.9333333333333333
+        },
+        "niah_single_1": {
+          "n": 30,
+          "score_mean": 0.9666666666666667
+        },
+        "niah_single_2": {
+          "n": 30,
+          "score_mean": 1.0
+        },
+        "niah_single_3": {
+          "n": 30,
+          "score_mean": 0.7
+        },
+        "vt": {
+          "n": 30,
+          "score_mean": 0.5933333333333334
+        }
+      }
+    },
+    "rag": {
+      "n_scored": 180,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 0.3288888888888889,
+      "score_ci95": [
+        0.2655277777777778,
+        0.39056944444444447
+      ],
+      "active_tokens_mean": 907.25,
+      "latency_ms_mean": 793.7105699448795,
+      "peak_vram_mb_mean": 2295.16819390191,
+      "per_task": {
+        "cwe": {
+          "n": 30,
+          "score_mean": 0.006666666666666667
+        },
+        "niah_multikey_1": {
+          "n": 30,
+          "score_mean": 0.4666666666666667
+        },
+        "niah_single_1": {
+          "n": 30,
+          "score_mean": 0.9666666666666667
+        },
+        "niah_single_2": {
+          "n": 30,
+          "score_mean": 0.2
+        },
+        "niah_single_3": {
+          "n": 30,
+          "score_mean": 0.26666666666666666
+        },
+        "vt": {
+          "n": 30,
+          "score_mean": 0.06666666666666668
+        }
+      }
+    },
+    "bm25": {
+      "n_scored": 180,
+      "n_errors": 0,
+      "metric": "ruler_containment",
+      "score_mean": 0.5777777777777777,
+      "score_ci95": [
+        0.512763888888889,
+        0.6388888888888888
+      ],
+      "active_tokens_mean": 893.0833333333334,
+      "latency_ms_mean": 765.6323285990059,
+      "peak_vram_mb_mean": 2293.974153645833,
+      "per_task": {
+        "cwe": {
+          "n": 30,
+          "score_mean": 0.006666666666666667
+        },
+        "niah_multikey_1": {
+          "n": 30,
+          "score_mean": 0.9333333333333333
+        },
+        "niah_single_1": {
+          "n": 30,
+          "score_mean": 0.9666666666666667
+        },
+        "niah_single_2": {
+          "n": 30,
+          "score_mean": 0.8
+        },
+        "niah_single_3": {
+          "n": 30,
+          "score_mean": 0.6666666666666666
+        },
+        "vt": {
+          "n": 30,
+          "score_mean": 0.09333333333333335
+        }
+      }
+    }
+  }
+}
