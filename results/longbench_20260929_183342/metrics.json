@@ -1,0 +1,168 @@
+{
+  "benchmark": "longbench",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "dtype": "bf16",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 3,
+  "systems": {
+    "sempointer": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.3333333333333333,
+      "score_ci95": [
+        0.0,
+        1.0
+      ],
+      "active_tokens_mean": 1036.3333333333333,
+      "latency_ms_mean": 663.7343806669378,
+      "peak_vram_mb_mean": 3417.181640625,
+      "per_task": {
+        "hotpotqa": {
+          "n": 3,
+          "score_mean": 0.3333333333333333
+        }
+      }
+    },
+    "full": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.041666666666666664,
+      "score_ci95": [
+        0.0,
+        0.125
+      ],
+      "active_tokens_mean": 15662.666666666666,
+      "latency_ms_mean": 4943.7582430000475,
+      "peak_vram_mb_mean": 4072.4332682291665,
+      "per_task": {
+        "hotpotqa": {
+          "n": 3,
+          "score_mean": 0.041666666666666664
+        }
+      }
+    },
+    "rag": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.3333333333333333,
+      "score_ci95": [
+        0.0,
+        1.0
+      ],
+      "active_tokens_mean": 589.3333333333334,
+      "latency_ms_mean": 336.7333060001935,
+      "peak_vram_mb_mean": 3376.6092122395835,
+      "per_task": {
+        "hotpotqa": {
+          "n": 3,
+          "score_mean": 0.3333333333333333
+        }
+      }
+    },
+    "bm25": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.1111111111111111,
+      "score_ci95": [
+        0.0,
+        0.3333333333333333
+      ],
+      "active_tokens_mean": 589.3333333333334,
+      "latency_ms_mean": 124.66104700009357,
+      "peak_vram_mb_mean": 3376.6142578125,
+      "per_task": {
+        "hotpotqa": {
+          "n": 3,
+          "score_mean": 0.1111111111111111
+        }
+      }
+    },
+    "agentic_pointer": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.0,
+      "score_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_mean": 2635.3333333333335,
+      "latency_ms_mean": 632.1919749995383,
+      "peak_vram_mb_mean": 3556.0138346354165,
+      "per_task": {
+        "hotpotqa": {
+          "n": 3,
+          "score_mean": 0.0
+        }
+      }
+    },
+    "iterative_rag": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.3333333333333333,
+      "score_ci95": [
+        0.0,
+        1.0
+      ],
+      "active_tokens_mean": 1189.6666666666667,
+      "latency_ms_mean": 933.8259566660175,
+      "peak_vram_mb_mean": 3377.6578776041665,
+      "per_task": {
+        "hotpotqa": {
+          "n": 3,
+          "score_mean": 0.3333333333333333
+        }
+      }
+    },
+    "hybrid": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.1111111111111111,
+      "score_ci95": [
+        0.0,
+        0.3333333333333333
+      ],
+      "active_tokens_mean": 589.6666666666666,
+      "latency_ms_mean": 342.9862436660187,
+      "peak_vram_mb_mean": 3376.7389322916665,
+      "per_task": {
+        "hotpotqa": {
+          "n": 3,
+          "score_mean": 0.1111111111111111
+        }
+      }
+    },
+    "session_summary": {
+      "n_scored": 3,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.3333333333333333,
+      "score_ci95": [
+        0.0,
+        1.0
+      ],
+      "active_tokens_mean": 14981.333333333334,
+      "latency_ms_mean": 134.10822566644734,
+      "peak_vram_mb_mean": 3382.62060546875,
+      "per_task": {
+        "hotpotqa": {
+          "n": 3,
+          "score_mean": 0.3333333333333333
+        }
+      }
+    }
+  }
+}

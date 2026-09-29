@@ -1,0 +1,73 @@
+{
+  "benchmark": "longbench",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 30,
+  "systems": {
+    "agentic_pointer": {
+      "n_scored": 30,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.02990535938983144,
+      "score_ci95": [
+        0.014599282362015282,
+        0.047317038465330405
+      ],
+      "active_tokens_mean": 3285.233333333333,
+      "latency_ms_mean": 3399.6400980666294,
+      "peak_vram_mb_mean": 2475.960384114583,
+      "per_task": {
+        "musique": {
+          "n": 30,
+          "score_mean": 0.02990535938983144
+        }
+      }
+    },
+    "iterative_rag": {
+      "n_scored": 30,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.02825985761369516,
+      "score_ci95": [
+        0.014628244982507945,
+        0.0436134809188427
+      ],
+      "active_tokens_mean": 1323.4333333333334,
+      "latency_ms_mean": 2871.348804833239,
+      "peak_vram_mb_mean": 2280.399951171875,
+      "per_task": {
+        "musique": {
+          "n": 30,
+          "score_mean": 0.02825985761369516
+        }
+      }
+    },
+    "hybrid": {
+      "n_scored": 30,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 0.021643467501842772,
+      "score_ci95": [
+        0.00951742304349306,
+        0.036771800118627934
+      ],
+      "active_tokens_mean": 580.5666666666667,
+      "latency_ms_mean": 1388.8761588334091,
+      "peak_vram_mb_mean": 2264.745654296875,
+      "per_task": {
+        "musique": {
+          "n": 30,
+          "score_mean": 0.021643467501842772
+        }
+      }
+    }
+  }
+}

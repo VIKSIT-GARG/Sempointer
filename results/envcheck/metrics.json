@@ -1,0 +1,54 @@
+{
+  "benchmark": "longbench",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "dtype": "bf16",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "eager",
+    "seed": 42,
+    "model_config_revision": ""
+  },
+  "n_examples": 1,
+  "systems": {
+    "sempointer": {
+      "n_scored": 1,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 1.0,
+      "score_ci95": [
+        1.0,
+        1.0
+      ],
+      "active_tokens_mean": 913.0,
+      "latency_ms_mean": 1188.1808950001869,
+      "peak_vram_mb_mean": 3232.671875,
+      "per_task": {
+        "hotpotqa": {
+          "n": 1,
+          "score_mean": 1.0
+        }
+      }
+    },
+    "rag": {
+      "n_scored": 1,
+      "n_errors": 0,
+      "metric": "longbench_f1",
+      "score_mean": 1.0,
+      "score_ci95": [
+        1.0,
+        1.0
+      ],
+      "active_tokens_mean": 579.0,
+      "latency_ms_mean": 118.15322199981892,
+      "peak_vram_mb_mean": 3202.3564453125,
+      "per_task": {
+        "hotpotqa": {
+          "n": 1,
+          "score_mean": 1.0
+        }
+      }
+    }
+  }
+}
