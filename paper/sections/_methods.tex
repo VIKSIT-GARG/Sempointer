@@ -1,0 +1,117 @@
+% PAPER-A fragment: Methods section. Owned by PAPER-A; do not edit from orchestrator wiring.
+% Every number below is sourced from experiments/results/stats.json,
+% experiments/results/config_table.json, experiments/results/error_breakdown.json,
+% or the code paths cited. Claim tags: [ESTABLISHED] = measured/logged;
+% [REASONED] = direct inference from measured values, flagged as such.
+\label{sec:methods}
+
+\subsection{System under test}
+\label{sec:methods-system}
+
+SemPointer chunks context into blocks of at most $B=512$ tokens with the reader tokenizer
+(\texttt{experiments/sempointer/pipeline.py::chunk\_text}), merging a trailing fragment shorter
+than $B/8$ into the previous block [ESTABLISHED]. Each block gets one $k=8$ pointer and resolves
+to $m=1$ block per query in all final runs [ESTABLISHED] (\texttt{config\_table.json}: $k=8$,
+$m=1$, \texttt{rag\_m} $=1$, \texttt{block\_size} $=512$). Resolution uses $M_{\mathrm{text}}$: the
+selected block's verbatim text enters the prompt (\texttt{prompt\_builder.py::build\_sempointer\_prompt}) [ESTABLISHED].
+
+\paragraph{Selection disclosure.}
+\label{sec:methods-selection}
+Selection is dense cosine similarity between a mean-pooled query embedding and mean-pooled
+per-block pointer embeddings (\texttt{experiments/sempointer/scorer.py::PointerScorer.score\_all})
+with the public \texttt{sentence-transformers/all-MiniLM-L6-v2} encoder [ESTABLISHED]. Blocks past
+the encoder's maximum length are embedded in full: \texttt{embed\_long} (\texttt{pointer\_generator.py})
+splits text into \texttt{max\_seq\_length} windows and mean-pools them, so a 512-token block is
+represented whole, not truncated [ESTABLISHED]. Pointer identifiers (\texttt{[PTR\_id: ...]}) are
+prompt-resident strings only for unselected blocks, carrying no key--value state: substrate point M1
+(text) [ESTABLISHED]. The discrete address (seeded random-projection buckets, space $V_p^k$) comes from
+\texttt{SemanticIDPointerGenerator} [ESTABLISHED]; scoring uses the dense block embedding from the same
+encoder object, so dense RAG sees identical representations [ESTABLISHED].
+
+\subsection{Scope: text substrate only}
+\label{sec:methods-scope}
+
+All measured claims concern $M_{\mathrm{text}}$. Key--value ($M_{\mathrm{kv}}$) and latent ($M_{\mathrm{latent}}$)
+substrates are future work only: no KV-cache reuse, cross-block attention repair, or learned
+compression in any reported run [ESTABLISHED]. The KV-compress pilot (Table~\ref{tab:N4-kv-pilot}) runs
+KVPress methods as black-box baselines at $n=10$, not a SemPointer KV substrate [ESTABLISHED].
+
+\subsection{Cost model: prefill versus decode}
+\label{sec:methods-cost}
+
+We report two cost quantities; Eq.~7 covers only the first. \textit{Per-request prefill} is the one-time
+forward cost of ingesting the active prompt; it scales with prompt length and dominates total latency
+for long contexts here [REASONED]. \textit{Per-token decode} is the incremental cost per generated token,
+$O(Ld)$ per step in length $L$ and width $d$ for cached decoding [ESTABLISHED textbook]. Sparse methods
+shrink only the prefill term; nothing here claims a decode-complexity improvement [REASONED]. Reported
+latency is end-to-end wall clock (prefill plus decode) from \texttt{GenResult.latency\_ms}, with token counts
+from the real tokenizer (\texttt{experiments/engine/llm.py}) [ESTABLISHED]; per-call peak VRAM uses
+\texttt{torch.cuda} counters reset before each call [ESTABLISHED].
+
+\subsection{Additional baseline systems (implemented, pilot pending)}
+\label{sec:methods-newbaselines}
+
+Four further systems in \texttt{experiments/baselines/} share the uniform \texttt{System} interface but were
+\textit{not} in the final runs and carry no numbers here [ESTABLISHED]: (i)~\texttt{agentic\_pointer.py}: the
+LM itself routes among \texttt{[PTR\_id: preview]} strings (two calls per question, routed blocks capped at
+$m=4$) [ESTABLISHED]; (ii)~\texttt{iterative\_rag.py}: two-round retrieve--draft--retrieve on the expanded
+query, answering from the union of both rounds (two calls) [ESTABLISHED]; (iii)~\texttt{hybrid.py}:
+reciprocal-rank fusion of BM25 and dense-cosine ranks ($\mathrm{rrf\_k}=60$), top-$m$ via the shared path
+[ESTABLISHED]; (iv)~\texttt{session\_summary.py}: incremental per-block session summaries (one summarizer call
+per block, cached) plus a top-1 BM25 raw block [ESTABLISHED]. Evaluation is pending; they are stated to
+complete the design space.
+
+\subsection{Benchmark protocols and adaptations}
+\label{sec:methods-benchmarks}
+
+All suites run on one reader (\texttt{Qwen/Qwen2.5-3B-Instruct}, NF4, greedy, seed~42) on a single 8\,GB GPU
+with CPU-only embedding fallback; no other GPU inference [ESTABLISHED] (\texttt{BENCHMARK\_PROVENANCE.md} \S4,
+\texttt{stats.json}: \texttt{seed} $=42$). RAG baselines retrieve $m=1$ block with the same MiniLM encoder
+and \texttt{embed\_long} full-block representation [ESTABLISHED].
+
+\paragraph{RULER (synthetic).}
+\label{sec:methods-ruler}
+Examples come from a faithful re-implementation of the official generators (\texttt{benchmarks/ruler.py}:
+templates, task arguments, haystack sizing, needle depths), scored by the official per-sample containment
+rule ($1.0$ if the reference string appears, else $0.0$) [ESTABLISHED] (\texttt{BENCHMARK\_PROVENANCE.md} \S1).
+Deviations: 5-essay cache (not 275), vendored word lists, approximate word-based haystack sizing, flat
+\texttt{max-new-tokens} of~32, and chunked-block prompts with the project system prompt instead of the official
+one [ESTABLISHED]. Final run: $n=180$ per system [ESTABLISHED] (\texttt{stats.json}).
+
+\paragraph{LongBench (real-document QA).}
+\label{sec:methods-longbench}
+Six tasks (\texttt{hotpotqa} \cite{yang2018hotpotqa}, \texttt{2wikimqa}, \texttt{musique} \cite{trivedi2022musique}, \texttt{multifieldqa\_en}, \texttt{narrativeqa} \cite{kovcisky2018narrativeqa},
+\texttt{qasper}) from official \texttt{data.zip} on the byte-identical loading path, full test splits
+($200/200/200/150/200/200 = 1150$), scored by verbatim official normalization plus Counter-based token F1
+maximized over ground truths [ESTABLISHED] (\texttt{BENCHMARK\_PROVENANCE.md} \S2). Deviations: flat
+\texttt{max-new-tokens} of~64 (official per-task maxima 32/32/32/64/128/128) and chunked-block ingestion with
+the project system prompt [ESTABLISHED]. Scored $n$: 1150 (SemPointer, RAG, BM25); 1136 for full context after
+14 narrativeqa OOMs (see \S\ref{sec:results-oom}) [ESTABLISHED] (\texttt{stats.json}).
+
+\paragraph{LoCoMo (conversational memory).}
+\label{sec:methods-locomo}
+Ten official conversations from \texttt{locomo10.json} (sessions numerically ordered, turns in file order;
+category~5 golds as \texttt{not mentioned}) [ESTABLISHED] (\texttt{BENCHMARK\_PROVENANCE.md} \S3). Metric adaptation
+(stated on every LoCoMo table): the official GPT-4 judge plus Porter-stemmed F1 is unavailable, so \textit{all}
+categories use plain token F1 without stemming [ESTABLISHED]. Every result reads ``LoCoMo (token-F1 adaptation)''
+and is not comparable to published LoCoMo numbers [ESTABLISHED]. Final run: $n=199$ per system [ESTABLISHED].
+
+\subsection{Statistical methods}
+\label{sec:methods-stats}
+
+Comparisons use example-identifier-matched rows only [ESTABLISHED]
+(\texttt{stats.json}: \texttt{n\_scored\_pairs\_note}). Binary containment (RULER, kv pilot) uses the exact
+McNemar test on discordant pairs (correct $== 1.0$); continuous F1 (LongBench, LoCoMo) uses Wilcoxon
+signed-rank [ESTABLISHED] (\texttt{stats.json} \texttt{mcnemar\_note} fields). Effects report paired Cohen's
+$d_z$ plus pooled $d$ [ESTABLISHED]. Intervals are paired bootstrap 95\% CIs (10\,000 resamples, seed~42)
+[ESTABLISHED] (\texttt{stats.json}: \texttt{n\_bootstrap} $=10000$). The 13 primary paired tests use Bonferroni
+$\alpha = 0.05/13 \approx 0.0038$ [ESTABLISHED] (\texttt{stats.json}: \texttt{bonferroni}).
+
+\subsection{ConfigurationLedger}
+\label{sec:methods-config}
+
+True mean LLM tokens per block $B$ is $506.6$ (RULER), $504.2$ (LongBench), $510.2$ (LoCoMo), and $487.9$
+(kv pilot); with $k=8$, $\kappa = k/B_{\mathrm{true}}$ is $0.0158$, $0.0159$, $0.0157$, $0.0164$ [ESTABLISHED]
+(\texttt{config\_table.json}). Mean blocks per example (SemPointer rows): $24.75$ (RULER), $26.67$ (LongBench),
+$28.0$ (LoCoMo), $7.5$ (kv pilot) [ESTABLISHED]. Recomputed score means match \texttt{metrics.json} on every suite
+(\texttt{match}: true) [ESTABLISHED].

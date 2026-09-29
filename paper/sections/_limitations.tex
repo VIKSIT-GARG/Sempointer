@@ -1,0 +1,44 @@
+% PAPER-B fragment: limitations (owned by PAPER-B; wired by orchestrator).
+% M1--M13 enumerate the evaluated method dimensions; each paragraph states the
+% boundary plus the artifact pointer where one exists. No banned vocabulary.
+\section{Limitations}
+\label{sec:limitations}
+
+\paragraph{M1: single model.}
+Every measurement uses Qwen2.5-3B-Instruct (NF4, greedy, eager attention); no other model family or scale was run (\texttt{BENCHMARK\_PROVENANCE.md} \S4). Cross-model statements are unsupported.
+
+\paragraph{M2: single seed.}
+All runs use seed~42 with no seed sweep (\texttt{stats.json}: \texttt{"seed": 42}). Reported CIs are bootstrap resampling intervals over examples, not intervals over training or sampling seeds.
+
+\paragraph{M3: no fine-tuning.}
+Neither the reader model nor the MiniLM selection encoder was trained or adapted for pointers; results describe an inference-only assembly of frozen components.
+
+\paragraph{M4: 16k context cap.}
+Nominal haystack budgets are 4096/8192/16384 tokens (\texttt{BENCHMARK\_PROVENANCE.md} \S1); nothing longer was evaluated, and realized lengths are word-estimated within $\sim$20\% of nominal.
+
+\paragraph{M5: KV evidence is a pilot.}
+The KV comparison is n=10 with wide CIs (e.g.\ SemPointer-vs-full $-0.20$, $[-0.50,0.00]$, McNemar $p=0.480$; \texttt{stats.json} \texttt{final\_kvcompare}, Table~N4). The \texttt{pilot\_note} field states no significance is claimed.
+
+\paragraph{M6: text substrate only.}
+All resolution paths return verbatim text; the KV-substrate dereference was never executed end-to-end (\texttt{INDEPENDENT\_RECONSTRUCTION.md} \S4). Cached-regime memory claims remain analytic, not measured.
+
+\paragraph{M7: pointer ablation is approximately zero.}
+SemPointer and dense RAG produce identical selection outcomes (RULER retrieval-miss 51/51; LongBench 465/465; Table~N5), so these runs cannot attribute any quality effect to the pointer strings themselves.
+
+\paragraph{M8: no $k$-sweep.}
+Pointer length and top-$m$ selection depth are fixed; sensitivity of quality or cost to $k$ was not measured in this study.
+
+\paragraph{M9: OOM asymmetry favors full context.}
+Fourteen narrativeqa full-context rows OOMed and are excluded from scored means; scored-only reporting drops the hardest full-context cases (full mean 0.1112 scored-only vs.\ 0.1099 errors-as-zero; \texttt{stats.json} \texttt{oom\_sensitivity}, Table~N1 caption).
+
+\paragraph{M10: LoCoMo uses a metric adaptation.}
+With no judge API available, all LoCoMo categories are scored with plain token F1 instead of the official GPT-4 judge plus stemming protocol, so LoCoMo numbers are not comparable to published values (\texttt{BENCHMARK\_PROVENANCE.md} \S3; every table labels this adaptation).
+
+\paragraph{M11: latency and VRAM are rig-specific.}
+Latency and peak-VRAM means (Table~N3) were recorded on a single 8\,GB laptop GPU path and are reported without CIs; they describe this setup, not serving hardware generally.
+
+\paragraph{M12: per-task uncertainty is partial.}
+Suite-level bootstrap CIs are stored in \texttt{metrics.json}; per-task RULER cells (Table~N2) carry Wilson-95 whiskers computed in-script from cell means only (Fig.~N2), not paired tests.
+
+\paragraph{M13: pending arms.}
+LongMemEval \cite{wu2024longmemeval} evaluation and a no-context control arm are not run here; LongMemEval is assessed as future work requiring a judge API and 115k-token histories beyond this rig (\texttt{BENCHMARK\_PROVENANCE.md} \S5). TTFT/decode logging, a BGE encoder swap \cite{xiao2023bge}---the C-Pack packed-resources embedding family released with C-MTEB/C-MTP, with E5 \cite{wang2022e5} as the weakly-supervised contrastive-pretraining encoder family---which selects different blocks than MiniLM on a probe, and an LLMLingua scaffold are implemented and smoke-verified; reranker and compression arms are not yet run at benchmark scale.

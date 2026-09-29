@@ -1,0 +1,33 @@
+% PAPER-B fragment: contradiction manifest (integrity artifact, appendix).
+% Every reviewer-cited legacy number mapped to deleted / replaced-by.
+% Sources: INDEPENDENT_RECONSTRUCTION.md \S7, CLAIM_EVIDENCE_MATRIX.md.
+\section{Contradiction Manifest: Retired Numbers and Their Replacements}
+\label{sec:contradiction-manifest}
+
+Each legacy number below appeared in a prior draft and is withdrawn.
+Status is either \textbf{deleted} (no replacement; claim unsupported) or \textbf{replaced-by} (new measured value with artifact pointer).
+
+\begin{table}[h]
+\centering
+\caption{Legacy numbers withdrawn in this rewrite and what replaces them. Artifacts: S=\texttt{stats.json}, N1=\texttt{tables/N1\_main\_results.tex}, N3=\texttt{tables/N3\_efficiency.tex}, N4=\texttt{tables/N4\_kv\_pilot.tex}.}
+\label{tab:contradiction-manifest}
+\begin{tabular}{lll}
+\hline
+Legacy number (prior draft) & Status & Replaced-by (this draft) \\
+\hline
+65.5\,GB full-context VRAM at 128k & deleted (formula, never measured) & N3 rig VRAM means (MB scale, 8\,GB rig) \\
+199\,MB pointer-cache VRAM at N=256 & deleted (formula E15) & N3 active-token/VRAM ratios (theory only) \\
+4.98\,ms paging latency (E16) & deleted (bytes $\div$ bandwidth derivation) & N3 measured latency means per suite \\
+0.750 Recall@N8 (E01-era) & deleted (degenerate synthetic harness) & N1 RULER means + paired CIs (n=180) \\
+Fig.~4 empirical-validation panel & deleted (E05/E15 formula plots) & Fig.~N1/N2 from \texttt{metrics.json} \\
+E05 0.00\% K* error & deleted (tautology: emp = theory) & cost model labeled analytic only \\
+E07 $k$-sweep (k=2: 0.840, k=4: 0.920) & deleted (contradicted by stored R@1=1.0) & M8: no $k$-sweep run (Limitation) \\
+Runners e01--e19 result claims & deleted (no-LLM substring/category errors) & S: P1--P3 suites with real reader \\
+HotpotQA 0.50 / E11 1.000-vs-0.720 & deleted (stored: joint=RAG=1.0, +0.0pp) & N5 miss taxonomy; no HotpotQA claim \\
+E02 F1=1.000s, McNemar $p=1.000$ & deleted (substring-containment proxy) & N1 paired deltas with CIs + tests \\
+T9 falsification rows (H1--H6) & deleted (hardcoded table generator) & this manifest + N1--N5 tables \\
+4-model / 5-seed / profiler claims & deleted (never executed) & M1--M2: single model, single seed \\
+59.9$\times$ / 318\,ms$\rightarrow$4.97\,ms & deleted as measurements & analytic ratios, labeled derived \\
+\hline
+\end{tabular}
+\end{table}

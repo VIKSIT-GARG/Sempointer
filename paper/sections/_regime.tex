@@ -1,0 +1,24 @@
+% PAPER-A fragment: regime-map subsection. Owned by PAPER-A.
+% Short overlay of measured operating points on the analytic cost map.
+\label{sec:regime}
+
+\subsection{Regime map: where sparse prefill wins, and where we measured}
+\label{sec:regime-map}
+
+The analytic map compares per-request prefill cost of the sparse active
+prompt, $L_{\mathrm{active}} = (N-m)\,k + m\,B_{\mathrm{res}} + L_Q$, against
+full-context prefill over $N\,B$ tokens: sparse prefill is favored where
+pointer overhead $(N-m)k$ stays small relative to the $N\,B - m\,B_{\mathrm{res}}$
+tokens it removes, and the advantage narrows as $m$ grows toward $N$ or as
+$k$ approaches $B$ [REASONED]. Figure~\ref{fig:N4-regime} draws this map
+with the feasible slice---the region in which the sparse active prompt is
+shorter than the full prompt---labeled, and overlays the four measured
+operating points: RULER ($N \approx 24.75$ blocks), LongBench ($N \approx
+26.7$), LoCoMo ($N \approx 28.0$), and the kv pilot ($N = 7.5$), all at
+$k=8$, $m=1$, $B=512$ with true $B$ of $505$--$510$ tokens per block
+($\kappa \approx 0.016$) [ESTABLISHED] (\texttt{config\_table.json}).
+All four points sit inside the feasible slice, consistent with the measured
+$10$--$15\times$ active-token reductions in Table~\ref{tab:N3-efficiency}
+[REASONED]. Contexts of 32k tokens and beyond, where the map predicts the
+largest prefill gaps, are untested on this 8\,GB rig and remain future work;
+the map there is analytic projection, not measurement [REASONED].
