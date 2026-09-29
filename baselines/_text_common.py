@@ -106,6 +106,7 @@ def finish_answer(
         "selection_scores": selection_scores,
         "selection_latency_ms": selection_latency_ms,
         "generation_latency_ms": gen.latency_ms,
+        "ttft_ms": gen.ttft_ms,
         "completion_tokens": gen.completion_tokens,
         "peak_vram_mb": gen.peak_vram_mb,
         "n_blocks": len(blocks),

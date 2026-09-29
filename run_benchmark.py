@@ -173,7 +173,9 @@ def build_systems(args, tokenizer):
 
 # optional per-row fields recorded when a system returns them
 OPTIONAL_ROW_FIELDS = ("selection_latency_ms", "ttft_ms", "n_hops", "expanded_ids", "kv_bytes",
-                       "active_tokens_core", "n_selected", "completion_tokens")
+                       "active_tokens_core", "n_selected", "completion_tokens",
+                       "kv_encode_ms", "computed_tokens", "reused_tokens", "transfer_ms",
+                       "rope_mixed_frequencies")
 
 
 def score_example(metric: str, prediction: str, gold: List[str]) -> float:
@@ -188,6 +190,25 @@ def score_example(metric: str, prediction: str, gold: List[str]) -> float:
     if metric == "locomo_f1":
         return float(locomo_f1(prediction, gold))
     raise ValueError(f"Unknown metric: {metric}")
+
+
+def gold_string_block_hit(task: str, gold: List[str], blocks: List[str],
+                          selected_ids: List[int]) -> float | None:
+    """Gold-string coverage for RULER NIAH, where answers occur in source text.
+
+    Other tasks need annotated evidence spans; answer correctness is not a
+    substitute for retrieval recall. A split or absent gold string is missing
+    evidence, not a retrieval failure.
+    """
+    if not task.startswith("niah_") or not gold or not blocks or selected_ids is None:
+        return None
+    folded = [block.casefold() for block in blocks]
+    gold_locations = [[i for i, block in enumerate(folded) if answer.casefold() in block]
+                      for answer in gold if answer]
+    if len(gold_locations) != len(gold) or any(not locations for locations in gold_locations):
+        return None
+    selected = set(selected_ids)
+    return float(all(any(i in selected for i in locations) for locations in gold_locations))
 
 
 def _safe_info(system) -> Dict[str, Any]:
@@ -277,7 +298,7 @@ def main() -> None:
     run_name = args.run_name or f"{args.benchmark}_{time.strftime('%Y%m%d_%H%M%S')}"
     out_dir = os.path.join("results", run_name)
     cfg = {**vars(args), "run_name": run_name}
-    init_run_dir(out_dir, cfg)
+    init_run_dir(out_dir, cfg, resume=args.resume)
 
     examples = build_examples(args)
     print(f"[{run_name}] {len(examples)} examples loaded.")
@@ -310,8 +331,12 @@ def main() -> None:
             if (sys_name, ex["id"]) in done:
                 continue
             try:
+                ingest_start = time.perf_counter()
                 system.ingest(ex["context"])
+                ingest_ms = (time.perf_counter() - ingest_start) * 1000.0
+                answer_start = time.perf_counter()
                 out = system.answer(ex["question"], engine)
+                answer_ms = (time.perf_counter() - answer_start) * 1000.0
                 score = score_example(ex["metric"], out["answer"], ex["gold"])
                 row = {
                     "system": sys_name,
@@ -323,7 +348,9 @@ def main() -> None:
                     "score": score,
                     "answer": out["answer"],
                     "active_tokens": out["active_tokens"],
-                    "latency_ms": out.get("generation_latency_ms", out.get("latency_ms")),
+                    "latency_ms": answer_ms,
+                    "ingest_ms": ingest_ms,
+                    "generation_latency_ms": out.get("generation_latency_ms", out.get("latency_ms")),
                     "peak_vram_mb": out.get("peak_vram_mb"),
                     "selected_ids": out.get("selected_ids"),
                     "n_blocks": out.get("n_blocks", out.get("n_blocks_ingested")),
@@ -333,6 +360,12 @@ def main() -> None:
                 for fld in OPTIONAL_ROW_FIELDS:
                     if out.get(fld) is not None:
                         row[fld] = out[fld]
+                hit = gold_string_block_hit(row["task"], ex["gold"],
+                                            getattr(system, "blocks", None),
+                                            out.get("selected_ids"))
+                if hit is not None:
+                    row["retrieval_hit"] = hit
+                    row["retrieval_basis"] = "gold string present in selected RULER NIAH block"
                 append_prediction(out_dir, row)
                 print(f"  {sys_name:24s} {ex['id'][:28]:28s} score={score:.3f} "
                       f"tok={row['active_tokens']} lat={row['latency_ms']:.0f}ms")

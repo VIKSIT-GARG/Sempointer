@@ -59,15 +59,45 @@ def environment_record() -> Dict[str, Any]:
     return rec
 
 
-def init_run_dir(output_dir: str, config: Dict[str, Any]) -> str:
-    """Creates the run directory and writes environment.json + config.json."""
+def init_run_dir(output_dir: str, config: Dict[str, Any], resume: bool = False) -> str:
+    """Create a run, or resume only when its experimental settings match.
+
+    ``resume`` and ``dry_run`` describe invocation behavior rather than the
+    experiment. All other settings must match before predictions are appended.
+    """
     os.makedirs(output_dir, exist_ok=True)
+    config_path = os.path.join(output_dir, "config.json")
+    predictions_path = os.path.join(output_dir, "predictions.jsonl")
+    has_predictions = os.path.exists(predictions_path) and os.path.getsize(predictions_path) > 0
+
+    if os.path.exists(config_path):
+        with open(config_path) as f:
+            previous = json.load(f)
+        ignored = {"resume", "dry_run", "git_commit"}
+        old_settings = {k: v for k, v in previous.items() if k not in ignored}
+        new_settings = {k: v for k, v in config.items() if k not in ignored}
+        if old_settings != new_settings:
+            changed = sorted(k for k in old_settings.keys() | new_settings.keys()
+                             if old_settings.get(k) != new_settings.get(k))
+            raise ValueError(f"Run {output_dir!r} has different settings: {', '.join(changed)}. "
+                             "Use a new --run-name.")
+        if has_predictions and not resume:
+            raise ValueError(f"Run {output_dir!r} already has predictions. "
+                             "Pass --resume or use a new --run-name.")
+        if resume:
+            with open(os.path.join(output_dir, "resume_history.jsonl"), "a") as f:
+                f.write(json.dumps(environment_record(), default=str) + "\n")
+        return output_dir
+
+    if has_predictions:
+        raise ValueError(f"Run {output_dir!r} has predictions without config.json; "
+                         "cannot safely resume it.")
     env = environment_record()
     cfg = dict(config)
     cfg["git_commit"] = env["git_commit"]
     with open(os.path.join(output_dir, "environment.json"), "w") as f:
         json.dump(env, f, indent=2)
-    with open(os.path.join(output_dir, "config.json"), "w") as f:
+    with open(config_path, "w") as f:
         json.dump(cfg, f, indent=2, default=str)
     return output_dir
 

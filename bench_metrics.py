@@ -20,7 +20,9 @@ from typing import Any, Dict, List, Optional, Sequence
 import numpy as np
 
 OPTIONAL_NUMERIC = ("selection_latency_ms", "ttft_ms", "n_hops", "kv_bytes",
-                    "active_tokens_core", "n_selected")
+                    "active_tokens_core", "n_selected", "ingest_ms",
+                    "generation_latency_ms", "kv_encode_ms", "computed_tokens",
+                    "reused_tokens", "transfer_ms", "retrieval_hit")
 RETRIEVAL_PREFIXES = ("rag", "bm25", "hybrid")
 
 
@@ -90,6 +92,8 @@ def summarize_system(srows: List[Dict[str, Any]], seed: int = 42) -> Dict[str, A
         m = _mean(r.get(f) for r in srows)
         if m is not None:
             out[f"{f}_mean"] = m
+            if f == "retrieval_hit":
+                out["retrieval_hit_n"] = sum(r.get(f) is not None for r in srows)
     per_task: Dict[str, Any] = {}
     for task in sorted({r.get("task") for r in srows}, key=str):
         ts = [r for r in srows if r.get("task") == task]

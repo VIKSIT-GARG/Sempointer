@@ -37,7 +37,28 @@ class GenResult:
     completion_tokens: int
     latency_ms: float
     peak_vram_mb: float
+    ttft_ms: Optional[float] = None
     stop_reason: str = "max_new_tokens"
+
+
+class _FirstTokenTimer:
+    """Record the first generated token callback from Transformers.generate.
+
+    Transformers sends the input prompt to a streamer first, then generated
+    tokens. The callback receives CPU tensors, so CUDA work has synchronized.
+    """
+
+    def __init__(self) -> None:
+        self.calls = 0
+        self.first_token_at: Optional[float] = None
+
+    def put(self, token_ids) -> None:
+        self.calls += 1
+        if self.calls == 2:
+            self.first_token_at = time.perf_counter()
+
+    def end(self) -> None:
+        pass
 
 
 class LLMEngine:
@@ -145,17 +166,20 @@ class LLMEngine:
         t0 = time.perf_counter()
 
         if n_prompt <= PREFILL_CHUNK:
+            timer = _FirstTokenTimer()
             out = self.model.generate(
                 **inputs,
                 max_new_tokens=max_new_tokens,
                 do_sample=False,
                 logits_to_keep=1,
                 pad_token_id=self.tokenizer.pad_token_id,
+                streamer=timer,
             )
             generated_ids = out[0][n_prompt:]
             finish = out[0][-1].item()
+            first_token_at = timer.first_token_at
         else:
-            generated_ids, finish = self._chunked_prefill_generate(
+            generated_ids, finish, first_token_at = self._chunked_prefill_generate(
                 inputs["input_ids"], max_new_tokens
             )
 
@@ -176,6 +200,7 @@ class LLMEngine:
             completion_tokens=int(generated_ids.shape[0]),
             latency_ms=latency_ms,
             peak_vram_mb=peak_vram_mb,
+            ttft_ms=(first_token_at - t0) * 1000.0 if first_token_at is not None else None,
             stop_reason=stop_reason,
         )
 
@@ -211,6 +236,9 @@ class LLMEngine:
         generated = []
         finish = None
         next_token = logits.argmax(dim=-1, keepdim=True)
+        if self.device == "cuda":
+            torch.cuda.synchronize()
+        first_token_at = time.perf_counter()
         for step in range(max_new_tokens):
             generated.append(next_token.item())
             if next_token.item() == self.tokenizer.eos_token_id:
@@ -231,7 +259,7 @@ class LLMEngine:
             next_token = out.logits[:, -1, :].argmax(dim=-1, keepdim=True)
         if finish is None:
             finish = generated[-1] if generated else self.tokenizer.eos_token_id
-        return torch.tensor(generated, device=input_ids.device), finish
+        return torch.tensor(generated, device=input_ids.device), finish, first_token_at
 
     # ------------------------------------------------------------------ #
     def prefill_footprint(self, context: str) -> Dict[str, float]:
@@ -281,15 +309,13 @@ class LLMEngine:
             "attn_implementation": "sdpa",
             "seed": self.seed,
         }
-        try:
-            from huggingface_hub import hf_hub_download
-
-            import json as _json
-
-            rev = hf_hub_download(self.model_id, "config.json")
-            cfg["model_config_revision"] = _json.load(open(rev)).get("_name_or_path", "")
-        except Exception:
-            pass
+        # Transformers attaches the Hub commit to the loaded config. Reading
+        # it here avoids a network request and does not mistake _name_or_path
+        # (a model identifier) for an immutable revision.
+        cfg["model_config_revision"] = (
+            getattr(getattr(self.model, "config", None), "_commit_hash", None)
+            or getattr(self.tokenizer, "init_kwargs", {}).get("_commit_hash")
+        )
         return cfg
 
     def save_info(self, path: str) -> None:

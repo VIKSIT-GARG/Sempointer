@@ -2,8 +2,90 @@
 baselines, hybrid RRF ordering and metric aggregation (no LLM, offline)."""
 
 import pytest
+from types import SimpleNamespace
 
+from provenance import init_run_dir
 from system_specs import merge_kwargs, parse_system_specs, split_specs, validate_kwargs
+
+
+def test_resume_keeps_original_config_and_rejects_mixed_experiments(tmp_path, monkeypatch):
+    monkeypatch.setattr("provenance.environment_record", lambda: {"git_commit": "abc"})
+    run = tmp_path / "paper_ruler"
+    cfg = {"run_name": "paper_ruler", "systems": "sempointer,full", "limit": 10,
+           "resume": False, "dry_run": False}
+    init_run_dir(str(run), cfg)
+    (run / "predictions.jsonl").write_text('{"system":"full"}\n')
+
+    with pytest.raises(ValueError, match="Pass --resume"):
+        init_run_dir(str(run), cfg)
+    with pytest.raises(ValueError, match="different settings: limit"):
+        init_run_dir(str(run), {**cfg, "limit": 5, "resume": True}, resume=True)
+
+    init_run_dir(str(run), {**cfg, "resume": True}, resume=True)
+    assert __import__("json").loads((run / "config.json").read_text())["resume"] is False
+    assert len((run / "resume_history.jsonl").read_text().splitlines()) == 1
+
+
+def test_engine_info_records_loaded_model_revision_without_hub_lookup():
+    from engine.llm import LLMEngine
+
+    engine = object.__new__(LLMEngine)
+    engine.model_id = "example/model"
+    engine.dtype = "nf4"
+    engine.device = "cuda"
+    engine.max_new_tokens = 32
+    engine.seed = 42
+    engine.model = SimpleNamespace(config=SimpleNamespace(_commit_hash="abc123"))
+    engine.tokenizer = SimpleNamespace(init_kwargs={})
+    assert engine.info()["model_config_revision"] == "abc123"
+
+
+def test_engine_records_first_generated_token_time_on_short_prompt():
+    import torch
+    from engine.llm import LLMEngine
+
+    class Batch(dict):
+        def to(self, device):
+            return self
+
+    class Tokenizer:
+        pad_token_id = 0
+        eos_token_id = 99
+
+        def __call__(self, text, return_tensors):
+            return Batch(input_ids=torch.tensor([[10, 11]]))
+
+        def decode(self, ids, skip_special_tokens):
+            return "answer"
+
+    class Model:
+        device = torch.device("cpu")
+
+        def generate(self, input_ids, streamer, **kwargs):
+            streamer.put(input_ids)
+            streamer.put(torch.tensor([12]))
+            streamer.end()
+            return torch.tensor([[10, 11, 12]])
+
+    engine = object.__new__(LLMEngine)
+    engine.model = Model()
+    engine.tokenizer = Tokenizer()
+    engine.device = "cpu"
+    engine.max_new_tokens = 4
+    result = engine.generate("prompt")
+    assert result.text == "answer"
+    assert result.ttft_ms is not None
+    assert 0 <= result.ttft_ms <= result.latency_ms
+
+
+def test_gold_string_block_hit_is_limited_to_identifiable_niah_evidence():
+    from run_benchmark import gold_string_block_hit
+
+    blocks = ["filler", "The special code is 7350753.", "More filler"]
+    assert gold_string_block_hit("niah_single_1", ["7350753"], blocks, [1]) == 1.0
+    assert gold_string_block_hit("niah_single_1", ["7350753"], blocks, [0]) == 0.0
+    assert gold_string_block_hit("cwe", ["7350753"], blocks, [1]) is None
+    assert gold_string_block_hit("niah_single_1", ["missing"], blocks, [1]) is None
 
 
 # ------------------------------------------------------------------ specs

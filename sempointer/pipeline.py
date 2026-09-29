@@ -275,6 +275,7 @@ class SemPointerPipeline:
                 "prompt": gen.prompt,
                 "active_tokens": gen.prompt_tokens,
                 "generation_latency_ms": gen.latency_ms,
+                "ttft_ms": gen.ttft_ms,
                 "completion_tokens": gen.completion_tokens,
                 "peak_vram_mb": gen.peak_vram_mb,
                 "stop_reason": gen.stop_reason,
