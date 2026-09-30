@@ -1,0 +1,14 @@
+\section{Introduction}
+\label{sec:c-intro}
+
+Dense retrieval systems assemble context well and reuse context poorly. Each query pays for retrieval, ranking, and prompt construction from scratch, even when the underlying information need overlaps heavily with prior queries. Retrieved passages are copied into prompts, used once, and discarded. There is no stable handle to keep, share, or update. The result is repeated work, repeated tokens, and fragile composition when several queries draw on the same sources.
+
+This paper proposes indirection as a way to separate what is retrieved from how it is reused. The claim is that retrieval output should be addressable through persistent semantic pointers that can be stored, compared, and dereferenced across queries, rather than rebuilt as flat text each time.
+
+\paragraph{Analogy: indirection as OS pointers.} The model is the operating system pointer. A program holds a small stable address while the referenced object lives elsewhere and may move, change size, or be shared. Dereference resolves the current value only when needed. Applied to retrieval, a pointer would name a reusable unit of evidence, while assembly resolves those names into prompt text late in the process. The expected gain is reuse across related queries with explicit control over identity, sharing, and update.
+
+We treat this as an open hypothesis and frame the paper around open questions. RQ1 asks under what conditions pointer-mediated assembly preserves answer quality relative to standard retrieved concatenation. RQ2 asks whether pointers enable measurable reuse across queries that share evidence, in storage, tokens, or repeated retrieval effort. RQ3 asks what minimal machinery is required to keep pointers valid when the index, the corpus, or the query distribution shifts.
+
+The honest status of this idea is mixed. Assembly works. A straightforward pipeline that retrieves, orders, and concatenates passages produces coherent prompts and can be evaluated on the established suite family with n=180 and n=1150 for retrieval behavior and n=199 for end-to-end response quality. Pointers remain inert in current runs. Dereferencing through the indirection layer yields responses that tie standard retrieval-augmented generation at higher implementation and runtime cost, with no observed reuse benefit so far. The contribution here is therefore conceptual: a clear statement of the mechanism, the conditions under which it could help, and the measurements that would show failure or success.
+
+The rest of this concept paper develops that statement. It defines the context-reuse problem, specifies the pointer abstraction and its resolution path, states the open questions in testable form, and outlines the experiments, diagnostics, and abandonment criteria that should decide whether indirection deserves further work.

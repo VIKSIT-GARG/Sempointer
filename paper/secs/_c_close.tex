@@ -1,0 +1,21 @@
+% Concept-paper close: limitations + conclusion. CPU-only. Direct prose.
+\section{Limitations}
+\label{sec:c-close-limitations}
+\begin{enumerate}
+\item Single model, single seed. All runs use one reader configuration and one seed with no model-family or seed sweep, so cross-model generality is untested.
+\item Context capped at 16k. Behaviour beyond this budget is unmeasured and longer contexts may differ.
+\item Text-only substrate. All paths return verbatim text; no pointer is ever resolved into a live key-value cache during generation.
+\item Inert pointers (M7). Pointer strings show no measured retrieval effect, with SemPointer selecting the same blocks as the dense retrieval arm.
+\item No pointer-length sweep. Pointer length and retrieval depth are fixed, so sensitivity to address capacity is unknown.
+\item Small pilots only. The key-value comparison is an n=10 pilot with wide uncertainty and the multi-hop probe is an n=30 pilot; neither supports a significance claim.
+\item Single-8GB CPU-only rig. Latency and peak-memory means are rig-specific with no generality claim.
+\item Double-blind note. The repository is author-visible, which deanonymizes under double-blind review; confirm the review model with chairs before submitting.
+\end{enumerate}
+
+\section{Conclusion}
+\label{sec:c-close-conclusion}
+SemPointer as assembled works: dense per-query routing over a text substrate answers queries at 10--15x fewer active tokens than full context on RULER at n=180, LongBench at n=1150, and LoCoMo at n=199, trading quality for tokens with paired deltas of -0.37, -0.033, and -0.012 respectively. Pointer-mediated addressing as distinct from standard retrieve-then-read remains unproven: pointer tokens contribute no measured selection effect, the n=10 key-value pilot decides no sign, and the n=30 multi-hop probe returns clean negatives.
+
+What would change this verdict is direct: on P1--P3, SemPointer beating dense retrieval at matched token budgets with a non-zero isolated pointer effect, matching full context within uncertainty on any suite, or a key-value end-to-end run reversing the pilot deficit. Absent those outcomes, the honest reading stands.
+
+Future program: run larger multi-seed suites with a pointer-length sweep and a measured key-value end-to-end comparison.

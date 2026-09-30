@@ -1,0 +1,15 @@
+\label{sec:latency}
+\subsection{Prefill is compute-bound, decode is memory-bound}
+Full self-attention costs $O(L^2 d)$ time in prefill for sequence length $L$ and model width $d$~\cite{vaswani2017attention}: every query position scores every key. This phase is compute-bound on CPU. Autoregressive decode is different: each step moves the full key-value state for $L$ positions through memory, costing $O(Ld)$ memory traffic per token. This phase is memory-bandwidth-bound. Any latency claim must therefore separate the two phases.
+
+\subsection{TTFT vs TPOT}
+Time to first token (TTFT) is dominated by prefill over the fused prompt. Time per output token (TPOT) is dominated by decode bandwidth against whatever state prefill installed. Reducing fused length $L$ lowers both, but through different mechanisms: fewer FLOPs in prefill, fewer bytes moved per step in decode.
+
+\subsection{Why a FLOPs-only $K^\ast$ is necessary but not sufficient}
+Let $K^\ast$ be the breakeven selected-token count at which the reader's attention FLOPs equal the FLOPs of full-context prefill plus selection overhead. $K < K^\ast$ is necessary for a prefill win on FLOPs. It is not sufficient for an end-to-end latency win because (i) selection, pointer encoding, and fuse add CPU-side fixed costs absent from the FLOP count, and (ii) TPOT depends on bytes moved, not FLOPs executed. A configuration can clear $K^\ast$ and still lose wall-clock if retrieval overhead exceeds the saved attention time or if decode streams a large fused state.
+
+\subsection{Two cost centers: $M_{\mathrm{text}}$ vs $M_{\mathrm{kv}}$}
+$M_{\mathrm{text}}$ stores verbatim block text and fuses selected blocks into the prompt. It pays re-encode per query: every selected token is re-prefilled by the reader, so repeated queries over the same blocks repeat prefill work. $M_{\mathrm{kv}}$ stores block key-values directly and pages them into the decoder, in the spirit of paged block management~\cite{kwon2023pagedattention}. It avoids re-encode but pays paging bandwidth: gathering non-contiguous blocks per step costs memory traffic and table-lookup overhead. The concept paper takes $M_{\mathrm{text}}$ only; $M_{\mathrm{kv}}$ is noted as the alternative with opposite bottleneck.
+
+\subsection{Prefix-cache compatibility}
+A stable pointer table yields a reusable prefix: unchanged blocks keep identical pointer codes across queries, so the fused prefix is byte-identical when the same shortlist recurs. A standard KV prefix cache then skips re-prefill of that prefix. Stability is therefore a precondition for cache hits, not a speedup by itself.

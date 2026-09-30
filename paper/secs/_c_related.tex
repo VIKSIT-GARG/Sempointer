@@ -1,0 +1,35 @@
+% Related work — concept paper. Word budget: <=600.
+\label{sec:related}
+
+\paragraph{Hard prompt compression.}
+Token-dropping compressors score and discard low-value tokens before the reader.
+LLMLingua uses a small LM for perplexity-based filtering with budget control and demonstration-aware compression \cite{jiang2023llmlingua}.
+Strength: output stays plain text and readable. Limit: compression ratios are modest (typically single-digit), and aggressive dropping breaks entity names, numbers, and multi-hop chains.
+
+\paragraph{Soft gist tokens.}
+A second line replaces spans with learned memory slots.
+Gist tuning compresses instructions into a few gist tokens via attention masks \cite{mu2023gist}.
+ICAE autoencodes a long context into compact memory slots with a LoRA-trained encoder and frozen decoder \cite{ge2024icae}.
+500xCompressor pushes this further: up to 480x compression retaining 62--73\% of capability while training only 0.3\% of parameters \cite{li2025500xcompressor}.
+Strength: extreme ratios. Limit: slots are opaque vectors tied to a specific decoder; they cannot be inspected, quoted verbatim, or composed across documents without re-encoding.
+
+\paragraph{KV-cache eviction and retrieval.}
+A third line keeps decoding cheap by pruning or paging key--value state.
+SnapKV selects salient heads and positions from the prompt tail \cite{li2024snapkv}; H2O-style eviction keeps heavy-hitter tokens and discards the rest.
+Quest represents pages by per-channel minima and maxima and loads only top-$k$ pages, reporting about 7x attention speedup \cite{tang2024quest}.
+RetrievalAttention combines near-query vector search with exact local windows for long-context decoding \cite{liu2025retrievalattention}.
+CacheBlend recomputes a small subset of tokens to repair cross-chunk attention, reporting 2.2--3.3x time-to-first-token reduction at negligible quality drop \cite{yao2025cacheblend}.
+Strength: direct latency and memory savings. Limit: methods operate below the text level; evicted detail is unrecoverable and cross-block composition requires recompute or refetch.
+
+\paragraph{Agent memory systems.}
+MemGPT (and its Letta successor) pages conversation history between main and external context with explicit function calls \cite{packer2023memgpt}.
+Mem0 adds an explicit ADD/UPDATE/DELETE operation set over extracted facts \cite{chhikara2025mem0}.
+Zep builds a temporal knowledge graph over dialogue with timestamped edges for recency-aware recall \cite{rasmussen2025zep}.
+Strength: durable state across sessions. Limit: handles are database rows or graph nodes managed outside the prompt, with no fixed token budget per handle and no verbatim recovery guarantee.
+
+\paragraph{Landmark routing.}
+Landmark attention inserts block markers and routes attention through retrieved landmark representations \cite{mohtashami2023landmark}.
+Strength: random access over long inputs. Limit: landmarks are trained attention gates, not textual addresses the prompt can display, copy, or recombine.
+
+\paragraph{Narrowed gap.}
+No prior line combines all three properties: (i)~prompt-resident textual handles with fixed per-block cost, (ii)~verbatim resolution of the selected block into the reader prompt, and (iii)~a composition algebra over handles (select, union, multi-hop chaining). This paper targets exactly that intersection.

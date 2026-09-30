@@ -1,0 +1,9 @@
+\label{sec:life}
+\subsection{Persistent-memory lifecycle: specified, not implemented}
+All operations in this section are specified-only; no implementation or measurement is claimed.
+
+A stable pointer handle outlives the block it points to. \textsc{Rebind}$(h, b')$ atomically repoints handle $h$ to block $b'$ and bumps a per-handle version counter; readers holding $h$ observe either the old or the new target, never a torn mix. \textsc{Forget}$(h)$ installs a tombstone: the handle persists but \textsc{Deref}$(h)$ fails closed, raising a tombstone error instead of returning stale text. \textsc{Alias}$(h)$ creates a refcounted second handle to the same target with an independent version chain, so one alias can be rebound or forgotten without affecting the other. \textsc{Deref}$(h)$ resolves the current target or raises tombstone. Version checks on dereference let the prompt builder detect concurrent rebinds and retry.
+
+Edit stress is defined as 100 sequential swaps and contradiction injections over a fixed working set on CPU-only hardware. Metrics are stale-answer rate (fraction of post-edit queries returning pre-edit content) and milliseconds per edit (repoint plus re-embedding cost). The pass bar is $<5\%$ stale answers with sublinear growth of ms/edit in the number of stored blocks. This experiment is not run here.
+
+RAG upsert has no stable handle: identity is the embedding itself, so every edit churns the index entry and invalidation depends on re-embedding and distance-threshold heuristics that admit stale hits \cite{chhikara2025mem0}. Temporal-graph stores version facts explicitly but pay graph-maintenance cost per edit \cite{rasmussen2025zep}. Token-compression baselines such as LLMLingua require full recompression of the edited region on each change. The specified pointer design isolates mutation to one handle plus version bump, leaving all other blocks untouched.

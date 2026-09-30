@@ -1,0 +1,26 @@
+\subsection{Content-Derived Addressing by Random-Projection Quantization}
+\label{sec:hash}
+
+Specified design (not what current runs execute: present experiments use equal-width scalar buckets).
+Each block is mapped to an address by a stateless random-projection quantizer in the SimHash / signed-random-projection family.
+Let $x \in \mathbb{R}^d$ be a block embedding.
+Fix $k$ seeded Gaussian vectors $r_1,\dots,r_k$ and $V$ quantization levels.
+The address is the tuple
+\[
+h(x) = (q(\langle x, r_1 \rangle), \dots, q(\langle x, r_k \rangle)) \in [V]^k,
+\]
+where $q(\cdot)$ quantizes each projection into one of $V$ IDs.
+The address space has size $V^k$.
+No table is learned and no training is required: the seeds fully specify the map, so any worker reproduces the same address from the content alone.
+Locality is preserved by construction: nearby embeddings produce nearby projection values and hence agree on most coordinates, while distant embeddings decorrelate across the $k$ independent projections.
+
+Under a uniform-addressing idealization, $N$ distinct blocks collide with probability
+\[
+P_{\mathrm{coll}} \approx 1 - \exp\!\left(-\frac{N(N-1)}{2V^k}\right).
+\]
+Requiring $P_{\mathrm{coll}} \le \delta$ gives $V^k \ge N(N-1)/(2\ln(1/(1-\delta)))$.
+Concretely, for $N=10^5$, $V=32{,}000$, and $\delta=10^{-4}$, $k \ge 4$ suffices, since $V^4 \approx 10^{18} \gg N^2/(2\delta)$.
+
+Real embeddings are non-uniform, so let $p_b$ be the mass of address bin $b$ and $\rho = \sum_b p_b^2$ the collision mass.
+Then $P_{\mathrm{coll}} \le \binom{N}{2}\rho$, with effective capacity $V_{\mathrm{eff}}^k = 1/\rho$.
+Skew shrinks effective capacity below nominal $V^k$, which is exactly why this scheme beats equal-width scalar bucketing: equal-width buckets ignore density and concentrate mass into hot buckets (large $\rho$), whereas projection quantization spreads dense regions across independent coordinates, keeping $\rho$ small and $V_{\mathrm{eff}}^k$ large.

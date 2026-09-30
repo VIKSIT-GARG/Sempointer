@@ -1,0 +1,4 @@
+\begin{abstract}
+Long-context inference feeds every token to attention, so cost grows steeply with context length. SemPointer proposes semantic indirection: context blocks reside in an off-attention store while short pointer strings remain in the prompt; a dense encoder retrieves blocks by semantic address and resolves them to verbatim text. This concept paper delivers a formal indirection model, an upgraded pointer design with routing and fallback, an analytic cost-quality theory, and falsifiable predictions for retrieval precision, fallback rate, and breakeven context length. Honest thesis: the current instantiation ties dense retrieval-augmented generation on quality at higher token cost, and pointer strings are empirically inert. Scope: concept paper only; no fidelity or superiority claims.
+\end{abstract}
+\keywords{long-context inference, dense retrieval, semantic addressing, negative results, benchmarking}

@@ -1,0 +1,33 @@
+% C06/20 Cost crossover (concept paper, CPU-only). FLOPs-analytic; illustrations at d=4096 are non-transferable.
+\subsection{Cost crossover}
+\label{sec:cost}
+
+Standard attention materializes full keys and values per token \cite{vaswani2017attention};PagedAttention-style paging removes fragmentation but not the per-token footprint \cite{kwon2023pagedattention}. We ask when a pointer-plus-residual codebook breaks even on FLOPs. All numerics below are illustrations at $d=4096$ only and are \emph{non-transferable} across hardware, dtype, or kernel choice.
+
+\paragraph{Assumptions.} A1: Fixed context length $N$ and fixed pointer count $m$ with $0 \le m \le N$. A2: Full-token cost $B$ bytes and residual-token cost $B_{\mathrm{res}}$ bytes satisfy $0 < k < B$ with pointer dim $k$. A3: Query overhead $L_Q$ is constant in $m$ and $k$. A4: Pointer-build cost $C_{\mathrm{init}}$ is paid once and amortized over $K$ generated steps. A5: Unit compute cost $u>0$ per active byte per step is constant (FLOPs-only view).
+
+Active memory per forward step is
+\begin{equation}
+L_{\mathrm{active}} = (N-m)k + mB_{\mathrm{res}} + L_Q.
+\label{eq:Lactive}
+\end{equation}
+The baseline holds $NB+L_Q$ bytes, so the per-step byte saving is the corrected viability margin
+\begin{equation}
+D = N(B-k) - m(B_{\mathrm{res}}-k) > 0.
+\label{eq:viability}
+\end{equation}
+The correction is the explicit $+mk$ term: replacing $m$ full tokens of size $B$ by pointers of size $k$ saves $m(B-k)$, while the residual adds $m(B_{\mathrm{res}}-k)$; dropping $+mk$ understates the saving by counting pointer slots at zero width. Viability requires $D>0$, i.e.\ $m(B_{\mathrm{res}}-k)<N(B-k)$.
+
+Let per-step compute saving be $\Delta C_{\mathrm{step}}=uD$. Break-even against the one-time build cost $C_{\mathrm{init}}$ gives the analytic crossover
+\begin{equation}
+K^{\star} = C_{\mathrm{init}} / \Delta C_{\mathrm{step}} = C_{\mathrm{init}} / (uD).
+\label{eq:Kstar}
+\end{equation}
+For text generation of length $M_{\mathrm{text}}$, the pointer pays off iff $M_{\mathrm{text}} \ge K^{\star}$; per-token amortized build cost is $C_{\mathrm{init}}/M_{\mathrm{text}}$, vanishing as $M_{\mathrm{text}}\to\infty$. Whenever $D>0$, $K^{\star}$ is $k$-monotone: $\partial K^{\star}/\partial m>0$ and $\partial K^{\star}/\partial k>0$, since
+\begin{equation}
+\partial K^{\star}/\partial m = C_{\mathrm{init}}(B_{\mathrm{res}}-k)/(uD^2), \quad \partial K^{\star}/\partial k = C_{\mathrm{init}}(N-m)/(uD^2).
+\label{eq:monotone}
+\end{equation}
+Each extra pointer token and each extra pointer dimension shrinks $D$ and pushes break-even later; the cheapest viable design minimizes $m$ and $k$ subject to task accuracy.
+
+Latency qualification. Prefill is compute-bound and tracks FLOPs, so $K^{\star}$ approximates prefill break-even. Decode is memory-bound: wall-clock depends on bandwidth, paging overhead, and kernel fusion, not FLOPs alone. Hence the FLOPs-only $K^{\star}$ is necessary but not sufficient for a latency win; a configuration with $D>0$ and $M_{\mathrm{text}}>K^{\star}$ can still lose on latency if residual gather or page-table overhead dominates decode. Any $d=4096$ crossover number is therefore an illustration of the analytic form, labeled non-transferable, not a performance claim.

@@ -1,0 +1,95 @@
+% SemPointer concept paper (Springer LNCS). Assembled from secs/_c_* fragments.
+% Rebuild: tectonic sempointer_concept.tex
+\documentclass[runningheads]{llncs}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{rotating}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes,shapes.geometric,calc}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\begin{document}
+
+\title{SemPointer: An Indirection Layer over Dense Retrieval}
+\author{Viksit Garg\inst{1}}
+\institute{Department of Artificial Intelligence \& Machine Learning,
+Dr.~Akhilesh Das Gupta Institute of Professional Studies,
+New Delhi, India \\ \email{viksitg427@gmail.com}}
+\maketitle
+
+\input{secs/_c_abstract}
+
+\section{Introduction}
+\label{sec:c-intro}
+\input{secs/_c_intro}
+
+\section{Related Work}
+\label{sec:c-related}
+\input{secs/_c_related}
+
+\section{Formalism: Pointers versus Compression}
+\label{sec:c-formal}
+\input{secs/_c_formal}
+
+\section{Content-Derived Addressing by Hashing}
+\label{sec:c-hash}
+\input{secs/_c_hash}
+
+\section{Architecture}
+\label{sec:c-arch}
+\input{secs/_c_arch}
+
+\begin{figure}[t]
+\centering
+\input{figures/C1_arch}
+\caption{Upgraded SemPointer lifecycle. P1 (ingest): blocks committed to tiered substrates while the generator emits $k$-token pointers into the registry. P2 (query): two-stage selection (address prefilter, dense rerank) resolves top-$m$ blocks; unselected pointers stay resident. Cost badges mark setup, selection, and resolution.}
+\label{fig:C1-arch}
+\end{figure}
+
+\section{Memory Lifecycle Semantics}
+\label{sec:c-life}
+\input{secs/_c_life}
+
+\section{Latency Model}
+\label{sec:c-latency}
+\input{secs/_c_latency}
+
+\section{Cost Theory}
+\label{sec:c-cost}
+\input{secs/_c_cost}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/C2_kstar.pdf}
+\caption{Analytic crossover threshold $K^*$ vs registry size $N$ (closed form, not measured). Pooling-class indirection amortizes within few queries for $N\ge 2$ except the shaded small-$N$ dominated region.}
+\label{fig:C2-kstar}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/C3_lactive.pdf}
+\caption{Analytic active-sequence scaling: full history $NB$ vs pointer-resident $Nk+mB_{\mathrm{res}}$. The coefficient drops $10$--$15\times$; the quadratic degree is unchanged. Analytic illustration.}
+\label{fig:C3-lactive}
+\end{figure}
+
+\input{tables/C1_matrix}
+\input{tables/C2_numbers}
+
+\section{Motivating Observations}
+\label{sec:c-pilotbox}
+\input{secs/_c_pilotbox}
+
+\section{Falsifiable Predictions}
+\label{sec:c-predict}
+\input{secs/_c_predict}
+
+\section{Limitations and Conclusion}
+\label{sec:c-close}
+\input{secs/_c_close}
+
+\input{lncs_bibliography}
+
+\end{document}

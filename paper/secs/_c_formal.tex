@@ -1,0 +1,17 @@
+\section{Formal model: semantic pointers}
+\label{sec:formal}
+A compressed representation shortens a block but keeps it in the attention stream. A semantic pointer does not: it is a short token string $p$ that stores only an address into an independent substrate $S$ disjoint from the prompt, plus an explicit resolution operator $R$ with $R(p)$ returning verbatim block text. Compression saves tokens; indirection moves them elsewhere and pays retrieval to bring them back.
+
+Generation maps each block $B \in S$ to its pointer:
+\[
+p = \mathrm{Addr}(B; \theta)
+\]
+where $\theta$ is fixed addressing parameters (seeds, codebook) shared by writer and reader, so $p$ carries no content, only location.
+
+Fidelity is bounded distortion after a resolve round-trip:
+\[
+d(B, R(p)) \le \epsilon
+\]
+for metric $d$ and tolerance $\epsilon$; a pointer is valid only when its resolution satisfies this bound, otherwise it is a dangling address.
+
+\textbf{Ax1 identity [stipulated]:} each live block has exactly one canonical address at a time. \textbf{Ax2 compactness [measured]:} pointer length $k \ll B$ in tokens, targeting 10--15x reduction. \textbf{Ax3 stability [stipulated]:} re-addressing an unchanged block returns the same address. \textbf{Ax4 fidelity [measured]:} resolved text meets the $\epsilon$-bound above (dense tie, no superiority claimed). \textbf{Ax5 selectivity [measured]:} retrieval reads $m \ll N$ blocks per query. \textbf{Ax6 reusability [stipulated]:} one bound address serves arbitrarily many dereferences without rebinding. \textbf{Ax7 compositionality [untested--negative]:} $p_1 \oplus p_2$ resolves jointly; current pointer strings are empirically inert, so $\oplus$ is specified, not evidenced.

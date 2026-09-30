@@ -1,0 +1,43 @@
+% C04/20 concept-paper: architecture. CPU-only. Direct prose.
+\label{sec:arch}
+\subsection{Six-stage lifecycle}
+SemPointer treats long context as addressable blocks with a fixed lifecycle: Segment $\to$ Encode $\to$ Store $\to$ Select $\to$ Fuse $\to$ Resolve.
+(1) \textbf{Segment:} partition input text into blocks of at most $B$ tokens with deterministic boundaries.
+(2) \textbf{Encode:} map each block to one compact pointer plus a dense block embedding.
+(3) \textbf{Store:} retain pointers, embeddings, and verbatim block text in a flat block store.
+(4) \textbf{Select:} given a query, retrieve a top-$m$ shortlist of blocks under a global token budget.
+(5) \textbf{Fuse:} concatenate the selected verbatim blocks in source order into a single prompt.
+(6) \textbf{Resolve:} run the frozen reader once on that prompt and return its answer.
+
+\subsection{Two-stage selection}
+Selection is coarse-to-fine.
+Stage 1 is an $O(1)$-per-block address prefilter over discrete pointer codes, in the spirit of landmark routing~\cite{mohtashami2023landmark} and two-stage KV triage~\cite{behnam2025rocketkv}: it discards clearly irrelevant blocks without dense comparison.
+Stage 2 is dense rerank on the shortlist only: cosine similarity between the query embedding and block embeddings, keeping top-$m$.
+Total per-query cost is $O(N+c\cdot d)$, where $N$ is block count, $c$ is shortlist size, and $d$ is embedding width; dense work never scales with full context length.
+This separates cheap addressing from expensive scoring, unlike single-pass full-attention scans.
+
+\subsection{Adaptive per-block budgets}
+Pointer capacity is not uniform.
+Each block $i$ receives budget $k_i$ proportional to estimated salience (length, entity density, query-independent novelty), subject to $\sum_i k_i \le K$ for global budget $K$.
+Dense blocks keep more pointer symbols; boilerplate keeps fewer.
+Unlike fixed per-token eviction~\cite{li2024snapkv}, budgets adapt before any query is seen, so the global footprint stays bounded while informative regions retain resolution.
+
+\subsection{Lifecycle operations}
+Four operations mutate the store.
+\texttt{REBIND} [specified-not-implemented]: re-encode a block after edits and replace its pointer while preserving its identity.
+\texttt{FORGET} [specified-not-implemented]: tombstone a block so it is excluded from all future selection; fail-closed, meaning lookup misses on tombstoned ids return empty rather than nearest match.
+\texttt{ALIAS} [specified-not-implemented]: bind two surface forms to one block identity for coreference without duplication.
+\texttt{DEREF} [specified-not-implemented]: resolve a pointer to its verbatim text at fuse time.
+The concept paper specifies semantics only; no persistence, concurrency, or garbage collection is claimed.
+Persistent agent memories~\cite{chhikara2025mem0,rasmussen2025zep,packer2023memgpt} motivate these ops, but this design scopes them to prompt-session blocks, not cross-session stores.
+
+\subsection{Query-aware scoring}
+Scoring is Quest-shaped~\cite{tang2024quest}: the query determines which blocks matter, not static salience.
+Each query is encoded once and compared against block embeddings; selection is per-query, not per-decoding-step.
+There is no per-token attention surgery during generation and no KV-cache reuse across blocks in this concept~\cite{yao2025cacheblend}; the reader sees only fused text.
+This keeps the mechanism compatible with frozen black-box readers.
+
+\subsection{What was not taken}
+\textit{LLM paging loops}~\cite{packer2023memgpt}: rejected because multi-call agentic routing adds latency and nondeterminism outside a single-pass budget.
+\textit{Custom attention ops}: rejected because kernel or architecture changes break black-box reader compatibility and CPU-only evaluation.
+\textit{Full-KV retention}: rejected because storing all key-values scales memory with context length and defeats the bounded-$K$ goal.
