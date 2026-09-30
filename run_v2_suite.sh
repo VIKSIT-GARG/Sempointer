@@ -6,6 +6,14 @@ PY="${SEMPTR_PYTHON:-$PWD/warden/bin/python}"
 [[ -x "$PY" ]] || { echo "Missing $PY" >&2; exit 1; }
 export HF_HUB_OFFLINE="${SEMPTR_OFFLINE:-1}" TRANSFORMERS_OFFLINE="${SEMPTR_OFFLINE:-1}"
 stage="${1:-smoke}"
+total_mib="$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n 1)"
+[[ "$total_mib" =~ ^[0-9]+$ ]] || { echo "Cannot read total GPU memory" >&2; exit 1; }
+if ((total_mib < 9000)); then
+    # Transformers 5.x loads weights concurrently by default. Sequential
+    # materialization avoids its transient NF4 loading peak on an 8 GB GPU.
+    export HF_DEACTIVATE_ASYNC_LOAD=1
+    echo "Sequential model loading enabled for ${total_mib} MiB GPU."
+fi
 min_free_mib=5000
 if [[ "$stage" == ruler_holdout ]]; then min_free_mib=7000; fi
 free_mib="$(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits | head -n 1)"
