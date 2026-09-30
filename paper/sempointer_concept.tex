@@ -48,8 +48,8 @@ New Delhi, India \\ \email{viksitg427@gmail.com}}
 
 \begin{figure}[t]
 \centering
-\resizebox{0.88\columnwidth}{!}{\input{figures/C1_arch}}
-\caption{Upgraded SemPointer lifecycle. P1 (ingest): blocks committed to tiered substrates while the generator emits $k$-token pointers into the registry. P2 (query): two-stage selection (address prefilter, dense rerank) resolves top-$m$ blocks; unselected pointers stay resident. Cost badges mark setup, selection, and resolution.}
+\resizebox{0.8\columnwidth}{!}{\input{figures/C1_arch}}
+\caption{Upgraded lifecycle: ingest commits blocks and emits $k$-token pointers; two-stage selection resolves top-$m$ blocks. Cost badges mark setup, selection, resolution.}
 \label{fig:C1-arch}
 \end{figure}
 
@@ -67,8 +67,8 @@ New Delhi, India \\ \email{viksitg427@gmail.com}}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.8\columnwidth]{figures/C2_kstar.pdf}
-\caption{Analytic crossover threshold $K^*$ vs registry size $N$ (closed form, not measured). Pooling-class indirection amortizes within few queries for $N\ge 2$ except the shaded small-$N$ dominated region.}
+\includegraphics[width=0.62\columnwidth]{figures/C2_kstar.pdf}
+\caption{Analytic $K^*$ vs $N$: pooling indirection amortizes within few queries for $N\ge 2$ (closed form, not measured).}
 \label{fig:C2-kstar}
 \end{figure}
 
@@ -87,6 +87,6 @@ New Delhi, India \\ \email{viksitg427@gmail.com}}
 \label{sec:c-close}
 \input{secs/_c_close}
 
-{\footnotesize\input{lncs_bibliography_concept}}
+{\footnotesize\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}\input{lncs_bibliography_concept}}
 
 \end{document}

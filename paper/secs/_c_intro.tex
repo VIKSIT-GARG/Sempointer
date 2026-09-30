@@ -1,12 +1,8 @@
 \section{Introduction}
 \label{sec:c-intro}
 
-Dense retrieval rebuilds context per query: retrieval, ranking, and construction repeat when needs overlap, with passages used once and discarded, with no handle to keep, share, or update.
+Dense retrieval rebuilds context per query: retrieval, ranking, and construction repeat when needs overlap, with passages used once and discarded, with no handle to keep, share, or update. Indirection separates what is retrieved from how it is reused: retrieval output should be addressable through persistent semantic pointers stored, compared, and dereferenced across queries, not rebuilt as flat text each time.
 
-Indirection separates what is retrieved from how it is reused: retrieval output should be addressable through persistent semantic pointers stored, compared, and dereferenced across queries, not rebuilt as flat text each time.
+\paragraph{Analogy: indirection as OS pointers.} A program holds a stable address for a movable, shareable object, resolved on need. Likewise, a pointer names reusable evidence, resolved late into prompt text with identity, sharing, and update.
 
-\paragraph{Analogy: indirection as OS pointers.} A program holds a small stable address for a movable, shareable object, resolved on need. Likewise, a pointer names reusable evidence, resolved late into prompt text with identity, sharing, and update.
-
-RQ1 asks when pointer-mediated assembly preserves quality vs. standard concatenation; RQ2 asks whether pointers enable reuse across queries sharing evidence, in storage, tokens, effort; RQ3 asks what minimal machinery keeps pointers valid as index, corpus, query distribution shift.
-
-Assembly works: retrieve-order-concatenate yields coherent prompts on suites with n=180 and n=1150 for retrieval and n=199 for end-to-end quality. Pointers remain inert: dereferencing ties retrieval-augmented generation at higher cost, no reuse. Contribution is conceptual: mechanism, conditions where it could help, and measurements deciding failure or success.
+RQ1 asks when pointer-mediated assembly preserves quality vs. standard concatenation; RQ2 asks whether pointers enable reuse across queries sharing evidence, in storage, tokens, effort; RQ3 asks what minimal machinery keeps pointers valid as index, corpus, query distribution shift. Assembly works: retrieve-order-concatenate yields coherent prompts on suites with n=180 and n=1150 for retrieval and n=199 for end-to-end quality. Pointers remain inert: dereferencing ties retrieval-augmented generation at higher cost, no reuse. Contribution is conceptual: mechanism, conditions where it could help, and measurements deciding failure or success.

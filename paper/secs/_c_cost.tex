@@ -31,3 +31,5 @@ Payoff iff $M_{\mathrm{text}} \ge K^{\star}$; $C_{\mathrm{init}}/M_{\mathrm{text
 More pointer tokens/dimensions shrink $D$, delaying break-even; cheapest viable design minimizes $m,k$ at fixed accuracy.
 
 Latency: prefill tracks FLOPs, so $K^{\star}$ approximates prefill break-even; decode tracks bandwidth, paging, fusion. FLOPs-only $K^{\star}$ is necessary but insufficient: $D>0$ with $M_{\mathrm{text}}>K^{\star}$ can still lose to gather/page-table overhead. Every $d=4096$ number illustrates analytic form, non-transferable, not a performance claim.
+
+\paragraph{Design rationale (not a theorem).} The compactness--fidelity tradeoff has the shape of a rate--distortion problem: pointer length is the rate, task-relevant information loss is the distortion. Optimal black-box prompt compressors sit on a distortion-rate frontier far below current methods \cite{nagle2024fundamental}. We borrow only the vocabulary: it tells us to report fidelity at fixed rates (our $k$-sweep prediction) rather than single-point compression ratios, and to expect a saturation knee where extra pointer tokens stop buying fidelity. No optimality claim about our construction follows.

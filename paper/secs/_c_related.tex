@@ -1,28 +1,19 @@
-% Related work — concept paper. Word budget: <=600.
 \label{sec:related}
 
 \paragraph{Hard prompt compression.}
-Token-dropping discards low-value tokens.
-LLMLingua filters by small-LM perplexity under a budget \cite{jiang2023llmlingua}.
-Readable but single-digit; aggressive dropping breaks names, numbers, chains.
+LLMLingua filters by small-LM perplexity under a budget \cite{jiang2023llmlingua}. Readable but single-digit; aggressive dropping breaks names, numbers, chains.
 
 \paragraph{Soft gist tokens.}
-Learned slots: gist tuning compresses instructions \cite{mu2023gist}; ICAE autoencodes long context \cite{ge2024icae}.
-500xCompressor reaches 480x at 62--73\% capability training 0.3\% of parameters \cite{li2025500xcompressor}.
-Opaque decoder-specific slots: no inspection, quotation, composition without re-encoding.
+Gist tuning compresses instructions \cite{mu2023gist}; ICAE autoencodes long context \cite{ge2024icae}. 500xCompressor reaches 480x at 62--73\% capability training 0.3\% of parameters \cite{li2025500xcompressor}. Opaque decoder-specific slots: no inspection, quotation, composition without re-encoding.
 
 \paragraph{KV-cache eviction and retrieval.}
-Prune key--value state: SnapKV selects salient heads/positions \cite{li2024snapkv}; H2O keeps heavy hitters.
-Quest loads top-$k$ pages for 7x speedup \cite{tang2024quest}; RetrievalAttention pairs near-query search with local windows \cite{liu2025retrievalattention}.
-CacheBlend recomputes tokens to repair cross-chunk attention for 2.2--3.3x faster time-to-first-token \cite{yao2025cacheblend}.
-Evicted detail is unrecoverable; cross-block composition needs recompute or refetch.
+SnapKV selects salient heads/positions \cite{li2024snapkv}; H2O keeps heavy hitters. Quest loads top-$k$ pages for 7x speedup \cite{tang2024quest}; RetrievalAttention pairs near-query search with local windows \cite{liu2025retrievalattention}. CacheBlend recomputes tokens to repair cross-chunk attention for 2.2--3.3x faster time-to-first-token \cite{yao2025cacheblend}. Evicted detail is unrecoverable; cross-block composition needs recompute or refetch.
 
 \paragraph{Agent memory systems.}
-MemGPT pages history \cite{packer2023memgpt}; Mem0 adds ADD/UPDATE/DELETE over facts \cite{chhikara2025mem0}; Zep builds a temporal knowledge graph \cite{rasmussen2025zep}.
-State persists, but handles are off-prompt, unbudgeted, non-verbatim.
+MemGPT pages history \cite{packer2023memgpt}; Mem0 adds ADD/UPDATE/DELETE over facts \cite{chhikara2025mem0}; Zep builds a temporal knowledge graph \cite{rasmussen2025zep}. State persists, but handles are off-prompt, unbudgeted, non-verbatim.
 
 \paragraph{Landmark routing.}
 Landmark attention routes through block markers \cite{mohtashami2023landmark}: random access as trained gates, not textual addresses to display, copy, or recombine.
 
 \paragraph{Narrowed gap.}
-No prior line combines: (i)~prompt-resident textual handles with fixed per-block cost, (ii)~verbatim resolution of the selected block, and (iii)~a composition algebra over handles (select, union, multi-hop chaining). We target that intersection.
+No prior line combines: (i)~prompt-resident textual handles with fixed per-block cost, (ii)~verbatim resolution of the selected block, and (iii)~a composition algebra over handles (select, union, multi-hop chaining). We target that intersection. The closest 2025 neighbour, Memory Decoder \cite{cao2025memorydecoder}, trains a small decoder to imitate kNN-retrieval distributions for plug-and-play adaptation; it distills retrieval into weights where we keep explicit dereferenceable addresses, which is the axis our P1 prediction tests.

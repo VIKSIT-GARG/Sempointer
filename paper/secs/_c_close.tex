@@ -14,8 +14,8 @@
 
 \section{Conclusion}
 \label{sec:c-close-conclusion}
-SemPointer as assembled works: dense per-query text routing answers at 10--15x fewer tokens than full context on RULER at n=180, LongBench at n=1150, and LoCoMo at n=199, with paired deltas of -0.37, -0.033, and -0.012. Pointer-mediated addressing distinct from retrieve-then-read remains unproven: no measured selection effect, the n=10 key-value pilot decides no sign, and the n=30 multi-hop probe returns negatives.
+SemPointer as assembled works: dense per-query routing answers at 10--15x fewer tokens than full context (deltas -0.37, -0.033, -0.012). Addressing distinct from retrieve-then-read remains unproven: no selection effect, undecided n=10 pilot, negative n=30 probe.
 
-Verdict flips only on P1--P3: beating dense retrieval at matched token budgets with a non-zero isolated pointer effect, matching full context within uncertainty on any suite, or a key-value end-to-end run reversing the pilot deficit. Absent those, the reading stands.
+Verdict flips only on P1--P3: beating dense retrieval at matched budgets with a non-zero pointer effect, matching full context within uncertainty, or a key-value end-to-end reversing the deficit.
 
-Future: larger multi-seed suites, pointer-length sweep, measured key-value end-to-end comparison.
+Future: larger multi-seed suites, pointer-length sweep, measured key-value end-to-end.

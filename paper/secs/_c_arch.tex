@@ -35,7 +35,5 @@ Quest-shaped~\cite{tang2024quest}: the query selects blocks, not static salience
 One query encoding, compared per-query (not per-decoding-step).
 No per-token attention surgery and no cross-block KV reuse~\cite{yao2025cacheblend}; reader sees fused text only, so frozen black-box readers work.
 
-\subsection{What was not taken}
-\textit{LLM paging loops}~\cite{packer2023memgpt}: multi-call latency and nondeterminism outside a single-pass budget.
-\textit{Custom attention ops}: kernel changes break black-box CPU-only compatibility.
-\textit{Full-KV retention}: memory scales with context length and breaks the bounded-$K$ goal.
+\subsection{Rejected alternatives}
+Weighed and set aside: \textit{LLM paging loops}~\cite{packer2023memgpt} (multi-call latency, nondeterminism); \textit{custom attention ops} (break black-box compatibility); \textit{full-KV retention} (breaks bounded-$K$); \textit{decoder-mimicry} \cite{cao2025memorydecoder} (dissolves addresses into weights, needs training); \textit{graph-typed handles} \cite{rasmussen2025zep} (entity-pipeline errors would dominate). The six-stage design is minimal for budgets, versions, and composition; each names its revival experiment.
