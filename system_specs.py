@@ -127,7 +127,7 @@ def parse_system_specs(systems: str, rag_m: Sequence[int] = (1,),
             if colon or bracket:
                 raise ValueError(f"'full' takes no arguments: {raw!r}")
             specs.append(SystemSpec("full", "full", {}, raw))
-        elif base == "sempointer":
+        elif base in ("sempointer", "sempointer_v2"):
             if colon is not None and colon.strip() and "=" not in colon:
                 raise ValueError(f"sempointer spec expects key=val pairs: {raw!r}")
             kw = parse_kv(colon or "", raw)
@@ -135,7 +135,7 @@ def parse_system_specs(systems: str, rag_m: Sequence[int] = (1,),
                 if k in kw:
                     raise ValueError(f"system spec {raw!r}: duplicate kwarg {k!r}")
                 kw[k] = v
-            specs.append(SystemSpec("sempointer" + _suffix(kw), "sempointer", kw, raw))
+            specs.append(SystemSpec(base + _suffix(kw), base, kw, raw))
         elif base in RETRIEVAL_KINDS or base in tuple(f"{k}_budget" for k in RETRIEVAL_KINDS):
             kind = base.replace("_budget", "")
             extra = parse_kv(bracket or "", raw)

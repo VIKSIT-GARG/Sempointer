@@ -138,6 +138,9 @@ def system_class(kind: str):
     if kind == "sempointer":
         from sempointer.pipeline import SemPointerPipeline
         return SemPointerPipeline
+    if kind == "sempointer_v2":
+        from sempointer.v2_pipeline import SemPointerV2Pipeline
+        return SemPointerV2Pipeline
     if kind == "full":
         from baselines.full_context import FullContextBaseline
         return FullContextBaseline
@@ -159,7 +162,7 @@ def system_class(kind: str):
 def default_kwargs(kind: str, args) -> Dict[str, Any]:
     """Run-level defaults; filtered to what each constructor accepts, spec kwargs win."""
     common = {"block_size": args.block_size, "device": args.device, "seed": args.seed}
-    if kind == "sempointer":
+    if kind in ("sempointer", "sempointer_v2"):
         return {**common, "k": args.k, "m": args.m}
     if kind == "kvpress":
         return {"model_id": args.model, "dtype": args.dtype, "device": args.device,
@@ -185,7 +188,8 @@ def build_systems(args, tokenizer):
 OPTIONAL_ROW_FIELDS = ("selection_latency_ms", "ttft_ms", "n_hops", "expanded_ids", "kv_bytes",
                        "active_tokens_core", "n_selected", "completion_tokens",
                        "kv_encode_ms", "computed_tokens", "reused_tokens", "transfer_ms",
-                       "rope_mixed_frequencies")
+                       "rope_mixed_frequencies", "router_route", "router_coverage",
+                       "router_resolved_tokens")
 
 
 def score_example(metric: str, prediction: str, gold: List[str]) -> float:
