@@ -5,15 +5,17 @@ cd "$(dirname "$0")"
 PY="${SEMPTR_PYTHON:-$PWD/warden/bin/python}"
 [[ -x "$PY" ]] || { echo "Missing $PY" >&2; exit 1; }
 export HF_HUB_OFFLINE="${SEMPTR_OFFLINE:-1}" TRANSFORMERS_OFFLINE="${SEMPTR_OFFLINE:-1}"
+stage="${1:-smoke}"
+min_free_mib=5000
+if [[ "$stage" == ruler_holdout ]]; then min_free_mib=7000; fi
 free_mib="$(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits | head -n 1)"
 [[ "$free_mib" =~ ^[0-9]+$ ]] || { echo "Cannot read free GPU memory" >&2; exit 1; }
-if ((free_mib < 5500)); then
-    echo "Only ${free_mib} MiB GPU memory free; need at least 5500 MiB before V2 inference." >&2
+if ((free_mib < min_free_mib)); then
+    echo "Only ${free_mib} MiB GPU memory free; need at least ${min_free_mib} MiB for $stage." >&2
     echo "Check nvidia-smi and stop the idle Ollama model or other GPU jobs first." >&2
     exit 1
 fi
 
-stage="${1:-smoke}"
 common=(--model Qwen/Qwen2.5-3B-Instruct --dtype nf4 --device cuda
         --seed 42 --block-size 512 --k 16 --m 2 --resume)
 case "$stage" in
