@@ -78,6 +78,47 @@ def test_engine_records_first_generated_token_time_on_short_prompt():
     assert 0 <= result.ttft_ms <= result.latency_ms
 
 
+@pytest.mark.parametrize("prompt_tokens,max_chunk", [(5000, 4096), (12001, 2048)])
+def test_long_prefill_bounds_forward_chunk_size(prompt_tokens, max_chunk):
+    import torch
+    from engine.llm import LLMEngine
+
+    class Batch(dict):
+        def to(self, device):
+            return self
+
+    class Tokenizer:
+        pad_token_id = 0
+        eos_token_id = 1
+
+        def __call__(self, text, return_tensors):
+            return Batch(input_ids=torch.zeros((1, prompt_tokens), dtype=torch.long))
+
+        def decode(self, ids, skip_special_tokens):
+            return "done"
+
+    class Model:
+        device = torch.device("cpu")
+
+        def __init__(self):
+            self.chunks = []
+
+        def __call__(self, input_ids, **kwargs):
+            self.chunks.append(input_ids.shape[1])
+            return SimpleNamespace(past_key_values=None,
+                                   logits=torch.tensor([[[0.0, 1.0]]]))
+
+    engine = object.__new__(LLMEngine)
+    engine.model = Model()
+    engine.tokenizer = Tokenizer()
+    engine.device = "cpu"
+    engine.max_new_tokens = 1
+    result = engine.generate("prompt")
+    assert result.prompt_tokens == prompt_tokens
+    assert max(engine.model.chunks) <= max_chunk
+    assert sum(engine.model.chunks) == prompt_tokens
+
+
 def test_gold_string_block_hit_is_limited_to_identifiable_niah_evidence():
     from run_benchmark import gold_string_block_hit
 
@@ -127,6 +168,26 @@ def test_sempointer_variant_specs():
         parse_system_specs("sempointer,sempointer")  # duplicate names
     with pytest.raises(ValueError):
         parse_system_specs("nonsense")
+
+
+def test_none_pointer_type_remains_a_named_mode():
+    spec = parse_system_specs("sempointer[ptype=none]")[0]
+    assert spec.name == "sempointer__ptype-none"
+    assert spec.kwargs["ptype"] == "none"
+
+
+def test_resume_counts_distinct_outstanding_errors():
+    from bench_metrics import aggregate
+
+    rows = [
+        {"system": "full", "example_id": "a", "error": "OutOfMemoryError: first"},
+        {"system": "full", "example_id": "a", "error": "OutOfMemoryError: retry"},
+        {"system": "full", "example_id": "b", "error": "OutOfMemoryError: first"},
+        {"system": "full", "example_id": "b", "score": 1.0, "metric": "exact_match"},
+    ]
+    result = aggregate(rows, ["full"])["systems"]["full"]
+    assert result["n_scored"] == 1
+    assert result["n_errors"] == 1
 
 
 def test_unknown_kwargs_fail_loudly():

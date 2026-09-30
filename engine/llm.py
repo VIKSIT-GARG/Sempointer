@@ -27,6 +27,8 @@ DEFAULT_SMOKE_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
 DTYPE_CHOICES = ("bf16", "nf4")
 
 PREFILL_CHUNK = 4096  # max tokens per prefill forward (MLP transient cap)
+LONG_PREFILL_THRESHOLD = 12000
+LONG_PREFILL_CHUNK = 2048  # smaller activation peak for 16k full-context prompts
 
 
 @dataclass
@@ -148,9 +150,8 @@ class LLMEngine:
         """Greedy decoding. Peak-VRAM measurement is per-call (reset before, read after).
 
         Prompts longer than PREFILL_CHUNK tokens are prefilled in chunks with
-        an incremental KV cache: a single 16k-token forward needs a >1.2 GiB
-        MLP transient that does not fit an 8GB GPU next to weights+KV, while
-        8k chunks do. Decoding stays greedy; results are identical."""
+        an incremental KV cache. Above 12k tokens, 2k chunks lower the
+        temporary activation peak on the 8GB GPU. Decoding stays greedy."""
         max_new_tokens = max_new_tokens or self.max_new_tokens
         full_prompt = self.chat_prompt(system, prompt) if system is not None else prompt
         inputs = self.tokenizer(full_prompt, return_tensors="pt").to(self.model.device)
@@ -179,8 +180,9 @@ class LLMEngine:
             finish = out[0][-1].item()
             first_token_at = timer.first_token_at
         else:
+            chunk_size = LONG_PREFILL_CHUNK if n_prompt > LONG_PREFILL_THRESHOLD else PREFILL_CHUNK
             generated_ids, finish, first_token_at = self._chunked_prefill_generate(
-                inputs["input_ids"], max_new_tokens
+                inputs["input_ids"], max_new_tokens, chunk_size
             )
 
         if self.device == "cuda":
@@ -204,8 +206,9 @@ class LLMEngine:
             stop_reason=stop_reason,
         )
 
-    def _chunked_prefill_generate(self, input_ids: torch.Tensor, max_new_tokens: int):
-        """Prefills `input_ids` in PREFILL_CHUNK-token chunks into an
+    def _chunked_prefill_generate(self, input_ids: torch.Tensor, max_new_tokens: int,
+                                  chunk_size: int):
+        """Prefills `input_ids` in `chunk_size`-token chunks into an
         incremental cache, then greedy-decodes. No padding is involved, so
         attention_mask=None (implicit full-causal attention) is exact.
 
@@ -216,7 +219,7 @@ class LLMEngine:
         pos = 0
         logits = None
         while pos < seq_len:
-            chunk = input_ids[:, pos : pos + PREFILL_CHUNK]
+            chunk = input_ids[:, pos : pos + chunk_size]
             cache_position = torch.arange(
                 pos, pos + chunk.shape[1], device=input_ids.device
             )

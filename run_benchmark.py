@@ -36,9 +36,19 @@ import time
 from typing import Any, Dict, List
 
 import numpy as np
+import torch
 
 from engine.llm import LLMEngine
 from provenance import append_prediction, finalize_metrics, init_run_dir
+
+
+def release_shared_models(systems: Dict[str, Any], llm: LLMEngine) -> None:
+    """Release system-owned model references before loading KVPress weights."""
+    for system in systems.values():
+        cleanup = getattr(system, "cleanup", None)
+        if cleanup is not None:
+            cleanup()
+    llm.cleanup()
 
 
 def parse_args() -> argparse.Namespace:
@@ -325,7 +335,7 @@ def main() -> None:
                 except Exception:
                     continue
 
-    def run_system(sys_name: str, system, engine) -> None:
+    def run_system(sys_name: str, system, engine) -> bool:
         """Runs one system over all examples (skipping completed pairs)."""
         for ex in examples:
             if (sys_name, ex["id"]) in done:
@@ -369,11 +379,16 @@ def main() -> None:
                 append_prediction(out_dir, row)
                 print(f"  {sys_name:24s} {ex['id'][:28]:28s} score={score:.3f} "
                       f"tok={row['active_tokens']} lat={row['latency_ms']:.0f}ms")
-            except Exception as e:  # noqa: BLE001 — record failure, continue with other systems
+            except Exception as e:  # noqa: BLE001 — record failure; KVPress OOM stops this stage
                 row = {"system": sys_name, "example_id": ex["id"], "error": f"{type(e).__name__}: {e}",
                        "timestamp": time.time()}
                 append_prediction(out_dir, row)
                 print(f"  {sys_name:24s} {ex['id'][:28]:28s} ERROR: {e}")
+                if sys_name.startswith("kvpress_") and isinstance(e, torch.cuda.OutOfMemoryError):
+                    print("  KVPress CUDA OOM: stopping this stage after one failed example; "
+                          "re-run with --resume after addressing VRAM pressure.")
+                    return False
+        return True
 
     # Two-phase execution to fit 8GB: (1) shared-engine text systems with the
     # single model resident; (2) kvpress systems ONE AT A TIME after the
@@ -383,11 +398,13 @@ def main() -> None:
     for sys_name, system in shared.items():
         run_system(sys_name, system, llm)
     if presses:
-        llm.cleanup()
+        release_shared_models(shared, llm)
         for sys_name, system in presses.items():
-            run_system(sys_name, system, None)
+            completed = run_system(sys_name, system, None)
             if hasattr(system, "cleanup"):
                 system.cleanup()
+            if not completed:
+                break
 
     # aggregate
     with open(pred_path) as f:

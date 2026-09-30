@@ -2,8 +2,8 @@
 
 Only ``results/paper_*/{config,metrics,predictions}.json(l)`` are eligible.
 Historical ``final_*``, ``smoke_*`` and ``results_archive`` runs are excluded.
-The output is deliberately usable before the GPU suite: absent observations
-render as ``\\textbf{TBD}``; figures without measured points are omitted.
+Scored observations in partial runs remain eligible, with completeness and
+errors disclosed. Absent observations render as ``\\textbf{TBD}``.
 
 Run from anywhere::
 
@@ -113,6 +113,12 @@ class Run:
     def names(self) -> set[str]:
         return {sys for sys, _ in self.rows}
 
+    def expected(self) -> int:
+        return self.metrics["n_examples"]
+
+    def errors(self, name: str) -> int:
+        return self.metrics.get("systems", {}).get(name, {}).get("n_errors", 0)
+
 
 def load_runs(results: Path) -> tuple[dict[str, Run], list[str]]:
     runs: dict[str, Run] = {}
@@ -147,14 +153,21 @@ def load_runs(results: Path) -> tuple[dict[str, Run], list[str]]:
             incomplete = []
             for sys_name, summary in summaries.items():
                 actual = sum(key[0] == sys_name for key in latest)
-                if (summary.get("n_scored") != expected or actual != expected
-                        or summary.get("n_errors", 0) != 0):
-                    incomplete.append(f"{sys_name}: {actual}/{expected} scored, "
-                                      f"{summary.get('n_errors', '?')} errors")
-            if incomplete:
-                raise ValueError("incomplete stage (" + "; ".join(incomplete) + ")")
+                scored, errors = summary.get("n_scored"), summary.get("n_errors")
+                if (not isinstance(scored, int) or not isinstance(errors, int)
+                        or scored != actual or scored < 0 or errors < 0
+                        or scored + errors > expected):
+                    raise ValueError(f"inconsistent summary for {sys_name}: "
+                                     f"{actual} raw scored, {scored} reported scored, "
+                                     f"{errors} reported errors; expected {expected}")
+                if scored != expected or errors:
+                    incomplete.append(f"{sys_name}: {scored}/{expected} scored, {errors} errors")
+            unknown = {sys_name for sys_name, _ in latest} - set(summaries)
+            if unknown:
+                raise ValueError(f"scored systems missing summaries: {sorted(unknown)}")
             runs[path.name] = Run(path, config, metrics, latest)
-            notes.append(f"{path.name}: {len(latest)} latest scored predictions")
+            notes.append(f"{path.name}: {len(latest)} latest scored predictions" +
+                         ("; partial (" + "; ".join(incomplete) + ")" if incomplete else "; complete"))
         except (OSError, ValueError, KeyError, json.JSONDecodeError) as exc:
             notes.append(f"{path.name}: excluded: {exc}")
     return runs, notes
@@ -173,6 +186,29 @@ def system_rows(run: Run | None, name: str) -> list[dict]:
     if name in ("rag_m1", "bm25_m1", "hybrid_m1") and name not in run.names():
         names = {name.split("_m")[0]}
     return [r for (sys, _), r in run.rows.items() if sys in names]
+
+
+def sample_count(run: Run | None, name: str) -> str:
+    if run is None:
+        return TBD
+    n = len(system_rows(run, name))
+    errors = run.errors(name)
+    return f"{n}/{run.expected()}" + (f" (err {errors})" if errors else "")
+
+
+def observed_score(run: Run | None, name: str, rows: list[dict] | None = None) -> str:
+    rs = system_rows(run, name) if rows is None else rows
+    value = fmt(avg(rs, "score"))
+    if value != TBD and run is not None and len(rs) < run.expected():
+        return value + r"\textsuperscript{*}"
+    return value
+
+
+def common_rows(run: Run | None, names: tuple[str, ...]) -> dict[str, list[dict]]:
+    """Return each system's rows restricted to the same example IDs."""
+    by_name = {name: {r["example_id"]: r for r in system_rows(run, name)} for name in names}
+    ids = set.intersection(*(set(rows) for rows in by_name.values())) if by_name else set()
+    return {name: [by_name[name][item] for item in sorted(ids)] for name in names}
 
 
 def score(run: Run | None, name: str) -> float | None:
@@ -241,13 +277,16 @@ def write_tables(runs: dict[str, Run], out: Path) -> None:
                 label += " ($m=4$)"
             elif name.endswith("_m1"):
                 label += " ($m=1$)"
-            rows.append([BENCH_LABELS[bench], label, str(len(rs)) if rs else TBD,
-                         fmt(avg(rs, "score")), fmt(avg(rs, "active_tokens"), "int"),
+            rows.append([BENCH_LABELS[bench], label, sample_count(run, name),
+                         observed_score(run, name), fmt(avg(rs, "active_tokens"), "int"),
                          fmt(avg(rs, "latency_ms"), "int")])
     # Two textual columns require an explicit layout.
     _table_custom("tab_main.tex", "Main benchmark results. Score is the task metric (\\%). "
-                  "Latency is per answer, and counts omit errored predictions.", "tab:main",
-                  "llrrrr", ["Benchmark", "System", "$n$", "Score", "Tokens", "Latency (ms)"], rows, out)
+                  "Samples show scored/expected and outstanding errors. An asterisk marks a "
+                  "score from fewer than expected examples; missing examples are not zeros. "
+                  "Latency is per scored answer.", "tab:main",
+                  "llrrrr", ["Benchmark", "System", "$n/N$ (errors)", "Score", "Tokens", "Latency (ms)"], rows, out,
+                  compact=True)
 
     ruler = main_run(runs, "ruler")
     lengths = sorted({length_of(r) for r in ruler.rows.values() if length_of(r) is not None}) if ruler else []
@@ -257,37 +296,54 @@ def write_tables(runs: dict[str, Run], out: Path) -> None:
         for task in tasks:
             for length in lengths:
                 cells = [latex(task), str(length)]
+                bucket_ids = {r["example_id"] for r in ruler.rows.values()
+                              if r.get("task") == task and length_of(r) == length}
                 for name in ("sempointer", "full", "rag_m4", "hybrid_m4"):
-                    cells.append(fmt(avg(subset(ruler, name, lambda r, t=task, n=length:
-                        r.get("task") == t and length_of(r) == n), "score")))
+                    selected = subset(ruler, name, lambda r, t=task, n=length:
+                                      r.get("task") == t and length_of(r) == n)
+                    cell = fmt(avg(selected, "score"))
+                    if cell != TBD and len(selected) < len(bucket_ids):
+                        cell += rf"\textsuperscript{{*}} ({len(selected)}/{len(bucket_ids)})"
+                    cells.append(cell)
                 rows.append(cells)
-    _table_custom("tab_ruler_breakdown.tex", "RULER score (\\%) by task and requested context length.",
+    _table_custom("tab_ruler_breakdown.tex", "RULER score (\\%) by task and requested context length. "
+                  "An asterisk marks a partial cell; its parentheses show scored/scheduled "
+                  "examples. See the main table and provenance report for error counts.",
                   "tab:ruler-breakdown", "llrrrr", ["Task", "Tokens", "SemPointer", "Full", "RAG-4", "Hybrid-4"], rows, out)
 
     kv = main_run(runs, "kv_compare")
     kv_names = ["sempointer", "sempointer__substrate-kv", "full",
                 "kvpress_snapkv_0.3", "kvpress_tova_0.3", "kvpress_knorm_0.3"]
-    rows = [[latex(name), fmt(score(kv, name)), fmt(field(kv, name, "active_tokens"), "int"),
+    rows = [[latex(name), sample_count(kv, name), observed_score(kv, name),
+             fmt(field(kv, name, "active_tokens"), "int"),
              fmt(field(kv, name, "latency_ms"), "int"), fmt(field(kv, name, "peak_vram_mb"), "int")]
-            for name in kv_names] if kv else [[TBD] * 5]
-    table("tab_kvcompare.tex", "KV comparison on the same examples. Peak VRAM is the recorded per-answer peak.",
-          "tab:kvcompare", ["System", "Score (\\%)", "Tokens", "Latency (ms)", "VRAM (MiB)"], rows, out)
+            for name in kv_names] if kv else [[TBD] * 6]
+    _table_custom("tab_kvcompare.tex", "KV comparison on scheduled examples. Samples show "
+                  "scored/expected and outstanding errors; a score with no scored examples is TBD. "
+                  "Peak VRAM is the recorded per-answer peak.", "tab:kvcompare", "llrrrr",
+                  ["System", "$n/N$ (errors)", "Score (\\%)", "Tokens", "Latency (ms)", "VRAM (MiB)"],
+                  rows, out, compact=True)
 
     abl = runs.get("paper_ablation")
     for filename, (heading, variants) in ABLATIONS.items():
-        rows = [[latex(label), str(len(rs)) if (rs := system_rows(abl, name)) else TBD,
-                 fmt(avg(rs, "score")), fmt(avg(rs, "active_tokens"), "int")]
+        rows = [[latex(label), sample_count(abl, name), observed_score(abl, name),
+                 fmt(avg((rs := system_rows(abl, name)), "active_tokens"), "int")]
                 for label, name in variants] if abl else [[TBD] * 4]
-        table(filename, f"{heading} ablation on RULER. Scores are percentages.",
+        table(filename, f"{heading} ablation on RULER. Scores are percentages; "
+              "samples show scored/expected and outstanding errors. An asterisk marks a partial score.",
               filename.removesuffix(".tex").replace("tab_", "tab:").replace("_", "-"),
-              [heading, "$n$", "Score (\\%)", "Tokens"], rows, out)
+              [heading, "$n/N$ (errors)", "Score (\\%)", "Tokens"], rows, out)
 
-    sub_rows = [[label, fmt(score(kv, name)), fmt(field(kv, name, "ttft_ms"), "int"),
+    sub_rows = [[label, sample_count(kv, name), observed_score(kv, name),
+                 fmt(field(kv, name, "ttft_ms"), "int"),
                  fmt(field(kv, name, "peak_vram_mb"), "int")]
                 for label, name in (("$M_{\\mathrm{text}}$", "sempointer"),
-                                    ("$M_{\\mathrm{kv}}$", "sempointer__substrate-kv"))] if kv else [[TBD] * 4]
-    table("tab_substrate.tex", "Substrate comparison; TTFT and VRAM are measured per answer.",
-          "tab:substrate", ["Substrate", "Score (\\%)", "TTFT (ms)", "VRAM (MiB)"], sub_rows, out)
+                                    ("$M_{\\mathrm{kv}}$", "sempointer__substrate-kv"))] if kv else [[TBD] * 5]
+    _table_custom("tab_substrate.tex", "Substrate comparison; TTFT and VRAM are measured "
+                  "per scored answer. Samples show scored/expected and outstanding errors.",
+                  "tab:substrate", "llrrr",
+                  ["Substrate", "$n/N$ (errors)", "Score (\\%)", "TTFT (ms)", "VRAM (MiB)"],
+                  sub_rows, out)
 
     efficiency = runs.get("paper_efficiency")
     eff_rows = []
@@ -304,11 +360,12 @@ def write_tables(runs: dict[str, Run], out: Path) -> None:
                              "Reused tok.", "TTFT (ms)"], eff_rows, out)
 
     model2 = runs.get("paper_model2")
-    model_rows = [[latex(name), fmt(score(model2, name)), str(len(system_rows(model2, name)))
-                   if system_rows(model2, name) else TBD] for name in ("sempointer", "full", "hybrid_m4")] \
+    model_rows = [[latex(name), observed_score(model2, name), sample_count(model2, name)]
+                  for name in ("sempointer", "full", "hybrid_m4")] \
                  if model2 else [[TBD] * 3]
-    table("tab_model2.tex", "Second-model replication; rows appear only with a completed paper run.",
-          "tab:model2", ["System", "Score (\\%)", "$n$"], model_rows, out)
+    table("tab_model2.tex", "Second-model replication; samples show scored/expected and "
+          "outstanding errors. An asterisk marks a partial score.",
+          "tab:model2", ["System", "Score (\\%)", "$n/N$ (errors)"], model_rows, out)
 
     recall_rows = []
     for name in (("sempointer", "rag_m1", "rag_m4", "hybrid_m4", "bm25_m4") if ruler else ()):
@@ -512,8 +569,9 @@ def write_figures(runs: dict[str, Run], out: Path) -> list[str]:
         notes.append(f"{name}: measured points")
     ruler = main_run(runs, "ruler")
     series = []
+    paired_ruler = common_rows(ruler, ("sempointer", "full", "rag_m4", "hybrid_m4"))
     for name in ("sempointer", "full", "rag_m4", "hybrid_m4"):
-        rs = system_rows(ruler, name)
+        rs = paired_ruler[name]
         lengths = sorted({length_of(r) for r in rs if length_of(r) is not None})
         series.append((name, [(n, v * 100) for n in lengths if (v := avg(
             [r for r in rs if length_of(r) == n], "score")) is not None]))
@@ -568,17 +626,19 @@ def main() -> None:
     args.output.mkdir(parents=True, exist_ok=True)
     runs, notes = load_runs(args.results)
     if not runs:
-        notes.append("No complete paper_* runs were eligible.")
+        notes.append("No valid paper_* runs were eligible.")
     write_macros(runs, args.output)
     write_tables(runs, args.output)
     notes += write_figures(runs, args.output)
     (args.output / "REPORT.md").write_text(
         "# Paper asset provenance\n\nOnly `results/paper_*` was eligible. "
-        "Other historical results were excluded. A TBD means a selected run is "
-        "missing or incomplete, or its field was not measured. A stage is excluded "
-        "unless every system has the expected number of scored examples and zero "
-        "outstanding errors. Scores average the latest scored row for each system "
-        "and example. Counts appear beside scores.\n\n" +
+        "Other historical results were excluded. Valid scored observations from "
+        "partial stages are included. TBD means a run, system score, or field was "
+        "not measured; it never means zero. Scores average the latest scored row "
+        "for each system and example. Tables show scored/expected and outstanding "
+        "error counts; an asterisk marks a partial score. System means can therefore "
+        "use different example sets. Paired tests and RULER length plots use only "
+        "common scored example IDs. Invalid or inconsistent runs are excluded.\n\n" +
         "\n".join(f"- {line}" for line in notes) + "\n")
     print("\n".join(notes) if notes else "No paper_* runs found; wrote TBD assets.")
 

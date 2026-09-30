@@ -294,6 +294,12 @@ class SemPointerPipeline:
         })
         return out
 
+    def cleanup(self) -> None:
+        """Drop cached KV blocks and their reference to the shared model."""
+        self._kv = None
+        self._kv_context_id = None
+        self._kv_encode = {}
+
     def info(self) -> Dict[str, Any]:
         return {
             "system": "sempointer",

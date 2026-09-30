@@ -16,7 +16,8 @@ Grammar (comma-separated list; commas inside [...] do not split):
     kvpress:<press>:<ratio>
 
 Inside brackets ';' or ',' separate key=val pairs. Values are coerced
-int -> float -> bool (true/false) -> None (none/null) -> str.
+int -> float -> bool (true/false) -> None (none/null) -> str. The
+``ptype=none`` pointer mode is kept as the literal string ``"none"``.
 
 Unknown constructor kwargs raise ValueError (validate_kwargs), so specs keep
 working as SemPointerPipeline grows options and typos fail loudly.
@@ -91,7 +92,9 @@ def parse_kv(body: str, raw: str) -> Dict[str, Any]:
             raise ValueError(f"system spec {raw!r}: invalid kwarg name {k!r}")
         if k in kw:
             raise ValueError(f"system spec {raw!r}: duplicate kwarg {k!r}")
-        kw[k] = coerce(v)
+        # ``none`` is a real pointer-generator mode. Preserve that enum value
+        # while retaining the usual null coercion for other constructor args.
+        kw[k] = "none" if k == "ptype" and v.strip().lower() == "none" else coerce(v)
     return kw
 
 

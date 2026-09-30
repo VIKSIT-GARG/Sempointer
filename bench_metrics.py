@@ -119,8 +119,12 @@ def aggregate(rows: List[Dict[str, Any]], system_names: Sequence[str], seed: int
     latest: Dict[str, Dict[str, Dict]] = {}
     for name in system_names:
         latest[name] = latest_scored(rows, name)
-        errs = [r for r in rows if r.get("system") == name and "error" in r
-                and (name, r["example_id"]) not in scored_pairs]
+        # Resume appends attempts. Count each still-failing example once, using
+        # its latest error; a later score clears all earlier errors for it.
+        latest_errors = {r["example_id"]: r for r in rows
+                         if r.get("system") == name and "error" in r
+                         and (name, r["example_id"]) not in scored_pairs}
+        errs = list(latest_errors.values())
         srows = list(latest[name].values())
         if not srows:
             systems[name] = {"n_scored": 0, "n_errors": len(errs),

@@ -22,6 +22,8 @@ Stages (default order): paper_ruler paper_ablation paper_kv paper_longbench pape
           then prints the commands. It does not require CUDA or run inference.
 --max-hours sets a wall-clock cap for this invocation (default: 10).
 Re-run the same command to resume scored examples in fixed results/paper_* dirs.
+Complete stages are skipped. The first failed or incomplete stage stops the
+invocation; pass one or more stage names to target remaining work.
 EOF
 }
 
@@ -100,6 +102,11 @@ if any(spec.kind == "kvpress" for spec in specs):
     import kvpress  # noqa: F401
 for spec in specs:
     validate_kwargs(system_class(spec.kind), spec.kwargs, spec.raw)
+    if spec.kind == "sempointer":
+        from sempointer.pointers import POINTER_KINDS
+        ptype = spec.kwargs.get("ptype", "keyword")
+        if not isinstance(ptype, str) or ptype not in POINTER_KINDS:
+            raise ValueError(f"{spec.raw!r}: invalid pointer mode {ptype!r}; expected {POINTER_KINDS}")
 args.limit = 1
 args.context_lengths = str(min(int(x) for x in args.context_lengths.split(",")))
 examples = build_examples(args)
@@ -120,6 +127,43 @@ if os.path.isfile(path):
     if changed:
         raise RuntimeError(f"{path} has incompatible settings: {', '.join(changed)}")
 print(f"  {args.run_name}: {len(specs)} system specs valid; {len(examples)} sample examples accessible")
+PYCODE
+}
+
+# metrics.json is written after predictions.jsonl. Only exact expected system
+# names with every example scored and no errors count as a completed stage.
+stage_complete() {
+    "$PY" - "$1" <<'PYCODE'
+import json
+import sys
+from pathlib import Path
+from system_specs import parse_system_specs
+
+stage = sys.argv[1]
+run_dir = Path("results") / stage
+try:
+    config = json.loads((run_dir / "config.json").read_text(encoding="utf-8"))
+    metrics = json.loads((run_dir / "metrics.json").read_text(encoding="utf-8"))
+    rag_m = [int(x) for x in str(config["rag_m"]).split(",") if x.strip()]
+    expected = {s.name for s in parse_system_specs(
+        config["systems"], rag_m=rag_m, token_budget=config.get("token_budget"))}
+    systems = metrics["systems"]
+    n = metrics["n_examples"]
+    complete = (n > 0 and set(systems) == expected and
+                all(v.get("n_scored") == n and v.get("n_errors") == 0
+                    for v in systems.values()))
+except (OSError, ValueError, KeyError, TypeError):
+    complete = False
+if not complete:
+    if "systems" in locals() and "n" in locals():
+        incomplete = {name: (value.get("n_scored"), value.get("n_errors"))
+                      for name, value in systems.items()
+                      if value.get("n_scored") != n or value.get("n_errors") != 0}
+        print(f"INCOMPLETE {stage}: {incomplete}")
+    else:
+        print(f"INCOMPLETE {stage}: metrics missing or invalid")
+    sys.exit(1)
+print(f"DONE {stage}: {n} examples per system")
 PYCODE
 }
 
@@ -161,12 +205,16 @@ PYCODE
 
 mkdir -p logs results
 LOG="logs/paper_suite_$(date +%Y%m%d_%H%M%S).log"
+echo "Log: $SCRIPT_DIR/$LOG" | tee -a "$LOG"
 START=$(date +%s)
 DEADLINE=$((START + MAX_HOURS * 3600))
-FAILED=()
 TIMED_OUT=0
 for stage in "${STAGES[@]}"; do
     stage_args "$stage"
+    if stage_complete "$stage" > /dev/null; then
+        echo "[$(date +%T)] SKIP $stage (already complete)." | tee -a "$LOG"
+        continue
+    fi
     remaining=$((DEADLINE - $(date +%s)))
     if ((remaining <= 0)); then TIMED_OUT=1; break; fi
     echo "[$(date +%T)] START $stage (remaining ${remaining}s)" | tee -a "$LOG"
@@ -178,33 +226,18 @@ for stage in "${STAGES[@]}"; do
         break
     fi
     if ((rc != 0)); then
-        echo "[$(date +%T)] FAILED $stage (exit $rc); continuing." | tee -a "$LOG"
-        FAILED+=("$stage")
-        continue
+        echo "[$(date +%T)] FAILED $stage (exit $rc); stopping. Re-run $stage after diagnosis." | tee -a "$LOG"
+        exit "$rc"
     fi
-    "$PY" - "$stage" <<'PYCODE' | tee -a "$LOG"
-import json
-import sys
-stage = sys.argv[1]
-with open(f"results/{stage}/metrics.json", encoding="utf-8") as f:
-    metrics = json.load(f)
-incomplete = {name: (value.get("n_scored", 0), value.get("n_errors", 0))
-              for name, value in metrics["systems"].items()
-              if value.get("n_scored", 0) != metrics["n_examples"] or value.get("n_errors", 0)}
-if incomplete:
-    print(f"INCOMPLETE {stage}: {incomplete}; re-run to retry errors")
-    sys.exit(1)
-print(f"DONE {stage}: {metrics['n_examples']} examples per system")
-PYCODE
+    stage_complete "$stage" | tee -a "$LOG"
     check_rc=${PIPESTATUS[0]}
-    ((check_rc == 0)) || FAILED+=("$stage")
+    if ((check_rc != 0)); then
+        echo "[$(date +%T)] INCOMPLETE $stage; stopping. Re-run $stage after diagnosis." | tee -a "$LOG"
+        exit 1
+    fi
 done
 
 echo "Results: $SCRIPT_DIR/results/paper_*/metrics.json" | tee -a "$LOG"
 echo "Log: $SCRIPT_DIR/$LOG" | tee -a "$LOG"
 if ((TIMED_OUT)); then exit 124; fi
-if ((${#FAILED[@]})); then
-    echo "Incomplete stages: ${FAILED[*]} (re-run those names to resume)" | tee -a "$LOG"
-    exit 1
-fi
 echo 'All requested stages complete.' | tee -a "$LOG"

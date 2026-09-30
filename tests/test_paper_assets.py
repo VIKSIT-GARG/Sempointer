@@ -66,7 +66,7 @@ def test_assets_exclude_legacy_retry_errors_and_do_not_invent_missing_data(tmp_p
     assert paired_stats(runs["paper_ruler"], "sempointer", "full")["n"] == 1
 
 
-def test_incomplete_stage_is_excluded_with_reason(tmp_path):
+def test_partial_stage_preserves_scored_rows_and_marks_missing_examples(tmp_path):
     results = tmp_path / "results"
     results.mkdir()
     _write_run(results, "paper_ruler", [
@@ -76,11 +76,59 @@ def test_incomplete_stage_is_excluded_with_reason(tmp_path):
     metric_path = results / "paper_ruler" / "metrics.json"
     metrics = json.loads(metric_path.read_text())
     metrics["n_examples"] = 2
+    metrics["systems"]["full"]["n_errors"] = 1
     metric_path.write_text(json.dumps(metrics))
     runs, notes = load_runs(results)
-    assert not runs
-    assert "incomplete stage" in notes[0]
+    assert "paper_ruler" in runs
+    assert "partial" in notes[0]
     assert "1/2 scored" in notes[0]
+    out = tmp_path / "generated"
+    out.mkdir()
+    write_tables(runs, out)
+    main = (out / "tab_main.tex").read_text()
+    assert "1/2 (err 1)" in main
+    assert r"100.0\textsuperscript{*}" in main
+    assert paired_stats(runs["paper_ruler"], "sempointer", "full")["n"] == 1
+
+
+def test_zero_scored_system_has_count_but_no_numeric_claim(tmp_path):
+    results = tmp_path / "results"
+    results.mkdir()
+    _write_run(results, "paper_kv", [
+        {"system": "sempointer", "example_id": "x", "score": 0.5},
+        {"system": "full", "example_id": "x", "score": 1.0},
+    ], benchmark="kv_compare")
+    metric_path = results / "paper_kv" / "metrics.json"
+    metrics = json.loads(metric_path.read_text())
+    metrics["systems"]["kvpress_snapkv_0.3"] = {"n_scored": 0, "n_errors": 1}
+    metric_path.write_text(json.dumps(metrics))
+    runs, notes = load_runs(results)
+    assert "paper_kv" in runs
+    assert "kvpress_snapkv_0.3: 0/1 scored, 1 errors" in notes[0]
+    out = tmp_path / "generated"
+    out.mkdir()
+    write_tables(runs, out)
+    kv = (out / "tab_kvcompare.tex").read_text()
+    assert r"kvpress\_snapkv\_0.3 & 0/1 (err 1) & \textbf{TBD}" in kv
+
+
+def test_paired_stats_only_use_shared_scored_ids(tmp_path):
+    results = tmp_path / "results"
+    results.mkdir()
+    _write_run(results, "paper_ruler", [
+        {"system": "sempointer", "example_id": "x", "score": 0.0},
+        {"system": "sempointer", "example_id": "y", "score": 1.0},
+        {"system": "full", "example_id": "x", "score": 1.0},
+        {"system": "full", "example_id": "y", "error": "OOM"},
+    ])
+    metric_path = results / "paper_ruler" / "metrics.json"
+    metrics = json.loads(metric_path.read_text())
+    metrics["systems"]["full"]["n_errors"] = 1
+    metric_path.write_text(json.dumps(metrics))
+    runs, _ = load_runs(results)
+    paired = paired_stats(runs["paper_ruler"], "sempointer", "full")
+    assert paired["n"] == 1
+    assert paired["delta"] == -100.0
 
 
 def test_complete_longbench_expands_to_scheduled_system_rows(tmp_path):

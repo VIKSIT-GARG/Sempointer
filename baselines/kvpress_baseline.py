@@ -127,11 +127,15 @@ class KVPressBaseline:
                 bnb_4bit_compute_dtype=torch.bfloat16,
                 bnb_4bit_use_double_quant=True,
             )
+            if self.device == "cuda":
+                # bitsandbytes quantizes during device-mapped loading. A later
+                # .to() moves full-precision weights and can exhaust 8 GB VRAM.
+                load_kwargs["device_map"] = {"": self.device}
         else:
             load_kwargs["torch_dtype"] = torch.bfloat16
 
         self.model = AutoModelForCausalLM.from_pretrained(self.model_id, **load_kwargs)
-        if self.device == "cuda":
+        if self.device == "cuda" and self.dtype != "nf4":
             self.model = self.model.to(self.device)
         self.model.eval()
         torch.manual_seed(self.seed)
