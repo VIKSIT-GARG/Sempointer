@@ -47,9 +47,16 @@ class PromptBuilder:
             pointer_strings = []
             for mid in unselected_ids:
                 p_ids = registry.get_pointer_token_ids(mid)
+                if not p_ids:
+                    # k=0 (no pointer strings): skip empty addresses so the
+                    # section vanishes and the prompt is a pure-RAG control.
+                    continue
                 decoded_p = self.tokenizer.decode(p_ids, skip_special_tokens=True).strip()
+                if not decoded_p:
+                    continue
                 pointer_strings.append(f"[PTR_{mid}: {decoded_p}]")
-            sections.append("Memory Registry Pointers:\n" + " ".join(pointer_strings))
+            if pointer_strings:
+                sections.append("Memory Registry Pointers:\n" + " ".join(pointer_strings))
 
         # Resolved memory blocks
         resolved_texts = resolver.resolve(selected_ids, registry)

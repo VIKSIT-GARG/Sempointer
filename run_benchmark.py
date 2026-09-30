@@ -56,6 +56,12 @@ def parse_args() -> argparse.Namespace:
                    help="max examples per task/conversation (None = all)")
     p.add_argument("--max-new-tokens", type=int, default=64)
     p.add_argument("--k", type=int, default=8, help="SemPointer pointer length")
+    p.add_argument("--k-sweep", default=None,
+                   help="additive k-ablation: comma list of pointer lengths to run "
+                        "sequentially on the same examples, e.g. '0,8,32' "
+                        "(k=0 = no pointer strings, pure RAG control). Each value "
+                        "re-runs with --k <v> and run-name suffixed _k<v>. "
+                        "--k is ignored when set.")
     p.add_argument("--m", type=int, default=1, help="SemPointer resolved blocks")
     p.add_argument("--rag-m", type=int, default=1, help="blocks retrieved by rag/bm25")
     p.add_argument("--block-size", type=int, default=512)
@@ -134,6 +140,11 @@ def build_systems(args, tokenizer):
             systems["address_rag"] = AddressRAGBaseline(
                 tokenizer=tokenizer, k=args.k, m=args.rag_m,
                 block_size=args.block_size, seed=args.seed, device=args.device)
+        elif spec == "scrambled_rag":
+            from baselines.scrambled_rag import ScrambledRAGBaseline
+            systems["scrambled_rag"] = ScrambledRAGBaseline(
+                tokenizer=tokenizer, k=args.k, m=args.rag_m,
+                block_size=args.block_size, seed=args.seed, device=args.device)
         elif spec == "agentic_pointer":
             from baselines.agentic_pointer import AgenticPointerBaseline
             systems["agentic_pointer"] = AgenticPointerBaseline(
@@ -156,6 +167,33 @@ def build_systems(args, tokenizer):
             from baselines.session_summary import SessionSummaryBaseline
             systems["session_summary"] = SessionSummaryBaseline(
                 tokenizer=tokenizer, block_size=args.block_size)
+        elif spec == "no_context":
+            # B5 parametric-knowledge floor (baselines/no_context.py intent):
+            # shared-engine adapter — context intentionally ignored, no model load.
+            class _NoContextSystem:
+                def __init__(self, tokenizer):
+                    self.tokenizer = tokenizer
+                    self._ready = False
+                def ingest(self, context: str) -> None:
+                    self._ready = True
+                def answer(self, query: str, llm) -> Dict[str, Any]:
+                    if not self._ready:
+                        raise RuntimeError("no_context.ingest() must be called before answer()")
+                    prompt = f"Question: {query.strip()}\nAnswer:"
+                    gen = llm.generate(prompt)
+                    return {
+                        "answer": gen.text, "prompt": gen.prompt,
+                        "active_tokens": gen.prompt_tokens, "selected_ids": [],
+                        "selection_scores": None, "selection_latency_ms": 0.0,
+                        "generation_latency_ms": gen.latency_ms,
+                        "completion_tokens": gen.completion_tokens,
+                        "peak_vram_mb": gen.peak_vram_mb, "n_blocks": 0,
+                        "stop_reason": gen.stop_reason,
+                        "extra": {"system": "no_context", "retrieval": "none (parametric only)"},
+                    }
+                def info(self) -> Dict[str, Any]:
+                    return {"system": "no_context"}
+            systems["no_context"] = _NoContextSystem(tokenizer)
         elif spec.startswith("kvpress:"):
             from baselines.kvpress_baseline import KVPressBaseline
             parts = spec.split(":")
@@ -240,6 +278,30 @@ def main() -> None:
     if args.dry_run:
         # validate before anything else — including the `all` dispatch
         dry_run(args)
+        return
+
+    if args.k_sweep:
+        # Additive k-ablation: same examples, one sequential run per k value.
+        # Sub-process per value so each run keeps full provenance (own run dir).
+        kvals = [int(x) for x in args.k_sweep.split(",") if x.strip() != ""]
+        base = args.run_name or f"{args.benchmark}_ksweep_{time.strftime('%Y%m%d_%H%M%S')}"
+        for kval in kvals:
+            rc = os.system(
+                f"{sys.executable} {__file__} --benchmark {args.benchmark} "
+                f"--systems {args.systems} --model {args.model} --dtype {args.dtype} "
+                f"--device {args.device} --seed {args.seed} "
+                + (f"--limit {args.limit} " if args.limit else "")
+                + f"--context-lengths {args.context_lengths} --ruler-tasks {args.ruler_tasks} "
+                f"--longbench-tasks {args.longbench_tasks} "
+                f"--locomo-conversations {args.locomo_conversations} "
+                + (f"--locomo-categories {args.locomo_categories} " if args.locomo_categories else "")
+                + f"--k {kval} --m {args.m} --rag-m {args.rag_m} "
+                f"--block-size {args.block_size} --max-new-tokens {args.max_new_tokens} "
+                + ("--resume " if args.resume else "")
+                + f"--run-name {base}_k{kval}"
+            )
+            if rc != 0:
+                sys.exit(rc)
         return
 
     if args.benchmark == "all":

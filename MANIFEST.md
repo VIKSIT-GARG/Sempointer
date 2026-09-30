@@ -19,8 +19,8 @@ All paths relative to `experiments/`. Re-verify any entry with
 
 Each `results/final_*/` dir additionally holds `environment.json` and
 `predictions.jsonl` (per-(system, example) raw records; failures recorded as
-error rows, never hidden). Current HEAD pin: `4e212efb33dbb5e8903418235680a7da3be522ff`
-(`experiments/`, branch `paper-rewrite`). Note: the four `config.json` files were
+error rows, never hidden). Current HEAD pin: `787825aa457dc22d1b9adac14336bd19f39945d8` (short `787825a`)
+(`experiments/`, branch `main`). Note: the four `config.json` files were
 written during an earlier run and still embed the snapshot
 `"git_commit": "3f314f8d3016e736b7e1973fff9547b703b37f55"`; the manifest pin above
 supersedes them.
@@ -45,6 +45,29 @@ Rerunnable CPU-only. `results/envcheck/` is a 1-example environment check;
 `results/smoke_{ruler,longbench,locomo,kvpress,3b_nf4}/` and `results/_dryrun/`
 are single-task smoke/validation runs — none are benchmark evidence and none are
 covered by the checksums above.
+
+Re-verified 2026-09-30 by P8 (CPU-only, `sha256sum`): all 8 pilot hashes above
+unchanged (pilot_address, pilot_routing_v2, pilot_multihop, pilot_multihop_v2
+metrics.json + config.json).
+
+## 1c. New-baseline provenance (P8 polish, CPU-only, no inference executed)
+
+- `address_rag` — present in `results/pilot_address/metrics.json` systems
+  (`address_rag,rag,sempointer`, n=30); impl `baselines/address_rag.py`;
+  wired in `run_benchmark.py:132-134`; config `git_commit`
+  `1c95aeeb8f93ce86b52d0934f990d817eb11ab2c`.
+- `agentic_pointer_v2` — present in `results/pilot_routing_v2/metrics.json`
+  systems (`agentic_pointer_v2,agentic_pointer,sempointer,rag`, n=30); impl
+  `baselines/agentic_pointer_v2.py`; wired in `run_benchmark.py:141-143`;
+  config `git_commit` `1c95aeeb8f93ce86b52d0934f990d817eb11ab2c`.
+- `scrambled_rag` — code present (`baselines/scrambled_rag.py`) but NO pilot
+  results yet (absent from all `results/pilot_*/metrics.json` systems keys).
+- Git status at P8 record time: `M MANIFEST.md, M OVERNIGHT_QUEUE.md,
+  M paper/sempointer_ieee.pdf, M run_benchmark.py,
+  M sempointer/prompt_builder.py, ?? baselines/scrambled_rag.py,
+  ?? paper/figure_architecture.pdf` (other workers' in-flight edits; P8
+  touched only `MANIFEST.md`); branch `main`, HEAD `787825a` (full
+  `787825aa457dc22d1b9adac14336bd19f39945d8`).
 
 ## 2. Derived statistics — provenance (generator scripts + seed)
 
@@ -92,9 +115,9 @@ RUNNING_EXPERIMENTS.md §3.
 ## 5. Git placeholder
 
 - Repo root `/home/viksit/Projects/token-opencode` is **not** a git repository.
-- Nested repo `experiments/` — branch: `paper-rewrite` — HEAD:
-  `4e212efb33dbb5e8903418235680a7da3be522ff`
-  (`11-page swarm: theory trims … title reframe, structural softened`).
+- Nested repo `experiments/` — branch: `main` — HEAD:
+  `787825aa457dc22d1b9adac14336bd19f39945d8` (short `787825a`)
+  (`14-agent wave: arch/substrate/cost/boundary honesty … overnight queue`).
 - The legacy-tree move is **committed**, not pending: `archive/legacy_analysis/`,
   `archive/legacy_data/`, `archive/legacy_runners/` are tracked and
   `git -C experiments status --short` is clean (the only working-tree edits at
