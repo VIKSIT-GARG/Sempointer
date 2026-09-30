@@ -3,7 +3,13 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-Measured on Qwen2.5-3B-NF4 (seed~42) across RULER, LongBench, and LoCoMo, SemPointer exchanges 10--15$\times$ fewer active tokens for lower quality than full context (RULER $-0.37$, LongBench $-0.033$, LoCoMo $-0.012$, the last not significant after Bonferroni correction), while matching dense RAG quality at 1.4--1.7$\times$ the token cost.
+Measured on Qwen2.5-3B-NF4 (seed 42) across RULER, LongBench, and LoCoMo, SemPointer exchanges 10--15$\times$ fewer active tokens for lower quality than full context while matching dense RAG quality at 1.4--1.7$\times$ the token cost; all paired deltas, 95\% CIs, and paired tests are in \S\ref{sec:honest-claims} and Table~N1, not restated here. Latency/VRAM means are rig-specific with no CIs (Table~N3).
 The failure taxonomy (Table~N5) shows selection misses dominate on RULER and unlocalizable answers dominate on LoCoMo, and the identical selection outcomes of the SemPointer and RAG arms leave the pointer strings with no measured quality contribution in these runs.
 The mechanism verdict is therefore narrow: dense per-query routing over a text substrate works as an assembly; the multi-hop pilot (Table~N6) returns two clean negatives, LLM-routing-from-index (twice, including a redesigned router that still single-blocks 30/30 items) and discrete-address retrieval at 86\% of dense with no gain; pointer-mediated addressing as distinct from standard retrieve-then-read remains unproven pending the KV end-to-end path.
-The future program is fixed: full reruns at n$\geq$500 with multiple seeds, 32k-plus contexts on larger hardware, a measured pointer-length sweep, pointer-token scoring that separates address effects from selection effects, a recomputed KV comparison at pilot scale or above, and LongMemEval oracle-setting evaluation once a judge is available.
+The future program is fixed, each with its success criterion:
+(i) full reruns at n$\geq$500 with multiple seeds---success is stable CIs across seeds;
+(ii) 32k-plus contexts on larger hardware---success is measured quality/tokens at 32k;
+(iii) a measured pointer-length sweep---success is a reported $k$-sensitivity curve;
+(iv) pointer-token scoring separating address from selection effects---success is a non-zero isolated address effect or a clean negative;
+(v) a recomputed KV comparison at pilot scale or above---success is CIs deciding the sign;
+(vi) LongMemEval oracle-setting evaluation once a judge is available---success is a reported judge-scored result.

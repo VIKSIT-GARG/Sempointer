@@ -48,7 +48,7 @@
 \renewcommand{\dblfloatpagefraction}{0.85}
 
 \begin{document}
-\title{SemPointer: Toward Random-Access Semantic Memory for Large Language Models}
+\title{SemPointer: An Indirection Layer over Dense Retrieval---Measurements and Negative Results}
 \author{Viksit Garg\inst{1}}
 \institute{Department of Artificial Intelligence \& Machine Learning,
 Dr. Akhilesh Das Gupta Institute of Professional Studies,
@@ -56,10 +56,10 @@ New Delhi, India \\ \email{viksitg427@gmail.com}}
 \maketitle
 
 \begin{abstract}
-Full-context inference feeds every token to attention, so cost grows steeply with context length. SemPointer instead stores context blocks in an off-attention text substrate and keeps short pointer strings in the active prompt; per query, an off-the-shelf dense encoder (all-MiniLM-L6-v2) selects blocks by cosine similarity and resolves them to verbatim text. The pointer strings themselves do not affect selection. We measured Qwen2.5-3B-Instruct (NF4, greedy decoding, seed~42) on RULER containment (n=180), LongBench F1 (n=1150), LoCoMo under a token-F1 adaptation (n=199), and a KV-compress pilot (n=10). Against full context, SemPointer uses 10--15$\times$ fewer active tokens but lowers quality: RULER $-0.37$ (95\% CI $[-0.44,-0.30]$), LongBench $-0.033$ ($[-0.040,-0.027]$), LoCoMo $-0.012$ ($[-0.022,-0.003]$, not significant after Bonferroni correction). Against dense RAG it ties on quality at higher token cost. Scope: one model, one seed, text substrate only, contexts capped at 16k tokens.
+Full-context inference feeds every token to attention, so cost grows steeply with context length. SemPointer stores context in $B{=}512$-token blocks in an off-attention text substrate and keeps $k{=}8$-token pointers in the active prompt; per query, a frozen MiniLM encoder (all-MiniLM-L6-v2) selects $m{=}1$ block by cosine similarity and resolves it to verbatim text. Pointer strings do not affect selection. We measured Qwen2.5-3B-Instruct (NF4, greedy decoding, seed~42) on RULER containment (n=180), LongBench F1 (n=1150), LoCoMo under a token-F1 adaptation (n=199), and a KV-compress pilot (n=10). Against full context, SemPointer uses 10--15$\times$ fewer active tokens but lowers quality: RULER $-0.37$ (95\% CI $[-0.44,-0.30]$), LongBench $-0.033$ ($[-0.040,-0.027]$), LoCoMo $-0.012$ ($[-0.022,-0.003]$, not significant after Bonferroni correction). Against dense RAG under identical $m{=}1$ and representations it ties on quality at higher token cost, with no measured pointer quality effect. Scope: one model, one seed, text substrate only, contexts capped at 16k tokens.
 \end{abstract}
 
-\keywords{long-context inference \and dense retrieval \and prompt compression \and benchmarking \and conversational memory}
+\keywords{long-context inference \and dense retrieval \and negative results \and benchmarking \and conversational memory \and retrieval-augmented generation}
 
 \section{Introduction}
 
@@ -72,43 +72,45 @@ Transformer models \cite{vaswani2017attention} process textual context as an unb
 
 \textbf{Regime~3 (Paged / host-offloaded KV):} Systems like PagedAttention \cite{kwon2023pagedattention} manage non-contiguous KV blocks between GPU and host memory. Here, host--device bandwidth and paging latency become the primary system bottlenecks.
 
-Context compression methods---hard token pruning \cite{jiang2023llmlingua, jiang2024longllmlingua, pan2024llmlingua2}, learned continuous soft prompts \cite{mu2023gist, chevalier2023autocompressors, ge2024icae, li2025500xcompressor}, and dynamic KV cache eviction \cite{kim2024ccm, liu2025sac}---address Regime~1 FLOPs and mitigate memory pressure in Regimes~2--3. However, they share a structural limitation: they reduce context representations in place, without establishing an addressable indirection layer. Once a prompt is compressed into summary vectors or pruned text, the model processes that proxy uniformly across all downstream turns, regardless of whether specific details within that block relate to the immediate query. SemPointer addresses this gap by providing explicit semantic addresses into an independent substrate, yielding FLOP savings in Regime~1 and memory footprint reduction in Regimes~2--3.
+Context compression methods---hard token pruning \cite{jiang2023llmlingua, jiang2024longllmlingua, pan2024llmlingua2}, learned continuous soft prompts \cite{mu2023gist, chevalier2023autocompressors, ge2024icae, li2025500xcompressor}, and dynamic KV cache eviction \cite{kim2024ccm, liu2025sac}---address Regime~1 FLOPs and mitigate memory pressure in Regimes~2--3. However, they share a structural limitation: they reduce context representations in place, without establishing an addressable indirection layer. Once a prompt is compressed into summary vectors or pruned text, the model processes that proxy uniformly across all downstream turns, regardless of whether specific details within that block relate to the immediate query. SemPointer hypothesizes explicit semantic addresses into an independent substrate, with any savings conditional on the analytic cost model (Section~\ref{sec:complexity}); the measurements below do not demonstrate quality-preserving savings.
 
 \subsection{The Indirection Hypothesis}
-Operating systems separate memory addresses from stored payloads, passing compact references through registers and deferring payload retrieval until execution. We hypothesize that an analogous indirection principle can be realized within the sequence space of LLMs:
+Operating systems separate memory addresses from stored payloads, passing compact references through registers and deferring payload retrieval until execution. As an illustrative analogy only, not an architectural equivalence, we ask whether a comparable separation can be defined within the sequence space of LLMs, as an analytic hypothesis tested against the measurements below:
 \begin{quote}\itshape\small
 \textbf{The Indirection Hypothesis:} By generating compact, token-level semantic pointers that reference independently stored contextual substrates, an LLM architecture can support selective, address-based access to historical context, compressing the active sequence from approximately $N \cdot B$ to $(N-m)k + m \cdot B_{\mathrm{res}}$ tokens per query ($k \ll B, m \ll N$) by bypassing the ingestion of unselected context payloads.
 \end{quote}
 
 \subsection{Research Questions}
-This study investigates three primary theoretical and empirical questions:
+This study investigates three questions, answered by the measurements and analyses below:
 \begin{itemize}\setlength{\itemsep}{0.5pt}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}\setlength{\topsep}{1.5pt}
-    \item \textit{RQ1 (Addressing Feasibility):} Can a compact sequence of discrete or soft tokens function as a stable, unique semantic address for independently stored context?
-    \item \textit{RQ2 (Resolution Fidelity):} Can pointer resolution reconstruct task-relevant features with fidelity comparable to full-context exposure?
-    \item \textit{RQ3 (Amortized Complexity):} Under what access distributions and query volumes does pointer indirection yield computational savings over repeated linear re-ingestion?
+    \item \textit{RQ1 (Addressing Feasibility):} Can a compact sequence of discrete or soft tokens function as a stable, unique semantic address for independently stored context? Finding: only partial, analytic support; stability and uniqueness are stipulated, not demonstrated.
+    \item \textit{RQ2 (Resolution Fidelity):} Can pointer resolution reconstruct task-relevant features with fidelity comparable to full-context exposure? Finding: no, under the tested configuration the measurements refute comparable fidelity.
+    \item \textit{RQ3 (Amortized Complexity):} Under what access distributions and query volumes does pointer indirection yield computational savings over repeated linear re-ingestion? Finding: answered analytically only via the $K^*$ crossover derivation, not by measured savings.
 \end{itemize}
 
 \subsection{Contributions}
-This paper presents six contributions uniting formal modeling with rigorous empirical verification:
+This paper presents six contributions combining analytic formalization with benchmark measurements that refute the fidelity hypothesis:
 \begin{enumerate}\setlength{\itemsep}{0.5pt}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}\setlength{\topsep}{1.5pt}
-    \item We distinguish context compression from semantic addressing, establishing seven axiomatic criteria required for true pointer mechanics.
-    \item We formalize the complete SemPointer lifecycle across Encounter, Storage, Address Generation, Selection, and Resolution (Fig.~\ref{fig:architecture}).
-    \item Under assumptions A1--A5 and the stateless-inference cost model (Section~\ref{sec:complexity}), we derive the algebraic crossover threshold $K^*$ and single-query viability condition ($N \ge 2$) for active-sequence compression.
-    \item We characterize three primary theoretical failure modes: address collisions, positional semantic drift, and resolution divergence.
-    \item We contrast SemPointer with Landmark Attention \cite{mohtashami2023landmark}, RAG \cite{lewis2020rag, cheng2024xrag}, MemGPT \cite{packer2023memgpt}, and cognitive SPA \cite{eliasmith2013mind}, providing a structured feature matrix (Table~\ref{tab:feature_matrix}).
+    \item We propose a taxonomy distinguishing context compression from semantic addressing, stating seven stipulative criteria for pointerhood; these criteria are not empirically validated as jointly sufficient.
+    \item We specify an analytic model of the SemPointer stages across Encounter, Storage, Address Generation, Selection, and Resolution (Fig.~\ref{fig:architecture}).
+    \item Analytically, under assumptions A1--A5 and the stateless-inference cost model (Section~\ref{sec:complexity}), we derive the algebraic crossover threshold $K^*$ and single-query viability condition ($N \ge 2$) for active-sequence compression.
+    \item Analytically, we characterize three primary theoretical failure modes: address collisions, positional semantic drift, and resolution divergence.
+    \item We contrast SemPointer with Landmark Attention \cite{mohtashami2023landmark}, RAG \cite{lewis2020rag, cheng2024xrag}, MemGPT \cite{packer2023memgpt}, and cognitive SPA \cite{eliasmith2013mind}, as a literature comparison with a structured feature matrix (Table~\ref{tab:feature_matrix}), not a validated empirical advantage.
     \item We formulate six falsifiable hypotheses ($H_1$--$H_6$) and test them on executed benchmark runs (RULER n=180, LongBench n=1150, LoCoMo n=199, KV pilot n=10, multi-hop pilot n=30); $K^*$ crossover figures are analytic derivations, not measurements.
 \end{enumerate}
+
+The remainder of this paper proceeds as follows. Background surveys related paradigms; axiomatic and architectural sections present the analytic model; methods and results report the benchmark measurements with a negative fidelity outcome; discussion interprets the failure modes and states the limited conditions under which indirection remains worth pursuing.
 
 
 \section{Background and Prior-Art Spectrum}
 
 \subsection{Dense Autoregressive Attention and Scaling Walls}\label{sec:background}
-In standard autoregressive generation \cite{vaswani2017attention}, given an input sequence $X = (x_1, x_2, \dots, x_L)$, each self-attention layer computes:
+In standard autoregression \cite{vaswani2017attention}, each self-attention layer computes:
 \begin{equation}
 \operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 \label{eq:attn}
 \end{equation}
-where $Q, K, V \in \mathbb{R}^{L \times d}$. Computing $QK^T$ costs $\mathcal{O}(L^2 d)$ with $\mathcal{O}(2 n_{\text{layers}} n_{\text{heads}} L d_k)$ KV state. Across $T$ turns with $L_t = \sum_{i=1}^t |X_i|$, cumulative cost scales as $\sum_{t=1}^T \mathcal{O}(L_t^2)$. Table~\ref{tab:paradigms} positions SemPointer among context-management paradigms.
+where $Q, K, V \in \mathbb{R}^{L \times d}$. $QK^T$ costs $\mathcal{O}(L^2 d)$ with $\mathcal{O}(2 n_{\text{layers}} n_{\text{heads}} L d_k)$ KV state. Across $T$ turns with $L_t = \sum_{i=1}^t |X_i|$, cumulative cost is $\sum_{t=1}^T \mathcal{O}(L_t^2)$. Table~\ref{tab:paradigms} positions SemPointer among context-management paradigms.
 
 \begin{table}[t]
 \caption{Comparison of Context Management Strategies in Large Language Models}\label{tab:paradigms}
@@ -130,38 +132,41 @@ Retrieval-Augmented Gen. \cite{lewis2020rag, cheng2024xrag} & External Vector DB
 \end{table}
 
 \subsection{Hard Prompt Compression}
-Hard prompt compression (e.g., LLMLingua \cite{jiang2023llmlingua}, LongLLMLingua \cite{jiang2024longllmlingua}, and LLMLingua-2 \cite{pan2024llmlingua2}) prunes tokens by perplexity or distillation metrics. It needs no architectural change but discards tokens irreversibly, breaking cross-token dependencies on relational tasks \cite{lajewska2025preservation}, with no on-demand dereferencing.
+Hard prompt compression (LLMLingua \cite{jiang2023llmlingua}, LongLLMLingua \cite{jiang2024longllmlingua}, LLMLingua-2 \cite{pan2024llmlingua2}) prunes tokens by perplexity or distillation without architectural change, but irreversibly discards tokens, breaking relational dependencies \cite{lajewska2025preservation}, with no on-demand dereferencing.
 
 \subsection{Continuous and Soft-Token Compression}
-Soft-token methods shorten the active sequence but provide no indirection. Gist Tokens~\cite{mu2023gist} condense a prefix into virtual tokens that must stay \emph{resident} in attention---unconditional compression with no per-query selection. AutoCompressors~\cite{chevalier2023autocompressors} recursively encode chunks into summary vectors that are \emph{irrecoverable projections}: a later query cannot recover one sub-chunk without re-encoding. ICAE~\cite{ge2024icae} uses fixed slots with implicit source binding, decoupled from query selection. 500xCompressor~\cite{li2025500xcompressor} collapses context into one token, so two facts cannot be recovered for two queries without re-encoding. None provides an explicit address level: unselected context stays resident or is discarded without a dereferencing handle.
+Soft-token methods shorten the active sequence as described in their published reports: Gist Tokens~\cite{mu2023gist} condense a prefix into \emph{resident} virtual tokens with limited per-query selection in the reported design; AutoCompressors~\cite{chevalier2023autocompressors} produce summaries that are not directly dereferenceable at sub-chunk granularity without re-encoding in the reported design; ICAE~\cite{ge2024icae} uses fixed slots that are decoupled from query selection in the reported design; 500xCompressor~\cite{li2025500xcompressor} compresses context toward a single token with limited per-query recovery in the reported design. In their published descriptions, these methods do not author prompt-resident token-level addresses: unselected context stays resident or is discarded without a dereferencing handle. This contrasts with Landmark Attention~\cite{mohtashami2023landmark}, which provides intra-pass block routing rather than persistent cross-query addresses, and with ANN/KV-index retrieval systems~\cite{liu2025retrievalattention, tang2024quest}, which provide index-based lookup without authored token-level addresses.
 
 \subsection{Dynamic Cache Eviction and Paged KV Caches}
-Compressed Context Memory (CCM) \cite{kim2024ccm} and Contextual Semantic Anchors (SAC) \cite{liu2025sac} evict or aggregate KV states; PagedAttention \cite{kwon2023pagedattention} pages KV blocks over non-contiguous memory. They ease GPU pressure, but eviction is irreversible: no token-level address dereferences an evicted state by content.
+Compressed Context Memory (CCM)~\cite{kim2024ccm} evicts and merges KV blocks to ease GPU pressure, Contextual Semantic Anchors (SAC)~\cite{liu2025sac} aggregate KV blocks to ease GPU pressure, and PagedAttention~\cite{kwon2023pagedattention} pages KV blocks between GPU and host memory: in their published descriptions, evicted or aggregated state is generally not dereferenced by a content-derived token-level address, while paged residency is preserved~\cite{kwon2023pagedattention}.
 
 \subsection{Hierarchical Context and OS-Style Memory}
-MemGPT \cite{packer2023memgpt} pages text chunks between active context and archival storage via function/tool calls, addressing pages by positional identifiers at the orchestration layer. SemPointer instead defines sequence-level indirection: content-derived token addresses ($P_i = \mathcal{G}_\phi(X_i)$) persist in active context while payloads sit in an independent substrate.
+MemGPT~\cite{packer2023memgpt} pages text chunks between active context and archival storage via function/tool calls, addressing pages by positional identifiers~\cite{packer2023memgpt}. SemPointer instead defines sequence-level indirection: content-derived addresses ($P_i = \mathcal{G}_\phi(X_i)$) persist in active context while payloads sit in an independent substrate.
+
+\subsection{Dense Retrieval and Efficient Attention Context}
+Dense retrieval methods retrieve stored passages by query-conditioned similarity and prepend the top-ranked text to the prompt~\cite{lewis2020rag}; extended variants compress retrieved context toward compact representations~\cite{cheng2024xrag}. Complementary efficiency efforts such as FlashAttention, StreamingLLM, H2O, and SnapKV optimize attention I/O or cache retention within the resident sequence, unlike the cross-query indirection studied here; for paged resident-cache management see~\cite{kwon2023pagedattention}.
 
 \subsection{Cognitive Science Disambiguation: Semantic Pointer Architecture}
-The term \textit{semantic pointer} originates in cognitive science: Eliasmith \cite{eliasmith2013mind} and Blouw et al. \cite{blouw2016concepts} formalized the Semantic Pointer Architecture (SPA) with high-dimensional vectors ($D \approx 500$--$1000$) bound by circular convolution in spiking networks. SemPointer targets a disjoint domain---discrete or latent token sequences in autoregressive transformers---so the overlap is terminological only.
+The term \textit{semantic pointer} originates in cognitive science: Eliasmith \cite{eliasmith2013mind} and Blouw et al. \cite{blouw2016concepts} formalized the Semantic Pointer Architecture (SPA) with high-dimensional vectors ($D \approx 500$--$1000$) bound by circular convolution. SemPointer targets discrete or latent token sequences in autoregressive transformers---overlap is terminological only.
 
 \section{Axiomatic Foundations: Distinguishing Pointers from Compressed Representations}
 
-A compressed representation carries information inside active attention; a pointer is an address into external storage dereferenced explicitly. Definition~\ref{def:pointer} and seven axioms formalize the distinction.
+Definition~\ref{def:pointer} and seven axioms formalize the distinction.
 
 \begin{definition}[Compressed Representation vs. Semantic Pointer]\label{def:pointer}
 Let $X \in \mathcal{X}$ be an information unit of length $|X|$. A mapping $\mathcal{C}: \mathcal{X} \to \mathcal{Z}$ produces a compressed representation $Z$ if $|Z| < |X|$ and $Z$ directly acts as the information carrier in downstream computation. A mapping $\mathcal{G}: \mathcal{X} \to \mathcal{P}$ produces a semantic pointer $P$ if $P$ acts as an address into an independent memory substrate $\mathcal{M}$, such that the information content of $X$ is accessed only upon executing an explicit resolution operation $\mathcal{R}(P, M, Q)$.
 \end{definition}
 
 \begin{axiom}[Address Identity and Distinguishability]\label{ax:identity}
-Let $X_i, X_j \in \mathcal{X}$ be two semantically distinct context units ($X_i \not\equiv X_j$). Their generated pointers $P_i = \mathcal{G}(X_i)$ and $P_j = \mathcal{G}(X_j)$ must be distinguishable within the address space: $D_{\mathcal{P}}(P_i, P_j) > \delta_{\text{min}}$ for all $i \neq j$, where $D_{\mathcal{P}}$ is a metric on pointer space $\mathcal{P}$ and $\delta_{\text{min}} > 0$. Beyond injectivity, $\mathcal{G}_\phi$ must preserve semantic neighborhoods (similar blocks yield proximate pointers) to enable query-conditioned scoring; this alignment is a training objective, not a consequence of distinguishability. This axiom is not exercised by the present measurements (no pointer-distance statistics logged).
+Let $X_i, X_j \in \mathcal{X}$ be two semantically distinct context units ($X_i \not\equiv X_j$). Their generated pointers $P_i = \mathcal{G}(X_i)$ and $P_j = \mathcal{G}(X_j)$ must be distinguishable within the address space: $D_{\mathcal{P}}(P_i, P_j) > \delta_{\text{min}}$ for all $i \neq j$, where $D_{\mathcal{P}}$ is a metric on pointer space $\mathcal{P}$ and $\delta_{\text{min}} > 0$. This distinguishability threshold is a stipulative definition of pointerhood with no logged statistic in the present runs.
 \end{axiom}
 
 \begin{axiom}[Strict Asymmetric Compactness]\label{ax:compactness}
-The pointer length $|P_i|$ measured in sequence units (tokens) must satisfy $|P_i| \ll |X_i|$ with $|P_i|/|X_i| \le \kappa, \kappa \in (0, 1)$. The pointer representation must not scale with context-unit length. In the operating regime ($k \le 8$, $|X_i| \ge 160$ tokens), $\kappa \le 0.05$ holds by construction; units already at pointer scale gain nothing from indirection. Measured: $k=8$ against true $B\approx 504$--$510$ gives $\kappa\approx 0.016$ (\texttt{config\_table.json}; Section~\ref{sec:methods-config}).
+The pointer length $|P_i|$ measured in sequence units (tokens) must satisfy $|P_i| \ll |X_i|$ with $|P_i|/|X_i| \le \kappa, \kappa \in (0, 1)$. Here $\kappa$ is a stipulated design threshold, not a measured estimate.
 \end{axiom}
 
 \begin{axiom}[Temporal and Spatial Stability]\label{ax:stability}
-A pointer $P_i$ generated at time $t$ must remain valid and addressable across subsequent time horizons $t + \Delta t$, independent of intervening context operations, memory updates, or unrelated token generations. Not exercised by the present measurements (single query per example; no position-displacement run).
+A pointer $P_i$ generated at time $t$ must remain valid and addressable across subsequent time horizons $t + \Delta t$, independent of intervening context operations, memory updates, or unrelated token generations. This stability requirement is a stipulative definition with no logged statistic in the present runs.
 \end{axiom}
 
 \begin{axiom}[Query-Conditioned Resolution Fidelity]\label{ax:fidelity}
@@ -169,15 +174,15 @@ Given query $Q \in \mathcal{Q}$, resolution operator $\mathcal{R}$ acting on poi
 \begin{equation}
 I\left(\mathcal{R}(P_i, M_i, Q); X_i \mid Q\right) \ge (1 - \epsilon) H(X_i \mid Q)
 \end{equation}
-for tolerance $\epsilon \in [0, 1)$, where $H(\cdot)$ denotes conditional entropy. Lossless substrates ($\mathcal{M}_{\text{text}}$, exact $\mathcal{M}_{\text{kv}}$) give $\epsilon = 0$ by definition; lossy ones ($\mathcal{M}_{\text{latent}}$) admit $\epsilon \in (0, 1)$. The verbatim-text path is the measured one (Section~\ref{sec:methods-scope}; downstream deltas in Section~\ref{sec:results-summary}); the $\epsilon$-bound itself is not directly estimated.
+for tolerance $\epsilon \in [0, 1)$, where $H(\cdot)$ denotes conditional entropy. Here $\epsilon$ is a stipulated tolerance bound, not a measured estimate.
 \end{axiom}
 
 \begin{axiom}[Selective Addressability]\label{ax:selectivity}
-The activation of historical information must be sparse. Given a registry of $N$ pointers $\{P_1, \dots, P_N\}$, a query $Q_t$ resolves only the subset of indices $J^* \subseteq \{1, \dots, N\}$ where $|J^*| \ll N$, avoiding uniform activation of the remaining $N - |J^*|$ elements. Measured at $m=1$ against $N\approx 24.8$/$26.7$/$28.0$/$7.5$ (\texttt{config\_table.json}; miss attribution in Section~\ref{sec:results-taxonomy}).
+Given a registry of $N$ pointers $\{P_1, \dots, P_N\}$, a query $Q_t$ resolves only the subset of indices $J^* \subseteq \{1, \dots, N\}$ where $|J^*| \ll N$, avoiding uniform activation of the remaining $N - |J^*|$ elements. Sparsity is operationalized as $m{=}1$ with $N{\approx}25$ in the reported runs.
 \end{axiom}
 
 \begin{axiom}[Multi-Horizon Reusability]\label{ax:reusability}
-A pointer $P_i$ must support repeated resolution operations across arbitrary non-consecutive queries $Q_{t_1}, Q_{t_2}, \dots, Q_{t_m}$ without requiring re-execution of pointer generation $\mathcal{G}(X_i)$. Not exercised by the present measurements (no repeated-resolution run).
+A pointer $P_i$ must support repeated resolution operations across arbitrary non-consecutive queries $Q_{t_1}, Q_{t_2}, \dots, Q_{t_m}$ without requiring re-execution of pointer generation $\mathcal{G}(X_i)$. This reusability requirement is a stipulative definition with no logged statistic in the present runs.
 \end{axiom}
 
 \begin{axiom}[Algebraic Compositionality]\label{ax:compositionality}
@@ -185,8 +190,10 @@ For compound queries requiring information from multiple context items $\{X_a, X
 \begin{equation}\label{eq:composition}
 \mathcal{R}(P_a \oplus P_b, \{M_a, M_b\}, Q) \equiv \mathcal{R}(P_a, M_a, Q) \cup \mathcal{R}(P_b, M_b, Q)
 \end{equation}
-where $\oplus: \mathcal{P} \times \mathcal{P} \to \mathcal{P}$ is an abstract composition operator. Axiom~\ref{ax:compositionality} requires composite dereferencing, specified as joint multi-pointer dereferencing ($[P_a, P_b] \mapsto [\hat{X}_a, \hat{X}_b]$) but not exercised by the present measurements (former Experiment~E11 withdrawn, see Appendix; the multi-hop pilot favors dense top-$1$ over index routing, Table~\ref{tab:N6-pilot}); an end-to-end $\oplus$ in latent space remains open.
+where $\oplus: \mathcal{P} \times \mathcal{P} \to \mathcal{P}$ is an abstract composition operator.
 \end{axiom}
+
+The seven axioms are candidate necessity/sufficiency criteria for pointerhood; their independence is unproven and they are not validated as jointly sufficient here.
 
 \section{The SemPointer Formal Architecture}
 
@@ -212,14 +219,14 @@ Upon arrival of query $Q_t$, registered pointers are scored via normalized inner
 \begin{equation}\label{eq:scoring}
 s_i = \operatorname{Score}(P_i, Q_t) = \frac{\langle \mathbf{e}(P_i), \mathbf{e}(Q_t) \rangle}{\|\mathbf{e}(P_i)\| \|\mathbf{e}(Q_t)\|}
 \end{equation}
-where $\mathbf{e}(\cdot)$ denotes an addressing projection into a shared metric space. The system selects top-$m$ pointers $J^* = \operatorname{top-}m (\{s_i\}_{i=1}^N)$.
+where, as executed, $\mathbf{e}(\cdot)$ is the frozen \texttt{sentence-transformers/all-MiniLM-L6-v2} mean-pooled block/query embedding (pointer ID strings excluded from scoring inputs). The system selects top-$m$ pointers $J^* = \operatorname{top-}m (\{s_i\}_{i=1}^N)$. Per-query selection work scales with the $N{\cdot}k{\cdot}d$ scoring tensor plus top-$m$ sort plus one query encode; no cross-query caching saving is claimed.
 
 \noindent\textbf{3) Pointer Dereferencing and Resolution:}
-For each selected index $j \in J^*$, resolution operator $\mathcal{R}_{\theta}$ dereferences $P_j$ against substrate $M_j$, conditioned on $Q_t$: $\hat{X}_j = \mathcal{R}_{\theta}(P_j, M_j, Q_t)$. Resolved information $\hat{X}_{J^*}$ is injected into the generation prompt alongside unselected pointers:
+For each selected index $j \in J^*$, executed resolution is verbatim dict lookup $\hat{X}_j = \mathcal{R}_{\theta}(P_j, M_j)$ returning stored $X_j$ with no $Q_t$-conditioning; joint composition $P_a \oplus P_b$ in \eqref{eq:composition} is specified-not-implemented. Resolved information $\hat{X}_{J^*}$ is injected into the generation prompt alongside unselected pointers:
 \begin{equation}
 \hat{Y}_t \sim f_{\Theta}\left(\cdot \mid [\{P_i\}_{i \notin J^*}, \hat{X}_{J^*}, Q_t]\right)
 \end{equation}
-Because unselected blocks remain represented by their compact pointers $P_i$ ($i \notin J^*$), active context consumes $L_{\mathrm{active}} = (N - m)k + \sum_{j \in J^*} |\hat{X}_j| + |Q_t| \le Nk + m B_{\mathrm{res}} + L_Q$ tokens, compared to $NB + L_Q$ in linear re-ingestion. Because all $N-m$ unselected pointers remain in the sequence, attention across the active prompt remains quadratic in $L_{\mathrm{active}}$; SemPointer reduces sequence length by replacing unselected blocks of size $B$ with pointers of size $k \ll B$, compressing the quadratic attention coefficient rather than altering the asymptotic polynomial degree.
+Because unselected blocks remain represented by their compact pointers $P_i$ ($i \notin J^*$), active context consumes $L_{\mathrm{active}} = (N - m)k + \sum_{j \in J^*} |\hat{X}_j| + |Q_t| \le Nk + m B_{\mathrm{res}} + L_Q$ tokens, compared to $NB + L_Q$ in linear re-ingestion. $L_{\mathrm{active}}$ counts core pointer, resolved-block, and query tokens only, excluding instruction and framing tokens. Because all $N-m$ unselected pointers remain in the sequence, attention across the active prompt remains quadratic in $L_{\mathrm{active}}$; SemPointer reduces sequence length by replacing unselected blocks of size $B$ with pointers of size $k \ll B$, compressing the quadratic attention coefficient rather than altering the asymptotic polynomial degree.
 
 \subsection{Concrete Instantiation: Generator and Resolver Mechanics}
 Algorithm~\ref{alg:sempointer} formalizes the operational lifecycle implemented in our framework. To eliminate training artifacts and domain-specific bias, our primary realization employs a zero-shot, training-free pointer generator $\mathcal{G}_\phi$ and deterministic substrate resolvers $\mathcal{R}_\theta$:
@@ -239,7 +246,7 @@ Algorithm~\ref{alg:sempointer} formalizes the operational lifecycle implemented 
 \ENDFOR
 \FORALL{queries $Q_t$}
     \STATE Score $s_i = \operatorname{Score}(P_i, Q_t)$ for $(P_i, M_i) \in \mathcal{I}$; \quad $J^* \leftarrow \operatorname{top-}m(\{s_i\}_{i=1}^N)$
-    \STATE Active memory payload $\Omega_t \leftarrow \bigcup_{j \in J^*} \{\mathcal{R}_{\theta}(P_j, M_j, Q_t)\}$
+    \STATE Active memory payload $\Omega_t \leftarrow \bigcup_{j \in J^*} \{\mathcal{R}_{\theta}(P_j, M_j)\}$
     \STATE Active prompt $C_t \leftarrow [\{P_i\}_{i \notin J^*}, \Omega_t, Q_t]$; \quad Emit $\hat{Y}_t \leftarrow f_{\Theta}(C_t)$
 \ENDFOR
 \end{algorithmic}
@@ -248,16 +255,16 @@ Algorithm~\ref{alg:sempointer} formalizes the operational lifecycle implemented 
 \section{Memory Substrates and Physical Taxonomies}\label{sec:substrates}
 
 {\small
-Three physical realizations of $M_i$ trade off cost, capacity, and fidelity.
+Three realizations of $M_i$ trade off cost, capacity, and fidelity.
 
 \noindent\textbf{A. Raw Text Substrate ($\mathcal{M}_{\text{text}}$):}
 Holds $M_i = X_i$ in flat storage (RAM/disk); activation fetches $X_i$ into context. No encoding penalty or fidelity loss, but resolution pays I/O plus re-encoding.
 
 \noindent\textbf{B. Key-Value Cache Substrate ($\mathcal{M}_{\text{kv}}$):}
-Here $M_i = (\mathbf{K}_i, \mathbf{V}_i) \in \mathbb{R}^{2 \times L_{\text{layers}} \times |X_i| \times d}$, precomputed in host or paged GPU memory \cite{kwon2023pagedattention}; resolution pages KV blocks in with $\mathcal{C}_{\mathrm{res}} \approx 0$ FLOPs. Capacity is the constraint: at fp16, a $B{=}512$ block in a representative 70B-scale configuration ($n_{\mathrm{layers}}{=}80, n_{\mathrm{heads}}{=}64, d_{\mathrm{head}}{=}128$) occupies $\approx 1.34$\,GB by direct KV-tensor arithmetic ($2$ bytes $\times$ 2 tensors $\times$ layers $\times$ tokens $\times$ heads $\times$ head-dim), so $N \ge 10^3$ blocks need terabyte-scale storage. RoPE displacement $\Delta t$ can further degrade relocated blocks.
+Future work only: $M_i = (\mathbf{K}_i, \mathbf{V}_i) \in \mathbb{R}^{2 \times L_{\text{layers}} \times |X_i| \times d}$, precomputed in host or paged GPU memory \cite{kwon2023pagedattention}; resolution pages KV blocks in with $\mathcal{C}_{\mathrm{res}} \approx 0$ FLOPs. Capacity-bound: at fp16, a $B{=}512$ block at 70B scale ($n_{\mathrm{layers}}{=}80, n_{\mathrm{heads}}{=}64, d_{\mathrm{head}}{=}128$) occupies $\approx 1.34$\,GB, so $N \ge 10^3$ blocks need terabyte-scale storage; RoPE displacement $\Delta t$ can degrade relocated blocks.
 
 \noindent\textbf{C. Latent Embedding Substrate ($\mathcal{M}_{\text{latent}}$, future work):}
-$M_i = \mathbf{Z}_i \in \mathbb{R}^{m \times d}$ with $m \ll |X_i|$ would come from an autoencoder \cite{ge2024icae}, with resolution by cross-attention unpooling over $\mathbf{Z}_i$ conditioned on $P_i, Q_t$; compact but lossy. Future work only: no such module is trained and no reported run exercises it (all measurements use $\mathcal{M}_{\text{text}}$, Section~\ref{sec:methods-scope}).
+$M_i = \mathbf{Z}_i \in \mathbb{R}^{m_z \times d}$ with $m_z \ll |X_i|$ from an autoencoder \cite{ge2024icae}, resolved by cross-attention unpooling over $\mathbf{Z}_i$ conditioned on $P_i, Q_t$; compact but lossy. No such module is trained and no reported run exercises it (all measurements use $\mathcal{M}_{\text{text}}$, Section~\ref{sec:methods-scope}).
 
 \begin{table}[t]
 \centering
@@ -282,7 +289,7 @@ Resolution
 $\mathcal{C}_{\mathrm{res}}$
   & $\mathcal{O}(B_{\mathrm{res}}\,d^2)$ (re-encode)
   & $\approx 0$ FLOPs
-  & $\mathcal{O}(k\,m_z\,d)$ \\
+  & $\mathcal{O}(m B_{\mathrm{res}} k d)$ \\
 Fidelity
   & Lossless ($\varepsilon\approx 0$)
   & Lossless; RoPE displacement risk
@@ -294,7 +301,7 @@ Bottleneck
 \bottomrule
 \end{tabular}
 }
-\caption{The three SemPointer memory substrates compared. All decouple pointer generation from payload storage; they differ in resolution cost, storage volume, and fidelity. $\mathcal{M}_{\text{kv}}$ eliminates recompute FLOPs but is capacity-bound; $\mathcal{M}_{\text{latent}}$ minimizes storage at the cost of reconstruction loss; $\mathcal{M}_{\text{text}}$ is lossless but re-incurs encoding cost on each resolution.}
+\caption{The three SemPointer memory substrates compared: $\mathcal{M}_{\text{text}}$ lossless with re-encoding cost; $\mathcal{M}_{\text{kv}}$ zero-FLOP resolution but capacity-bound; $\mathcal{M}_{\text{latent}}$ compact but lossy.}
 \label{tab:substrates}
 \end{table}
 
@@ -302,42 +309,41 @@ Bottleneck
 \section{Theoretical Complexity and Cost Modeling}\label{sec:complexity}
 
 \subsection{Modeling Assumptions}
-We analyze indirection against linear re-ingestion under five assumptions:
+We compare indirection against linear re-ingestion under five assumptions:
 \begin{itemize}\setlength{\itemsep}{0.5pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1pt}
     \item[\textbf{A1.}] \textbf{Uniform Block Partitioning:} Context splits into $N$ blocks of length $B$ ($L_H = N \cdot B$).
-    \item[\textbf{A2.}] \textbf{Sparse Access Frequency:} Across $K$ queries $\{Q_1, \dots, Q_K\}$ (each length $L_Q$), each query accesses on average $m \ll N$ units (deterministic expectation; per-query variance unmodeled).
+    \item[\textbf{A2.}] \textbf{Sparse Access Frequency:} Across $K$ queries (each length $L_Q$), each query accesses on average $m \ll N$ units (deterministic expectation).
     \item[\textbf{A3.}] \textbf{Compact Pointer Invariant:} Each pointer is $k$ tokens with $k \ll B$ (Axiom~\ref{ax:compactness}).
-    \item[\textbf{A4.}] \textbf{Upfront Amortization:} Initial block encoding and pointer generation ($\mathcal{C}_{\text{init}}$) run once at encounter and amortize over later queries.
-    \item[\textbf{A5.}] \textbf{Cached Addressing Embeddings:} Projections $\mathbf{e}(P_i)$ are cached at registration; scoring needs one $\mathbf{e}(Q_t)$ plus $N$ inner products, so $\mathcal{C}_{\mathrm{select}}=\mathcal{O}(L_Q d + Nd)$ per \eqref{eq:scoring}, as required by Axioms~\ref{ax:stability}--\ref{ax:reusability}. Fine-tuning the encoder invalidates the cache.
+    \item[\textbf{A4.}] \textbf{Upfront Amortization:} Initial encoding and pointer generation ($\mathcal{C}_{\text{init}}$) run once and amortize over later queries.
+    \item[\textbf{A5.}] \textbf{Cached Addressing Embeddings:} Projections $\mathbf{e}(P_i)$ are cached at registration; scoring needs one $\mathbf{e}(Q_t)$ plus $N$ inner products, so $\mathcal{C}_{\mathrm{select}}=\mathcal{O}(L_Q d + Nd)$ per \eqref{eq:scoring}, as required by Axioms~\ref{ax:stability}--\ref{ax:reusability}. Fine-tuning invalidates the cache.
 \end{itemize}
 
 \subsection{Resolution Cost by Substrate}
-Resolution cost $\mathcal{C}_{\mathrm{res}}(m,B_{\mathrm{res}},Q_t)$ follows Section~\ref{sec:substrates}: $\mathcal{M}_{\mathrm{text}}$ re-encodes fetched text, $\mathcal{C}_{\mathrm{res}} = m(2dB_{\mathrm{res}}^2 + 4d^2B_{\mathrm{res}})$; $\mathcal{M}_{\mathrm{kv}}$ reuses paged KV states ($\mathcal{C}_{\mathrm{res}} \approx 0$ FLOPs; bandwidth- and capacity-bound); $\mathcal{M}_{\mathrm{latent}}$ cross-attends over $k$ pointer tokens, $\mathcal{C}_{\mathrm{res}} = \mathcal{O}(m B_{\mathrm{res}} k d)$.
+Resolution cost $\mathcal{C}_{\mathrm{res}}(m,B_{\mathrm{res}},Q_t)$ follows Section~\ref{sec:substrates}: $\mathcal{M}_{\mathrm{text}}$ re-encodes ($\mathcal{C}_{\mathrm{res}} = m(2dB_{\mathrm{res}}^2 + 4d^2B_{\mathrm{res}})$); $\mathcal{M}_{\mathrm{kv}}$ reuses paged KV ($\mathcal{C}_{\mathrm{res}} \approx 0$ recompute FLOPs, excluding I/O and paged-attention paging latency/bandwidth); $\mathcal{M}_{\mathrm{latent}}$ costs $\mathcal{O}(m B_{\mathrm{res}} k d)$.
 
 \subsection{Asymptotic FLOPs Analysis}
-Consider an LLM with hidden dimension $d$ and multi-head self-attention.\footnote{We suppress layer-dependent constant factors ($n_{\text{layers}}$, $n_{\text{heads}}$); see Section~\ref{sec:background} for the expanded KV-state expression.} We compare cost across $K$ queries under re-ingestion versus SemPointer.
+Consider hidden dimension $d$.\footnote{We suppress layer-dependent constant factors ($n_{\text{layers}}$, $n_{\text{heads}}$); see Section~\ref{sec:background} for the expanded KV-state expression.} We compare cost across $K$ queries.
 
 \noindent\textbf{1) Linear Re-Ingestion Paradigm:}
-Each query re-attends to the full history $L_H$:
+Each query re-attends to full history $L_H$:
 \begin{align}
-\mathcal{C}_{\text{linear}} &= K \left[ 2 d (NB + L_Q)^2 + 4 d^2 (NB + L_Q) \right] \nonumber \\
+    \mathcal{C}_{\text{linear}} &= K \left[ 2 d (NB + L_Q)^2 + 4 d^2 (NB + L_Q) \right] \nonumber \\
 &\approx 2 K d (NB + L_Q)^2
 \end{align}
-scaling as $\mathcal{O}(K d N^2 B^2)$ to leading order.
 
-\noindent\textbf{2) SemPointer Indirection Paradigm:} Under SemPointer:
+\noindent\textbf{2) SemPointer Indirection Paradigm:}
 \begin{enumerate}\setlength{\itemsep}{1pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1.5pt}
-    \item \textbf{One-Time Generation and Storage:} Ingesting $N$ blocks and generating $k$-token pointers incurs:
+    \item \textbf{One-Time Generation and Storage:}
     \begin{equation}
     \mathcal{C}_{\text{init}} = N \cdot \left[ 2 d B^2 + 4 d^2 B + \mathcal{C}_{\text{gen}}(B, k) \right]
     \end{equation}
-    Note $4d^2B$ dominates $2dB^2$ whenever $B < 2d$ (typical: $B \le 10^3$, $d \geq 4096$). Generator cost $\mathcal{C}_{\text{gen}}$ depends on $\mathcal{G}_\phi$: pooling-class readouts cost $\mathcal{O}(Bd)$; attention readouts (Corollary~1) cost $\mathcal{C}_{\text{gen}} = c_g(2dB^2 + 4d^2 B)$ with $c_g = \Theta(1)$, roughly doubling $\mathcal{C}_{\text{init}}$ at $c_g \approx 1$. Our pooling generator is training-free ($\mathcal{C}_{\mathrm{train}}=0$), and $\mathcal{C}_{\mathrm{init}}$ is one-time ingestion plus addressing. Proposition~\ref{prop:single_query} covers the pooling-class lower bound ($\mathcal{C}_{\mathrm{gen}} \ge \Omega(Bd)$); Corollary~1 covers attention-class generators.
+    Note $4d^2B$ dominates $2dB^2$ when $B < 2d$ (typical: $B \le 10^3$, $d \geq 4096$). Pooling-class $\mathcal{C}_{\text{gen}}$ costs $\mathcal{O}(Bd)$; attention readouts (Corollary~1) cost $\mathcal{C}_{\text{gen}} = c_g(2dB^2 + 4d^2 B)$, $c_g = \Theta(1)$. Our pooling generator is training-free ($\mathcal{C}_{\mathrm{train}}=0$). Proposition~\ref{prop:single_query} covers $\mathcal{C}_{\mathrm{gen}} \ge \Omega(Bd)$; Corollary~1 covers attention-class generators.
     \item \textbf{Per-Query Pointer Selection:} $\mathcal{C}_{\mathrm{select}} = \mathcal{O}(L_Q d + Nd)$ (Eq.~\eqref{eq:scoring}, A5).
-    \item \textbf{Per-Query Resolution and Inference:} The active prompt holds $N-m$ pointers of length $k$, $m$ resolved blocks ($B_{\text{res}} \le B$), and $Q_t$:
+    \item \textbf{Per-Query Resolution and Inference:} Active prompt holds $N-m$ pointers, $m$ resolved blocks ($B_{\text{res}} \le B$), and $Q_t$:
     \begin{equation}\label{eq:active_seq}
     L_{\mathrm{active}} = (N-m)k + m B_{\mathrm{res}} + L_Q \le Nk + m B_{\mathrm{res}} + L_Q
     \end{equation}
-    Per-query computation is:
+    Per-query cost:
     \begin{equation}
     \mathcal{C}_{\text{query}} = 2 d\, L_{\mathrm{active}}^2 + 4 d^2 L_{\mathrm{active}} + \mathcal{C}_{\text{res}}(m, B_{\text{res}}, Q)
     \end{equation}
@@ -367,29 +373,25 @@ where the per-query marginal savings $\Delta\mathcal{C}_{\mathrm{step}}$ is give
 &\quad \cdot \Big[2d\big(N(B{+}k) + m(B_{\mathrm{res}}{-}k) + 2L_Q\big) + 4d^2\Big] \nonumber \\
 &\quad - \mathcal{C}_{\mathrm{select}} - \mathcal{C}_{\mathrm{res}}
 \end{align}
-Condition (i) makes the sparsity requirement of A2 concrete: if a query
-resolves a large fraction of memory ($m(B_{\mathrm{res}}{-}k) \geq N(B-k)$),
-indirection is strictly dominated for every $K$. Both $K^\ast$ and $\Delta\mathcal{C}_{\mathrm{step}}$ are analytic derivations: no $K$-sweep or FLOPs-crossover fit is measured (measured operating points are overlaid on the analytic map in Section~\ref{sec:regime-map}).
+If $m(B_{\mathrm{res}}{-}k) \geq N(B-k)$,
+indirection is dominated for every $K$. Both $K^\ast$ and $\Delta\mathcal{C}_{\mathrm{step}}$ are analytic: no $K$-sweep is measured (operating points overlaid in Section~\ref{sec:regime-map}).
 \end{proposition}
 
-\textit{Derivation.} With $L_{\mathrm{active}} = Nk + m(B_{\mathrm{res}}{-}k) + L_Q$, difference-of-squares gives $(L_H{+}L_Q)^2 - L_{\mathrm{active}}^2 = [N(B{-}k) - m(B_{\mathrm{res}}{-}k)]\,[N(B{+}k) + m(B_{\mathrm{res}}{-}k) + 2L_Q]$; adding linear projection difference $4d^2[N(B{-}k) - m(B_{\mathrm{res}}{-}k)]$ yields \eqref{eq:delta_step}, i.e. (tokens avoided) $\times$ (per-token coefficient) minus addressing and resolution overheads. Per-call end-to-end latency is logged (\texttt{GenResult.latency\_ms}, with a TTFT tap in \texttt{experiments/engine/llm.py}) and reported as means in Table~\ref{tab:N3-efficiency}, without a FLOPs-crossover fit.
+\textit{Derivation.} Difference-of-squares on $(L_H{+}L_Q)^2 - L_{\mathrm{active}}^2$ plus the $4d^2$ projection difference yields \eqref{eq:delta_step}: (tokens avoided) $\times$ (per-token coefficient) minus addressing and resolution overheads. Latency is logged (\texttt{GenResult.latency\_ms}, TTFT tap in \texttt{experiments/engine/llm.py}) and reported in Table~\ref{tab:N3-efficiency}, without a FLOPs-crossover fit.
 
 \begin{proposition}[Single-Query Viability]\label{prop:single_query}
-Under A1--A5 with the $\mathcal{M}_{\text{kv}}$ substrate ($\mathcal{C}_{\mathrm{res}}\approx 0$), $L_Q \ll NB$, and sparse access ($mB_{\text{res}} \ll NB$), the condition $K^* < 1$ (single-query viability) reduces to $N > 1 + \mathcal{O}(k/B + dk/B^2)$. Under pooling-class generation, this condition is satisfied for integer registry sizes $N \ge 2$. At $N=1$, indirection is marginal and does not amortize on the first query ($K^* \approx 1.015 > 1$ for $d=4096, B=512, k=8, \mathcal{C}_{\mathrm{gen}}=Bd$), whereas crossover to single-query viability occurs at $N=2$ ($K^* \approx 0.958 < 1$). Corollary~1 treats attention-class generators. Sparsity of access ($m \ll N$), rather than query reuse count, is the load-bearing condition under $\mathcal{M}_{\text{kv}}$. This threshold illustration is analytic (no $N{=}1$-vs-$2$ run exists). Under resolution-heavy substrates ($\mathcal{M}_{\text{text}}$), where $\mathcal{C}_{\mathrm{res}}$ reinstates quadratic cost per query, $K^*$ exceeds 1 and multi-query amortization governs.
+Under A1--A5 with the $\mathcal{M}_{\text{kv}}$ substrate ($\mathcal{C}_{\mathrm{res}}\approx 0$), $L_Q \ll NB$, and sparse access ($mB_{\text{res}} \ll NB$), $K^* < 1$ reduces to $N > 1 + \mathcal{O}(k/B + dk/B^2)$. Under pooling-class generation, $N \ge 2$ satisfies it. At $N=1$, indirection does not amortize on the first query ($K^* \approx 1.015 > 1$ for $d=4096, B=512, k=8, \mathcal{C}_{\mathrm{gen}}=Bd$), whereas at $N=2$ ($K^* \approx 0.958 < 1$) it does. This illustration is analytic (no $N{=}1$-vs-$2$ run exists). Quoted $K^*$ values are boundary-case illustrations at helper defaults $m{=}0$, $L_Q{=}0$, $\mathcal{M}_{\mathrm{kv}}$ (optimistic: zero payload/resolution cost; $m{\ge}1$ raises $K^*$). The $d{=}4096$ illustrations do not transfer to the Qwen2.5-3B reader. Under $\mathcal{M}_{\text{text}}$, where $\mathcal{C}_{\mathrm{res}}$ reinstates quadratic cost per query, $K^*$ exceeds 1 and multi-query amortization governs.
 \end{proposition}
 
 \vspace{0.3em}
-\noindent\textbf{Corollary 1 (Attention-Class Pointer Generators).} Proposition~2 assumes a pooling-class generator with $\mathcal{C}_{\mathrm{gen}}=\mathcal{O}(Bd)$ (e.g., readout pooling over precomputed token embeddings). If $\mathcal{G}_\phi$ is an attention-based readout, $\mathcal{C}_{\mathrm{gen}} = c_g(2dB^2 + 4d^2B)$, $c_g=\Theta(1)$ --- the same asymptotic order as block encoding --- and the viability condition reduces, to leading order, to $N > (1+c_g) + (2d/B)\,c_g$. For $c_g=1$: $N \gtrsim 2 + 2d/B$ (e.g., $N \gtrsim 18$ at $d{=}4096$, $B{=}512$; $N \gtrsim 6$ at $B{=}2048$). This is a meaningful degradation from the pooling-class threshold of $N \gtrsim 2$: an attention-based generator operating at $B{=}512$ demands a registry roughly nine times larger before single-query viability holds. The threshold nonetheless grows only linearly with $d/B$ and remains finite, so viability is preserved for practical $N$; below the threshold, the framework falls back to the multi-query amortization regime of Proposition~1. Analytic only: no attention-class generator is built or timed in the present runs.
+\noindent\textbf{Corollary 1 (Attention-Class Pointer Generators).} Proposition~2 assumes pooling-class $\mathcal{C}_{\mathrm{gen}}=\mathcal{O}(Bd)$ (e.g., readout pooling over precomputed token embeddings). If $\mathcal{G}_\phi$ is attention-based, $\mathcal{C}_{\mathrm{gen}} = c_g(2dB^2 + 4d^2B)$, $c_g=\Theta(1)$, and viability reduces to $N > (1+c_g) + (2d/B)\,c_g$. For $c_g=1$: $N \gtrsim 2 + 2d/B$ (e.g., $N \gtrsim 18$ at $d{=}4096$, $B{=}512$; $N \gtrsim 6$ at $B{=}2048$). Below the threshold, Proposition~1 multi-query amortization applies. Analytic only: no attention-class generator is built or timed in the present runs.
 
 \vspace{0.5em}
 \noindent\textbf{Remark 1 (Scope of Comparison).} $\mathcal{C}_{\mathrm{linear}}$ models the no-cache regime: stateless inference, API access, cache eviction
 between sessions, or contexts exceeding cache capacity. Against a
 persistent KV cache with host offload~\cite{kwon2023pagedattention}, per-query recompute FLOPs
-approach zero and the binding resource becomes memory capacity and paging
-bandwidth. In that regime SemPointer's contribution is capacity, not
-FLOPs: retaining only $Nk$ pointer tokens in fast memory while full
-context resides in secondary storage. The crossover analysis covers the
-re-ingestion regime; the capacity argument extends to the cached regime.
+approach zero and the binding resource is memory capacity and paging
+bandwidth; there SemPointer retains only $Nk$ pointer tokens in fast memory.
 
 \begin{table}[t]
 \caption{Architectural Comparison of Context-Management and Memory Approaches. Entries characterize each system at the level of its published description; see Section~VIII-B for a comparison of composable addressing (Axiom~7) against standard RAG concatenation.}\label{tab:feature_matrix}
@@ -406,10 +408,10 @@ ICAE \cite{ge2024icae} & Memory Slots & Continuous & No & No & No & No & Yes \\
 SAC \cite{liu2025sac} & Anchor Tokens & Token KV & No & No & No & No & No \\
 CCM \cite{kim2024ccm} & Compressed KV & KV Tensors & Yes (KV) & No & No & No & Yes \\
 LLMLingua-2 \cite{pan2024llmlingua2} & Pruned Text & Discrete Text & No & No & No & No & No \\
-xRAG \cite{cheng2024xrag} & Document Embedding & Continuous & Yes (Ext DB) & Partial & Yes (Retrieval) & No & Yes \\
-MemGPT \cite{packer2023memgpt} & Page ID / Chunks & Positional/Text & Yes (Archival) & Partial (Positional) & Yes (Tool-Call) & No & Yes \\
-Landmark Attention \cite{mohtashami2023landmark} & Landmark Tokens & Token Markers & No & No & Yes (Blocks) & No & No \\
-\textbf{SemPointer (Proposed)} & \textbf{Semantic Pointer} & \textbf{Token Seq. / Latent} & \textbf{Yes (Multi-tier)} & \textbf{Yes (Semantic)} & \textbf{Yes (Query-Cond.)} & \textbf{Yes (Design req.)} & \textbf{Yes} \\ \bottomrule
+xRAG \cite{cheng2024xrag} & Document Embedding & Continuous & Yes (Ext DB) & Partial (dense; same family) & Yes (Retrieval) & No & Yes \\
+MemGPT \cite{packer2023memgpt} & Page ID / Chunks & Positional/Text & Yes (Archival) & Yes (page-ID; positional) & Yes (Tool-Call) & No & Yes \\
+Landmark Attention \cite{mohtashami2023landmark} & Landmark Tokens & Token Markers & No & No (intra-pass routing) & Yes (Blocks) & No & No \\
+\textbf{SemPointer (Proposed)} & \textbf{Semantic Pointer} & \textbf{Token Seq. / Latent} & \textbf{Yes (Multi-tier)} & \textbf{Yes (Semantic)} & \textbf{Yes (Query-Cond.)} & \textbf{No (specified, untested)} & \textbf{Yes} \\ \bottomrule
 \end{tabular}%
 }
 \end{table}
@@ -423,19 +425,22 @@ Landmark Attention \cite{mohtashami2023landmark} & Landmark Tokens & Token Marke
 Let pointer space $\mathcal{P}$ consist of sequences of length $k$ over discrete vocabulary $\mathcal{V}_p$ of size $V = |\mathcal{V}_p|$. Under independent, uniformly distributed pointer generation, the probability that any two of $N$ registered memory items share an identical address is bounded by $P_{\text{collision}} \approx 1 - \exp\left(-\frac{N(N-1)}{2 V^k}\right)$.
 \end{proposition}
 
-\textit{Proof Sketch.} Generalized birthday bound over address cardinality $|\mathcal{P}|=V^k$ under independent uniform assignment. The uniform assumption is contradicted by the implementation note that equal-width binning yields a non-uniform bucket distribution (\texttt{pointer\_generator.py}); no collision rate is logged.
+\textit{Proof Sketch.} Birthday bound over $|\mathcal{P}|=V^k$ under uniform assignment; equal-width binning is non-uniform (\texttt{pointer\_generator.py}); no collision rate is logged. Hence the uniform-distribution bound contradicts the actual generator and serves as an analytic illustration only, not a guarantee for the reported runs.
 
 \begin{proposition}[Combinatorial Address Space Capacity]\label{prop:capacity}
 Under the uniform birthday-bound model, to maintain collision probability below threshold $\delta$ across a memory registry of $N$ items, the minimum discrete pointer length $k$ must satisfy $k \ge \left\lceil \frac{\ln(N^2) - \ln(2 \delta)}{\ln V} \right\rceil$.
 For illustration, with $N = 10^5$, $V = 32{,}000$, and $\delta = 10^{-4}$: $k \ge \lceil \frac{23.02 + 8.51}{10.37} \rceil = 4$.
-This calculation concerns combinatorial capacity; Proposition~4's lower bound ($k \ge 4$ under $N=10^5$, $V=32{,}000$, $\delta=10^{-4}$) and Axiom~2's compactness jointly restrict viable pointer length to $k \in [4, 8]$. Analytic illustration only: all reported runs use $k=8$, which satisfies the bound without testing it (\texttt{config\_table.json}).
+This calculation concerns combinatorial capacity; Proposition~4's lower bound ($k \ge 4$ under $N=10^5$, $V=32{,}000$, $\delta=10^{-4}$) and Axiom~2's compactness jointly restrict viable pointer length to $k \in [4, 8]$. Analytic illustration only: all reported runs use $k=8$, which satisfies the bound without testing it (\texttt{config\_table.json}). Tested registries average $N{\approx}25$--$28$ blocks per example (Section~\ref{sec:methods}), so the $N{=}10^5$ calculation is untested analytic extrapolation, not a validated scale claim.
 \end{proposition}
 
 \noindent\textbf{B. Semantic Drift Across Extended Horizons (assumption; future measurement):}
-We assume, as a phenomenological ansatz rather than a derivation from RoPE geometry, that attention to historical pointers may decay with displacement $\Delta t = t_{\text{curr}} - t_{\text{gen}}$ as: $\mathbb{E}[\alpha(Q_t, P_i)] \propto \exp(-\lambda |t - t_i|)$, where $\lambda > 0$ is an unspecified decay parameter. No position-displacement measurement exists in the present runs; testing this decay is future work.
+Phenomenological ansatz (not from RoPE geometry): attention may decay with displacement $\Delta t = t_{\text{curr}} - t_{\text{gen}}$ as: $\mathbb{E}[\alpha(Q_t, P_i)] \propto \exp(-\lambda |t - t_i|)$, where $\lambda > 0$ is unspecified. Unmeasured; future work.
 
 \noindent\textbf{C. Resolution Divergence and Hallucination:}
-When $\mathcal{R}_{\theta}$ operates on a lossy substrate ($\mathcal{M}_{\text{latent}}$), reconstructions may deviate from ground truth: $\mathcal{D}_{\text{KL}}(p(X_i) \parallel p(\hat{X}_i \mid P_i, M_i)) > 0$. Beyond downstream reasoning tolerance this hallucinates, so precision-critical tasks assume $\mathcal{M}_{\text{text}}$ or $\mathcal{M}_{\text{kv}}$; no $\mathcal{M}_{\text{latent}}$ run exists to test this (future work, Section~\ref{sec:substrates}).
+On lossy $\mathcal{M}_{\text{latent}}$, reconstructions may deviate: $\mathcal{D}_{\text{KL}}(p(X_i) \parallel p(\hat{X}_i \mid P_i, M_i)) > 0$. Beyond tolerance this hallucinates, so precision-critical tasks assume $\mathcal{M}_{\text{text}}$ or $\mathcal{M}_{\text{kv}}$; no $\mathcal{M}_{\text{latent}}$ run exists (future work, Section~\ref{sec:substrates}).
+
+\noindent\textbf{D. Prompt Injection via PTR Strings:}
+Untrusted block text resolved via $\mathcal{M}_{\text{text}}$ renders verbatim into the active prompt, so a malicious instruction in a selected block could steer $f_\Theta$; pointer identifier strings are likewise prompt-resident. No adversarial or injection test was run, so this is an untested threat model, not a measured vulnerability.
 
 \begin{figure}[t]
 \centering
@@ -447,20 +452,20 @@ When $\mathcal{R}_{\theta}$ operates on a lossy substrate ($\mathcal{M}_{\text{l
 \section{Critical Boundary Analysis and Literature Comparison}
 
 \noindent\textbf{A. Disambiguation from Landmark Attention:}
-Landmark Attention \cite{mohtashami2023landmark} uses tokens to route attention across blocks. Three structural differences separate it from SemPointer: (1)~\emph{Sequence routing vs.\ persistent indirection:} Landmark Attention gates attention within a continuous sequence; SemPointer maintains an address registry dereferencing an independent substrate across queries. (2)~\emph{Internal marker vs.\ address handle:} Landmark tokens act as transient routing gates; SemPointers are persistent, composable address handles. (3)~\emph{Working-memory eviction:} Landmark Attention requires keeping full context or KV states active; SemPointer permits offloading substrate to secondary storage while retaining only $k$ pointer tokens per block.
+Landmark Attention \cite{mohtashami2023landmark} routes attention across blocks via tokens. Three differences separate it from SemPointer: (1)~\emph{Routing vs.\ persistent indirection:} Landmark gates attention within a continuous sequence; SemPointer dereferences an independent substrate across queries via an address registry. (2)~\emph{Transient marker vs.\ address handle:} landmark tokens are routing gates; SemPointers are persistent handles (composition specified, untested). (3)~\emph{Eviction:} Landmark keeps full context or KV states active; SemPointer offloads substrate to secondary storage, retaining only $k$ tokens per block.
 
 \noindent\textbf{B. Disambiguation from Retrieval-Augmented Generation:}
-While RAG \cite{lewis2020rag, cheng2024xrag} and SemPointer both perform query-conditioned selection over external stores, they diverge fundamentally in addressing structure. Standard RAG retrieves passages as independent blocks and appends them to prompt context, delegating relational binding entirely to downstream self-attention. SemPointer defines an address space of composable references ($P_a \oplus P_b$), enabling compound pointers to be registered and dereferenced jointly (Axiom~\ref{ax:compositionality}, \eqref{eq:composition}). Joint resolution is specified but not empirically tested in this work: the multi-hop pilot (Table~\ref{tab:N6-pilot}) favors dense top-$1$ over index-routed resolution. For a two-hop query (\textit{``What did the vendor in turn 12 quote in turn 40's email?''}), RAG concatenates both blocks into context, whereas SemPointer forms a joint address $(P_{12} \oplus P_{40})$ resolved once against combined substrate $\{M_{12}, M_{40}\}$ conditioned on $Q_t$.
+RAG \cite{lewis2020rag, cheng2024xrag} and SemPointer both select over external stores but differ in addressing. Standard RAG appends retrieved blocks to context, leaving relational binding to downstream self-attention. SemPointer defines composable references ($P_a \oplus P_b$) registered and dereferenced jointly (Axiom~\ref{ax:compositionality}, \eqref{eq:composition}). Joint resolution is specified but untested here: the multi-hop pilot (Table~\ref{tab:N6-pilot}) favors dense top-$1$ over index-routed resolution. For two-hop query (\textit{``What did the vendor in turn 12 quote in turn 40's email?''}), RAG concatenates both blocks, whereas SemPointer forms joint address $(P_{12} \oplus P_{40})$ resolved once against $\{M_{12}, M_{40}\}$ conditioned on $Q_t$.
 
 \noindent\textbf{C. Disambiguation from Operating-System-Style Memory (MemGPT):}
-MemGPT \cite{packer2023memgpt} manages context hierarchies through operating-system abstractions, moving text blocks between active context and archival storage via function calls and parser interrupts. Three structural distinctions separate SemPointer from MemGPT: (1)~\emph{Addressing abstraction:} MemGPT addresses storage items via integer page IDs or text metadata mediated by system prompt instructions and external tool calls. SemPointer introduces token-level addresses generated directly by $\mathcal{G}_\phi$ within the model's sequence space. (2)~\emph{Active sequence integration:} In MemGPT, evicted pages leave no residual trace in active context; retrieval requires explicit tool invocation. In SemPointer, all unselected blocks retain compact $k$-token pointers ($P_{i \notin J^*}$) in active attention, preserving global context presence while payloads remain offloaded. (3)~\emph{Formal complexity boundary:} While MemGPT is an empirical systems framework, SemPointer provides closed-form cost derivations (Propositions~1--2) determining when address indirection amortizes against linear re-ingestion.
+MemGPT \cite{packer2023memgpt} moves text blocks between active context and archival storage via function calls and parser interrupts. Three distinctions separate SemPointer: (1)~\emph{Addressing:} MemGPT uses integer page IDs or metadata via system instructions and tool calls; SemPointer uses token-level addresses from $\mathcal{G}_\phi$ in sequence space. (2)~\emph{Integration:} evicted MemGPT pages leave no active trace and need explicit tool invocation; unselected SemPointer blocks retain $k$-token pointers ($P_{i \notin J^*}$) in attention, preserving global presence while payloads stay offloaded. (3)~\emph{Complexity:} MemGPT is an empirical systems framework; SemPointer gives closed-form derivations (Propositions~1--2) for when indirection amortizes against re-ingestion.
 
 \enlargethispage{2\baselineskip}
 \noindent\textbf{D. Feature-Level Comparison with Related Approaches:}
-Table~\ref{tab:feature_matrix} contrasts SemPointer with representative context-compression and memory architectures across seven structural dimensions.
-\textbf{Explicit Address and Decoupled Substrate:} Gist Tokens \cite[§2]{mu2023gist}, AutoCompressors \cite[§3.1]{chevalier2023autocompressors}, and ICAE \cite[§2]{ge2024icae} are address-less prompt prefixes with no substrate. 500xCompressor \cite[§3]{li2025500xcompressor} collapses context into one token. CCM \cite[§3.2]{kim2024ccm} offloads merged KV states (\emph{Yes (KV)}) with no explicit address (\emph{No}). xRAG \cite[§2.2]{cheng2024xrag} retrieves by dense vector (\emph{Partial} address, \emph{Yes (Ext DB)} substrate). MemGPT \cite{packer2023memgpt} uses page-level access (\emph{Partial} address, \emph{Yes (Archival)} substrate).
-\textbf{Composable Addressing (Axiom~7):} AutoCompressor vectors \cite[§3.1]{chevalier2023autocompressors} lack an address algebra for non-adjacent references (\emph{No}). Gist Tokens \cite{mu2023gist} and ICAE \cite{ge2024icae} leave binding to attention over summaries. Landmark Attention \cite[§3]{mohtashami2023landmark} routes within-sequence with no cross-turn handles (\emph{No}). SemPointer instead requires composition ($P_a \oplus P_b$, \eqref{eq:composition}).
-\noindent\textbf{E. Query-Aware Sparsity and KV-Reuse Systems:} Three recent systems implement the dense-selection half of SemPointer's pipeline and bound its novelty claims. InfLLM \cite{xiao2024infllm} pairs sliding-window attention with block-level KV memory whose representatives are selected by attention scores, scaling to 1M tokens with no persistent in-prompt handle. RetrievalAttention \cite{liu2025retrievalattention} offloads KV to CPU behind ANN indexes with per-step retrieval scanning 1--3\% of keys; its addresses are transient index hits, not authored tokens. Quest \cite{tang2024quest} loads Top-$K$ KV pages per query via analytic attention bounds, likewise leaving no residual handle. CacheBlend \cite{yao2025cacheblend} reuses precomputed KV of non-prefix chunks with selective recompute repairing cross-attention, keyed by chunk hash without query-conditioned selection. PromptCache \cite{gim2024promptcache} stitches position-correct cached KV modules across requests. Memorizing Transformers \cite{wu2022memorizing} bury kNN memory reads inside one attention layer with no textual address. Infini-attention \cite{munkhdalai2024infiniattention} folds past key-value states incrementally into a fixed-size compressive associative matrix inside each attention block, retrieved by linear-attention lookup with a learned gate mixing long-term and local outputs. A second family pairs retrieval with compressed or embedded context and amortized or offline encoding across queries \cite{xu2024recomp, rau2025cocom, tan2024lloco, gao2025uniicl, tack2024mac}, while token-level reuse across requests targets decode acceleration \cite{luo2025recycling}. Against all six, SemPointer's defensible residual is narrow: prompt-resident textual pointer strings, verbatim-text (not KV) resolution, and a specified-but-untested composition algebra.
+Table~\ref{tab:feature_matrix} contrasts SemPointer with representative compression and memory architectures across seven dimensions.
+\textbf{Explicit Address and Decoupled Substrate:} Gist Tokens \cite[§2]{mu2023gist}, AutoCompressors \cite[§3.1]{chevalier2023autocompressors}, and ICAE \cite[§2]{ge2024icae} are address-less prefixes with no substrate. 500xCompressor \cite[§3]{li2025500xcompressor} collapses context into one token. CCM \cite[§3.2]{kim2024ccm} offloads merged KV (\emph{Yes (KV)}) with no explicit address (\emph{No}). xRAG \cite[§2.2]{cheng2024xrag} retrieves by dense-vector selection in the same family as ours (\emph{Partial}, \emph{Yes (Ext DB)}). MemGPT \cite{packer2023memgpt} page-IDs are explicit addresses, so marked \emph{Yes}; the distinction is address-type only (positional page-ID vs.\ semantic) with \emph{Yes (Archival)} substrate. Landmark \cite[§3]{mohtashami2023landmark} tokens route blocks intra-pass within one pass, hence \emph{No} explicit cross-query address.
+\textbf{Composition (Axiom~7):} AutoCompressor vectors \cite[§3.1]{chevalier2023autocompressors} lack an algebra for non-adjacent references (\emph{No}). Gist Tokens \cite{mu2023gist} and ICAE \cite{ge2024icae} leave binding to attention over summaries. Landmark \cite[§3]{mohtashami2023landmark} routes within-sequence with no cross-turn handles (\emph{No}). SemPointer specifies composition ($P_a \oplus P_b$, \eqref{eq:composition}) but it is untested here, hence marked \emph{No (specified, untested)}.
+\noindent\textbf{E. Query-Aware Sparsity and KV-Reuse Systems:} Three systems implement the dense-selection half of SemPointer's pipeline and bound its novelty. InfLLM \cite{xiao2024infllm} pairs sliding-window attention with block-level KV memory selected by attention scores, scaling to 1M tokens with no in-prompt handle. RetrievalAttention \cite{liu2025retrievalattention} offloads KV to CPU behind ANN indexes scanning 1--3\% of keys per step; addresses are transient hits, not authored tokens. Quest \cite{tang2024quest} loads Top-$K$ KV pages per query via attention bounds, leaving no residual handle. CacheBlend \cite{yao2025cacheblend} reuses precomputed KV of non-prefix chunks with selective recompute, keyed by chunk hash without query-conditioned selection. PromptCache \cite{gim2024promptcache} stitches position-correct cached KV modules across requests. Memorizing Transformers \cite{wu2022memorizing} bury kNN reads inside one attention layer with no textual address. Infini-attention \cite{munkhdalai2024infiniattention} folds past states into a fixed-size compressive matrix per attention block, retrieved by linear-attention lookup with a gate mixing long-term and local outputs. A second family pairs retrieval with compressed or embedded context and amortized or offline encoding across queries \cite{xu2024recomp, rau2025cocom, tan2024lloco, gao2025uniicl, tack2024mac}, while token-level reuse across requests targets decode acceleration \cite{luo2025recycling}. Against all six, SemPointer's defensible residual is narrow: prompt-resident textual pointers, verbatim-text (not KV) resolution, and specified-but-untested composition.
 
 \section{Empirical Methods}\label{sec:experiments}\label{sec:methods}
 % Condensed methods summary (~40 lines). Full detail moved verbatim to the
@@ -540,13 +545,13 @@ on every suite. Full protocols, code paths, and deviations are in the supplement
 
 \section{Discussion and Open Challenges}
 \noindent\textbf{A. Differentiable vs.\ Discrete Addressing:}
-Discrete tokens are cache-compatible and supported by standard tokenization pipelines. However, they impose a quantization bottleneck: the pointer space is finite, and gradients cannot flow through discrete selection without additional estimators such as Gumbel-softmax or REINFORCE. Continuous soft pointers avoid this restriction and offer flexible expressive capacity, but they introduce opacity and susceptibility to positional drift across transformer layers. In our measurements, selection is performed by dense cosine over block embeddings (pointer strings are prompt-resident only; see Section~\ref{sec:experiments}), so the addressing choice does not affect retrieval quality in these runs. Neither option is clearly superior; the choice depends on the implementation of $\mathcal{G}_\phi$ and the resolution operator.
+Discrete tokens are cache-compatible and supported by standard tokenization pipelines. However, they impose a quantization bottleneck: the pointer space is finite, and gradients cannot flow through discrete selection without additional estimators such as Gumbel-softmax or REINFORCE. Continuous soft pointers avoid this restriction and offer flexible expressive capacity, but they introduce opacity and susceptibility to positional drift across transformer layers. In our measurements, selection is performed by dense cosine over block embeddings (pointer strings are prompt-resident only; see Section~\ref{sec:experiments}), so the addressing choice does not affect retrieval quality in these runs.
 
 \noindent\textbf{B. Dynamic Memory Granularity:}
 Fixed chunking produces clean algebraic guarantees. In multi-turn dialogue, proposition boundaries vary dynamically. Integrating learned segmentation heads into $\mathcal{G}_\phi$ to identify variable-length semantic units remains an important architectural direction.
 
 \noindent\textbf{C. Safety and Indirection Attacks:}
-Decoupling pointers from storage creates distinct security considerations. Adversarial inputs designed to collide with existing addresses could trigger unauthorized memory resolution. Access control lists, pointer provenance tracking, and cryptographic address hashing are natural design responses to be evaluated in future work.
+Decoupling pointers from storage creates distinct security considerations. Adversarial inputs designed to collide with existing addresses could trigger unauthorized memory resolution. Access control lists, pointer provenance tracking, and cryptographic address hashing are unevaluated design proposals, not tested mitigations, to be evaluated in future work.
 
 \input{sections/_limitations}
 

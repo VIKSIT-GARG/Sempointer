@@ -4,18 +4,19 @@
 \label{sec:honest-claims}
 
 \paragraph{What SemPointer does (measured).}
-On Qwen2.5-3B-Instruct (NF4, greedy, seed~42), SemPointer answers queries from a text substrate using dense per-query block selection (all-MiniLM-L6-v2, 512-token blocks), reaching mean containment~0.33 on RULER (n=180), mean F1~0.077 on LongBench (n=1150), and mean token-F1~0.052 on LoCoMo under the token-F1 adaptation (n=199).
-It reduces active tokens versus full context by 10--15$\times$ (RULER 1270 vs.\ 13089; LongBench 964 vs.\ 13066; LoCoMo 987 vs.\ 14525; Table~N3) with correspondingly lower latency and peak VRAM on this rig.
+On Qwen2.5-3B-Instruct (NF4, greedy, seed 42), SemPointer answers queries from a text substrate using dense per-query block selection (all-MiniLM-L6-v2, 512-token blocks), reaching mean containment~0.33 on RULER (n=180), mean F1~0.077 on LongBench (n=1150), and mean token-F1~0.052 on LoCoMo under the token-F1 adaptation (n=199).
+It reduces active tokens versus full context by 10--15$\times$ (RULER 1270 vs.\ 13089; LongBench 964 vs.\ 13066; LoCoMo 987 vs.\ 14525; Table~N3) with correspondingly lower latency and peak VRAM on this rig (single-GPU path, means only, no CIs; rig-specific, not a general efficiency claim).
 All paired deltas, 95\% bootstrap CIs, and paired tests are reported as-is in Table~N1 and \texttt{stats.json}.
 
 \paragraph{What SemPointer does not do.}
 Pointer tokens do not affect retrieval: SemPointer and the dense-RAG arm select identical blocks (RULER retrieval-miss counts 51 vs.\ 51; Table~N5), so the measured RULER delta versus RAG is $+0.001$ (95\% CI $[-0.003,+0.006]$, McNemar $p=1.000$).
-There is no KV-substrate end-to-end result: the KV comparison is a detached n=10 pilot (Table~N4), and no pointer is ever resolved into a live KV cache during generation.
+There is no KV-substrate end-to-end result: the KV comparison is a detached n=10 pilot with wide CIs and no significance claimed (e.g.\ SemPointer-vs-full $-0.20$, $[-0.50,0.00]$, McNemar $p=0.480$; Table~N4), and no pointer is ever resolved into a live KV cache during generation.
+Full-context means exclude fourteen OOMed narrativeqa rows, which favours full context (scored-only vs.\ errors-as-zero sensitivity in \texttt{stats.json} \texttt{oom\_sensitivity}; Table~N1 caption).
 There is no $k$-sweep: pointer length $k$ is fixed in these runs, so no claim about $k$ sensitivity is supported.
 There is no multi-model evidence: every number comes from the single Qwen2.5-3B-NF4 configuration.
 
 \paragraph{What SemPointer costs.}
 Each query pays a two-call routing overhead (one dense-selection pass plus one generation pass over the resolved prompt).
-SemPointer consumes roughly 1.4--1.7$\times$ the active tokens of dense RAG (1270 vs.\ 907 on RULER; 964 vs.\ 569 on LongBench; 987 vs.\ 572 on LoCoMo) for statistically indistinguishable quality (LongBench delta $-0.0009$, 95\% CI $[-0.0047,+0.0028]$, Wilcoxon $p=0.32$; LoCoMo delta $+0.0017$, 95\% CI $[-0.005,+0.008]$, $p=0.69$).
+SemPointer consumes roughly 1.4--1.7$\times$ the active tokens of dense RAG (1270 vs.\ 907 on RULER; 964 vs.\ 569 on LongBench; 987 vs.\ 571 on LoCoMo) for statistically indistinguishable quality (LongBench delta $-0.0009$, 95\% CI $[-0.0047,+0.0028]$, Wilcoxon $p=0.32$; LoCoMo delta $+0.0017$, 95\% CI $[-0.005,+0.008]$, $p=0.69$).
 Against full context it trades quality for tokens: RULER $-0.37$ ($[-0.44,-0.30]$, McNemar $p=6.7\times10^{-14}$), LongBench $-0.033$ ($[-0.040,-0.027]$, Wilcoxon $p=1.6\times10^{-31}$), LoCoMo $-0.012$ ($[-0.022,-0.003]$, Wilcoxon $p=0.028$, not significant at the Bonferroni-adjusted $\alpha=0.0038$ over 13 tests).
 BM25 exceeds SemPointer on RULER by $+0.248$ in full-context-normalized terms (SemPointer-vs-BM25 delta $-0.248$, $[-0.314,-0.183]$), driven by variable-tracking and multikey tasks (Table~N2).

@@ -45,8 +45,8 @@ for long contexts here [REASONED]. \textit{Per-token decode} is the incremental 
 $O(Ld)$ per step in length $L$ and width $d$ for cached decoding [ESTABLISHED textbook]. Sparse methods
 shrink only the prefill term; nothing here claims a decode-complexity improvement [REASONED]. Reported
 latency is end-to-end wall clock (prefill plus decode) from \texttt{GenResult.latency\_ms}, with token counts
-from the real tokenizer (\texttt{experiments/engine/llm.py}) [ESTABLISHED]; per-call peak VRAM uses
-\texttt{torch.cuda} counters reset before each call [ESTABLISHED].
+from the real tokenizer (\texttt{experiments/engine/llm.py}) [ESTABLISHED] (\texttt{metrics.json}); per-call peak VRAM uses
+\texttt{torch.cuda} counters reset before each call [ESTABLISHED] (\texttt{metrics.json}). We do not split time-to-first-token from decode (no per-token timing logged), embeddings ran with CPU-only fallback, and flat \texttt{max-new-tokens} budgets (32 RULER / 64 LongBench) confound cross-task latency comparison [ESTABLISHED] (\texttt{metrics.json}, \texttt{BENCHMARK\_PROVENANCE.md} \S\S1--2).
 
 \subsection{Additional baseline systems (implemented, pilot pending)}
 \label{sec:methods-newbaselines}
@@ -107,11 +107,14 @@ $d_z$ plus pooled $d$ [ESTABLISHED]. Intervals are paired bootstrap 95\% CIs (10
 [ESTABLISHED] (\texttt{stats.json}: \texttt{n\_bootstrap} $=10000$). The 13 primary paired tests use Bonferroni
 $\alpha = 0.05/13 \approx 0.0038$ [ESTABLISHED] (\texttt{stats.json}: \texttt{bonferroni}).
 
+\paragraph{Sample-size and precision.}
+Suite sizes are community-standard full splits, not power-computed: the RULER 180-cell design, full official LongBench splits ($n=1150$), and full LoCoMo conv-0 ($n=199$) [ESTABLISHED]. Precision is demonstrated by reported CI widths: RULER $−0.37$ [$−0.44$, $−0.30$], LongBench $−0.033$ [$−0.040$, $−0.027$], LoCoMo $−0.012$ [$−0.022$, $−0.003$] [ESTABLISHED] (\texttt{stats.json}). Pilots ($n=10$/$n=30$) are labeled exploratory [ESTABLISHED]. Greedy decoding is deterministic, so the bootstrap is over examples, not runs [REASONED].
+
 \subsection{ConfigurationLedger}
 \label{sec:methods-config}
 
 True mean LLM tokens per block $B$ is $506.6$ (RULER), $504.2$ (LongBench), $510.2$ (LoCoMo), and $487.9$
 (kv pilot); with $k=8$, $\kappa = k/B_{\mathrm{true}}$ is $0.0158$, $0.0159$, $0.0157$, $0.0164$ [ESTABLISHED]
 (\texttt{config\_table.json}). Mean blocks per example (SemPointer rows): $24.75$ (RULER), $26.67$ (LongBench),
-$28.0$ (LoCoMo), $7.5$ (kv pilot) [ESTABLISHED]. Recomputed score means match \texttt{metrics.json} on every suite
+$28.0$ (LoCoMo), $7.5$ (kv pilot) [ESTABLISHED] (\texttt{config\_table.json}). Recomputed score means match \texttt{metrics.json} on every suite
 (\texttt{match}: true) [ESTABLISHED].

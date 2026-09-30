@@ -7,165 +7,157 @@
 \subsection{Suite summary: accuracy losses first}
 \label{sec:results-summary}
 
-Table~\ref{tab:N1-main} gives suite means with bootstrap 95\% CIs; paired
-deltas, tests, and the Bonferroni family ($13$ tests, adjusted
-$\alpha \approx 0.0038$) come from \texttt{stats.json}. Three of the 13
-paired tests survive correction: RULER SemPointer-vs-full, RULER
-SemPointer-vs-BM25, and LongBench SemPointer-vs-full [ESTABLISHED].
+Table~\ref{tab:N1-main}: suite means with bootstrap 95\% CIs; paired
+deltas, tests, and Bonferroni family ($13$ tests, adjusted
+$\alpha \approx 0.0038$) from \texttt{stats.json}. Three of 13
+survive correction: RULER SemPointer-vs-full, RULER
+SemPointer-vs-BM25, LongBench SemPointer-vs-full [ESTABLISHED].
 
-On RULER containment ($n=180$ matched pairs), SemPointer scores $0.3300$
-against $0.7000$ for full context: paired delta $-0.37$,
-95\% CI $[-0.44,-0.30]$, McNemar discordant $b=1$, $c=61$,
-$p \approx 6.7\times10^{-14}$, surviving Bonferroni [ESTABLISHED]. Against
-BM25 ($0.5778$) the delta is $-0.248$, CI $[-0.314,-0.183]$,
-$p \approx 2.3\times10^{-10}$, likewise surviving [ESTABLISHED]. Against
-dense RAG ($0.3289$), the pointer layer contributes essentially nothing: the
-delta is $+0.0011$, CI $[-0.003,+0.006]$, with zero McNemar discordant pairs
-($b=c=0$, $p=1.0$; Wilcoxon $p=0.65$) [ESTABLISHED]. The RAG and SemPointer
-rows are near-identical across the whole taxonomy
+RULER containment ($n=180$ pairs): SemPointer $0.3300$
+vs $0.7000$ full, delta $-0.37$,
+95\% CI $[-0.44,-0.30]$, McNemar $b=1$, $c=61$,
+$p \approx 6.7\times10^{-14}$, surviving Bonferroni [ESTABLISHED]. Vs
+BM25 ($0.5778$) delta $-0.248$, CI $[-0.314,-0.183]$,
+$p \approx 2.3\times10^{-10}$, likewise surviving [ESTABLISHED]. Vs
+dense RAG ($0.3289$) the pointer contributes nothing: delta
+$+0.0011$, CI $[-0.003,+0.006]$, zero discordants
+($b=c=0$, $p=1.0$; Wilcoxon $p=0.65$) [ESTABLISHED]. RAG/SemPointer
+rows match across the taxonomy
 (Table~\ref{tab:N5-taxonomy}: both hit~57, miss~123, retrieval-miss~51)
 [ESTABLISHED].
 
-On LongBench F1, SemPointer ($0.0773$, $n=1150$) trails full context
-($0.1112$, $n=1136$ scored) by a paired delta of $-0.033$, CI
+LongBench F1: SemPointer ($0.0773$, $n=1150$) trails full
+($0.1112$, $n=1136$ scored) by $-0.033$, CI
 $[-0.040,-0.027]$ over $n=1136$ matched pairs, Wilcoxon
 $p \approx 1.6\times10^{-31}$, surviving Bonferroni [ESTABLISHED].
-SemPointer-vs-RAG is $-0.0009$, CI $[-0.0047,+0.0028]$, $p=0.32$, and
-SemPointer-vs-BM25 is $-0.0040$, CI $[-0.010,+0.002]$, $p=0.156$: neither is
-significant [ESTABLISHED]. Figure~\ref{fig:N1-pareto} places these
-accuracy--cost trade-offs on one plane.
+SemPointer-vs-RAG $-0.0009$, CI $[-0.0047,+0.0028]$, $p=0.32$;
+SemPointer-vs-BM25 $-0.0040$, CI $[-0.010,+0.002]$, $p=0.156$: neither
+significant [ESTABLISHED]. Figure~\ref{fig:N1-pareto} plots the
+trade-offs.
 
-On LoCoMo with the token-F1 adaptation ($n=199$ matched pairs), SemPointer
-($0.0518$) trails full context ($0.0642$) by $-0.012$, CI
+LoCoMo token-F1 ($n=199$ pairs): SemPointer
+($0.0518$) trails full ($0.0642$) by $-0.012$, CI
 $[-0.022,-0.003]$, Wilcoxon $p=0.028$ --- nominally positive but
-\textit{not} significant after Bonferroni, so no difference is claimed
+\textit{not} significant after Bonferroni; no difference claimed
 [ESTABLISHED]. SemPointer-vs-RAG ($+0.0017$, CI $[-0.005,+0.008]$,
-$p=0.69$) and SemPointer-vs-BM25 ($-0.011$, CI $[-0.022,+0.001]$,
-$p=0.037$) are likewise not significant after correction [ESTABLISHED].
-No superiority over BM25 or full context is claimed on any suite
+$p=0.69$), SemPointer-vs-BM25 ($-0.011$, CI $[-0.022,+0.001]$,
+$p=0.037$): neither significant after correction [ESTABLISHED].
+No superiority over BM25/full on any suite claimed
 [REASONED].
 
 \subsection{RULER per-task: easy parity, hard collapse}
 \label{sec:results-ruler}
 
-Table~\ref{tab:N2-ruler-pertask} and Figure~\ref{fig:N2-ruler} break RULER
-into per-task cells of $n=30$. On the easiest needle task,
-\texttt{niah\_single\_1}, SemPointer matches full context exactly
-($0.9667 = 0.9667$) [ESTABLISHED]. Difficulty then separates the systems:
-\texttt{niah\_single\_2} gives $0.2000$ against full context's $1.0000$,
-\texttt{niah\_single\_3} gives $0.2667$ against $0.7000$, and
-\texttt{multikey\_1} gives $0.4667$ against $0.9333$ [ESTABLISHED]. Variable
-tracking (\texttt{vt}) and common-word extraction (\texttt{cwe}) are
-collapses for every sparse system: SemPointer scores $0.0733$ on vt against
-$0.5933$ for full context, while cwe sits at the floor ($0.0067$) for all
-four systems including full context, a task-level bound rather than a
-retrieval effect [ESTABLISHED]. BM25 exceeds SemPointer on the harder NIAH
-cells ($0.8000$ and $0.6667$ on \texttt{single\_2}/\texttt{single\_3}),
-consistent with lexical needles that survive sparse selection poorly under
-dense cosine at $m=1$ [REASONED].
+Table~\ref{tab:N2-ruler-pertask} and Figure~\ref{fig:N2-ruler} split RULER
+into $n=30$ cells. Easiest needle
+\texttt{niah\_single\_1}: SemPointer matches full
+($0.9667 = 0.9667$) [ESTABLISHED]. Harder cells separate:
+\texttt{niah\_single\_2} $0.2000$ vs $1.0000$ full,
+\texttt{niah\_single\_3} $0.2667$ vs $0.7000$,
+\texttt{multikey\_1} $0.4667$ vs $0.9333$ [ESTABLISHED]. Variable
+tracking / common-word extraction collapse
+all sparse systems: SemPointer $0.0733$ on vt vs
+$0.5933$ full; cwe floored at $0.0067$ in all
+four including full: task bound, not retrieval effect [ESTABLISHED]. BM25 beats SemPointer on harder NIAH
+($0.8000$ and $0.6667$ on \texttt{single\_2}/\texttt{single\_3}),
+consistent with lexical needles failing under dense cosine at $m=1$ [REASONED].
 
 \subsection{Efficiency: large token and latency reductions at lower accuracy}
 \label{sec:results-efficiency}
 
-Table~\ref{tab:N3-efficiency} and Figure~\ref{fig:N3-efficiency} report
-measured active tokens, end-to-end latency, and peak VRAM with sparse/full
-ratios. SemPointer uses roughly one-tenth the active context of full
-ingestion: $1270.3$ vs $13089.2$ tokens on RULER (ratio $0.097$),
-$963.5$ vs $13066.1$ on LongBench ($0.074$), and $987.3$ vs $14525.1$ on
-LoCoMo ($0.068$) --- about $10$--$15\times$ fewer tokens [ESTABLISHED].
-Latency falls with prompt length: $894.5$ vs $7256.9$~ms on RULER
-($0.123$, about $8\times$), $1527.2$ vs $8084.5$~ms on LongBench ($0.189$,
-about $5\times$), and $1308.8$ vs $5326.2$~ms on LoCoMo ($0.246$, about
-$4\times$) --- $5$--$8\times$ faster end to end on RULER and LongBench
-[ESTABLISHED]. Peak VRAM drops from $3463.0$ to $2331.2$~MB on RULER
-($0.673$), $2994.4$ to $2300.5$~MB on LongBench ($0.768$), and $3825.1$ to
-$2302.6$~MB on LoCoMo ($0.602$) [ESTABLISHED]. These savings accompany the
-accuracy losses of \S\ref{sec:results-summary}; they do not offset them, and
-the paper makes no net-benefit claim [REASONED]. The pointer layer itself is
-a small net cost over plain RAG: SemPointer feeds $+363$ more active tokens
-per request than RAG on RULER ($1270.3$ vs $907.2$), about $+395$ on
-LongBench and $+416$ on LoCoMo, for a measured RULER delta of $+0.001$
-[ESTABLISHED].
+Table~\ref{tab:N3-efficiency} and Figure~\ref{fig:N3-efficiency} give
+active tokens, latency, peak VRAM with sparse/full
+ratios. SemPointer uses $\sim$one-tenth active context:
+$1270.3$ vs $13089.2$ tokens on RULER (ratio $0.097$),
+$963.5$ vs $13066.1$ on LongBench ($0.074$), $987.3$ vs $14525.1$ on
+LoCoMo ($0.068$) --- $10$--$15\times$ fewer [ESTABLISHED] (\texttt{metrics.json}).
+Latency: $894.5$ vs $7256.9$~ms RULER
+($0.123$, $\sim$$8\times$), $1527.2$ vs $8084.5$~ms LongBench ($0.189$,
+$\sim$$5\times$), $1308.8$ vs $5326.2$~ms LoCoMo ($0.246$, $\sim$$4\times$)
+[ESTABLISHED] (\texttt{metrics.json}). Peak VRAM $3463.0$ to $2331.2$~MB RULER
+($0.673$), $2994.4$ to $2300.5$~MB LongBench ($0.768$), $3825.1$ to
+$2302.6$~MB LoCoMo ($0.602$) [ESTABLISHED] (\texttt{metrics.json}). Per
+\S\ref{sec:results-summary} savings accompany losses without offset; no net-benefit claim [REASONED]. Pointer costs over RAG: $+363$
+active tokens/request on RULER ($1270.3$ vs $907.2$), $\sim$$+395$ on
+LongBench, $+416$ on LoCoMo, for RULER delta $+0.001$
+[ESTABLISHED] (\texttt{metrics.json}).
 
 \subsection{KV-compress pilot: no claims at \texorpdfstring{$n=10$}{n=10}}
 \label{sec:results-kv}
 
-Table~\ref{tab:N4-kv-pilot} reports the kv-compress pilot at $n=10$ with wide
-CIs shown as-is. SemPointer scores $0.8000$ (CI $[0.60,1.00]$) against
-$1.0000$ for full context (delta $-0.2$, CI $[-0.5,0.0]$, McNemar
-$p=0.48$); against KVPress SnapKV~0.3 ($0.5000$) the delta is $+0.3$, CI
-$[-0.1,+0.7]$, $p=0.37$; against ToVA~0.3 ($0.8000$) it is $0.0$, CI
-$[-0.3,+0.3]$; against KNorm~0.3 ($0.4000$) it is $+0.4$, CI
-$[+0.1,+0.7]$, McNemar $p=0.13$ [ESTABLISHED]. None of the four pilot tests
-survives Bonferroni, and the pilot note in \texttt{stats.json} states that
-no significance is claimed [ESTABLISHED]. The numbers are reported for
-completeness only [REASONED].
+Table~\ref{tab:N4-kv-pilot} gives the $n=10$ pilot with wide
+CIs as-is. SemPointer $0.8000$ (CI $[0.60,1.00]$) vs
+$1.0000$ full (delta $-0.2$, CI $[-0.5,0.0]$, McNemar
+$p=0.48$); vs KVPress SnapKV~0.3 ($0.5000$) delta $+0.3$, CI
+$[-0.1,+0.7]$, $p=0.37$; vs ToVA~0.3 ($0.8000$) $0.0$, CI
+$[-0.3,+0.3]$; vs KNorm~0.3 ($0.4000$) $+0.4$, CI
+$[+0.1,+0.7]$, McNemar $p=0.13$ [ESTABLISHED]. None of four survives
+Bonferroni; per \texttt{stats.json} no significance claimed [ESTABLISHED].
+Completeness only [REASONED].
 
 \subsection{Failure taxonomy}
 \label{sec:results-taxonomy}
 
-Table~\ref{tab:N5-taxonomy} classifies every scored miss from
+Table~\ref{tab:N5-taxonomy} classifies scored misses from
 \texttt{error\_breakdown.json} (miss := score $< 1.0$ containment or
-$< 0.5$ F1; retrieval-miss := miss with no selected block overlapping gold).
-On RULER, SemPointer's 123 misses split into 51 retrieval-misses and 66
-block-hit-wrong cases (gold block selected, answer still wrong), with 6
-gold-not-localizable rows where the gold answer cannot be localized to any
-chunk under the production chunking rule [ESTABLISHED]. The identical split
-for dense RAG (51/66/6) confirms the selection stage, not the pointer
-encoding, as the binding constraint [REASONED]. On LongBench the dominant
-categories are retrieval-miss (465) and block-hit-wrong (253), but 409 of
-1150 rows are gold-not-localizable: over a third of the suite cannot reward
-any block selection under 512-token chunking, which compresses every
-system's headroom [ESTABLISHED]. On LoCoMo, 157 of 199 rows are
-gold-not-localizable for SemPointer (157 for full context as well), with
-only 28 retrieval-misses and 14 block-hit-wrong; hit counts are 0 of 199
-[ESTABLISHED]. Two structural failure modes recur across suites
-[REASONED]: boundary-split needles, where a gold span straddles a 512-token
-chunk edge so no single block contains it; and multihop splits, where the
-two (hotpotqa/2wikimqa) or two-to-four (musique) supporting facts land in
-different blocks while $m=1$ resolves exactly one. Per-task tables serve as
-the hop breakdown because official hop-count labels are absent from the
-items (\texttt{error\_breakdown.json}: design mapping hotpotqa/2wikimqa
+$< 0.5$ F1; retrieval-miss := miss with no selected block overlapping gold) [ESTABLISHED] (\texttt{error\_breakdown.json}). The thresholds follow the scoring scales: containment is binary so any $<1.0$ is a miss, while $0.5$ F1 requires at least half token overlap, separating retrieval/generation failure from partial-credit noise [REASONED].
+RULER: SemPointer's 123 misses split 51 retrieval-miss / 66
+block-hit-wrong (gold selected, answer wrong) / 6
+gold-not-localizable (unlocalizable under production chunking) [ESTABLISHED] (\texttt{error\_breakdown.json}).
+Per \S\ref{sec:results-summary}, dense RAG shares it (51/66/6):
+selection, not pointer encoding, binds [REASONED]. LongBench:
+retrieval-miss (465), block-hit-wrong (253); 409 of
+1150 gold-not-localizable: over a third rewards no
+block selection under 512-token chunking, compressing all
+headroom [ESTABLISHED] (\texttt{error\_breakdown.json}). LoCoMo: 157 of 199
+gold-not-localizable for SemPointer (157 full too); 28 retrieval-miss,
+14 block-hit-wrong; hits 0 of 199
+[ESTABLISHED] (\texttt{error\_breakdown.json}). Two modes recur [REASONED]: boundary splits
+(gold straddling a 512-token edge, no block contains it), multihop splits
+(two hotpotqa/2wikimqa or two-to-four musique facts in
+different blocks; $m=1$ resolves one). Per-task tables substitute
+since items lack hop labels (\texttt{error\_breakdown.json}: hotpotqa/2wikimqa
 2-hop by construction, musique 2--4-hop) [ESTABLISHED].
 
 \subsection{Missing-data disclosure}
 \label{sec:results-oom}
 
-LongBench full context scored $n=1136$ of 1150: 14 narrativeqa
-full-context OOMs on the 8\,GB card are excluded from scored means
-[ESTABLISHED]. Missingness strikes the longest narrativeqa contexts, so the
-scored-only full mean ($0.1112$) drops the hardest full-context cases and
-favors full; the errors-as-zero full mean is $0.1099$, and SemPointer's mean
-on exactly those 14 OOM identifiers is $0.0343$, so sparse systems answered
-cases full context could not attempt [ESTABLISHED]
-(\texttt{stats.json}: \texttt{oom\_sensitivity}). Both means are reported;
-the paired delta ($-0.033$) uses matched scored rows only [ESTABLISHED]. On
-RULER, 10 full-context OOM error rows were all superseded by scored retries
-after resume and are excluded from every analysis, with zero truly missing
-rows [ESTABLISHED].
+LongBench full: $n=1136$ of 1150 scored; 14 narrativeqa
+full-context OOMs on the 8\,GB card excluded
+[ESTABLISHED]. Missingness hits longest narrativeqa contexts, so scored-only
+full ($0.1112$) drops hardest full cases, favoring
+full; errors-as-zero full $0.1099$; SemPointer on
+those 14 OOM identifiers $0.0343$ --- sparse answered
+cases full could not attempt [ESTABLISHED]
+(\texttt{stats.json}: \texttt{oom\_sensitivity}). Both reported;
+paired delta (see \S\ref{sec:results-summary}) uses matched scored rows only [ESTABLISHED].
+RULER: 10 full-context OOM rows superseded by scored retries
+after resume, excluded throughout; zero truly missing
+rows [ESTABLISHED]. Retry latency for these 10 RULER retries is excluded with no cost accounting, so full-context latency is understated and the gap remains unmeasured [ESTABLISHED] (\texttt{stats.json}: \texttt{oom\_sensitivity}).
 
 \subsection{Multi-hop pilot: nine arms, two clean negatives}
 \label{sec:results-pilot}
 
-Table~\ref{tab:N6-pilot} reports four pilots run on the same 30 musique
-examples (2--4-hop questions) under identical model, seed, and config, so all
-nine arms are matched-pair comparable; CIs overlap throughout and no
-significance is claimed [ESTABLISHED]. SemPointer point-estimates first
+Table~\ref{tab:N6-pilot} covers four pilots on the same 30 musique
+examples (2--4-hop), identical model/seed/config: nine arms
+matched-pair comparable; CIs overlap, no
+significance claimed [ESTABLISHED] (\texttt{metrics.json}, \texttt{config\_table.json}). SemPointer point-estimates first
 ($0.0541$ vs $0.0468$ full, $0.0313$ RAG, $0.0245$ BM25) at $16\times$ fewer
-tokens than full context ($1059$ vs $16925$) [ESTABLISHED]. Two mechanism tests
-are negative. First, LLM routing from the pointer index fails twice:
-\texttt{agentic\_pointer} ($0.0299$ at $3285$ tokens) and the redesigned
+tokens than full ($1059$ vs $16925$) [ESTABLISHED] (\texttt{metrics.json}). Two mechanism tests
+negative. First, LLM routing from pointer index fails twice:
+\texttt{agentic\_pointer} ($0.0299$ at $3285$ tokens) and redesigned
 \texttt{agentic\_pointer\_v2} with keyword-enriched index and constrained
-multi-block grammar ($0.0233$ at $3863$ tokens) both trail plain dense top-$1$
-($0.0541$ at $1059$ tokens); v2 still routes a single block on 30/30 items,
-so the collapse is structural at this model scale, not prompt design, and no
-v3 is attempted [ESTABLISHED]. Second, discrete-address retrieval
-(\texttt{address\_rag}, scoring by pointer-ID overlap only) reaches $0.0268$
-at $581$ tokens, about 86\% of dense RAG's $0.0313$: pointer IDs carry
-retrieval signal (k is structurally load-bearing per CPU tests) but confer no
-quality gain over dense cosine [ESTABLISHED]. Iterative two-round retrieval
-($0.0283$ at $1323$ tokens) matches single-round RAG, and hybrid fusion
-($0.0216$) sits at the BM25/RAG floor [ESTABLISHED].
-\texttt{session\_summary} is excluded: its per-chunk summarization loop
-records $10$--$17$k active tokens per request, exceeding full context, a
-token-accounting defect under repair rather than a result [ESTABLISHED].
+multi-block grammar ($0.0233$ at $3863$ tokens) both trail dense top-$1$
+($0.0541$ at $1059$ tokens); v2 routes one block on 30/30:
+model-scale capacity, not prompt design; single-model $n{=}30$
+cannot establish structurality; no v3 [ESTABLISHED] (\texttt{metrics.json}). Second,
+discrete-address retrieval
+(\texttt{address\_rag}, pointer-ID overlap only): $0.0268$
+at $581$ tokens, $\sim$86\% of dense RAG's $0.0313$ --- pointer IDs carry
+signal (k load-bearing per CPU tests), no gain over dense cosine [ESTABLISHED] (\texttt{metrics.json}).
+Two-round retrieval
+($0.0283$ at $1323$ tokens) matches single-round RAG; hybrid fusion
+($0.0216$) at BM25/RAG floor [ESTABLISHED] (\texttt{metrics.json}).
+\texttt{session\_summary} excluded: per-chunk loop
+records $10$--$17$k active tokens/request, exceeding full --- token-accounting
+defect under repair, not a result [ESTABLISHED].

@@ -5,40 +5,58 @@
 \label{sec:limitations}
 
 \paragraph{M1: single model.}
-Every measurement uses Qwen2.5-3B-Instruct (NF4, greedy, eager attention); no other model family or scale was run (\texttt{BENCHMARK\_PROVENANCE.md} \S4). Cross-model statements are unsupported.
+All measures use Qwen2.5-3B-Instruct (NF4, greedy, eager attention); no other family/scale (\texttt{BENCHMARK\_PROVENANCE.md} \S4); cross-model claims unsupported.
 
 \paragraph{M2: single seed.}
-All runs use seed~42 with no seed sweep (\texttt{stats.json}: \texttt{"seed": 42}). Reported CIs are bootstrap resampling intervals over examples, not intervals over training or sampling seeds.
+All runs seed 42, no sweep (\texttt{stats.json}: \texttt{"seed": 42}); CIs bootstrap over examples only.
 
 \paragraph{M3: no fine-tuning.}
-Neither the reader model nor the MiniLM selection encoder was trained or adapted for pointers; results describe an inference-only assembly of frozen components.
+Reader/MiniLM frozen, no pointer training; inference-only.
 
 \paragraph{M4: 16k context cap.}
-Nominal haystack budgets are 4096/8192/16384 tokens (\texttt{BENCHMARK\_PROVENANCE.md} \S1); nothing longer was evaluated, and realized lengths are word-estimated within $\sim$20\% of nominal.
+Budgets 4096/8192/16384 tokens (\texttt{BENCHMARK\_PROVENANCE.md} \S1); longer untested; realized word-estimated within $\sim$20\% of nominal.
 
 \paragraph{M5: KV evidence is a pilot.}
-The KV comparison is n=10 with wide CIs (e.g.\ SemPointer-vs-full $-0.20$, $[-0.50,0.00]$, McNemar $p=0.480$; \texttt{stats.json} \texttt{final\_kvcompare}, Table~N4). The \texttt{pilot\_note} field states no significance is claimed.
+KV pilot n=10, wide CIs (e.g.\ SemPointer-vs-full $-0.20$, $[-0.50,0.00]$, McNemar $p=0.480$; \texttt{stats.json} \texttt{final\_kvcompare}, Table~N4); \texttt{pilot\_note}: no significance claimed.
 
 \paragraph{M6: text substrate only.}
-All resolution paths return verbatim text; the KV-substrate dereference was never executed end-to-end (\texttt{INDEPENDENT\_RECONSTRUCTION.md} \S4). Cached-regime memory claims remain analytic, not measured.
+All paths return verbatim text; KV-substrate dereference never end-to-end (\texttt{INDEPENDENT\_RECONSTRUCTION.md} \S4); cached-regime claims analytic, unmeasured.
 
 \paragraph{M7: pointer ablation is approximately zero.}
-SemPointer and dense RAG produce identical selection outcomes (RULER retrieval-miss 51/51; LongBench 465/465; Table~N5), so these runs cannot attribute any quality effect to the pointer strings themselves.
+Identical selections to dense RAG (RULER retrieval-miss 51/51; LongBench 465/465; Table~N5); no effect from pointer strings.
 
 \paragraph{M8: no $k$-sweep.}
-Pointer length and top-$m$ selection depth are fixed; sensitivity of quality or cost to $k$ was not measured in this study.
+Pointer length, top-$m$ fixed; $k$ sensitivity unmeasured.
 
 \paragraph{M9: OOM asymmetry favors full context.}
-Fourteen narrativeqa full-context rows OOMed and are excluded from scored means; scored-only reporting drops the hardest full-context cases (full mean 0.1112 scored-only vs.\ 0.1099 errors-as-zero; \texttt{stats.json} \texttt{oom\_sensitivity}, Table~N1 caption).
+Fourteen narrativeqa full-context rows OOMed, excluded from means (full mean 0.1112 scored-only vs.\ 0.1099 errors-as-zero; \texttt{stats.json} \texttt{oom\_sensitivity}, Table~N1 caption); hardest dropped.
 
 \paragraph{M10: LoCoMo uses a metric adaptation.}
-With no judge API available, all LoCoMo categories are scored with plain token F1 instead of the official GPT-4 judge plus stemming protocol, so LoCoMo numbers are not comparable to published values (\texttt{BENCHMARK\_PROVENANCE.md} \S3; every table labels this adaptation).
+No judge API; all LoCoMo uses token F1, not GPT-4 judge plus stemming; incomparable to published values (\texttt{BENCHMARK\_PROVENANCE.md} \S3; every table labels this adaptation). The suite stays because it is the only conversational-memory benchmark covering the paper's motivated multi-turn use case, reported under the documented token-F1 adaptation.
 
 \paragraph{M11: latency and VRAM are rig-specific.}
-Latency and peak-VRAM means (Table~N3) were recorded on a single 8\,GB laptop GPU path and are reported without CIs; they describe this setup, not serving hardware generally.
+Latency/peak-VRAM means (Table~N3) single 8\,GB GPU path, no CIs; rig-specific.
 
 \paragraph{M12: per-task uncertainty is partial.}
-Suite-level bootstrap CIs are stored in \texttt{metrics.json}; per-task RULER cells (Table~N2) carry Wilson-95 whiskers computed in-script from cell means only (Fig.~N2), not paired tests.
+Suite CIs in \texttt{metrics.json}; RULER cells (Table~N2) Wilson-95 whiskers from means in-script (Fig.~N2), no paired tests.
 
 \paragraph{M13: pending arms.}
-LongMemEval \cite{wu2024longmemeval} evaluation and a no-context control arm are not run here; LongMemEval is assessed as future work requiring a judge API and 115k-token histories beyond this rig (\texttt{BENCHMARK\_PROVENANCE.md} \S5). TTFT/decode logging, a BGE encoder swap \cite{xiao2023bge}---the C-Pack packed-resources embedding family released with C-MTEB/C-MTP, with E5 \cite{wang2022e5} as the weakly-supervised contrastive-pretraining encoder family---which selects different blocks than MiniLM on a probe, and an LLMLingua scaffold are implemented and smoke-verified; reranker and compression arms are not yet run at benchmark scale.
+LongMemEval \cite{wu2024longmemeval} plus no-context control unrun; LongMemEval needs judge API and 115k-token histories beyond rig (\texttt{BENCHMARK\_PROVENANCE.md} \S5). TTFT/decode logging, BGE swap \cite{xiao2023bge}---C-Pack family with C-MTEB/C-MTP, E5 \cite{wang2022e5} as contrastive family---selecting different blocks than MiniLM on a probe, plus LLMLingua, implemented/smoke-verified; reranker/compression unrun at scale.
+
+\paragraph{M14: session-summary artifact status.}
+\texttt{session\_summary} artifacts (where present) are operational notes, not evaluated evidence; no claim rests on them.
+
+\paragraph{M15: 70B-scale arithmetic guardrail.}
+No 70B-scale run was attempted; token-arithmetic extrapolations to 70B-scale regimes are illustrative only, not measured.
+
+\paragraph{M16: no double-blind or evaluator blinding.}
+Scoring is scripted containment/token-F1 with fixed seed 42 and no human judge; there is no double-blind or evaluator-blinding procedure to report.
+Repository is author-visible and Table~N6 manual negatives were assessed unblinded.
+Author block plus repository URL deanonymize under double-blind review, compliant only if the venue is single-blind, so the author must confirm the review model with chairs before submitting.
+
+\paragraph{M17: compute and page-budget constraint.}
+Single-rig compute and page limits bound the number of arms, seeds, and ablations; unrun arms are listed in M13 rather than claimed.
+Manuscript targets 12--15pp Springer norm; all runs on a single-8GB CPU-only rig.
+
+\paragraph{M18: NF4-vs-BF16 quantization caveat.}
+All generation uses NF4 quantization; BF16 or full-precision behaviour is unmeasured, so quantization-sensitive effects cannot be excluded.

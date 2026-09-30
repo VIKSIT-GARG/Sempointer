@@ -1,14 +1,12 @@
-% PAPER-B fragment: abstract (owned by PAPER-B; wired by orchestrator).
-% Word count: 138 (body, excluding \keywords line). Limit: 200.
+% PAPER-B fragment: abstract (superseded by inline abstract in sempointer_ieee.tex; kept in sync).
 \begin{abstract}
 Full-context inference feeds every token to attention, so cost grows steeply with context length.
-SemPointer instead stores context blocks in an off-attention text substrate and keeps short pointer strings in the active prompt; per query, an off-the-shelf dense encoder (all-MiniLM-L6-v2) selects blocks by cosine similarity and resolves them to verbatim text.
+SemPointer instead stores context blocks in an off-attention text substrate and keeps short pointer strings in the active prompt; per query, an off-the-shelf dense encoder (all-MiniLM-L6-v2) selects blocks (k=8, m=1, B=512) by cosine similarity and resolves them to verbatim text.
 The pointer strings themselves do not affect selection.
-We measured Qwen2.5-3B-Instruct (NF4, greedy decoding, seed~42) on RULER containment (n=180), LongBench F1 (n=1150), LoCoMo under a token-F1 adaptation (n=199), and a KV-compress pilot (n=10).
+We measured Qwen2.5-3B-Instruct (NF4, greedy decoding, seed 42) on RULER containment (n=180), LongBench F1 (n=1150), LoCoMo under a token-F1 adaptation (n=199), and a KV-compress pilot (n=10).
 Against full context, SemPointer uses 10--15$\times$ fewer active tokens but lowers quality: RULER $-0.37$ (95\% CI $[-0.44,-0.30]$), LongBench $-0.033$ ($[-0.040,-0.027]$), LoCoMo $-0.012$ ($[-0.022,-0.003]$, not significant after Bonferroni correction).
-Against dense RAG it ties on quality at higher token cost.
-Scope: one model, one seed, text substrate only, contexts capped at 16k tokens.
+Against dense RAG it ties on quality at higher token cost under identical m=1/representations, and the pointer strings contribute no measured quality effect. Scope: one model, one seed, text substrate only, contexts capped at 16k tokens.
 \end{abstract}
 \begin{IEEEkeywords}
-long-context inference, dense retrieval, prompt compression, benchmarking, conversational memory
+long-context inference, dense retrieval, retrieval-augmented generation, benchmarking, conversational memory, negative results
 \end{IEEEkeywords}
