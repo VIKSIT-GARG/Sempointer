@@ -259,6 +259,19 @@ Algorithm~\ref{alg:sempointer} formalizes the operational lifecycle implemented 
 \end{algorithmic}
 \end{algorithm}
 
+\subsection{Upgraded Architecture: Patterns Absorbed from 2025--2026 Systems}
+The lifecycle above is the executed baseline. This subsection specifies the upgraded design, drawn from recent systems. Everything here is specified-not-implemented unless stated; no pilot exercises it.
+
+\noindent\textbf{Two-stage selection.} Recent KV-cache work splits retrieval into a cheap prefilter plus a precise rerank: RocketKV compresses in two stages \cite{behnam2025rocketkv}, and SnapKV first observes a voting window before keeping clustered keys \cite{li2024snapkv}. The upgraded selector mirrors this. Stage~1 scores all $N$ addresses by pointer-ID overlap $\hat{s}_i$ at $O(1)$ each, producing a shortlist $C$ with $|C| = c \ll N$. Stage~2 runs dense cosine only on $C$. Per-query selection drops from $O(N{\cdot}d)$ dense scoring to $O(N + c{\cdot}d)$. The executed system runs Stage~2 only, over all $N$.
+
+\noindent\textbf{Adaptive per-block budgets.} Instead of fixed $k$, each block carries $k_i$ pointer tokens under a registry budget $\sum_i k_i \le K$. Salient blocks (high query-hit rate, high recency) earn longer addresses; cold blocks shrink to $k_i = 2$. Selection then maximizes expected utility per token, a knapsack allocation the fixed-$k$ runs do not attempt.
+
+\noindent\textbf{Temporal versioning and edit operations.} Agent-memory systems converged on explicit mutation semantics: Mem0 routes every write through ADD, UPDATE, or DELETE operations \cite{chhikara2025mem0}, and Zep versions facts with valid-time intervals so history survives edits \cite{rasmussen2025zep}. The upgraded registry adopts four operations. REBIND$(P, M')$ atomically repoints a live handle at new content and bumps its version. FORGET$(P)$ writes a tombstone; dereferencing a tombstoned handle fails closed, never silently resurrects text. ALIAS$(P, Q)$ registers a second stable handle on one target with a reference count. DEREF$(P)$ resolves to the current target or raises the tombstone. None of these execute in the reported runs; the pilots mutate nothing.
+
+\noindent\textbf{Query-aware scoring rule.} Quest scores each KV page against the live query vector and loads only Top-$K$ pages \cite{tang2024quest}. The upgraded selection rule has the same shape: score each address against $\mathbf{e}(Q_t)$, resolve the top $m$, page the rest out. Quest's bound is per-decoding-step over KV pages; ours is per-query over prompt-resident addresses, which leaves a persistent handle where Quest leaves none.
+
+\noindent\textbf{What was deliberately not taken.} LLM-managed paging loops, in the MemGPT style \cite{packer2023memgpt}, trade determinism for autonomy; each eviction decision costs an LLM call and failures compound across turns, so orchestration stays outside the model here. Custom attention operators, in the Landmark style \cite{mohtashami2023landmark}, require retraining and break pretrained compatibility; addressing stays in token space for that reason. Full-KV retention with selective recompute, in the CacheBlend style \cite{yao2025cacheblend}, repairs cross-chunk attention at the price of keeping every chunk's KV resident; the text substrate sidesteps that cost by re-ingesting verbatim text only for resolved blocks.
+
 \section{Memory Substrates and Physical Taxonomies}\label{sec:substrates}
 
 {\small
