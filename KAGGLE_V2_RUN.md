@@ -13,9 +13,11 @@ From `/home/viksit/Projects/tokens2/experiments`:
 warden/bin/python prepare_kaggle_bundle.py
 ```
 
-Upload `/home/viksit/Projects/tokens2/sempointer_v2_kaggle_bundle.tar.gz`
+Upload `/home/viksit/Projects/tokens2/sempointer_v2_kaggle_bundle.bin`
 as a **private Kaggle Dataset**. The archive contains code and cached RULER,
 LongBench, and LoCoMo data. It excludes model weights, results, and V1 paper.
+The `.bin` extension prevents Kaggle's automatic archive extraction, which
+can fail with `Directory already exists: data`. The notebook extracts it.
 
 ## 2. Configure a Kaggle Notebook
 
@@ -30,7 +32,7 @@ Run this first cell:
 from pathlib import Path
 import glob, os, subprocess, sys
 
-matches = glob.glob('/kaggle/input/**/sempointer_v2_kaggle_bundle.tar.gz', recursive=True)
+matches = glob.glob('/kaggle/input/**/sempointer_v2_kaggle_bundle.bin', recursive=True)
 assert len(matches) == 1, f'Expected one bundle, found: {matches}'
 subprocess.run(['tar', '-xzf', matches[0], '-C', '/kaggle/working'], check=True)
 ROOT = Path('/kaggle/working/sempointer_v2')

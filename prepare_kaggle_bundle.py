@@ -13,7 +13,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-OUTPUT = ROOT.parent / "sempointer_v2_kaggle_bundle.tar.gz"
+# Kaggle auto-extracts recognized archives and can fail on repeated directory
+# paths. The payload is still gzip-compressed tar, but .bin keeps it intact.
+OUTPUT = ROOT.parent / "sempointer_v2_kaggle_bundle.bin"
 PREFIX = "sempointer_v2"
 
 
