@@ -10,6 +10,10 @@
 \usetikzlibrary{arrows.meta,positioning,shapes,shapes.geometric,calc}
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\setlength{\textfloatsep}{4pt plus 1pt minus 1pt}
+\setlength{\floatsep}{2pt plus 1pt minus 1pt}
+\setlength{\intextsep}{4pt plus 1pt minus 1pt}
+\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
 
 \begin{document}
 
@@ -44,7 +48,7 @@ New Delhi, India \\ \email{viksitg427@gmail.com}}
 
 \begin{figure}[t]
 \centering
-\input{figures/C1_arch}
+\resizebox{0.88\columnwidth}{!}{\input{figures/C1_arch}}
 \caption{Upgraded SemPointer lifecycle. P1 (ingest): blocks committed to tiered substrates while the generator emits $k$-token pointers into the registry. P2 (query): two-stage selection (address prefilter, dense rerank) resolves top-$m$ blocks; unselected pointers stay resident. Cost badges mark setup, selection, and resolution.}
 \label{fig:C1-arch}
 \end{figure}
@@ -63,16 +67,9 @@ New Delhi, India \\ \email{viksitg427@gmail.com}}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/C2_kstar.pdf}
+\includegraphics[width=0.8\columnwidth]{figures/C2_kstar.pdf}
 \caption{Analytic crossover threshold $K^*$ vs registry size $N$ (closed form, not measured). Pooling-class indirection amortizes within few queries for $N\ge 2$ except the shaded small-$N$ dominated region.}
 \label{fig:C2-kstar}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figures/C3_lactive.pdf}
-\caption{Analytic active-sequence scaling: full history $NB$ vs pointer-resident $Nk+mB_{\mathrm{res}}$. The coefficient drops $10$--$15\times$; the quadratic degree is unchanged. Analytic illustration.}
-\label{fig:C3-lactive}
 \end{figure}
 
 \input{tables/C1_matrix}
@@ -90,6 +87,6 @@ New Delhi, India \\ \email{viksitg427@gmail.com}}
 \label{sec:c-close}
 \input{secs/_c_close}
 
-\input{lncs_bibliography}
+{\footnotesize\input{lncs_bibliography_concept}}
 
 \end{document}

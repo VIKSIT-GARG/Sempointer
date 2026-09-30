@@ -2,16 +2,16 @@
 \label{sec:predict}
 
 \textbf{P1: Causal addresses beat generic IDs at fixed budget.}
-Setup: freeze retriever and $k{=}N$ candidates; rerank once with address-conditioned scores vs.\ generic-ID baseline on the same 51-vs-51 miss slice.
-Metric is selection accuracy: fraction of queries where the reranker selects the gold candidate.
-Kill: address conditioning selects identically to the baseline on the current miss slice (no accuracy gain at same $k,N$); P1 is rejected.
+Setup: freeze retriever, $k{=}N$ candidates; rerank address-conditioned vs.\ generic-ID baseline on 51-vs-51 miss slice.
+Metric: gold-selection rate.
+Kill: address conditioning matches baseline on miss slice (no gain at same $k,N$); P1 is rejected.
 
 \textbf{P2: Bind-once/deref-many amortizes by turn 10.}
-Setup: LongMemEval oracle setting~\cite{wu2024longmemeval} with a fixed session; compare one address bind plus pointer dereferences against re-retrieval every turn.
-Metric is cumulative latency and retrieval calls vs.\ answer accuracy through turn 10.
+Setup: LongMemEval oracle setting~\cite{wu2024longmemeval}, fixed session; one bind plus dereferences vs.\ re-retrieval.
+Metric: latency/calls vs accuracy through turn 10.
 Kill: no break-even by turn 10 (cumulative cost $\geq$ re-retrieve at equal accuracy); P2 is rejected.
 
 \textbf{P3: Mutation is cheaper and less stale than RAG upsert after 100 edits.}
-Setup: apply 100 sequential fact edits; compare pointer rebinding (update address table, leave tokens fixed) against RAG index upsert (rewrite/re-embed affected chunks).
-Metrics are stale-answer rate on edited facts and mean ms per edit.
+Setup: 100 edits; pointer rebinding (update table, tokens fixed) vs.\ RAG upsert (rewrite/re-embed chunks).
+Metric: stale-answer rate and mean ms/edit.
 Kill: rebinding leaks (stale rate $\geq$ upsert) or costs $\geq$ upsert per edit; P3 is rejected.
