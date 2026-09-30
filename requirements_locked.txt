@@ -1,5 +1,11 @@
 # requirements_locked.txt — SemPointer final-suite environment, fully pinned.
 #
+# HEADER NOTE: the `torch==2.14.0` line below is the freeze form; the actual
+# installed runtime is torch 2.14.0+cu130 (CUDA 13.0 wheel) — the local "+cu130"
+# tag is not printed by `uv pip freeze`. The `pip==24.0` line is a uv venv
+# artifact, not a real install (warden has no `pip` module); always install via
+# `uv pip install --python warden/bin/python`, never `pip`.
+#
 # Captured 2026-09-29 from the working warden venv (Python 3.11.16) via:
 #   uv pip freeze --python warden/bin/python
 # Runtime cross-check (warden/bin/python -c "import ..."):

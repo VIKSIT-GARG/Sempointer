@@ -48,11 +48,11 @@ def main():
     for s in order:
         d = merged[s]
         lo, hi = d["score_ci95"]
-        name = s.replace("_", " ")
+        name = s.replace("_", " ").title()
         rows.append(
             f"{name} & {d['n_scored']} & {fmt(d['score_mean'])} "
             f"& [{fmt(lo)}, {fmt(hi)}] & {d['active_tokens_mean']:.0f} "
-            f"& {d['latency_ms_mean']:.0f} \\\\"
+            f"& {d['latency_ms_mean']:.0f} & {d['peak_vram_mb_mean']:.0f} \\\\"
         )
 
     body = "\n".join(rows)
@@ -66,9 +66,9 @@ def main():
         "CIs wide (n=30); no significance claimed. "
         "Session summary excluded (token-accounting defect).}\n"
         "\\label{tab:N6-pilot}\n"
-        "\\begin{tabular}{lccccc}\n"
+        "\\begin{tabular}{lcccccc}\n"
         "\\toprule\n"
-        "System & n & F1 mean & 95\\% CI & Active tok & Latency (ms) \\\\\n"
+        "System & n & F1 mean & 95\\% CI & Active tok & Latency (ms) & VRAM (MB) \\\\\n"
         "\\midrule\n"
         f"{body}\n"
         "\\bottomrule\n"

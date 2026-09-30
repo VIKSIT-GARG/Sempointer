@@ -19,8 +19,32 @@ All paths relative to `experiments/`. Re-verify any entry with
 
 Each `results/final_*/` dir additionally holds `environment.json` and
 `predictions.jsonl` (per-(system, example) raw records; failures recorded as
-error rows, never hidden). The four `config.json` files all carry
-`"git_commit": "3f314f8d3016e736b7e1973fff9547b703b37f55"`.
+error rows, never hidden). Current HEAD pin: `4e212efb33dbb5e8903418235680a7da3be522ff`
+(`experiments/`, branch `paper-rewrite`). Note: the four `config.json` files were
+written during an earlier run and still embed the snapshot
+`"git_commit": "3f314f8d3016e736b7e1973fff9547b703b37f55"`; the manifest pin above
+supersedes them.
+
+## 1b. Pilot-run artifacts (sha256 at record time)
+
+30-example LongBench `musique` pilots (CPU). Each dir holds `metrics.json`,
+`config.json`, `environment.json`, `predictions.jsonl`.
+
+| File | sha256 |
+|---|---|
+| `results/pilot_multihop/metrics.json` | `d335972f29574b8aeee3d73be3d88db1f34cb724cdaa9d70827ac149950c87b9` |
+| `results/pilot_multihop/config.json` | `62ca3a8ae45307545fd2f10f39a6916582a3723935c7c05cf58686a006b5d9f8` |
+| `results/pilot_multihop_v2/metrics.json` | `8669a01c82b7284e0383b3a3af039567cb6e76c04b1a4c96d2097e0ffa56801a` |
+| `results/pilot_multihop_v2/config.json` | `da099937b72f820e12dc6098973e21b5fb3feda3d284896ce48a08d68fbfdd4c` |
+| `results/pilot_address/metrics.json` | `8be14c6219ef134766b531934e355b0834f6131def1a64c046ed3486acba1410` |
+| `results/pilot_address/config.json` | `ddb66cb4b824e13e22dc8a8392a432222c6c55c5b5e0236059f4aea8973d154b` |
+| `results/pilot_routing_v2/metrics.json` | `8adc109818a3b29064c9d18ecf859475f21a98df36c26df675bd62b037adff40` |
+| `results/pilot_routing_v2/config.json` | `30dcf3f2150fade8ca2299a21376466e366646d01a8e73bcda889a462db0c6b7` |
+
+Rerunnable CPU-only. `results/envcheck/` is a 1-example environment check;
+`results/smoke_{ruler,longbench,locomo,kvpress,3b_nf4}/` and `results/_dryrun/`
+are single-task smoke/validation runs — none are benchmark evidence and none are
+covered by the checksums above.
 
 ## 2. Derived statistics — provenance (generator scripts + seed)
 
@@ -68,10 +92,12 @@ RUNNING_EXPERIMENTS.md §3.
 ## 5. Git placeholder
 
 - Repo root `/home/viksit/Projects/token-opencode` is **not** a git repository.
-- Nested repo `experiments/` — branch: `paper-rewrite` — commit:
-  `3f314f8d3016e736b7e1973fff9547b703b37f55`
-  (`feat: SemPointer experiment codebase and empirical evaluation results`).
-- Working tree at record time: staged renames of legacy `analysis/`, `data/`,
-  `runners/` trees into `archive/legacy_*` (uncommitted). Re-run
-  `git -C experiments log --oneline -1 && git -C experiments status --short`
+- Nested repo `experiments/` — branch: `paper-rewrite` — HEAD:
+  `4e212efb33dbb5e8903418235680a7da3be522ff`
+  (`11-page swarm: theory trims … title reframe, structural softened`).
+- The legacy-tree move is **committed**, not pending: `archive/legacy_analysis/`,
+  `archive/legacy_data/`, `archive/legacy_runners/` are tracked and
+  `git -C experiments status --short` is clean (the only working-tree edits at
+  this record were `README.md` and this `MANIFEST.md`, by the doc-fix worker).
+  Re-run `git -C experiments log --oneline -1 && git -C experiments status --short`
   and paste the output alongside this manifest when handing results on.

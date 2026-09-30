@@ -212,7 +212,7 @@ def main():
         cells = []
         for t in RULER_TASKS:
             c = rm[sys]["per_task"][t]
-            cells.append(f"{c['score_mean']:.4f} ({c['n']})")
+            cells.append(f"{c['score_mean']:.3f} ({c['n']})")
         n2.append(f"{SYS_LABEL[sys]} & " + " & ".join(cells) + r" \\")
     n2 += [r"\hline", r"\end{tabular}", r"\end{table*}", ""]
     with open(os.path.join(TAB, "N2_ruler_pertask.tex"), "w") as f:
