@@ -189,7 +189,8 @@ OPTIONAL_ROW_FIELDS = ("selection_latency_ms", "ttft_ms", "n_hops", "expanded_id
                        "active_tokens_core", "n_selected", "completion_tokens",
                        "kv_encode_ms", "computed_tokens", "reused_tokens", "transfer_ms",
                        "rope_mixed_frequencies", "router_route", "router_coverage",
-                       "router_resolved_tokens")
+                       "router_resolved_tokens", "router_score_ratio",
+                       "router_weighted_coverage")
 
 
 def score_example(metric: str, prediction: str, gold: List[str]) -> float:

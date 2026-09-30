@@ -16,30 +16,36 @@ fi
 stage="${1:-smoke}"
 common=(--model Qwen/Qwen2.5-3B-Instruct --dtype nf4 --device cuda
         --seed 42 --block-size 512 --k 16 --m 2 --resume)
-systems='sempointer,sempointer_v2,sempointer_v2[semantic_rescue=false],bm25:4,bm25:5,full'
 case "$stage" in
     smoke)
         args=(--benchmark ruler --ruler-tasks niah_single_1,niah_multikey_1
               --context-lengths 4096 --limit 3 --max-new-tokens 32
-              --run-name v2_smoke --systems "$systems") ;;
+              --run-name v2_smoke --systems 'sempointer_v2,bm25:2,bm25:4') ;;
     ruler)
         args=(--benchmark ruler
               --ruler-tasks niah_single_1,niah_single_2,niah_single_3,niah_multikey_1,vt,cwe
               --context-lengths 4096,8192,16384 --limit 10 --max-new-tokens 32
-              --run-name v2_ruler --systems "$systems") ;;
+              --run-name v2_ruler --systems 'sempointer_v2,bm25:2,bm25:4') ;;
     ruler_holdout)
         args=(--benchmark ruler --seed 143
               --ruler-tasks niah_single_1,niah_single_2,niah_single_3,niah_multikey_1,vt,cwe
               --context-lengths 4096,8192,16384 --limit 10 --max-new-tokens 32
-              --run-name v2_ruler_holdout --systems "$systems") ;;
+              --run-name v2_ruler_holdout
+              --systems 'sempointer,sempointer_v2,bm25:2,bm25:4,full') ;;
     longbench)
         args=(--benchmark longbench
               --longbench-tasks hotpotqa,2wikimqa,musique,multifieldqa_en,narrativeqa,qasper
               --limit 100 --max-new-tokens 64
-              --run-name v2_longbench --systems "$systems") ;;
+              --run-name v2_longbench --systems 'sempointer_v2,bm25:4') ;;
     locomo)
         args=(--benchmark locomo --locomo-conversations 0,1,2
-              --max-new-tokens 64 --run-name v2_locomo --systems "$systems") ;;
-    *) echo 'Usage: ./run_v2_suite.sh [smoke|ruler|ruler_holdout|longbench|locomo]' >&2; exit 2 ;;
+              --max-new-tokens 64 --run-name v2_locomo
+              --systems 'sempointer_v2,bm25:4') ;;
+    rescue)
+        args=(--benchmark ruler --ruler-tasks niah_single_1,niah_multikey_1
+              --context-lengths 4096,8192 --limit 10 --max-new-tokens 32
+              --run-name v2_rescue
+              --systems 'sempointer_v2,sempointer_v2[semantic_rescue=true],bm25:4') ;;
+    *) echo 'Usage: ./run_v2_suite.sh [smoke|ruler|ruler_holdout|longbench|locomo|rescue]' >&2; exit 2 ;;
 esac
 "$PY" run_benchmark.py "${common[@]}" "${args[@]}"

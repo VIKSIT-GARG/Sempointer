@@ -45,8 +45,8 @@ def test_lexical_route_stays_small_when_query_is_covered():
 
 def test_low_coverage_expands_and_protects_lexical_blocks():
     router = make_router()
-    result = router.select("mars rover missingword")
-    lexical = [i for i, _ in router.selector.rank("mars rover missingword")]
+    result = router.select("venus saturn jupiter")
+    lexical = [i for i, _ in router.selector.rank("venus saturn jupiter")]
     assert result["router_route"] == "expanded_lexical"
     assert result["ids"][:2] == lexical[:2]
     assert result["ids"] == lexical[:4]
@@ -54,12 +54,29 @@ def test_low_coverage_expands_and_protects_lexical_blocks():
 
 def test_semantic_rescue_adds_candidate_after_protected_blocks():
     router = make_router(semantic_rescue=True)
+    router.dense_selector.fit = lambda blocks: None
     router.dense_selector.rank = lambda query: [(4, 1.0), (3, 0.5)]
     result = router.select("mars absent unknown")
     lexical = [i for i, _ in router.selector.rank("mars absent unknown")]
-    assert result["ids"][:4] == lexical[:4]
-    assert len(result["ids"]) == 5
+    assert result["ids"][:2] == lexical[:2]
+    assert len(result["ids"]) == 3
     assert result["router_route"] == "semantic_rescue"
+
+
+def test_dense_index_is_lazy_when_rescue_not_needed():
+    router = make_router(semantic_rescue=True)
+    router.dense_selector.fit = lambda blocks: (_ for _ in ()).throw(AssertionError("dense fit"))
+    router.select("mars rover")
+
+
+def test_repeated_query_terms_do_not_force_unnecessary_expansion():
+    router = make_router()
+    router.blocks = ["mars rover a", "mars rover b", "mars rover c", "venus", "saturn"]
+    router.selector.fit(router.blocks)
+    result = router.select("mars rover")
+    assert result["router_coverage"] == 1
+    assert result["router_route"] == "lexical"
+    assert len(result["ids"]) == 2
 
 
 def test_token_cap_keeps_first_block_and_skips_excess():
