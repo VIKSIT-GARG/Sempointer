@@ -40,6 +40,23 @@ def test_engine_info_records_loaded_model_revision_without_hub_lookup():
     assert engine.info()["model_config_revision"] == "abc123"
 
 
+def test_nf4_compute_dtype_adapts_to_t4(monkeypatch):
+    import torch
+    from engine.llm import nf4_compute_dtype
+
+    monkeypatch.setattr(torch.cuda, "is_bf16_supported", lambda: False)
+    assert nf4_compute_dtype("cuda") == torch.float16
+    monkeypatch.setattr(torch.cuda, "is_bf16_supported", lambda: True)
+    assert nf4_compute_dtype("cuda") == torch.bfloat16
+
+
+def test_bundle_revision_used_without_git_directory(tmp_path):
+    from provenance import git_commit
+
+    (tmp_path / "BUNDLE_COMMIT").write_text("a" * 40 + "\n")
+    assert git_commit(str(tmp_path)) == "a" * 40
+
+
 def test_engine_records_first_generated_token_time_on_short_prompt():
     import torch
     from engine.llm import LLMEngine

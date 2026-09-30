@@ -24,7 +24,12 @@ def git_commit(repo_dir: Optional[str] = None) -> Optional[str]:
             ["git", "rev-parse", "HEAD"], cwd=repo_dir or os.path.dirname(__file__), stderr=subprocess.DEVNULL
         ).decode().strip()
     except Exception:
-        return None
+        revision_file = os.path.join(repo_dir or os.path.dirname(__file__), "BUNDLE_COMMIT")
+        try:
+            with open(revision_file, encoding="utf-8") as source:
+                return source.read().strip() or None
+        except OSError:
+            return None
 
 
 def environment_record() -> Dict[str, Any]:

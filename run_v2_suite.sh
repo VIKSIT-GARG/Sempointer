@@ -2,9 +2,9 @@
 # V2 runs use new result names; the V1 paper and paper_* results are untouched.
 set -euo pipefail
 cd "$(dirname "$0")"
-PY="$PWD/warden/bin/python"
+PY="${SEMPTR_PYTHON:-$PWD/warden/bin/python}"
 [[ -x "$PY" ]] || { echo "Missing $PY" >&2; exit 1; }
-export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+export HF_HUB_OFFLINE="${SEMPTR_OFFLINE:-1}" TRANSFORMERS_OFFLINE="${SEMPTR_OFFLINE:-1}"
 free_mib="$(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits | head -n 1)"
 [[ "$free_mib" =~ ^[0-9]+$ ]] || { echo "Cannot read free GPU memory" >&2; exit 1; }
 if ((free_mib < 5500)); then

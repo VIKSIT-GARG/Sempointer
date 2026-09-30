@@ -26,6 +26,13 @@ DEFAULT_SMOKE_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
 
 DTYPE_CHOICES = ("bf16", "nf4")
 
+
+def nf4_compute_dtype(device: str) -> torch.dtype:
+    """Use FP16 on pre-Ampere GPUs such as Kaggle T4; keep BF16 elsewhere."""
+    if device.startswith("cuda") and not torch.cuda.is_bf16_supported():
+        return torch.float16
+    return torch.bfloat16
+
 PREFILL_CHUNK = 4096  # max tokens per prefill forward (MLP transient cap)
 LONG_PREFILL_THRESHOLD = 12000
 LONG_PREFILL_CHUNK = 2048  # smaller activation peak for 16k full-context prompts
@@ -83,6 +90,7 @@ class LLMEngine:
         self.device = device
         self.max_new_tokens = max_new_tokens
         self.seed = seed
+        self.nf4_compute_dtype = nf4_compute_dtype(device) if dtype == "nf4" else None
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=trust_remote_code)
         if self.tokenizer.pad_token is None:
@@ -101,7 +109,7 @@ class LLMEngine:
             load_kwargs["quantization_config"] = BitsAndBytesConfig(
                 load_in_4bit=True,
                 bnb_4bit_quant_type="nf4",
-                bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_compute_dtype=self.nf4_compute_dtype,
                 bnb_4bit_use_double_quant=True,
             )
             if device == "cuda":
@@ -306,6 +314,7 @@ class LLMEngine:
         cfg = {
             "model_id": self.model_id,
             "dtype": self.dtype,
+            "nf4_compute_dtype": str(getattr(self, "nf4_compute_dtype", None)) if self.dtype == "nf4" else None,
             "device": self.device,
             "max_new_tokens": self.max_new_tokens,
             "decoding": "greedy",
