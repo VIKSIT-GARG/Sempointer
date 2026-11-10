@@ -1,0 +1,176 @@
+{
+  "ruler": {
+    "selected": 100,
+    "selected_strata": {
+      "cwe/16384": 6,
+      "cwe/4096": 6,
+      "cwe/8192": 6,
+      "niah_multikey_1/16384": 6,
+      "niah_multikey_1/4096": 6,
+      "niah_multikey_1/8192": 6,
+      "niah_single_1/16384": 6,
+      "niah_single_1/4096": 6,
+      "niah_single_1/8192": 6,
+      "niah_single_2/16384": 6,
+      "niah_single_2/4096": 5,
+      "niah_single_2/8192": 5,
+      "niah_single_3/16384": 5,
+      "niah_single_3/4096": 5,
+      "niah_single_3/8192": 5,
+      "vt/16384": 5,
+      "vt/4096": 5,
+      "vt/8192": 5
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "longbench": {
+    "selected": 100,
+    "selected_strata": {
+      "code": 17,
+      "few_shot": 17,
+      "multi_document_qa": 17,
+      "single_document_qa": 17,
+      "summarization": 16,
+      "synthetic": 16
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "locomo": {
+    "selected": 100,
+    "selected_strata": {
+      "category_1": 20,
+      "category_2": 20,
+      "category_3": 20,
+      "category_4": 20,
+      "category_5": 20
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "longmem": {
+    "selected": 100,
+    "selected_strata": {
+      "knowledge-update": 17,
+      "multi-session": 17,
+      "single-session-assistant": 17,
+      "single-session-preference": 17,
+      "single-session-user": 16,
+      "temporal-reasoning": 16
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "babilong": {
+    "selected": 100,
+    "selected_strata": {
+      "qa1/128k-256k": 4,
+      "qa1/32k-64k": 4,
+      "qa1/4k-16k": 4,
+      "qa10/128k-256k": 4,
+      "qa10/32k-64k": 4,
+      "qa10/4k-16k": 4,
+      "qa2/128k-256k": 4,
+      "qa2/32k-64k": 4,
+      "qa2/4k-16k": 4,
+      "qa3/128k-256k": 4,
+      "qa3/32k-64k": 3,
+      "qa3/4k-16k": 3,
+      "qa4/128k-256k": 3,
+      "qa4/32k-64k": 3,
+      "qa4/4k-16k": 3,
+      "qa5/128k-256k": 3,
+      "qa5/32k-64k": 3,
+      "qa5/4k-16k": 3,
+      "qa6/128k-256k": 3,
+      "qa6/32k-64k": 3,
+      "qa6/4k-16k": 3,
+      "qa7/128k-256k": 3,
+      "qa7/32k-64k": 3,
+      "qa7/4k-16k": 3,
+      "qa8/128k-256k": 3,
+      "qa8/32k-64k": 3,
+      "qa8/4k-16k": 3,
+      "qa9/128k-256k": 3,
+      "qa9/32k-64k": 3,
+      "qa9/4k-16k": 3
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "longbench_v2": {
+    "selected": 100,
+    "selected_strata": {
+      "Code Repository Understanding": 17,
+      "Long In-context Learning": 17,
+      "Long Structured Data Understanding": 16,
+      "Long-dialogue History Understanding": 17,
+      "Multi-Document QA": 17,
+      "Single-Document QA": 16
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "infinite": {
+    "selected": 100,
+    "selected_strata": {
+      "code_debug": 9,
+      "code_run": 9,
+      "kv_retrieval": 9,
+      "longbook_choice_eng": 9,
+      "longbook_qa_chn": 8,
+      "longbook_qa_eng": 8,
+      "longbook_sum_eng": 8,
+      "longdialogue_qa_eng": 8,
+      "math_calc": 8,
+      "math_find": 8,
+      "number_string": 8,
+      "passkey": 8
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "loogle": {
+    "selected": 100,
+    "selected_strata": {
+      "longdep_qa": 25,
+      "shortdep_cloze": 25,
+      "shortdep_qa": 25,
+      "summarization": 25
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "leval": {
+    "selected": 100,
+    "selected_strata": {
+      "codeU": 5,
+      "coursera": 5,
+      "financial_qa": 5,
+      "gov_report_summ": 5,
+      "gsm100": 5,
+      "legal_contract_qa": 5,
+      "meeting_summ": 5,
+      "multidoc_qa": 5,
+      "narrative_qa": 5,
+      "natural_question": 5,
+      "news_summ": 5,
+      "paper_assistant": 5,
+      "patent_summ": 5,
+      "quality": 5,
+      "review_summ": 5,
+      "sci_fi": 5,
+      "scientific_qa": 5,
+      "topic_retrieval_longchat": 5,
+      "tpo": 5,
+      "tv_show_summ": 5
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  },
+  "scrolls": {
+    "selected": 100,
+    "selected_strata": {
+      "contract_nli": 15,
+      "gov_report": 15,
+      "narrative_qa": 14,
+      "qasper": 14,
+      "qmsum": 14,
+      "quality": 14,
+      "summ_screen_fd": 14
+    },
+    "selection_basis": "Balanced deterministic subset of the prior frozen 300; no scores used"
+  }
+}

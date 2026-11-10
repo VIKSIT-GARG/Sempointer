@@ -1,0 +1,100 @@
+# Bounded pointer local pilot
+
+Status: **complete**.
+
+30 development questions; 100 fresh test question IDs across ten families. Some source documents overlap prior evaluations.
+Whole-input budgets: 1,024, 2,048 and 4,096. NF4, batch one; native non-thinking chat.
+Pointer caps are chosen on development data only. All stage predictions, per-task metrics and paired confidence intervals are retained.
+No overall score pools different metrics; this is a small exploratory pilot.
+
+| Stage | Recorded statuses |
+| --- | --- |
+| development_1024 | {'scored': 116, 'skipped': 34} |
+| development_2048 | {'scored': 133, 'skipped': 17} |
+| development_4096 | {'scored': 140, 'skipped': 10} |
+| test_1024 | {'scored': 291, 'skipped': 109} |
+| test_2048 | {'scored': 331, 'skipped': 69} |
+| test_4096 | {'scored': 371, 'skipped': 29} |
+
+## Paired test comparisons
+
+{
+  "test_1024": {
+    "adaptive_no_index": {
+      "n_paired": 97,
+      "wins": 12,
+      "ties": 69,
+      "losses": 16,
+      "mean_input_token_difference": 2.0103092783505154,
+      "generation_ms_difference_total": -16574.391167145222
+    },
+    "bm25_budget": {
+      "n_paired": 97,
+      "wins": 12,
+      "ties": 69,
+      "losses": 16,
+      "mean_input_token_difference": -0.7319587628865979,
+      "generation_ms_difference_total": -17019.913447729778
+    },
+    "original_sempointer": {
+      "n_paired": 0,
+      "wins": 0,
+      "ties": 0,
+      "losses": 0,
+      "mean_input_token_difference": null,
+      "generation_ms_difference_total": 0
+    }
+  },
+  "test_2048": {
+    "adaptive_no_index": {
+      "n_paired": 100,
+      "wins": 15,
+      "ties": 74,
+      "losses": 11,
+      "mean_input_token_difference": 53.41,
+      "generation_ms_difference_total": -3985.4262600420043
+    },
+    "bm25_budget": {
+      "n_paired": 100,
+      "wins": 15,
+      "ties": 69,
+      "losses": 16,
+      "mean_input_token_difference": -400.12,
+      "generation_ms_difference_total": -24483.0733606359
+    },
+    "original_sempointer": {
+      "n_paired": 31,
+      "wins": 5,
+      "ties": 22,
+      "losses": 4,
+      "mean_input_token_difference": -297.96774193548384,
+      "generation_ms_difference_total": -3247.1985482843593
+    }
+  },
+  "test_4096": {
+    "adaptive_no_index": {
+      "n_paired": 100,
+      "wins": 16,
+      "ties": 75,
+      "losses": 9,
+      "mean_input_token_difference": 108.47,
+      "generation_ms_difference_total": 3011.159553017933
+    },
+    "bm25_budget": {
+      "n_paired": 100,
+      "wins": 18,
+      "ties": 61,
+      "losses": 21,
+      "mean_input_token_difference": -2192.32,
+      "generation_ms_difference_total": -90752.3694129195
+    },
+    "original_sempointer": {
+      "n_paired": 71,
+      "wins": 12,
+      "ties": 53,
+      "losses": 6,
+      "mean_input_token_difference": -527.9718309859155,
+      "generation_ms_difference_total": -11088.535105925985
+    }
+  }
+}

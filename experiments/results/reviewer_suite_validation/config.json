@@ -1,0 +1,91 @@
+{
+  "data_root": "/home/viksit/Projects/tokens2/datasets",
+  "families": "ruler",
+  "tasks": "niah_single_1,cwe",
+  "systems": [
+    "sempointer",
+    "pointer_off",
+    "bm25_2",
+    "bm25_4",
+    "bm25_matched_budget",
+    "full_context"
+  ],
+  "model": "/home/viksit/Projects/tokens2/models/Qwen2.5-3B-Instruct",
+  "dtype": "nf4",
+  "device": "cuda",
+  "seed": 20261109,
+  "partition": "all",
+  "exclude_groups": null,
+  "examples_per_group": 0,
+  "expand_coverage": 0.8,
+  "ambiguity_coverage": 0.95,
+  "expand_score_ratio": 0.85,
+  "limit": 1,
+  "include_train": false,
+  "max_new_tokens": 0,
+  "max_prompt_tokens": 8192,
+  "max_source_tokens": 262144,
+  "max_source_chars": 2000000,
+  "ruler_samples": 1,
+  "context_lengths": "4096",
+  "beir_candidates": 20,
+  "keep_beir_indices": false,
+  "router_options": {
+    "expand_coverage": 0.8,
+    "ambiguity_coverage": 0.95,
+    "expand_score_ratio": 0.85
+  },
+  "excluded_group_ids": [],
+  "source_sha256": {
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/english_words.json": "affcd6d45fdf3cc843d585c99c97ad615094e760e6c4756b654bab6c73bc2eca",
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/essays/addiction.txt": "32b4b8f14a126a14bb7da5a25fb134601510344d9bd3456bd509c2c14609e102",
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/essays/aord.txt": "ca1a95525193b977ca9e5b4d2523ed6f33ce10272b00fb2e83dfc4df742d7195",
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/essays/apple.txt": "e84fd53a3792f196fd07614ee28d721af98e7425b3b092ab7f02b90fa61e5e84",
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/essays/avg.txt": "0111c10328933b0e90d7a696cb07fa1c89aaf9c773706b28d687a2489384692b",
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/essays/before.txt": "db4bd3fd62ba3c98eeb8822d048ac664742709d4cd6d4dc0c2f9da4af0a9a1f5",
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/wordlists/adjectivelist.txt": "66814d46b7e292c83e839d12fe2fa083c8f66779b14b294e1be4e1342c5d4131",
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/wordlists/nounlist.txt": "8d88b3ebc2e2969ed92ebe49cdb0c8a87c2ad3b27493d7afdff608f2e51c5bc9",
+    "/home/viksit/Projects/tokens2/experiments/benchmarks/data/ruler_cache/wordlists/verblist.txt": "9fbf5e4e69b8869aebd88e6d545312ff9f878a747327ede5f6dbbba5c27b08ad"
+  },
+  "code_sha256": "df93677f154f291fd56cea5502c1d31800e9eebeb0c56ba67037543820aa0679",
+  "packages": {
+    "torch": "2.14.0",
+    "transformers": "5.2.0",
+    "bitsandbytes": "0.50.2",
+    "numpy": "2.4.6",
+    "ijson": "3.6.0",
+    "pyarrow": "25.0.1",
+    "tokenizers": "0.22.2",
+    "rank_bm25": "0.2.2"
+  },
+  "model_provenance": {
+    "model_commit": null,
+    "config_sha256": "c3110e61c84ed7499bc19248dd30acebea0a63fbdb6a72fcde3989be6f2ad143",
+    "tokenizer_commit": null,
+    "tokenizer_sha256": "e360e6f6266884e6667874f3a7d158ca20c4639e2e1dc80427e1edc2c69a38c7",
+    "weights": {
+      "available": true,
+      "files": [
+        "model-00001-of-00002.safetensors",
+        "model-00002-of-00002.safetensors"
+      ],
+      "missing": []
+    },
+    "local_weights": {
+      "model-00001-of-00002.safetensors": "67347b23fb4165b652eb6611f5e1f2a06dfcddba8e909df1b2b0b1857bee06c2",
+      "model-00002-of-00002.safetensors": "a40d941d0e7e0b966ad8b62bb6d6b7c88cce1299197b599d9d0a4ce59aabfc1d"
+    }
+  },
+  "router": {
+    "block_size": 512,
+    "pointer_tokens": 16,
+    "min_m": 2,
+    "max_m": 4,
+    "expand_coverage": 0.8,
+    "ambiguity_coverage": 0.95,
+    "expand_score_ratio": 0.85,
+    "resolved_cap": 2560,
+    "semantic_rescue": false,
+    "chunking": "strict token boundaries"
+  }
+}

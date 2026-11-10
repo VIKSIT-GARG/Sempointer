@@ -1,0 +1,18 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Retained full-index history versus same-run BM25-4. W/T/L are SemPointer's question-wise score wins/ties/losses. Signed cost changes are relative to BM25: negative means lower cost. Qwen2.5 reports answer-call time; Qwen3.5 reports generation time. Models, samples, and protocols differ, so rows are not a controlled cross-model test.}
+\label{tab:history}
+\begin{tabular}{llrrrr}
+\toprule
+Model & Collection & $n$ & W/T/L & $\Delta$ tokens (\%) & $\Delta$ time (\%) \\
+\midrule
+Qwen2.5 & RULER & 180 & 9/161/10 & -8.9 & -15.7 \\
+Qwen2.5 & LongBench & 600 & 199/187/214 & -10.6 & -7.2 \\
+Qwen2.5 & LoCoMo & 497 & 152/176/169 & -10.7 & -3.6 \\
+Qwen3.5 & Ten families & 936 & 137/624/175 & +48.9 & +21.4 \\
+\bottomrule
+\end{tabular}
+\end{table}

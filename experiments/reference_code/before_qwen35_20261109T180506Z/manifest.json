@@ -1,0 +1,426 @@
+{
+  "purpose": "Pre-Qwen3.5 source snapshot; historical results remain at original paths. Restore source files from this snapshot when resuming the old code fingerprint.",
+  "files": {
+    "bench_metrics.py": "0d79dd71e6b1a66189aad2f80e5893664141c791207711257decd2a2fa06d926",
+    "benchmarks/__init__.py": "a6609d6f55a80a20db3faa925c9b01e5624b7facd1bf7cf6c36c67be8275a308",
+    "benchmarks/common.py": "d80959a47c6476bff791627ccf970cb4dc530ee3902b0d2c8b1d587ce20186b8",
+    "benchmarks/locomo.py": "456756ac09c773392e689f2aba19154902562be1397aefa220ef64f9d79d33ec",
+    "benchmarks/longbench.py": "0d71ac23abaf80f6e56dea6d03d2e94c0a98ff032485c45993f5ed88c585b6e4",
+    "benchmarks/ruler.py": "6dbc15aaaf892efc85da45b5cf83d300dde62322f148ca07f47150dc7b946fa6",
+    "engine/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "engine/llm.py": "c6ce47164a8d194af5b36d807de6ff4c5b59dd65643eee3a429fe63d1d8ef05f",
+    "evaluation/__init__.py": "daf3d804a5b0b12f756d585824170eec4bf3351953398aff8106d1d91dd39fb2",
+    "evaluation/beir.py": "8103db051c113a82de80c392ea0b308d4233f2112eb4dd332f5a55bc68351db3",
+    "evaluation/controls.py": "c1b81726dc7e258f0cd1ced80de6e40e676719f40beee6a5fd96d8afcc976938",
+    "evaluation/data.py": "252c5f9b944abc4bf0b771bed563a75e349c1ea663ae4689e1c33fe63d98cfa9",
+    "evaluation/metrics.py": "c4abd39c8ee1782053df5a7f271d2b8e8da4acca140f59ba782ddea1a6b6526d",
+    "evaluation/provenance.py": "17fb113bf1de70cd7db6c1e67d1e32664636a68bcc8b9140fcc35044cb87a2ee",
+    "evaluation/runner.py": "3b6ed950696b31b9ec96c4e770b71d5da7a1891e0d90d238ab01675f91bd3bf3",
+    "metrics/__init__.py": "ad2ca96fc1fd4f0e0e6e4175bacb091c5117b5598cff0d86e136dbd63932bc1c",
+    "metrics/efficiency_metrics.py": "ea81e294df4db317250f380c3c4068c321901870cc5d51c4e5c47128a223d8a1",
+    "metrics/official_metrics.py": "1a1065525384db63860833ba51e7806b6ca32b4af7b3ffe586d703ea108cebe5",
+    "metrics/qa_metrics.py": "39ce6b40fec79c8c00a1e8480c5758860e31d134cb467b44a22eee18a761b5b2",
+    "metrics/retrieval_metrics.py": "4d6e44d75a62bb62b896a779c51a3e8bed391b7f5cbbc08d8eab3efb090b2cca",
+    "prepare_kaggle_bundle.py": "f56a7076d23132f1f1659988cecd434bc909cdd80617f10e73ab4464382ba878",
+    "provenance.py": "c0f20bfd29ffc6d3a34cd5aa4e94f78dbe96448da70e09b6b53e9a4c94b910b5",
+    "requirements-evaluation.txt": "275e8f11da763e1ddb35e2a4a5625c3e76453321c53988780d2dff3548427ec3",
+    "requirements-kaggle.txt": "a71c7a46d5cb379207d3e8688ff2804570d455050a93e8c74cd67030f05d3964",
+    "requirements.txt": "ff04d221e09dd9e90572b66bb415ccb1b8a8a7337b9b379f196cdf712d7f312b",
+    "reviewer_suite.py": "21501ba1d3a1f1245bb0f7c7aec4b32a10448ac9fac4489d06c52716d91a2935",
+    "run_all_datasets.py": "f35c710b88f5bc07d643c1423b748f56ddbc919a7a621fe203758c8d7a53d6b8",
+    "run_benchmark.py": "2e96a58885708c4b71b3ab990018c8c352c025dc9b3ee1d7c68e7633e057fc6b",
+    "run_downloaded_suite.sh": "498cc5e246872d427e549a67340661d7c15fc1d48d21b0b568629f8b9e2029d8",
+    "run_paper_suite.sh": "882c964f01a4af5a2ea682ef7a5199ac05e40c640875066ad0debce4b68f68f2",
+    "run_py.sh": "4cdc5371d3feea9cb456c04647c3aaa01126f5fe24c2dbd644974264c07980bc",
+    "run_reviewer_suite.sh": "47f11af560285ad1b24ebc8ada37b65b600caab8e5276b81d5cb12698f77b14d",
+    "run_v2_suite.sh": "da49da4776cfcf3470c87680b3ef149da263743d52e7ba44b5fb54fc5d16d6d9",
+    "sempointer/__init__.py": "20c8e430ededc2143396e553a3c67aac4ec483ef54efdfcb18a31cb162ca0646",
+    "sempointer/attention_scorer.py": "bf74524fa8edf72d6b67735942c44c0ff0dee372e5060d781bda9f27103ebe0f",
+    "sempointer/cost_model.py": "7e073459b63c31dacaf337a0487cb5fb2681fea2b164c95527a9f1457c3978a3",
+    "sempointer/kv_substrate.py": "695188bc7c17a94e84902a1447fd2cb9864564f31e89b80b849a6c560e175262",
+    "sempointer/lexical.py": "77abd91b96233a49b98a9676fc5c13948a1d96897b9cfd6576a33665e36e2da3",
+    "sempointer/pipeline.py": "cc2532bae0b0430931103f31879a263da94ed3aae800c9aed5d241d29a3b7e66",
+    "sempointer/pointer_generator.py": "78b8ed401c834eb0fb9466e79fdc4b47d43d75b074c06c22226caa60a8ccc772",
+    "sempointer/pointers.py": "7423fddb4a56d213f3b50a440b7fced500de04899fa5c8cb27d874c68a23dfa6",
+    "sempointer/prompt_builder.py": "e183103d97f38c1609ea5a1ffe91f6183eb92ec227e3a9f3e95ec1c3a5d3cdf3",
+    "sempointer/registry.py": "c44561e10cde5f34bf3a6fa248f21edabcc381ed994d13f6540ffecd2ac8fb3d",
+    "sempointer/resolver.py": "b2f398ae994e0becac07964685cf5b5c1b77d4dd4d66bc8b90e0b29709348a72",
+    "sempointer/scorer.py": "02d94f2b9e2275665e3ea62d61857b4d73a3525437ef68fefe42f614be966665",
+    "sempointer/selector.py": "bbf5196e0a6494a4fec9162a40a65b4387ba5498de99dd175cbd703d0b5f952a",
+    "sempointer/v2_pipeline.py": "0da3a9cbf890ac39d87a5608ced9ec1e096087a0c02a256382af29619d9c960d",
+    "system_specs.py": "b507c50c20082b5adafe246c50c8ccf70ec4a0c35495bfef634acb48668555ad",
+    "tests/conftest.py": "c14e668d5405e68ee34b3572ef50e8f3733343c7d3c4f80ab3205bb851928afe",
+    "tests/test_all_datasets.py": "297345736bfbe3b3e241558d472ebfa61304a8efbd7e7dad2ed434e4480959bb",
+    "tests/test_benchmark_harness.py": "50ec3a64e36ec786bd0fd5f5281a4902f02749a88710eb38a11385e8ce1b88ed",
+    "tests/test_core.py": "bffc4bce50fe1640bf5d2e21611c4710a3f37e63dd0174f9c2bc92953a080776",
+    "tests/test_integration_gpu.py": "541ba34b6e030ecc811df29db27ed5d50c20fc53d2915fd331d1fe4d9e59cfb0",
+    "tests/test_kv_substrate.py": "73c5a84c96394861179eefc4673b5daa24601e24fddcc504a75b66e42db91668",
+    "tests/test_kvpress_memory.py": "92e81acdc6b358a2596f5cb3bfb2faddaa0fdab16d243aed4f5dc6c33d531752",
+    "tests/test_paper_assets.py": "33ff36bea5b7c3102c2084ab4876f2d3ba7b0e4558e83c79ccfd87eca57731b8",
+    "tests/test_pointers_selector.py": "cd214bdf63bf001ef22b6f363c2154dba4b1c4cae5f8a4d5c19d1db0ef43e1c1",
+    "tests/test_reviewer_suite.py": "8855c16116be7644185e65e1ecf664938ec84fae3bbf68e677d4b1d8e7a6560b",
+    "tests/test_v2_router.py": "2c2e9fd4532af25bdb6babb4e23a919206311d131c8eac9f9303abe5c8ca4a99"
+  },
+  "historical_results": {
+    "results/.gitkeep": {
+      "bytes": 0,
+      "mtime_ns": 1790617371963022994
+    },
+    "results/paper_ruler/environment.json": {
+      "bytes": 622,
+      "mtime_ns": 1790710506150237381
+    },
+    "results/paper_ruler/config.json": {
+      "bytes": 741,
+      "mtime_ns": 1790710506150289890
+    },
+    "results/paper_ruler/predictions.jsonl": {
+      "bytes": 994543,
+      "mtime_ns": 1790737441736655280
+    },
+    "results/paper_ruler/metrics.json": {
+      "bytes": 52149,
+      "mtime_ns": 1790737441789655537
+    },
+    "results/paper_ruler/resume_history.jsonl": {
+      "bytes": 1761,
+      "mtime_ns": 1790737241822226931
+    },
+    "results/paper_ablation/environment.json": {
+      "bytes": 622,
+      "mtime_ns": 1790713475634857551
+    },
+    "results/paper_ablation/config.json": {
+      "bytes": 926,
+      "mtime_ns": 1790713475634906894
+    },
+    "results/paper_ablation/resume_history.jsonl": {
+      "bytes": 1761,
+      "mtime_ns": 1790737594110177284
+    },
+    "results/paper_ablation/predictions.jsonl": {
+      "bytes": 1152817,
+      "mtime_ns": 1790739548212203895
+    },
+    "results/paper_ablation/metrics.json": {
+      "bytes": 59807,
+      "mtime_ns": 1790739548237203761
+    },
+    "results/paper_kv/environment.json": {
+      "bytes": 622,
+      "mtime_ns": 1790713482511344883
+    },
+    "results/paper_kv/config.json": {
+      "bytes": 720,
+      "mtime_ns": 1790713482511399235
+    },
+    "results/paper_kv/predictions.jsonl": {
+      "bytes": 288191,
+      "mtime_ns": 1790749909595661783
+    },
+    "results/paper_kv/metrics.json": {
+      "bytes": 13967,
+      "mtime_ns": 1790749909848645195
+    },
+    "results/paper_kv/resume_history.jsonl": {
+      "bytes": 2935,
+      "mtime_ns": 1790749805794839827
+    },
+    "results/paper_longbench/environment.json": {
+      "bytes": 622,
+      "mtime_ns": 1790713756552630235
+    },
+    "results/paper_longbench/config.json": {
+      "bytes": 709,
+      "mtime_ns": 1790713756552685840
+    },
+    "results/paper_longbench/resume_history.jsonl": {
+      "bytes": 2348,
+      "mtime_ns": 1790749923752689968
+    },
+    "results/paper_longbench/predictions.jsonl": {
+      "bytes": 2354118,
+      "mtime_ns": 1790750118139427752
+    },
+    "results/paper_longbench/metrics.json": {
+      "bytes": 12340,
+      "mtime_ns": 1790750118193433760
+    },
+    "results/paper_locomo/environment.json": {
+      "bytes": 622,
+      "mtime_ns": 1790713763452156313
+    },
+    "results/paper_locomo/config.json": {
+      "bytes": 708,
+      "mtime_ns": 1790713763452207119
+    },
+    "results/paper_locomo/predictions.jsonl": {
+      "bytes": 1869073,
+      "mtime_ns": 1790721559400659028
+    },
+    "results/paper_locomo/metrics.json": {
+      "bytes": 9652,
+      "mtime_ns": 1790721559457659162
+    },
+    "results/paper_locomo/resume_history.jsonl": {
+      "bytes": 587,
+      "mtime_ns": 1790733299762575219
+    },
+    "results/v2_ruler/environment.json": {
+      "bytes": 622,
+      "mtime_ns": 1790778641399256903
+    },
+    "results/v2_ruler/config.json": {
+      "bytes": 694,
+      "mtime_ns": 1790778641399310514
+    },
+    "results/v2_ruler/predictions.jsonl": {
+      "bytes": 450240,
+      "mtime_ns": 1790779347112481702
+    },
+    "results/v2_ruler/metrics.json": {
+      "bytes": 19727,
+      "mtime_ns": 1790779347128426391
+    },
+    "results/v2_longbench/environment.json": {
+      "bytes": 622,
+      "mtime_ns": 1790780770186247909
+    },
+    "results/v2_longbench/config.json": {
+      "bytes": 696,
+      "mtime_ns": 1790780770186300788
+    },
+    "results/v2_longbench/predictions.jsonl": {
+      "bytes": 1262761,
+      "mtime_ns": 1790782996436102060
+    },
+    "results/v2_longbench/metrics.json": {
+      "bytes": 5601,
+      "mtime_ns": 1790782996469102200
+    },
+    "results/v2_locomo/environment.json": {
+      "bytes": 622,
+      "mtime_ns": 1790783003364218973
+    },
+    "results/v2_locomo/config.json": {
+      "bytes": 695,
+      "mtime_ns": 1790783003364268687
+    },
+    "results/v2_locomo/resume_history.jsonl": {
+      "bytes": 1174,
+      "mtime_ns": 1790784470123403749
+    },
+    "results/v2_locomo/predictions.jsonl": {
+      "bytes": 1002847,
+      "mtime_ns": 1790786400518812855
+    },
+    "results/v2_locomo/metrics.json": {
+      "bytes": 4223,
+      "mtime_ns": 1790786400545811980
+    },
+    "results/suite_preflight/catalog.json": {
+      "bytes": 215398,
+      "mtime_ns": 1794142525250364534
+    },
+    "results/suite_preflight/validation.json": {
+      "bytes": 100613,
+      "mtime_ns": 1794142581778152331
+    },
+    "results/suite_preflight/model_preflight.json": {
+      "bytes": 414,
+      "mtime_ns": 1794142402318311521
+    },
+    "results/suite_reference_checks/validation.json": {
+      "bytes": 1700,
+      "mtime_ns": 1794142398498651411
+    },
+    "results/dataset_counts/qasper_recount.json": {
+      "bytes": 1327,
+      "mtime_ns": 1794143908021826399
+    },
+    "results/dataset_counts/sample_counts.json": {
+      "bytes": 197720,
+      "mtime_ns": 1794144440078584948
+    },
+    "results/dataset_counts/REPORT.md": {
+      "bytes": 1965,
+      "mtime_ns": 1794144461431935994
+    },
+    "results/throughput_pilot/run.lock": {
+      "bytes": 0,
+      "mtime_ns": 1794163148525787435
+    },
+    "results/throughput_pilot/config.json": {
+      "bytes": 3026,
+      "mtime_ns": 1794163148527709542
+    },
+    "results/throughput_pilot/results.sqlite": {
+      "bytes": 9474048,
+      "mtime_ns": 1794164471736536912
+    },
+    "results/throughput_pilot/catalog.json": {
+      "bytes": 132594,
+      "mtime_ns": 1794163148541356721
+    },
+    "results/throughput_pilot/environments.jsonl": {
+      "bytes": 903,
+      "mtime_ns": 1794163153779131894
+    },
+    "results/throughput_pilot/events.jsonl": {
+      "bytes": 4452625,
+      "mtime_ns": 1794164466791530226
+    },
+    "results/throughput_pilot/predictions.jsonl": {
+      "bytes": 4452625,
+      "mtime_ns": 1794164466809530250
+    },
+    "results/throughput_pilot/attempts.jsonl": {
+      "bytes": 4452625,
+      "mtime_ns": 1794164466818530263
+    },
+    "results/throughput_pilot/metrics.json": {
+      "bytes": 262666,
+      "mtime_ns": 1794164471724799790
+    },
+    "results/throughput_pilot/REPORT.md": {
+      "bytes": 22136,
+      "mtime_ns": 1794164471725290994
+    },
+    "results/throughput_pilot/summary.csv": {
+      "bytes": 46541,
+      "mtime_ns": 1794164471726536898
+    },
+    "results/reviewer_suite_validation/run.lock": {
+      "bytes": 0,
+      "mtime_ns": 1794220921098493184
+    },
+    "results/reviewer_suite_validation/config.json": {
+      "bytes": 3748,
+      "mtime_ns": 1794220921099486561
+    },
+    "results/reviewer_suite_validation/results.sqlite": {
+      "bytes": 344064,
+      "mtime_ns": 1794221001534223735
+    },
+    "results/reviewer_suite_validation/catalog.json": {
+      "bytes": 119789,
+      "mtime_ns": 1794220921154052202
+    },
+    "results/reviewer_suite_validation/environments.jsonl": {
+      "bytes": 908,
+      "mtime_ns": 1794220925963037568
+    },
+    "results/reviewer_suite_validation/events.jsonl": {
+      "bytes": 147702,
+      "mtime_ns": 1794221001196220630
+    },
+    "results/reviewer_suite_validation/predictions.jsonl": {
+      "bytes": 147702,
+      "mtime_ns": 1794221001197918808
+    },
+    "results/reviewer_suite_validation/attempts.jsonl": {
+      "bytes": 147702,
+      "mtime_ns": 1794221001198273368
+    },
+    "results/reviewer_suite_validation/metrics.json": {
+      "bytes": 12216,
+      "mtime_ns": 1794221001430150173
+    },
+    "results/reviewer_suite_validation/REPORT.md": {
+      "bytes": 1068,
+      "mtime_ns": 1794221001430241034
+    },
+    "results/reviewer_suite_validation/summary.csv": {
+      "bytes": 2241,
+      "mtime_ns": 1794221001430395246
+    },
+    "results/downloaded_suite/preflight/catalog.json": {
+      "bytes": 215514,
+      "mtime_ns": 1794163027543996564
+    },
+    "results/downloaded_suite/preflight/validation.json": {
+      "bytes": 100613,
+      "mtime_ns": 1794163085890541767
+    },
+    "results/downloaded_suite/preflight/model_preflight.json": {
+      "bytes": 767,
+      "mtime_ns": 1794163095932371391
+    },
+    "results/downloaded_suite/smoke/run.lock": {
+      "bytes": 0,
+      "mtime_ns": 1794162955697612525
+    },
+    "results/downloaded_suite/smoke/config.json": {
+      "bytes": 3487,
+      "mtime_ns": 1794162955698532440
+    },
+    "results/downloaded_suite/smoke/results.sqlite": {
+      "bytes": 155648,
+      "mtime_ns": 1794163003828871293
+    },
+    "results/downloaded_suite/smoke/catalog.json": {
+      "bytes": 119401,
+      "mtime_ns": 1794162955715873825
+    },
+    "results/downloaded_suite/smoke/environments.jsonl": {
+      "bytes": 918,
+      "mtime_ns": 1794162965244674074
+    },
+    "results/downloaded_suite/smoke/events.jsonl": {
+      "bytes": 61377,
+      "mtime_ns": 1794163003684870523
+    },
+    "results/downloaded_suite/smoke/predictions.jsonl": {
+      "bytes": 61377,
+      "mtime_ns": 1794163003686175043
+    },
+    "results/downloaded_suite/smoke/attempts.jsonl": {
+      "bytes": 61377,
+      "mtime_ns": 1794163003686597850
+    },
+    "results/downloaded_suite/smoke/metrics.json": {
+      "bytes": 7409,
+      "mtime_ns": 1794163003824439017
+    },
+    "results/downloaded_suite/smoke/REPORT.md": {
+      "bytes": 777,
+      "mtime_ns": 1794163003824519599
+    },
+    "results/downloaded_suite/smoke/summary.csv": {
+      "bytes": 1403,
+      "mtime_ns": 1794163003824664592
+    },
+    "results/downloaded_suite/qa/run.lock": {
+      "bytes": 0,
+      "mtime_ns": 1794164659454816380
+    },
+    "results/downloaded_suite/qa/config.json": {
+      "bytes": 37436,
+      "mtime_ns": 1794164659455944583
+    },
+    "results/downloaded_suite/qa/results.sqlite": {
+      "bytes": 191938560,
+      "mtime_ns": 1794190510625424575
+    },
+    "results/downloaded_suite/qa/catalog.json": {
+      "bytes": 215514,
+      "mtime_ns": 1794164659469534243
+    },
+    "results/downloaded_suite/qa/environments.jsonl": {
+      "bytes": 918,
+      "mtime_ns": 1794164668391272018
+    },
+    "results/downloaded_suite/qa/events.jsonl": {
+      "bytes": 89416992,
+      "mtime_ns": 1794190507000423720
+    },
+    "results/downloaded_suite/qa/results.sqlite-wal": {
+      "bytes": 0,
+      "mtime_ns": 1794193079670058241
+    },
+    "results/downloaded_suite/qa/results.sqlite-shm": {
+      "bytes": 32768,
+      "mtime_ns": 1794221250379887967
+    }
+  }
+}

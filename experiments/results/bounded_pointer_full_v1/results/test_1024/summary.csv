@@ -1,0 +1,493 @@
+family,task,split,metric,protocol,system,n_scored,n_errors,n_skipped,score_mean,active_tokens_mean,generation_ms_mean,latency_ms_mean,peak_vram_mb_mean
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,original_sempointer,0,0,17,,,,,
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,bounded_pointer,17,0,0,0.09411764705882353,1024.0,572.4969621104024,598.8511285189923,3402.7060546875
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,adaptive_no_index,17,0,0,0.047058823529411764,1024.0,511.5400124101571,513.9824713457047,3402.7060546875
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,bm25_budget,17,0,0,0.047058823529411764,1024.0,511.8710714022574,512.3180817566155,3402.7060546875
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,adaptive_no_index,0,0,18,,,,,
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_budget,0,0,18,,,,,
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,original_sempointer,0,0,18,,,,,
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bounded_pointer,0,0,18,,,,,
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_budget,16,0,0,1.0,1024.0,567.0946838181408,567.1740898214921,3402.7060546875
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,original_sempointer,0,0,16,,,,,
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bounded_pointer,16,0,0,1.0,1023.875,566.2314885048545,586.5497497434262,3402.0753173828125
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,adaptive_no_index,16,0,0,1.0,1020.0,567.1885095034668,568.5901892538823,3402.3709716796875
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,original_sempointer,0,0,17,,,,,
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,bounded_pointer,17,0,0,1.0,1024.0,571.5208221774767,594.5334887638797,3402.7060546875
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,adaptive_no_index,17,0,0,1.0,1024.0,578.1270397094297,580.5576008826713,3402.7060546875
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_budget,17,0,0,1.0,1024.0,566.7491511832101,566.8728073634317,3402.7060546875
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,adaptive_no_index,16,0,0,0.9375,1020.5,564.282511939382,567.1911472418287,3402.436065673828
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,bm25_budget,16,0,0,0.9375,1024.0,563.6363061203156,563.7592648199643,3402.7060546875
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,original_sempointer,0,0,16,,,,,
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,bounded_pointer,16,0,0,0.9375,1024.0,567.4813556179288,591.7498871021962,3402.7060546875
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,bm25_budget,16,0,0,0.875,1024.0,1188.6497835730552,1188.758100332052,3402.7060546875
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,original_sempointer,0,0,16,,,,,
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,bounded_pointer,16,0,0,0.8125,1024.0,1197.6247626298573,1221.0778409898921,3402.7060546875
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,adaptive_no_index,16,0,0,0.875,1024.0,1195.1953800635238,1197.5458490596793,3402.7060546875
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,adaptive_no_index,4,0,0,0.0,1024.0,2262.594518251717,2264.9001547542866,3402.7060546875
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,bm25_budget,4,0,0,0.0,1024.0,2263.859290003893,2264.115360507276,3402.7060546875
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,original_sempointer,0,0,4,,,,,
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,bounded_pointer,4,0,0,0.25,1024.0,1169.742000012775,1198.986522242194,3402.7060546875
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,adaptive_no_index,6,0,0,0.0,1024.0,786.6426540034203,789.9995061840551,3402.7060546875
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,bm25_budget,6,0,0,0.0,1024.0,787.1671001776122,787.2153095086105,3402.7060546875
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,original_sempointer,0,0,6,,,,,
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,bounded_pointer,6,0,0,0.0,1024.0,1281.1696666661494,1306.7249495070428,3402.7060546875
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,original_sempointer,0,0,7,,,,,
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,bounded_pointer,7,0,0,0.0,1024.0,713.5841195787569,734.4225703023507,3402.7060546875
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,adaptive_no_index,7,0,0,0.0,1024.0,1253.469752854601,1255.1020589889959,3402.7060546875
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,bm25_budget,7,0,0,0.0,1024.0,1255.7528258517518,1255.8102198360887,3402.7060546875
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,adaptive_no_index,8,0,0,0.1587438766653853,1024.0,700.6698981131194,703.8682321071974,3402.7060546875
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_budget,8,0,0,0.1587438766653853,1024.0,696.2298082507914,696.2785514988354,3402.7060546875
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,original_sempointer,0,0,8,,,,,
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,bounded_pointer,8,0,0,0.16515548061745594,1023.5,705.9458979929332,733.6210420980933,3401.44482421875
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,bounded_pointer,2,0,7,0.29375,1024.0,2424.711163970642,2460.7495769741945,3402.7060546875
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,adaptive_no_index,2,0,7,0.26715518422133955,1024.0,2328.061281994451,2331.2085950165056,3402.7060546875
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_budget,2,0,7,0.26715518422133955,1024.0,2378.3581199822947,2378.7913775013294,3402.7060546875
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,original_sempointer,0,0,9,,,,,
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_budget,1,0,2,1.0,1024.0,501.9502140348777,502.49169499147683,3402.7060546875
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,original_sempointer,0,0,3,,,,,
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bounded_pointer,1,0,2,1.0,1024.0,514.0902120037936,548.7954639829695,3402.7060546875
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,adaptive_no_index,1,0,2,1.0,1024.0,505.3822440095246,509.73472598707303,3402.7060546875
+longbench,lsht,test,exact,normalized label exact-match adaptation,bounded_pointer,3,0,1,1.0,1024.0,433.49246168509126,463.828723023956,3402.7060546875
+longbench,lsht,test,exact,normalized label exact-match adaptation,adaptive_no_index,3,0,1,1.0,1024.0,437.2793999888624,440.6675763311796,3402.7060546875
+longbench,lsht,test,exact,normalized label exact-match adaptation,bm25_budget,3,0,1,1.0,1024.0,431.4459353336133,431.6294680077893,3402.7060546875
+longbench,lsht,test,exact,normalized label exact-match adaptation,original_sempointer,0,0,4,,,,,
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,original_sempointer,0,0,7,,,,,
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bounded_pointer,7,0,0,0.45108474826244865,1024.0,1030.7530081481673,1056.0427211457863,3402.7060546875
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,adaptive_no_index,7,0,0,0.4507135065339834,1024.0,1013.8456188641222,1016.9797065900639,3402.7060546875
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_budget,7,0,0,0.4507135065339834,1024.0,1009.4715625746176,1009.5901160051914,3402.7060546875
+longbench,trec,test,exact,normalized label exact-match adaptation,adaptive_no_index,3,0,0,0.3333333333333333,1024.0,449.901028672078,453.535078985927,3402.7060546875
+longbench,trec,test,exact,normalized label exact-match adaptation,bm25_budget,3,0,0,0.3333333333333333,1024.0,450.26029002231854,450.55411137097207,3402.7060546875
+longbench,trec,test,exact,normalized label exact-match adaptation,original_sempointer,0,0,3,,,,,
+longbench,trec,test,exact,normalized label exact-match adaptation,bounded_pointer,3,0,0,1.0,1023.6666666666666,454.0988456768294,481.9405840050119,3401.0240885416665
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_budget,11,0,0,0.3333333333333333,1024.0,490.53794200616807,490.62618737595835,3402.7060546875
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,original_sempointer,0,0,11,,,,,
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bounded_pointer,11,0,0,0.4318181818181818,1024.0,478.9260596417907,505.3976666372777,3402.7060546875
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,adaptive_no_index,11,0,0,0.3333333333333333,1024.0,489.4974375387061,492.5931009929627,3402.7060546875
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bounded_pointer,6,0,0,0.3703703703703704,1023.8333333333334,499.280604669669,524.820951007617,3401.8650716145835
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,adaptive_no_index,6,0,0,0.3703703703703704,1024.0,499.77290017219883,502.3352190037258,3402.7060546875
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_budget,6,0,0,0.3703703703703704,1024.0,499.8902598163113,499.9790006647042,3402.7060546875
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,original_sempointer,0,0,6,,,,,
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,bounded_pointer,6,0,0,0.09715793243420616,1024.0,1038.0181644965585,1061.8229588338484,3402.7060546875
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,adaptive_no_index,6,0,0,0.10180511318351544,1023.8333333333334,1126.303961481123,1129.2192948167212,3401.8650716145835
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,bm25_budget,6,0,0,0.10180511318351544,1023.8333333333334,1123.7234486616217,1123.7685790110845,3401.8650716145835
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,original_sempointer,0,0,6,,,,,
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,original_sempointer,0,0,7,,,,,
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,bounded_pointer,7,0,0,0.03685463397699053,1024.0,815.0668277105849,838.5024280037863,3402.7060546875
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,adaptive_no_index,7,0,0,0.04172886423725137,1024.0,923.4480851363124,926.0023698693009,3402.7060546875
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_budget,7,0,0,0.04172886423725137,1024.0,920.6296067235859,920.6726122980139,3402.7060546875
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,original_sempointer,0,0,3,,,,,
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,bounded_pointer,3,0,0,0.048528567327016936,1024.0,792.9919180266248,819.7954970334346,3402.7060546875
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,adaptive_no_index,3,0,0,0.09342223218287764,1024.0,1008.6259973662285,1010.6665580145394,3402.7060546875
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_budget,3,0,0,0.09342223218287764,1024.0,1012.8785619939057,1012.9458253116658,3402.7060546875
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,original_sempointer,1,0,12,0.7272727272727273,834.0,439.23450500005856,440.3280490078032,3371.42236328125
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,bounded_pointer,13,0,0,0.420984381975094,1009.3076923076923,493.35134838027165,512.4030209083755,3399.9114708533652
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,adaptive_no_index,13,0,0,0.3697023306930427,1009.3846153846154,492.776647689215,495.00120860130454,3400.299616887019
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,bm25_budget,13,0,0,0.3697023306930427,1009.3846153846154,492.0693256202727,492.1136977052531,3400.299616887019
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_budget,3,0,0,0.6048064085447263,1024.0,1651.2802956664625,1651.3584696610149,3402.7060546875
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,original_sempointer,0,0,3,,,,,
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bounded_pointer,3,0,0,0.6003122560499611,1023.6666666666666,1005.8061403299993,1033.2818183621082,3401.0240885416665
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,adaptive_no_index,3,0,0,0.6048064085447263,1024.0,1656.8343523540534,1659.3787910339113,3402.7060546875
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,original_sempointer,0,0,100,,,,,
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,bounded_pointer,100,0,0,0.2485454457377039,1023.96,626.9460360042285,653.2626788219204,3402.50421875
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,adaptive_no_index,100,0,0,0.24523778698111257,1023.98,714.5697630895302,717.2123943938641,3402.60513671875
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,bm25_budget,100,0,0,0.24523778698111257,1023.98,713.4775999479461,713.5604635905474,3402.60513671875
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,adaptive_no_index,100,0,0,0.3407065894649554,1023.95,618.6527672410011,623.6936796712689,3402.453759765625
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_budget,100,0,0,0.3407065894649554,1023.95,616.006040861248,616.482712032157,3402.453759765625
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,original_sempointer,0,0,100,,,,,
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bounded_pointer,100,0,0,0.3387649660261496,1023.96,577.2174443735275,607.3695111833513,3402.50421875
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.0,1024.0,421.99696534468484,447.18640701224405,3402.7060546875
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.0,1024.0,420.31271633459255,422.3312863226359,3402.7060546875
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.0,1024.0,423.22243730692816,423.2733259559609,3402.7060546875
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,420.9244179655798,420.98195693688467,3402.7060546875
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,506.79417699575424,533.5165809956379,3402.7060546875
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,420.6906400504522,422.76074102846906,3402.7060546875
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1024.0,393.6052484787069,393.6574164836202,3402.7060546875
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.0,1024.0,392.64828647719696,417.4225404858589,3402.7060546875
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,1024.0,393.0392890179064,394.9703530233819,3402.7060546875
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,1.0,1024.0,404.15995300281793,427.2458049817942,3402.7060546875
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,401.14543301751837,403.24524900643155,3402.7060546875
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,406.75628901226446,406.8047999753617,3402.7060546875
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,399.5576130109839,399.61944898823276,3402.7060546875
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,394.345523964148,420.44022696791217,3402.7060546875
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,416.7860909947194,419.138033001218,3402.7060546875
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,4,,,,,
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,4,0,0,0.0,1024.0,511.12925675988663,537.8792952542426,3402.7060546875
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,4,0,0,0.0,1024.0,712.4177692458034,715.3908392356243,3402.7060546875
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,4,0,0,0.0,1024.0,705.9729457541835,706.0745644994313,3402.7060546875
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.3333333333333333,1023.6666666666666,425.2523313043639,427.5872876557211,3401.0240885416665
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.3333333333333333,1023.6666666666666,422.12353833019733,422.19871333024156,3401.0240885416665
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.3333333333333333,1024.0,426.6982859893081,453.0481450104465,3402.7060546875
+babilong,data/qa4/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,1.0,1024.0,429.7229490475729,432.0553850848228,3402.7060546875
+babilong,data/qa4/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,1.0,1024.0,429.252722999081,429.34543802402914,3402.7060546875
+babilong,data/qa4/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa4/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,1.0,1024.0,450.9880959521979,475.60669999802485,3402.7060546875
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,1.0,1024.0,420.03522103186697,445.19722898257896,3402.7060546875
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,1.0,1024.0,422.8015749831684,424.8153799562715,3402.7060546875
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,1.0,1024.0,429.0860500186682,429.1381679940969,3402.7060546875
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,1.0,871.0,400.58363947900943,402.2597479925025,3376.6396484375
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,1.0,1024.0,426.162920484785,426.22101947199553,3402.7060546875
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,1.0,925.5,401.22325203265063,418.4986875334289,3385.02880859375
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,423.7717640353367,445.6075240741484,3402.7060546875
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,420.7516040187329,422.500339045655,3402.7060546875
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,422.6604520226829,422.7070999913849,3402.7060546875
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,533.9757520123385,561.2707610125653,3402.7060546875
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,538.2031920016743,540.5262899585068,3402.7060546875
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,535.8300599618815,535.8788319863379,3402.7060546875
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1024.0,537.7624094835483,537.8167970047798,3402.7060546875
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.0,1023.5,603.8312379969284,630.1052835478913,3400.18310546875
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,1024.0,536.1031380016357,538.0650305305608,3402.7060546875
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,425.1068489975296,426.95173498941585,3402.7060546875
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,441.50507397716865,441.5521220071241,3402.7060546875
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,425.0764630269259,448.6910059931688,3402.7060546875
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.3333333333333333,1024.0,399.88022365529713,427.8490340220742,3402.7060546875
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.3333333333333333,1024.0,397.82796800136566,400.4483263512763,3402.7060546875
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.3333333333333333,1024.0,397.4324180162512,397.5367379995684,3402.7060546875
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,394.94369697058573,397.328260994982,3402.7060546875
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,392.5788800115697,392.6498439977877,3402.7060546875
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1023.0,394.4255220121704,420.9608610253781,3397.66015625
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.5,1024.0,422.94210600084625,425.2804885036312,3402.7060546875
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.5,1024.0,421.2885555170942,421.38308350695297,3402.7060546875
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.5,1024.0,408.0924044828862,432.8463620040566,3402.7060546875
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.5,1023.5,397.93323649792,400.30855347868055,3400.18310546875
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.5,1023.5,398.51975700003095,398.5906104790047,3400.18310546875
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.5,1024.0,465.8818690222688,492.6659080083482,3402.7060546875
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.3333333333333333,1024.0,551.0938510027094,553.6571886817304,3402.7060546875
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.3333333333333333,1024.0,549.2844156688079,549.3912333428549,3402.7060546875
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.6666666666666666,1023.6666666666666,486.1409376608208,512.2442103456706,3401.0240885416665
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,1.0,1024.0,393.7104099895805,421.2079949793406,3402.7060546875
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,1.0,1024.0,393.67726899217814,397.7633299655281,3402.7060546875
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,1.0,1024.0,406.13706200383604,406.2118529691361,3402.7060546875
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,1.0,1024.0,393.1945274816826,418.9024899969809,3402.7060546875
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.5,1023.5,496.0785235161893,498.215355532011,3400.18310546875
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.5,1023.5,496.53943651355803,496.5934680076316,3400.18310546875
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,1.0,1024.0,394.46325349854305,420.5733790586237,3402.7060546875
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,1.0,1024.0,394.21400797436945,396.3775504962541,3402.7060546875
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,1.0,1024.0,393.48377197165973,393.54155099135824,3402.7060546875
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,1.0,1024.0,430.12198799988255,456.28017000854015,3402.7060546875
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,1.0,1024.0,431.00170249817893,433.82845001178794,3402.7060546875
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,1.0,1024.0,429.07216999446973,429.20354747911915,3402.7060546875
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,423.12052799388766,449.7169560054317,3402.7060546875
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,423.1957200099714,426.302325038705,3402.7060546875
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,437.244720000308,437.46134801767766,3402.7060546875
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.3333333333333333,1024.0,396.0497236694209,421.42629000591114,3402.7060546875
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.6666666666666666,1024.0,396.50790533050895,398.4661729967532,3402.7060546875
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.6666666666666666,1024.0,393.7673486652784,393.81848863558844,3402.7060546875
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.3333333333333333,1023.6666666666666,431.6418216718982,435.29987034465495,3401.0240885416665
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.3333333333333333,1023.6666666666666,438.40541766257957,438.65968731309596,3401.0240885416665
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.6666666666666666,1024.0,393.38169233330217,420.3528190070453,3402.7060546875
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.0,1024.0,494.1244065121282,521.9665159820579,3402.7060546875
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,1024.0,737.6398034975864,741.4022354932968,3402.7060546875
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1024.0,735.9495044802316,736.0982644895557,3402.7060546875
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,507.27135298075154,507.5394579907879,3402.7060546875
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,507.86016398342326,536.1375939683057,3402.7060546875
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,508.09742300771177,512.9788939957507,3402.7060546875
+babilong,data/qa2/256k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa2/256k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.0,1024.0,523.2344646550094,550.4823253140785,3402.7060546875
+babilong,data/qa2/256k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.0,1024.0,591.9483216906277,594.9170710130905,3402.7060546875
+babilong,data/qa2/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.0,1024.0,594.6553320003053,594.8271659823755,3402.7060546875
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.0,1024.0,467.8668029955588,467.9153709827612,3402.7060546875
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.0,1024.0,461.124278313946,486.1309386130112,3402.7060546875
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.0,1024.0,462.82831565865007,464.81696764628094,3402.7060546875
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,485.9977739979513,486.2808070029132,3402.7060546875
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,478.804657002911,507.5782040366903,3402.7060546875
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,474.80223304592073,480.06236809305847,3402.7060546875
+babilong,data/qa8/256k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.0,1024.0,507.7101734932512,534.1364829801023,3402.7060546875
+babilong,data/qa8/256k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,1024.0,521.1895944958087,524.2096374859102,3402.7060546875
+babilong,data/qa8/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1024.0,520.3608144947793,520.5722730024718,3402.7060546875
+babilong,data/qa8/256k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,393.07885902235284,395.81371401436627,3402.7060546875
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,392.56764500169083,392.65067101223394,3402.7060546875
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,408.7786750169471,436.1746770446189,3402.7060546875
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,1.0,1024.0,429.99047398916446,456.33916300721467,3402.7060546875
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,1023.5,483.907031477429,486.3202604756225,3400.18310546875
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1023.5,478.5285830148496,478.60671000671573,3400.18310546875
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1024.0,424.35798948281445,424.4141954986844,3402.7060546875
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.0,1024.0,422.37980003119446,445.9786250081379,3402.7060546875
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,1024.0,425.5294939794112,427.94467648491263,3402.7060546875
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,562.8949030069634,564.8635440156795,3402.7060546875
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,562.3394270078279,562.3975269845687,3402.7060546875
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,449.2805430199951,474.17273704195395,3402.7060546875
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1024.0,1223.6155979917385,1223.863410501508,3402.7060546875
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.0,1024.0,456.7819130315911,484.80910251964815,3402.7060546875
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,1024.0,1221.338987495983,1225.3043424861971,3402.7060546875
+babilong,data/qa7/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,402.2686199750751,402.4627159233205,3402.7060546875
+babilong,data/qa7/128k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa7/128k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,400.7289170403965,427.82600806094706,3402.7060546875
+babilong,data/qa7/128k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,407.53332601161674,412.08949498832226,3402.7060546875
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.3333333333333333,1024.0,961.5147206932306,961.6525003414912,3402.7060546875
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.6666666666666666,1024.0,458.80635699722916,485.42586898353574,3402.7060546875
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.3333333333333333,1024.0,967.818183999043,970.6218759917343,3402.7060546875
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,0.3333333333333333,1024.0,435.08645669013885,461.33946902894724,3402.7060546875
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.3333333333333333,1024.0,559.6395996787274,563.1937733463323,3402.7060546875
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.3333333333333333,1024.0,562.925763001355,563.0299426848069,3402.7060546875
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,602.7095830067992,602.7914270525798,3402.7060546875
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,571.5648689656518,597.0068229944445,3402.7060546875
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,598.1753169908188,600.9267439949326,3402.7060546875
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.0,1021.0,1522.2183615260292,1540.7985195051879,3400.18408203125
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,964.0,526.8707360082772,528.9565779967234,3392.482666015625
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1024.0,479.02690499904566,479.0907405258622,3402.7060546875
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,1.0,1024.0,397.392344486434,399.371715990128,3402.7060546875
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,1.0,1024.0,405.3620009799488,405.4106924741063,3402.7060546875
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,1.0,1024.0,394.4610239996109,417.772197019076,3402.7060546875
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,1.0,1024.0,393.4994440060109,416.5452320012264,3402.7060546875
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,1.0,1024.0,393.37695500580594,395.038768008817,3402.7060546875
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,1.0,1024.0,394.4468419649638,394.5013849879615,3402.7060546875
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.5,1024.0,468.8162185193505,495.00486699980684,3402.7060546875
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.5,1024.0,472.7891844813712,475.7920759730041,3402.7060546875
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.5,1024.0,463.7072530167643,463.77691451925784,3402.7060546875
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa3/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa3/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,528.9933309541084,555.4419839754701,3402.7060546875
+babilong,data/qa3/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,527.231830987148,531.3459470053203,3402.7060546875
+babilong,data/qa3/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,509.09861602121964,509.207591006998,3402.7060546875
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,3,,,,,
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,3,0,0,1.0,1024.0,394.6740410174243,423.26433933340013,3402.7060546875
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,3,0,0,0.6666666666666666,1024.0,465.17432131804526,468.6106763159235,3402.7060546875
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,3,0,0,0.6666666666666666,1024.0,472.6313040203725,472.7788456948474,3402.7060546875
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.0,1024.0,422.23666550125927,422.41400948842056,3402.7060546875
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.0,1024.0,552.1921820181888,578.1080825254321,3402.7060546875
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.0,1024.0,421.396141522564,424.29255752358586,3402.7060546875
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,575.7637569913641,578.677551005967,3402.7060546875
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,581.8282119580545,581.9603909621947,3402.7060546875
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,651.0575169813819,677.2578239906579,3402.7060546875
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.5,1024.0,399.93417848018,402.09405549103394,3402.7060546875
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.5,1024.0,400.86856100242585,400.9351465210784,3402.7060546875
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.5,1024.0,407.53182501066476,433.04969600285403,3402.7060546875
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1024.0,423.4092429978773,425.87265803012997,3402.7060546875
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1024.0,407.6636469690129,407.75345696602017,3402.7060546875
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,411.2401210004464,437.7542010624893,3402.7060546875
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,1.0,1024.0,406.2000480189454,406.25361903221346,3402.7060546875
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,1.0,1024.0,404.6518039831426,430.05855052615516,3402.7060546875
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,1.0,1024.0,398.6006849736441,400.61745201819576,3402.7060546875
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,0.0,1023.0,621.5514980140142,621.5996990213171,3397.66015625
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,0.0,1024.0,394.04483599355444,417.05058002844453,3402.7060546875
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,0.0,1023.0,619.4424630375579,621.1919210618362,3397.66015625
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,2,0,0,0.5,1024.0,415.4198014875874,419.2328909994103,3402.7060546875
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,2,0,0,0.5,1024.0,410.19791702274233,410.3834265260957,3402.7060546875
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,2,,,,,
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,2,0,0,0.5,1024.0,465.2068539871834,503.7356929969974,3402.7060546875
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,original_sempointer,0,0,1,,,,,
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,bounded_pointer,1,0,0,1.0,1024.0,392.0703030307777,420.1209710445255,3402.7060546875
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,adaptive_no_index,1,0,0,1.0,1024.0,392.79112400254235,397.9066490428522,3402.7060546875
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_budget,1,0,0,1.0,1024.0,404.12309899693355,404.6178120188415,3402.7060546875
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,bm25_budget,100,0,0,0.35,1023.87,401.84777468966786,403.04652662423905,3402.201494140625
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,original_sempointer,0,0,100,,,,,
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,bounded_pointer,100,0,0,0.32,1023.84,402.395293667214,435.2618804742815,3402.0501171875
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,adaptive_no_index,100,0,0,0.35,1023.87,402.18725676706526,407.5963123777183,3402.201494140625
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bm25_budget,9,0,0,0.2222222222222222,1024.0,473.5001105647017,473.665217235167,3402.7060546875
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,original_sempointer,0,0,9,,,,,
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bounded_pointer,9,0,0,0.1111111111111111,1024.0,476.19364377654466,503.7623944420678,3402.7060546875
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,adaptive_no_index,9,0,0,0.2222222222222222,1024.0,472.68024377990514,475.8646557844865,3402.7060546875
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,original_sempointer,0,0,9,,,,,
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,bounded_pointer,9,0,0,0.3333333333333333,1024.0,633.5026516656702,663.8493527684154,3402.7060546875
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,adaptive_no_index,9,0,0,0.3333333333333333,1024.0,574.7437919942765,579.885235541345,3402.7060546875
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,bm25_budget,9,0,0,0.3333333333333333,1024.0,574.9288615641287,575.5545251239608,3402.7060546875
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,adaptive_no_index,9,0,0,0.7777777777777778,1024.0,1169.134298326551,1170.9138363108245,3402.7060546875
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,bm25_budget,9,0,0,0.7777777777777778,1024.0,1169.7792447650702,1170.0116509843308,3402.7060546875
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,original_sempointer,0,0,9,,,,,
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,bounded_pointer,9,0,0,0.7777777777777778,1024.0,1171.52618654331,1189.7795516350825,3402.7060546875
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,bounded_pointer,9,0,0,0.05555555555555555,1023.8888888888889,458.5798818993175,479.98280420304377,3402.1453993055557
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,adaptive_no_index,9,0,0,0.05555555555555555,1024.0,442.27324843975816,445.18397386936056,3402.7060546875
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,bm25_budget,9,0,0,0.05555555555555555,1024.0,442.2465170048074,442.33596811278,3402.7060546875
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,original_sempointer,0,0,9,,,,,
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,original_sempointer,0,0,8,,,,,
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,bounded_pointer,8,0,0,0.0,1023.875,417.41405225911876,435.96284923842177,3402.0753173828125
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,adaptive_no_index,8,0,0,0.0,1023.875,428.0707167417859,430.08253048174083,3402.0753173828125
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_budget,8,0,0,0.0,1023.875,420.9083958849078,420.96841913007665,3402.0753173828125
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,original_sempointer,0,0,8,,,,,
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,bounded_pointer,8,0,0,1.0,1024.0,517.5074187427526,540.0368969931151,3402.7060546875
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,adaptive_no_index,8,0,0,1.0,1024.0,516.2237107506371,518.4185661346419,3402.7060546875
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,bm25_budget,8,0,0,1.0,1024.0,519.8540656128898,519.9819453628152,3402.7060546875
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_budget,8,0,0,0.0,1023.75,584.6055017391336,584.7473794856342,3401.444580078125
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,original_sempointer,0,0,8,,,,,
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,bounded_pointer,8,0,0,0.0,1023.625,598.1544866299373,619.7311017749598,3401.4447021484375
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,adaptive_no_index,8,0,0,0.0,1023.75,587.818865373265,589.4765916382312,3401.444580078125
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bounded_pointer,8,0,0,0.14285714285714285,1024.0,844.4031854887726,872.5829461254762,3402.7060546875
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,adaptive_no_index,8,0,0,0.025921658986175117,1024.0,862.4487241249881,866.2632117557223,3402.7060546875
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bm25_budget,8,0,0,0.025921658986175117,1024.0,859.4172053781222,859.6217588637955,3402.7060546875
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,original_sempointer,0,0,8,,,,,
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,bounded_pointer,8,0,0,0.375,1023.5,428.239678250975,446.0658646203228,3400.18310546875
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,adaptive_no_index,8,0,0,0.625,1023.875,421.2054047457059,423.25737112696515,3402.0753173828125
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_budget,8,0,0,0.625,1023.875,422.9033543888363,422.98297199158696,3402.0753173828125
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,original_sempointer,0,0,8,,,,,
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,adaptive_no_index,8,0,0,1.0,1024.0,659.2990763747366,661.4881763744052,3402.7060546875
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,bm25_budget,8,0,0,1.0,1024.0,653.9472349904827,654.070225871692,3402.7060546875
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,original_sempointer,0,0,8,,,,,
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,bounded_pointer,8,0,0,1.0,1024.0,670.5272236213204,693.7842517581885,3402.7060546875
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,original_sempointer,0,0,8,,,,,
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,bounded_pointer,8,0,0,0.5,1023.375,516.4213952521095,546.9765727539198,3400.1832275390625
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,adaptive_no_index,8,0,0,0.5,1023.375,516.7120886253542,521.3381805078825,3400.1832275390625
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,bm25_budget,8,0,0,0.5,1023.375,521.4032515141298,521.78007101611,3400.1832275390625
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,adaptive_no_index,8,0,0,0.005865342302170969,1023.875,652.8329488792224,655.7163753823261,3402.0753173828125
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,bm25_budget,8,0,0,0.005865342302170969,1023.875,650.3937573870644,650.5710021374398,3402.0753173828125
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,original_sempointer,0,0,8,,,,,
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,bounded_pointer,8,0,0,0.006609389921218588,1024.0,680.3446047488251,707.3546322499169,3402.7060546875
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,bm25_budget,25,0,0,0.48800000000000004,1023.68,535.7386769144796,536.1852575116791,3401.89875
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,original_sempointer,0,0,25,,,,,
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,bounded_pointer,25,0,0,0.52,1023.96,631.6828136774711,660.1371287903748,3402.50421875
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,adaptive_no_index,25,0,0,0.48800000000000004,1023.68,535.0665700924583,538.9392948104069,3401.89875
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,adaptive_no_index,25,0,0,0.11259362859362859,1023.96,980.4024944431148,983.5030863597058,3402.50421875
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bm25_budget,25,0,0,0.11259362859362859,1023.96,983.723692682106,983.864088403061,3402.50421875
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,original_sempointer,0,0,25,,,,,
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bounded_pointer,25,0,0,0.12764252630466552,1023.92,764.15575083578,789.9650195031427,3402.3023828125
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,adaptive_no_index,25,0,0,0.6114124957425215,1014.32,900.1028088317253,902.8581386688165,3401.1083984375
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bm25_budget,25,0,0,0.6114124957425215,1024.0,900.7208372442983,900.8084637974389,3402.7060546875
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,original_sempointer,0,0,25,,,,,
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bounded_pointer,25,0,0,0.6325125186704134,1018.8,896.2611062009819,923.3975884411484,3401.8311328125
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,adaptive_no_index,25,0,0,0.15075985125609573,1021.12,2699.7401297208853,2702.8641003277153,3401.0973046875
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,bm25_budget,25,0,0,0.15132482300750813,1023.76,2742.3900285968557,2742.4453934421763,3401.4950390625
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,original_sempointer,0,0,25,,,,,
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,bounded_pointer,25,0,0,0.14274566601821836,1023.96,2438.6145213944837,2464.698646082543,3402.50421875
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,bounded_pointer,6,0,0,0.0,1023.8333333333334,2629.0489710033094,2655.499669509785,3401.8650716145835
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,adaptive_no_index,6,0,0,0.0,1023.6666666666666,2121.6409235203173,2124.6507143659983,3401.865234375
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,bm25_budget,6,0,0,0.0,1023.6666666666666,2121.2839404955353,2121.3944956640867,3401.865234375
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,original_sempointer,0,0,6,,,,,
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.1167232357585378,1024.0,1731.6456626052968,1754.6929153962992,3402.7060546875
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.1413736486726977,1024.0,2429.4029039912857,2431.4967137761414,3402.7060546875
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.1413736486726977,1024.0,2423.058821808081,2423.1107877916656,3402.7060546875
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,original_sempointer,0,0,6,,,,,
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,bounded_pointer,6,0,0,0.1797784294558488,1024.0,1368.7021996690116,1398.0659086664673,3402.7060546875
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,adaptive_no_index,6,0,0,0.23117395430648444,1024.0,1774.3135776545387,1777.8725129804418,3402.7060546875
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_budget,6,0,0,0.23117395430648444,1024.0,1771.0049331653863,1771.1350485042203,3402.7060546875
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,original_sempointer,0,0,6,,,,,
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,bounded_pointer,6,0,0,0.016666666666666666,1024.0,519.2214973309698,547.0633398508653,3402.7060546875
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,adaptive_no_index,6,0,0,0.016666666666666666,1023.6666666666666,713.1548403607061,716.067561210366,3401.0240885416665
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_budget,6,0,0,0.016666666666666666,1023.6666666666666,708.0604483295853,708.1596488230085,3401.0240885416665
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,original_sempointer,0,0,6,,,,,
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,bounded_pointer,6,0,0,0.1962962962962963,1024.0,497.7186615190779,526.1117011638513,3402.7060546875
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,adaptive_no_index,6,0,0,0.2240740740740741,1024.0,510.69542801512097,512.7262426734281,3402.7060546875
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,bm25_budget,6,0,0,0.2240740740740741,1024.0,512.8151538374368,512.8729291706501,3402.7060546875
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,bounded_pointer,6,0,0,0.1501595570932961,1024.0,1549.6073903341312,1576.178418181371,3402.7060546875
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,adaptive_no_index,6,0,0,0.13038201386926238,1024.0,1475.395425989215,1477.7629178424831,3402.7060546875
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_budget,6,0,0,0.13038201386926238,1024.0,1470.0751428414758,1470.1597191742621,3402.7060546875
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,original_sempointer,0,0,6,,,,,
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,bounded_pointer,3,0,0,0.26365539495048257,1024.0,2640.72486901811,2665.8939043991268,3402.7060546875
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,adaptive_no_index,3,0,0,0.2125759437716108,1024.0,2553.6301149986684,2555.989060686746,3402.7060546875
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_budget,3,0,0,0.2125759437716108,1024.0,2564.0619286762862,2564.112798019778,3402.7060546875
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,original_sempointer,0,0,3,,,,,
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.4545454545454545,1024.0,657.7990049961954,681.9675681763329,3402.7060546875
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.2328173374613003,1023.8,792.3991698189639,794.3077042116784,3401.696875
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.2328173374613003,1023.8,793.5663713957183,793.6197501956485,3401.696875
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.6,1024.0,393.69514101417735,421.80565441958606,3402.7060546875
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.8,1024.0,393.27469560084864,396.4937332086265,3402.7060546875
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.8,1024.0,395.5325369955972,395.6473198020831,3402.7060546875
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,adaptive_no_index,2,0,0,0.08200981537742463,1024.0,2500.7107440324035,2502.5292115460616,3402.7060546875
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_budget,2,0,0,0.08200981537742463,1024.0,2486.374293017434,2486.436681036139,3402.7060546875
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,original_sempointer,0,0,2,,,,,
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,bounded_pointer,2,0,0,0.0837549019607843,1024.0,2225.9973819891457,2249.1489149979316,3402.7060546875
+leval,quality,test,choice,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.6,1023.6,870.9735919954255,871.1041625821963,3401.6970703125
+leval,quality,test,choice,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,quality,test,choice,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.6,1020.4,865.5472598155029,888.4820826118812,3401.6970703125
+leval,quality,test,choice,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.6,998.2,870.1998116099276,873.3184177894145,3397.56884765625
+leval,tpo,test,choice,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,1.0,1024.0,733.8266790029593,735.9502090024762,3402.7060546875
+leval,tpo,test,choice,local L-Eval task metric adaptation,bm25_budget,5,0,0,1.0,1024.0,732.2850632132031,732.3741292115301,3402.7060546875
+leval,tpo,test,choice,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,tpo,test,choice,local L-Eval task metric adaptation,bounded_pointer,5,0,0,1.0,1024.0,733.7686129962094,757.4831657926552,3402.7060546875
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.12392069427644692,977.0,6307.727973803412,6309.51789021492,3395.02021484375
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.12392069427644692,1024.0,6298.924325592816,6298.981748195365,3402.7060546875
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,original_sempointer,1,0,4,0.22580645161290322,1020.0,4433.020504016895,4434.374610020313,3397.66015625
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.11873979851429732,998.8,5066.327274986543,5088.981841620989,3398.58330078125
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.4,1024.0,644.4711999967694,644.5901585975662,3402.7060546875
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.6,1024.0,655.3187932120636,682.7198239974678,3402.7060546875
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.4,1024.0,644.0357479965314,647.1166495932266,3402.7060546875
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.14235241570703386,1024.0,3893.36195619544,3893.4145716251805,3402.7060546875
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,original_sempointer,1,0,4,0.12219959266802444,888.0,3740.2037300053053,3741.447136970237,3379.76513671875
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.1234997638254605,984.8,3193.3303513913415,3214.9392393766902,3395.913671875
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.14098989035470144,963.0,3709.990585409105,3711.995483795181,3392.2826171875
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.44183932337236953,1024.0,1432.4957496253774,1458.1486374372616,3402.7060546875
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.5454916348090599,1024.0,1497.4358936073259,1499.920445412863,3402.7060546875
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.5454916348090599,1024.0,1496.8259432003833,1496.9172093900852,3402.7060546875
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.18250349880867942,1024.0,1333.5515913902782,1358.4038181696087,3402.7060546875
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.20241967379997,1024.0,1528.1197995995171,1530.5756591958925,3402.7060546875
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.20241967379997,1024.0,1510.5819819960743,1510.6511645833962,3402.7060546875
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.4696969696969697,1024.0,529.7875838237815,554.2847362230532,3402.7060546875
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.45999999999999996,1024.0,562.3088043997996,564.4973935908638,3402.7060546875
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.45999999999999996,1024.0,563.11121720355,563.1840206100605,3402.7060546875
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.3168181818181818,1023.8,966.3216522196308,968.277508195024,3401.696875
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.3168181818181818,1023.8,962.293564598076,962.3481018119492,3401.696875
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.3713636363636364,1024.0,953.3594584092498,977.2266918094829,3402.7060546875
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,bounded_pointer,5,0,0,0.4,1024.0,1716.0246400046162,1737.152663199231,3402.7060546875
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,adaptive_no_index,5,0,0,0.0,1023.8,2361.423293396365,2363.566558994353,3401.696875
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,bm25_budget,5,0,0,0.0,1023.8,2339.0770816011354,2339.1664865775965,3401.696875
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,original_sempointer,0,0,5,,,,,
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,original_sempointer,1,0,14,1.0,882.0,359.0218339813873,360.95318000297993,3377.95166015625
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bounded_pointer,15,0,0,0.3585958485958486,1014.5333333333333,854.7844778746367,879.1557441970023,3401.05576171875
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,adaptive_no_index,15,0,0,0.45356627327813204,1009.9333333333333,830.3854767271938,832.8177787169503,3400.2688151041666
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_budget,15,0,0,0.45356627327813204,1024.0,827.4940913931156,827.5587346598817,3402.7060546875
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,adaptive_no_index,15,0,0,0.6587935586728918,1015.6666666666666,812.1167199259313,815.2193559256071,3400.6646809895833
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_budget,15,0,0,0.6587935586728918,1023.8666666666667,810.5982163300117,810.7009114619965,3402.033268229167
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,original_sempointer,0,0,15,,,,,
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bounded_pointer,15,0,0,0.5677713135175197,1022.9333333333333,703.7966394020865,729.2325922637247,3401.6970377604166
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,original_sempointer,0,0,14,,,,,
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bounded_pointer,14,0,0,0.24963449249163533,1023.9285714285714,745.5509962081643,772.3020666411945,3402.345633370536
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,adaptive_no_index,14,0,0,0.3032452605842154,1024.0,793.9970095009942,796.8866433615664,3402.7060546875
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_budget,14,0,0,0.3032452605842154,1024.0,793.8766387773545,793.991705065959,3402.7060546875
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,adaptive_no_index,14,0,0,0.17945421715504514,1024.0,1757.9439182258543,1760.6407090040323,3402.7060546875
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_budget,14,0,0,0.17945421715504514,1024.0,1762.6397484938414,1762.7145631247133,3402.7060546875
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,original_sempointer,0,0,14,,,,,
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bounded_pointer,14,0,0,0.17779745784195128,1023.9285714285714,1409.4422627864074,1436.2050430583101,3402.345633370536
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,adaptive_no_index,14,0,0,0.12348573932042492,1024.0,2005.5273339925666,2008.343378921771,3402.7060546875
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_budget,14,0,0,0.12348573932042492,1024.0,2002.0388002823372,2002.0881884972498,3402.7060546875
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,original_sempointer,0,0,14,,,,,
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bounded_pointer,14,0,0,0.1141234607613952,1024.0,2431.927382991749,2455.3972925641574,3402.7060546875
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,adaptive_no_index,14,0,0,0.35714285714285715,1017.1428571428571,467.61407306101836,470.2819340538034,3401.371895926339
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_budget,14,0,0,0.35714285714285715,1022.7142857142857,470.56963242773367,470.64247571896493,3402.345703125
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,original_sempointer,2,0,12,1.0,990.5,447.999827505555,449.7515490220394,3396.435546875
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,bounded_pointer,14,0,0,0.35714285714285715,1019.1428571428571,470.2377677853552,493.6930550653155,3401.4498465401784
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,adaptive_no_index,14,0,0,0.06895009892828849,1023.9285714285714,2375.0301787139115,2377.8383195042675,3402.345633370536
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_budget,14,0,0,0.06895009892828849,1023.9285714285714,2382.3939287062135,2382.4475784245546,3402.345633370536
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,original_sempointer,0,0,14,,,,,
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bounded_pointer,14,0,0,0.07110689639358805,1024.0,2288.8456558700586,2317.2422488777165,3402.7060546875

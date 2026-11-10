@@ -1,0 +1,52 @@
+[
+  {
+    "task": "scrolls/qasper/test",
+    "source": "/home/viksit/Projects/tokens2/datasets/huggingface/tau/scrolls/qasper.zip",
+    "member": "qasper/test.jsonl",
+    "status": "ok",
+    "reason": null,
+    "metric": "qa_f1",
+    "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+    "context_chars": 35465,
+    "checked_examples": 1399,
+    "skip_reasons": {}
+  },
+  {
+    "task": "scrolls/qasper/validation",
+    "source": "/home/viksit/Projects/tokens2/datasets/huggingface/tau/scrolls/qasper.zip",
+    "member": "qasper/validation.jsonl",
+    "status": "ok",
+    "reason": null,
+    "metric": "qa_f1",
+    "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+    "context_chars": 26634,
+    "checked_examples": 984,
+    "skip_reasons": {}
+  },
+  {
+    "task": "scrolls/quality/test",
+    "source": "/home/viksit/Projects/tokens2/datasets/huggingface/tau/scrolls/quality.zip",
+    "member": "quality/test.jsonl",
+    "status": "skip",
+    "reason": "missing_gold",
+    "metric": "qa_f1",
+    "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+    "context_chars": 21447,
+    "checked_examples": 2128,
+    "skip_reasons": {
+      "missing_gold": 2128
+    }
+  },
+  {
+    "task": "scrolls/quality/validation",
+    "source": "/home/viksit/Projects/tokens2/datasets/huggingface/tau/scrolls/quality.zip",
+    "member": "quality/validation.jsonl",
+    "status": "ok",
+    "reason": null,
+    "metric": "qa_f1",
+    "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+    "context_chars": 28886,
+    "checked_examples": 2086,
+    "skip_reasons": {}
+  }
+]

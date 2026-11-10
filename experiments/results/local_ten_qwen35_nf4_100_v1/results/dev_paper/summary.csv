@@ -1,0 +1,13 @@
+family,task,split,metric,protocol,system,n_scored,n_errors,n_skipped,score_mean,active_tokens_mean,generation_ms_mean,latency_ms_mean,peak_vram_mb_mean
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer,6,0,0,1.0,1256.3333333333333,730.7019025029149,732.7569435001351,3430.5873209635415
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,6,0,0,1.0,2161.8333333333335,1094.2055246753928,1094.2944386818756,3574.2205403645835
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,6,0,0,1.0,2194.8333333333335,1104.1688863188028,1104.290760490888,3579.89892578125
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,sempointer,6,0,0,1.0,1860.1666666666667,974.3398415060559,977.7065751744279,3528.470947265625
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,sempointer,6,0,0,0.8333333333333334,1771.0,1563.2301248260774,1566.465590003645,3514.3775227864585
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,6,0,0,0.8333333333333334,2062.5,1703.6253708356526,1703.741609332307,3558.7223307291665
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,6,0,0,1.0,2194.0,1104.1337356728036,1104.2698581683605,3579.81298828125
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer,6,0,0,1.0,1866.3333333333333,981.9816309997501,985.4237148344206,3530.1441243489585
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,6,0,0,0.6,2636.6666666666665,1471.5072331697836,1471.942046492283,3650.6089680989585
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,sempointer,6,0,0,0.6666666666666666,1906.1666666666667,1188.2591833127663,1191.0068641591351,3532.3893229166665
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer,6,0,0,0.15,2530.1666666666665,2646.3221359881572,2648.606402983811,3633.3406575520835
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,6,0,0,0.0,3407.6666666666665,2736.6717780047716,2737.3328686808236,3769.943115234375

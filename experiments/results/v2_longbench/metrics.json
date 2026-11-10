@@ -1,0 +1,209 @@
+{
+  "benchmark": "longbench",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "nf4_compute_dtype": "torch.bfloat16",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "sdpa",
+    "seed": 42,
+    "model_config_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "n_examples": 600,
+  "system_info": {
+    "sempointer_v2": {
+      "system": "sempointer_v2",
+      "k": 16,
+      "m": 4,
+      "m_max": 4,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "bm25",
+        "components": [
+          "bm25"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "bm25": 1.0
+        },
+        "embedder_id": null,
+        "embedder_device": null,
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      },
+      "router": {
+        "min_m": 2,
+        "m_max": 4,
+        "expand_coverage": 0.8,
+        "ambiguity_coverage": 0.95,
+        "rescue_coverage": 0.5,
+        "expand_score_ratio": 0.85,
+        "max_resolved_tokens": 2560,
+        "semantic_rescue": false,
+        "embedder_device": null
+      }
+    },
+    "bm25_m4": {
+      "system": "bm25",
+      "selection_mode": "top_m",
+      "m": 4,
+      "token_budget": null,
+      "block_size": 512,
+      "n_blocks": 7,
+      "ingestion_tokens": 3162,
+      "ingestion_latency_ms": 7.407051991322078,
+      "has_system_prompt": true,
+      "bm25_backend": "rank_bm25.BM25Okapi",
+      "bm25_params": {
+        "k1": 1.5,
+        "b": 0.75
+      }
+    }
+  },
+  "systems": {
+    "sempointer_v2": {
+      "n_scored": 600,
+      "metric": "longbench_f1",
+      "score_mean": 0.10441683177553128,
+      "score_ci95": [
+        0.09267575914231337,
+        0.11683449906655502
+      ],
+      "active_tokens_mean": 1877.735,
+      "latency_ms_mean": 1732.1663670833368,
+      "peak_vram_mb_mean": 2216.33693766276,
+      "selection_latency_ms_mean": 2.7535905437980546,
+      "ttft_ms_mean": 457.07967851851816,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.5933333333333333,
+      "ingest_ms_mean": 42.251682287848475,
+      "generation_latency_ms_mean": 1723.8050394182453,
+      "per_task": {
+        "2wikimqa": {
+          "n": 100,
+          "score_mean": 0.07146890458781537,
+          "active_tokens_mean": 1599.44
+        },
+        "hotpotqa": {
+          "n": 100,
+          "score_mean": 0.049227664555772,
+          "active_tokens_mean": 2068.7
+        },
+        "multifieldqa_en": {
+          "n": 100,
+          "score_mean": 0.26829528283489024,
+          "active_tokens_mean": 1401.55
+        },
+        "musique": {
+          "n": 100,
+          "score_mean": 0.035889240201817156,
+          "active_tokens_mean": 2301.14
+        },
+        "narrativeqa": {
+          "n": 100,
+          "score_mean": 0.05419497178682163,
+          "active_tokens_mean": 2513.66
+        },
+        "qasper": {
+          "n": 100,
+          "score_mean": 0.1474249266860712,
+          "active_tokens_mean": 1381.92
+        }
+      },
+      "n_errors": 0
+    },
+    "bm25_m4": {
+      "n_scored": 600,
+      "metric": "longbench_f1",
+      "score_mean": 0.10572534977170674,
+      "score_ci95": [
+        0.09485837389134102,
+        0.11751721860719097
+      ],
+      "active_tokens_mean": 2100.451666666667,
+      "latency_ms_mean": 1866.8934626798487,
+      "peak_vram_mb_mean": 2233.1663427734375,
+      "selection_latency_ms_mean": 0.18560404671006836,
+      "ttft_ms_mean": 494.44267694823793,
+      "active_tokens_core_mean": 2100.451666666667,
+      "n_selected_mean": 3.993333333333333,
+      "ingest_ms_mean": 65.5331397565169,
+      "generation_latency_ms_mean": 1857.4250651399295,
+      "per_task": {
+        "2wikimqa": {
+          "n": 100,
+          "score_mean": 0.05782279600922833,
+          "active_tokens_mean": 2075.45
+        },
+        "hotpotqa": {
+          "n": 100,
+          "score_mean": 0.06235986470635155,
+          "active_tokens_mean": 2125.23
+        },
+        "multifieldqa_en": {
+          "n": 100,
+          "score_mean": 0.2668401626983828,
+          "active_tokens_mean": 2076.51
+        },
+        "musique": {
+          "n": 100,
+          "score_mean": 0.03651022696695201,
+          "active_tokens_mean": 2127.5
+        },
+        "narrativeqa": {
+          "n": 100,
+          "score_mean": 0.06032517938537975,
+          "active_tokens_mean": 2112.6
+        },
+        "qasper": {
+          "n": 100,
+          "score_mean": 0.15049386886394595,
+          "active_tokens_mean": 2085.42
+        }
+      },
+      "n_errors": 0
+    }
+  },
+  "paired": {
+    "sempointer_v2": {
+      "vs_bm25_m4": {
+        "n_paired": 600,
+        "mean_a": 0.10441683177553127,
+        "mean_b": 0.10572534977170674,
+        "mean_diff": -0.001308517996175452,
+        "diff_ci95": [
+          -0.0101336363066251,
+          0.007644011630126057
+        ],
+        "wins": 199,
+        "losses": 214,
+        "ties": 187,
+        "wilcoxon_p": 0.48549925884259604
+      },
+      "matched_retrieval": "bm25_m4"
+    }
+  }
+}

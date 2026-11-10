@@ -1,0 +1,31 @@
+{
+  "inspection_date": "2026-11-11",
+  "downloads_unchanged": true,
+  "newest_nonempty_archive_matches_integrated_metrics": true,
+  "newer_result_values_available": false,
+  "raw_database_validation": "pending for newest partial archive",
+  "files": [
+    {
+      "filename": "sempointer_kaggle_results(1).WQENSREL.tar.gz.part",
+      "bytes": 125433600,
+      "sha256": "a7808b04cee949df4d868aeecb0d98e72a07e410d3fb6d00571fc6b20545c903",
+      "combined_metrics_sha256": "8ff2dde050f242a8de09434d270f10bc3a0d989aa92f3cea02fab8e17aaedf74",
+      "archive_complete": false,
+      "archive_error": "unexpected end of data"
+    },
+    {
+      "filename": "sempointer_kaggle_results.tar.gz",
+      "bytes": 10080221,
+      "sha256": "f0dd9e6ccf5c12fe9acfb0674ee0c2142eda2f3b8284073fcda42baa58d0e489",
+      "combined_metrics_sha256": "87c8b71b8142d4a0f8ea9480211e52ed016dc620512234b37844d7521e7b5fa4",
+      "archive_complete": true
+    },
+    {
+      "filename": "sempointer_kaggle_results(1).tar.gz",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "combined_metrics_sha256": null,
+      "archive_complete": false
+    }
+  ]
+}

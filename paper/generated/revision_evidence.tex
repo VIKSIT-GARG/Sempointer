@@ -1,0 +1,20 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Evidence coverage partition of the loss audit. Fine-grained checks align in 43 cases; 11 more have coarse session labels. The remaining 175 include two unmapped annotations. Annotation coverage does not establish a unique cause of the score difference.}
+\label{tab:evidence}
+\begin{tabular}{lr}
+\toprule
+Evidence status & Cases \\
+\midrule
+Fine: bounded omits units; BM25 retains all & 18 \\
+Fine: all annotated units present in bounded & 9 \\
+Fine: incomplete annotated sets in both arms & 16 \\
+Coarse: LongMemEval support-session labels only & 11 \\
+No usable aligned fine-grained annotation & 175 \\
+\textbf{Total} & 229 \\
+\bottomrule
+\end{tabular}
+\end{table}

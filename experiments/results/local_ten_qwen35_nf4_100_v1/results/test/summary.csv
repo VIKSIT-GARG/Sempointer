@@ -1,0 +1,757 @@
+family,task,split,metric,protocol,system,n_scored,n_errors,n_skipped,score_mean,active_tokens_mean,generation_ms_mean,latency_ms_mean,peak_vram_mb_mean
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,18,0,0,0.03333333333333333,2363.6666666666665,2438.861717554068,2441.157933331043,3606.7477756076387
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,18,0,0,0.03333333333333333,2363.6666666666665,2453.1774993326203,2453.947722837458,3606.7477756076387
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,18,0,0,0.18333333333333335,3381.3333333333335,2790.103305047119,2790.873528551957,3764.8052842881943
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,18,0,0,0.07777777777777778,2666.722222222222,2495.0005559949204,2542.2516202250135,3654.100640190972
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,full_context,10,0,8,0.2,5616.0,4601.587637595367,4601.587637595367,4114.658935546875
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer,18,0,0,0.005555555555555556,2666.9444444444443,2481.922675218407,2484.218890995382,3653.9206271701387
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,full_context,7,0,11,1.0,4590.285714285715,1812.5053767081615,1812.5053767081615,3951.3722795758927
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer,18,0,0,0.9444444444444444,2200.722222222222,1040.457347155704,1044.2748141520294,3581.6695149739585
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,18,0,0,0.9444444444444444,1882.888888888889,928.7592295052794,932.576696501605,3531.790337456597
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,18,0,0,0.9444444444444444,1132.388888888889,670.2557296602107,670.4060122622953,3415.259575737847
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,18,0,0,0.9444444444444444,2171.222222222222,1014.6963604913456,1014.8466430934301,3576.9285753038193
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,18,0,0,0.9444444444444444,2200.722222222222,1054.893588999726,1119.2214839846,3581.6695149739585
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,18,0,0,1.0,1156.611111111111,666.0438454418909,668.1741402717307,3418.4013671875
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,18,0,0,1.0,1156.611111111111,664.5040045615234,664.6042770622039,3418.4013671875
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,18,0,0,1.0,2193.722222222222,988.4120107195081,988.5122832201887,3581.0977376302085
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,18,0,0,1.0,1371.5555555555557,721.2955567132061,752.7881882690256,3451.254937065972
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,full_context,6,0,12,1.0,4070.5,1637.4167369989057,1637.4167369989057,3871.6064453125
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer,18,0,0,1.0,1371.611111111111,725.8761888951994,728.0064837250393,3451.3146701388887
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,16,0,0,1.0,2133.9375,945.9660486900248,946.1009408259997,3570.7543029785156
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,16,0,0,1.0,2178.375,970.8942806246341,1026.31544981341,3577.294403076172
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,full_context,7,0,9,1.0,4921.142857142857,1916.4441857054564,1916.4441857054564,4002.3050362723216
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,sempointer,16,0,0,1.0,2178.375,952.3498091875808,955.854669562541,3577.294403076172
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,16,0,0,1.0,1846.75,854.4847280682006,857.9895884431608,3527.0165405273438
+ruler,niah_single_2,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,16,0,0,1.0,1132.8125,638.8613043818623,638.9961965178372,3415.972137451172
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,sempointer,15,0,0,0.9333333333333333,1885.6,1619.9068615950334,1623.183975132027,3532.2086588541665
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,15,0,0,0.9333333333333333,1565.0,1523.3599702555996,1526.6370837925933,3481.8414388020833
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,15,0,0,0.9333333333333333,1105.0666666666666,1370.2374330023304,1370.3733826094929,3411.1058268229167
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,15,0,0,0.9333333333333333,2078.8,1671.2632200020987,1671.399169609261,3561.977018229167
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,15,0,0,0.9333333333333333,1885.6,1615.8209302074586,1670.7953356749688,3532.2086588541665
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,full_context,8,0,7,0.875,5260.625,2771.6321450134274,2771.6321450134274,4055.74951171875
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,sempointer,15,0,0,0.7200000000000002,2210.733333333333,1244.4488575332798,1247.518057411071,3581.699641927083
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,15,0,0,0.4666666666666667,1997.4666666666667,1114.1009424075794,1117.1701422853705,3549.915071614583
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,15,0,0,0.26666666666666666,1651.4666666666667,884.6611698623747,885.1450695927875,3494.395930989583
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,15,0,0,0.68,2682.5333333333333,1348.9885387981,1349.4724385285128,3659.6439127604167
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,15,0,0,0.4533333333333333,2210.733333333333,1117.1058307945107,1170.6764715258032,3581.699641927083
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,full_context,5,0,10,1.0,4158.2,3698.3693906106055,3698.3693906106055,3882.02734375
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_2,7,0,0,0.17285267976064994,1096.7142857142858,972.6609401488012,972.7176804444753,3406.4177594866073
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_4,7,0,0,0.1336863876620681,1994.142857142857,2239.34272670054,2239.3994669962144,3548.9503348214284
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_matched_budget,7,0,0,0.13042125042026792,2050.714285714286,2115.9908315665753,2156.039371712333,3557.7042410714284
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,full_context,7,0,0,0.15116788293871247,3106.5714285714284,2133.694656999848,2133.694656999848,3722.383370535714
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer,7,0,0,0.1309313212613687,2050.714285714286,1677.107838863906,1680.3725475827898,3557.7042410714284
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,pointer_off,7,0,0,0.1336863876620681,1994.142857142857,2205.2143137137004,2208.4790224325843,3548.9503348214284
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_matched_budget,10,0,0,0.17477330286130915,3255.1,2265.5159911955707,2366.3462479948066,3745.527001953125
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,full_context,4,0,6,0.3687083177243803,5103.0,3751.277739487705,3751.277739487705,4032.3194580078125
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer,10,0,0,0.1626109335939254,3255.5,2473.0555760033894,2477.8869754925836,3745.565087890625
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,pointer_off,10,0,0,0.16041271602907786,2938.4,2228.130301309284,2232.961700798478,3695.4037109375
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_2,10,0,0,0.2543822668372035,1903.1,1959.118650201708,1959.8913196998183,3534.477978515625
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_4,10,0,0,0.16041271602907786,2938.4,2214.4656712014694,2215.2383406995796,3695.4037109375
+longbench,trec,test,exact,normalized label exact-match adaptation,bm25_4,3,0,0,1.0,2334.6666666666665,817.7039943402633,817.981828644406,3603.93798828125
+longbench,trec,test,exact,normalized label exact-match adaptation,bm25_matched_budget,3,0,0,1.0,2482.3333333333335,870.1124413249394,943.6395589339858,3625.90234375
+longbench,trec,test,exact,normalized label exact-match adaptation,full_context,3,0,0,1.0,5690.666666666667,1956.306131343202,1956.306131343202,4123.266764322917
+longbench,trec,test,exact,normalized label exact-match adaptation,sempointer,3,0,0,1.0,2482.3333333333335,878.2702746684663,882.5616830145009,3625.90234375
+longbench,trec,test,exact,normalized label exact-match adaptation,pointer_off,3,0,0,1.0,2334.6666666666665,833.9232513487028,838.2146596947374,3603.93798828125
+longbench,trec,test,exact,normalized label exact-match adaptation,bm25_2,3,0,0,1.0,1297.3333333333333,528.4067353544136,528.6845696585564,3440.1608072916665
+longbench,lsht,test,exact,normalized label exact-match adaptation,pointer_off,4,0,0,0.25,2715.75,941.3204840093385,944.8140470049111,3663.146728515625
+longbench,lsht,test,exact,normalized label exact-match adaptation,bm25_2,4,0,0,0.5,1678.0,639.2812962440075,639.4672109890962,3497.686279296875
+longbench,lsht,test,exact,normalized label exact-match adaptation,bm25_4,4,0,0,0.25,2715.75,947.4171029869467,947.6030177320354,3663.146728515625
+longbench,lsht,test,exact,normalized label exact-match adaptation,bm25_matched_budget,4,0,0,0.25,2893.75,1001.7095777584473,1077.5270250160247,3689.9234619140625
+longbench,lsht,test,exact,normalized label exact-match adaptation,full_context,2,0,2,0.5,7749.5,2598.0258625058923,2598.0258625058923,4443.456298828125
+longbench,lsht,test,exact,normalized label exact-match adaptation,sempointer,4,0,0,0.25,2893.75,1001.7894720076583,1005.2830350032309,3689.9234619140625
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,5,0,0,0.8666666666666668,3797.2,1401.6749860020354,1514.444852003362,3828.36337890625
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,0,0,5,,,,,
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,5,0,0,0.8666666666666668,3798.4,1386.0219772090204,1391.6345580131747,3828.684375
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,5,0,0,0.8666666666666668,3184.2,1188.5184671962634,1194.1310480004176,3734.7291015625
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,5,0,0,0.8666666666666668,2144.8,821.9119137967937,822.9953116038814,3570.67119140625
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,5,0,0,0.8666666666666668,3184.2,1181.046927603893,1182.1303254109807,3734.7291015625
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,5,0,0,0.5702738613715214,1307.6,1343.6444925959222,1343.8373560085893,3440.90302734375
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,5,0,0,0.5067942583732058,2264.2,1490.296873007901,1490.489736420568,3590.18134765625
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,5,0,0,0.5238257259309891,2626.6,1760.9077967936173,1822.6866448181681,3647.14990234375
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,2,0,3,0.5984848484848484,6468.0,3043.450088996906,3043.450088996906,4245.205322265625
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,5,0,0,0.47261494169589124,2626.8,1567.1201523859054,1570.9741753758863,3647.16611328125
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,5,0,0,0.5067942583732058,2264.2,1490.309063415043,1494.163086405024,3590.18134765625
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,9,0,0,0.6296296296296295,1114.111111111111,575.8139163307432,575.8938342203489,3410.4705403645835
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,9,0,0,0.7962962962962963,2152.5555555555557,792.99200577144,793.0719236610457,3573.4724392361113
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,9,0,0,0.7407407407407407,1717.6666666666667,745.2744885554744,787.8729888988245,3504.094780815972
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,2,0,7,0.625,6413.5,2295.0917209964246,2295.0917209964246,4238.316162109375
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,9,0,0,0.7962962962962963,1717.6666666666667,666.5062901124152,669.034903558592,3504.094780815972
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,9,0,0,0.6851851851851851,1229.5555555555557,533.9770526754567,536.5056661216336,3428.5993381076387
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,0,0,8,,,,,
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,8,0,0,0.11607142857142856,2341.75,1096.6848543685046,1100.300460246217,3602.3898315429688
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,8,0,0,0.08333333333333334,1754.375,950.6919212435605,954.3075271212729,3510.20703125
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,8,0,0,0.08333333333333334,1115.75,1066.5664128682693,1066.6503467436996,3410.642578125
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,8,0,0,0.14166666666666666,2144.125,972.6064769856748,972.6904108611052,3571.44091796875
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,8,0,0,0.041666666666666664,2341.75,1064.3081747330143,1130.6894853623817,3602.3898315429688
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,bm25_4,12,0,0,0.6199691795438728,2015.5,929.2886528370824,929.3338499264792,3551.6737060546875
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,bm25_matched_budget,12,0,0,0.6096739946391649,2000.0833333333333,923.6996125837322,958.9653411724915,3549.307413736979
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,full_context,12,0,0,0.6619932817810704,3483.5833333333335,1429.926141834585,1429.926141834585,3780.7906494140625
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,sempointer,12,0,0,0.6325906613058316,2000.0833333333333,895.1712523315413,897.7373622522767,3549.307413736979
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,pointer_off,12,0,0,0.6325906613058316,1937.25,877.3667949183922,879.9329048391277,3539.619099934896
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,bm25_2,12,0,0,0.5159239946391649,1106.9166666666667,613.4145944088232,613.4597914982199,3409.767862955729
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,4,0,0,0.37738095238095243,1188.5,1013.8329572364455,1042.9549022373976,3422.5849609375
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,4,0,0,0.33297619047619054,4765.75,2968.499993730802,2968.499993730802,3980.56005859375
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,4,0,0,0.38264411027568923,1188.5,1006.7935157567263,1008.874218998244,3422.5849609375
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,4,0,0,0.371969696969697,1030.75,996.9495904952055,999.0302937367233,3400.1357421875
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,4,0,0,0.371969696969697,1030.75,999.6300042257644,999.6918109827675,3400.1357421875
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,4,0,0,0.3504429678848283,2033.75,1436.1885747493943,1436.2503815063974,3553.23388671875
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.4,1106.0,1267.3343700007536,1270.184792985674,3409.63134765625
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.4,1106.0,1273.8637499860488,1273.9287660224363,3409.63134765625
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.3255813953488372,2145.0,2259.609970031306,2259.6749860676937,3572.37158203125
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.1904761904761905,1317.0,991.3148689665832,1037.10440301802,3441.71630859375
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.15384615384615385,5885.0,2504.8073390498757,2504.8073390498757,4152.482421875
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.0,1317.0,537.9860469838604,540.8364699687809,3441.71630859375
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,pointer_off,6,0,0,0.12857870739608748,2134.6666666666665,1536.7038670228794,1539.6246008458547,3571.36669921875
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,bm25_2,6,0,0,0.08056236988738823,1096.6666666666667,1528.132529356905,1528.1760395252302,3406.4158528645835
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,bm25_4,6,0,0,0.12857870739608748,2134.6666666666665,1545.4285416732698,1545.472051841595,3571.36669921875
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,bm25_matched_budget,6,0,0,0.1257276393372579,2279.5,1521.1988403267849,1569.8229319920454,3593.93359375
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,full_context,5,0,1,0.16859347813171052,6562.8,5651.6274501918815,5651.6274501918815,4258.4044921875
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,sempointer,6,0,0,0.06584687809177502,2279.5,1097.1424214852352,1100.0631553082105,3593.93359375
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_2,6,0,0,0.1243361155733909,1111.0,1338.7748703341156,1338.846496490684,3410.2809244791665
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_4,6,0,0,0.13261910201250404,2150.0,1512.7927966823336,1512.864422838902,3573.375732421875
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_matched_budget,6,0,0,0.12579255646597612,1733.8333333333333,1336.616536495664,1375.71481547396,3507.7557779947915
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,full_context,2,0,4,0.20939665370965016,6244.0,3478.103398520034,3478.103398520034,4212.003173828125
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer,6,0,0,0.14054410028544362,1733.8333333333333,1463.8779621648912,1466.060375329107,3507.7557779947915
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,pointer_off,6,0,0,0.1243361155733909,1111.0,1329.7757250062812,1331.9581381704968,3410.2809244791665
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,pointer_off,4,0,0,0.0441789750113974,1755.5,1058.2802920107497,1061.3712030171882,3513.8267822265625
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_2,4,0,0,0.049252427237474916,976.75,614.7503660031362,614.7932057356229,3390.088134765625
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_4,4,0,0,0.0441789750113974,1755.5,1015.6388922478072,1015.681731980294,3513.8267822265625
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_matched_budget,4,0,0,0.05073301561461502,1906.0,930.8566514810082,973.3748457219917,3536.314453125
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,full_context,3,0,1,0.04544739391697742,2503.0,1295.505625331619,1295.505625331619,3630.2307942708335
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer,4,0,0,0.022514459323036407,1906.25,787.4005795019912,790.4914905084297,3536.3424072265625
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,sempointer,7,0,0,0.0,2013.4285714285713,775.810476425769,778.2181858534126,3552.1834542410716
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,pointer_off,7,0,0,0.0,1907.4285714285713,1241.8318134399929,1244.2395228676364,3533.8874860491073
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,bm25_2,7,0,0,0.0,1166.2857142857142,1176.84222772784,1176.8941325717606,3418.0563616071427
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,bm25_4,7,0,0,0.0,2204.0,1324.6212181568678,1324.6731230007883,3580.925851004464
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,bm25_matched_budget,7,0,0,0.0,2013.4285714285713,1350.6201064363788,1388.523507422568,3552.1834542410716
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,full_context,7,0,0,0.0,4355.428571428572,3235.1519911234,3235.1519911234,3916.829520089286
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,full_context,0,0,5,,,,,
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,sempointer,5,0,0,0.0,2865.0,1141.9807997881435,1146.1473301867954,3685.3541015625
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,pointer_off,5,0,0,0.0,2135.4,1118.6185843893327,1122.7851147879846,3571.41396484375
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,bm25_2,5,0,0,0.0,1097.0,1034.1499184025452,1034.2000479926355,3406.4248046875
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,bm25_4,5,0,0,0.0,2135.4,1119.054585811682,1119.1047154017724,3571.41396484375
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,bm25_matched_budget,5,0,0,0.0,2865.0,2106.900775397662,2180.413968185894,3685.3541015625
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,full_context,0,0,4,,,,,
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,sempointer,4,0,0,0.0,1775.0,3024.147141506546,3026.9117967691272,3512.733154296875
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,pointer_off,4,0,0,0.0,1303.0,2734.141114007798,2736.905769270379,3440.7801513671875
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,bm25_2,4,0,0,0.0,1303.0,2728.236198774539,2728.5765792621532,3440.7801513671875
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,bm25_4,4,0,0,0.0,2342.75,3113.308755986509,3113.649136474123,3603.2293701171875
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,bm25_matched_budget,4,0,0,0.0,1773.5,3226.81623675453,3270.516400487395,3512.5201416015625
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,bm25_matched_budget,100,0,0,0.22490605531701527,2138.43,1117.2366938210325,1178.7038045621011,3570.3802392578127
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,full_context,0,0,100,,,,,
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,sempointer,100,0,0,0.20661922023095144,2138.45,1056.3512927363627,1059.3685807974543,3570.3812353515623
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,pointer_off,100,0,0,0.20583124769075611,1343.43,842.9803993902169,845.9976874513086,3446.593896484375
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,bm25_2,100,0,0,0.19305841701229376,1108.1,764.4781675963895,764.5753808977315,3409.7434423828126
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,bm25_4,100,0,0,0.2235067937388945,2136.3,1093.2510823226767,1093.3482956240186,3570.841806640625
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_4,100,0,0,0.37541166214073124,2184.04,1145.0298045523232,1145.537081437069,3577.6962841796876
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_matched_budget,100,0,0,0.35214039552421184,6678.13,3057.971902140416,3327.0107540732715,4277.506850585937
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,full_context,0,0,100,,,,,
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,sempointer,100,0,0,0.3611941419055578,6678.2,2703.4945045103086,2708.6846255214186,4277.5142578125
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,pointer_off,100,0,0,0.36541166214073123,2173.62,1144.5333258702885,1149.7234468813986,3576.0960888671875
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_2,100,0,0,0.28867799954145196,1143.0,818.3449764898978,818.8522533746436,3415.576162109375
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,0,0,1,,,,,
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1102.0,484.56274601630867,487.47243598336354,3407.2255859375
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1102.0,497.8334890329279,498.05039004422724,3407.2255859375
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2141.0,822.756303998176,822.9732050094754,3571.7822265625
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,0,0,1,,,,,
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,3,0,0,0.3333333333333333,1104.6666666666667,488.0951133479054,488.2414873572998,3409.54833984375
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,3,0,0,0.3333333333333333,2145.0,864.285517988416,864.4318919978105,3572.5802408854165
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,3,0,0,0.0,6321.666666666667,2418.0652136759213,2686.8861656985246,4221.466796875
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,3,,,,,
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,3,0,0,0.3333333333333333,6321.666666666667,2243.911550011641,2246.620121683615,4221.466796875
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,3,0,0,0.3333333333333333,1104.6666666666667,483.7507276679389,486.45929933991283,3409.54833984375
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1101.5,546.5384004928637,546.6113584989216,3407.2099609375
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.0,2140.0,889.0096535033081,889.082611509366,3571.71630859375
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.0,2361.5,946.8413574795704,1018.527759501012,3605.35888671875
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,2361.5,935.7044365315232,938.3433975453954,3605.35888671875
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1101.5,560.8273129910231,563.4662740048952,3407.2099609375
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.0,3666.0,1472.7165309886914,1595.9276339272037,3806.992919921875
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.0,3666.0,1420.040268014418,1422.8578174952418,3806.992919921875
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.0,1103.0,608.1460205023177,610.9635699831415,3409.447265625
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.0,1103.0,609.4232140167151,609.5394945004955,3409.447265625
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.0,2142.0,866.9930670002941,867.1093474840745,3571.99609375
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,1.0,1101.0,479.2795660032425,481.76582652376965,3407.1943359375
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,1.0,1101.0,476.67427550186403,476.73348800162785,3407.1943359375
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2140.0,828.8539345085155,828.9131470082793,3571.71630859375
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,1333.0,573.7776614842005,608.2647109869868,3445.6962890625
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,full_context,2,0,0,0.5,6710.0,2402.8821685060393,2402.8821685060393,4283.75
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,1.0,1333.0,547.5064174970612,549.9926780175883,3445.6962890625
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1101.0,564.6873830119148,567.2615959774703,3407.1943359375
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1101.0,573.3100729994476,573.3766289777122,3407.1943359375
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2139.0,941.3727109786123,941.439266956877,3571.650390625
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1710.0,862.2663060086779,913.7463599909097,3500.3154296875
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,1711.0,743.3036349830218,745.8778479485773,3500.404296875
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,full_context,1,0,0,0.0,3835.0,1408.097828971222,1408.097828971222,3831.865234375
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,1230.0,512.669995019678,514.9131990619935,3430.5791015625
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1101.0,514.1441979794763,516.3874020217918,3407.1943359375
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1101.0,506.23235100647435,506.28086301730946,3407.1943359375
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2139.0,852.8450209996663,852.8935330105014,3571.650390625
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1230.0,542.059910017997,575.0936890253797,3430.5791015625
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,3,0,0,0.0,1106.3333333333333,516.9674926825488,520.3858483194684,3409.6512044270835
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,3,0,0,0.0,1106.3333333333333,518.3954673508803,518.7396430022394,3409.6512044270835
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,3,0,0,0.3333333333333333,2147.6666666666665,844.3032703362405,844.6474459875996,3572.5808919270835
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,0,0,3,,,,,
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,3,,,,,
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,0,0,3,,,,,
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,6080.0,2135.9741130145267,2400.3192119998857,4185.6259765625
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,6080.0,2140.377212956082,2143.642053939402,4185.6259765625
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1107.0,443.59004200669006,446.8548829900101,3409.69091796875
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1107.0,441.75865699071437,441.9657599646598,3409.69091796875
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2148.0,776.0028840275481,776.2099870014936,3572.60595703125
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,1.0,2810.5,1023.7788115045987,1028.091239510104,3675.255615234375
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,1.0,1624.5,607.2036034893245,611.5160314948298,3490.948486328125
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,1.0,1104.5,470.376898010727,470.4817970050499,3409.539306640625
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,1.0,2144.0,779.8391774995252,779.9440764938481,3572.290771484375
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,1.0,2810.5,1011.7260430124588,1094.3814775382634,3675.255615234375
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2146.5,787.760926032206,787.8813140268903,3572.48876953125
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,3650.0,1292.1361990156583,1406.1813855078071,3803.701904296875
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,3650.0,1291.2070075108204,1294.1651114961132,3803.701904296875
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1106.0,443.6538480222225,446.61195200751536,3409.63134765625
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1106.0,448.36644499446265,448.48683298914693,3409.63134765625
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,1659.5,629.2182239703834,632.1376044943463,3496.77001953125
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1103.0,473.00924052251503,475.92862104647793,3409.447265625
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1103.0,446.9561215082649,447.0269760058727,3409.447265625
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2141.5,772.5687539787032,772.639608476311,3571.95703125
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,1656.5,626.7118024989031,679.8976960126311,3496.416259765625
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,1221.5,480.72304148809053,511.47472398588434,3426.8447265625
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,full_context,2,0,0,0.5,3710.0,1315.505596488947,1315.505596488947,3814.7978515625
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,1222.0,475.38594002253376,477.91112805134617,3426.89306640625
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1103.0,448.9969580026809,451.5221460314933,3409.447265625
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1103.0,444.48182597989216,444.53394997981377,3409.447265625
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2099.0,767.549740470713,767.6018644706346,3563.89404296875
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,4,0,0,0.0,2145.75,1006.1674524913542,1006.3215250120265,3572.42822265625
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,4,0,0,0.0,6378.5,2601.997819263488,2884.3414160364773,4232.1707763671875
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,4,,,,,
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,4,0,0,0.0,6378.5,2341.0889314836822,2344.1555354656884,4232.1707763671875
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,4,0,0,0.0,1105.25,570.7374284975231,573.8040324795293,3409.586669921875
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,4,0,0,0.0,1105.25,574.1409367474262,574.2950092680985,3409.586669921875
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.0,2310.0,956.716165470425,959.464665473206,3595.96142578125
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.0,1102.5,598.4476605081,601.1961605108809,3408.33642578125
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.0,1102.5,597.5482325011399,597.6221780001651,3408.33642578125
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.0,2143.0,1054.2846929747611,1054.3586384737864,3572.2099609375
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.0,2310.0,1108.2271810155362,1174.590579525102,3595.96142578125
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.0,3529.5,1366.2457345344592,1484.420147491619,3786.041748046875
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.0,3532.0,1371.3084099872503,1374.2299484729301,3786.29833984375
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.0,1105.0,504.12657696870156,507.04811545438133,3409.57177734375
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.0,1105.0,512.914628488943,513.0076144705527,3409.57177734375
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.0,2145.0,827.5085739733186,827.6015599549282,3572.368896484375
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.0,2141.5,1326.9512800034136,1327.0308659994043,3571.96240234375
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.0,1708.5,956.2080869800411,1009.4937609974295,3501.1826171875
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.0,1708.5,697.955337993335,701.010734483134,3501.1826171875
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.0,1101.5,596.3015654997434,599.3569619895425,3407.2099609375
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.0,1101.5,584.4189045019448,584.4984904979356,3407.2099609375
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.0,1376.0,644.924111518776,687.8657214983832,3451.8896484375
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,full_context,2,0,0,0.0,7710.5,2956.8757569941226,2956.8757569941226,4438.121826171875
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.0,1376.0,699.4783779955469,702.4288109969348,3451.8896484375
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.0,1102.5,515.5410555307753,518.4914885321632,3408.33642578125
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.0,1102.5,516.8181719782297,516.8975169654004,3408.33642578125
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.0,2141.0,1143.45290948404,1143.5322544712108,3571.7822265625
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,3,,,,,
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,3,0,0,0.0,6687.0,2557.035335650047,2561.104374627272,4281.259602864583
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,3,0,0,0.0,1456.0,712.6843773488266,716.7534163260522,3464.3566080729165
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,3,0,0,0.0,1109.3333333333333,762.792612988657,762.9982526414096,3410.07763671875
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,3,0,0,0.0,2068.3333333333335,987.1022200289493,987.3078596817019,3559.8157552083335
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,3,0,0,0.0,6687.0,2609.509361325763,2895.448537329988,4281.259602864583
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,0,0,1,,,,,
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1108.0,878.658119996544,881.9067769800313,3409.75048828125
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1108.0,880.0313670071773,880.264358012937,3409.75048828125
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2150.0,851.8333210377023,852.066312043462,3572.76513671875
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,0,0,1,,,,,
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,3,0,0,0.3333333333333333,2851.3333333333335,1021.7293666598076,1093.2471809792332,3682.0888671875
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,3,,,,,
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,3,0,0,0.0,2852.0,1117.1216673101299,1121.2091166332054,3682.1715494791665
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,3,0,0,0.0,1634.6666666666667,963.297345985969,967.3847953090444,3493.5284830729165
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,3,0,0,0.0,942.0,638.307333671643,638.4012919928258,3385.3922526041665
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,3,0,0,0.3333333333333333,1981.3333333333333,1020.3192783131575,1020.4132366343401,3547.80126953125
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,2148.0,1238.2933719782159,1243.5551839298569,3572.60595703125
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1108.0,579.5070009771734,579.592652968131,3409.75048828125
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2148.0,1229.4555690023117,1229.5412209932692,3572.60595703125
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,2715.0,1011.8373080040328,1105.9213660191745,3664.9248046875
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,2715.0,995.8513280143961,1001.1131399660371,3664.9248046875
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1106.0,910.6250019976869,913.4370009996928,3409.63134765625
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1106.0,941.7754380265251,941.8461320456117,3409.63134765625
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2144.0,1191.4124630275182,1191.483157046605,3572.2880859375
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1337.0,555.4425329901278,590.603785996791,3444.7373046875
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,full_context,1,0,0,1.0,6404.0,2255.079641996417,2255.079641996417,4239.09228515625
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,1337.0,969.372496008873,972.1844950108789,3444.7373046875
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1104.0,696.2884739623405,696.3409129530191,3409.5068359375
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,1753.0,667.9158040205948,667.9682430112734,3510.4677734375
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1233.0,988.5180010460317,1010.6372570735402,3430.85693359375
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,full_context,1,0,0,1.0,3827.0,1413.3980890037492,1413.3980890037492,3831.65478515625
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,1233.0,539.5227780099958,541.7986609973013,3430.85693359375
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1104.0,632.596209004987,634.8720919922926,3409.5068359375
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,0,0,2,,,,,
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,0,0,2,,,,,
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1627.5,620.4107129888143,624.9136705009732,3491.13916015625
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1107.5,561.6986255045049,561.9795079692267,3409.720703125
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2147.5,783.0346859700512,783.315568434773,3572.56689453125
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,1.0,6360.0,2192.196919990238,2454.3779229861684,4229.44091796875
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,6360.0,2163.3124289801344,2166.4101989590563,4229.44091796875
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1108.0,452.2931770188734,455.39094699779525,3409.75048828125
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1108.0,460.95986699219793,461.11677499720827,3409.75048828125
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2150.0,758.4884990355931,758.6454070406035,3572.76513671875
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,3,,,,,
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,3,0,0,1.0,2337.0,830.0261050074672,832.8551419933016,3603.2809244791665
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,3,0,0,1.0,1106.0,483.1082246382721,485.9372616241065,3409.63134765625
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,3,0,0,1.0,1106.0,458.0903043388389,458.1853506776194,3409.63134765625
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,3,0,0,1.0,2145.3333333333335,769.5703316712752,769.6653780100556,3572.3958333333335
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,3,0,0,1.0,2337.0,844.5780693436973,901.3690397065753,3603.2809244791665
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1104.0,458.4920959896408,458.54640897596255,3409.5068359375
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2142.0,772.9381989920512,772.9925119783729,3572.1318359375
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,1.0,1355.0,583.088678016793,609.3451489578001,3449.2998046875
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,full_context,1,0,0,1.0,6880.0,2473.6751960008405,2473.6751960008405,4309.6982421875
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,1356.0,547.1143540344201,549.513771024067,3449.3671875
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1104.0,480.4613190353848,482.86073602503166,3409.5068359375
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,1233.0,521.7165094800293,555.2737374964636,3430.854248046875
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,full_context,2,0,0,0.5,3782.0,1428.686804982135,1428.686804982135,3827.1298828125
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,1233.0,524.5084640046116,527.2911215142813,3430.854248046875
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1104.0,481.0975495202001,483.8802070298698,3409.509521484375
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1104.0,487.276866013417,487.33494101907127,3409.509521484375
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2141.5,806.3408340094611,806.3989090151154,3571.96240234375
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1109.0,584.412195981713,584.9125889653806,3409.81298828125
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,1.0,2150.5,797.04632202629,797.5467150099576,3573.2568359375
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,0,0,2,,,,,
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,0,0,2,,,,,
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1109.0,565.2115320262965,568.8729239918757,3409.81298828125
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,2144.0,775.4520239541307,780.996368965134,3572.2880859375
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1104.0,613.6590340174735,613.9055110397749,3409.5068359375
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2144.0,766.0430019604973,766.2894789827988,3572.2880859375
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,7173.0,2638.8498259475455,2985.2557609556243,4354.53369140625
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,7173.0,2575.185446999967,2580.7297920109704,4354.53369140625
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,2354.0,856.2467714946251,930.9745075297542,3604.81640625
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,2354.0,883.7212100042962,886.8287374789361,3604.81640625
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1105.5,590.5723689938895,593.6798964685295,3409.598876953125
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1105.5,547.9613170318771,548.0829880398232,3409.598876953125
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2145.5,811.2301325018052,811.3518035097513,3572.407958984375
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1104.0,585.2683279663324,585.3956999490038,3409.5068359375
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2144.0,794.8350649676286,794.9624369502999,3572.2880859375
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,4687.0,1766.7965380242094,1955.8052110369317,3966.259765625
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,4687.0,1699.6411510044709,1704.8835729947314,3966.259765625
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,2144.0,853.1062150141224,858.3486370043829,3572.2880859375
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1103.5,481.1335090198554,483.76883153105155,3409.47705078125
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1103.5,465.96827753819525,466.033711534692,3409.47705078125
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2141.5,831.9216605159454,831.9870945124421,3571.95703125
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,1366.0,576.7325125052594,615.2921799803153,3450.62841796875
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,full_context,2,0,0,0.5,7468.0,2746.7193880002014,2746.7193880002014,4399.02978515625
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.0,1366.0,520.5783894925844,523.2137120037805,3450.62841796875
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,1671.0,607.5944579788484,609.8455629544333,3497.27587890625
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1105.0,441.7020310065709,443.9531359821558,3409.57177734375
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1105.0,544.4670689757913,544.5288459886797,3409.57177734375
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2144.0,912.2597439563833,912.3215209692717,3572.2880859375
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1671.0,664.4855900085531,706.5091150579974,3497.27587890625
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,3,0,0,1.0,6286.0,2382.879769002708,2386.0662423539907,4216.54833984375
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,3,0,0,1.0,1106.6666666666667,483.65997567695257,486.84644902823493,3409.6710611979165
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,3,0,0,1.0,1106.6666666666667,488.87402899951365,489.06248598359525,3409.6710611979165
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,3,0,0,0.6666666666666666,2147.0,843.7895693350583,843.97802631914,3572.52880859375
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,3,0,0,0.6666666666666666,6286.0,2482.663893334878,2760.3780613086806,4216.54833984375
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,3,,,,,
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,3689.5,1420.2074224886019,1540.6525009893812,3811.45947265625
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,3689.5,1373.3206985343713,1376.4538735267706,3811.45947265625
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1103.5,468.65240251645446,471.78557750885375,3409.47705078125
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1103.5,466.9743069971446,467.1213054971304,3409.47705078125
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2143.5,828.287355019711,828.4343535196967,3572.2490234375
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,2343.0,872.7379240444861,875.8240999886766,3604.02001953125
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1104.0,491.2972209858708,494.3833969300613,3409.5068359375
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1104.0,466.3613640004769,466.45530103705823,3409.5068359375
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2142.0,802.7025790070184,802.7965160435997,3572.1318359375
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,1.0,2343.0,850.7957180263475,928.7973550381139,3604.02001953125
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,1.0,1233.0,499.50221498147584,537.1959069743752,3430.854248046875
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,full_context,2,0,0,1.0,3813.5,1380.9394289855845,1380.9394289855845,3836.39111328125
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,1.0,1233.0,502.68252901150845,505.72274802834727,3430.854248046875
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,1.0,1104.0,454.6954029938206,457.7356220106594,3409.509521484375
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,1.0,1104.0,468.72104998328723,468.7909674830735,3409.509521484375
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,1.0,2142.0,801.972448505694,802.0423660054803,3571.99609375
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1104.0,455.5715399910696,458.3684590179473,3409.5068359375
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1104.0,448.66454700240865,448.7286589574069,3409.5068359375
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2143.0,814.3519010045566,814.4160129595548,3572.2099609375
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1714.0,669.3186829797924,715.7650739536621,3500.67626953125
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,1714.0,666.8563970015384,669.6533160284162,3500.67626953125
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,3,,,,,
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,0,0,3,,,,,
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,3,0,0,0.6666666666666666,1802.3333333333333,707.0038676805174,712.4749273255778,3518.40087890625
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,3,0,0,0.3333333333333333,1108.3333333333333,549.52468831713,550.1173139588597,3409.7713216145835
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,3,0,0,0.6666666666666666,2149.6666666666665,822.1576066571288,822.7502322988585,3572.7390950520835
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,0,0,3,,,,,
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2145.0,839.1114959958941,839.2146919504739,3572.37158203125
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,3669.0,1353.3458469901234,1474.1675129625946,3807.21533203125
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,3669.0,1299.0340850083157,1302.1193080348894,3807.21533203125
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1105.0,435.13639899902046,438.2216220255941,3409.57177734375
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1105.0,445.11065003462136,445.2138459892012,3409.57177734375
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.0,1105.0,491.0401224915404,491.119993472239,3409.569091796875
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.0,2145.0,773.909748008009,773.9896189887077,3572.37158203125
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.0,2853.5,1020.5177195020951,1089.406388491625,3682.04248046875
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.0,2853.5,1030.6864964950364,1034.554278012365,3682.04248046875
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.0,1624.5,597.394289507065,601.2620710243937,3490.939208984375
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.0,2084.0,730.4997595201712,730.5507065320853,3561.65478515625
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.0,1165.0,471.4668634987902,498.38381150038913,3418.640869140625
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,full_context,2,0,0,0.5,3743.5,1308.4346934920177,1308.4346934920177,3822.33056640625
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.0,1165.0,460.8407635241747,463.09119151555933,3418.640869140625
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.0,1046.0,427.7212269953452,429.97165498672985,3403.47607421875
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.0,1046.0,428.09387200395577,428.14481901586987,3403.47607421875
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1104.0,535.7799589983188,535.8370969770476,3409.5068359375
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2143.0,726.1589599656872,726.2160979444161,3572.2099609375
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1693.0,608.4850340266712,646.886579983402,3500.2822265625
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,0.0,1693.0,630.6361680035479,632.932807027828,3500.2822265625
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1104.0,555.7603579945862,558.0569970188662,3409.5068359375
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,3,0,0,0.3333333333333333,7260.666666666667,2624.6799859800376,2629.9495800049044,4368.251953125
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,3,0,0,0.0,2147.0,855.0697033448765,860.3392973697433,3572.52783203125
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,3,0,0,0.0,1106.0,506.2230856662306,506.4325256777617,3409.63134765625
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,3,0,0,0.0,2147.0,848.8300233342064,849.0394633457375,3572.52783203125
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,3,0,0,0.3333333333333333,7260.666666666667,2631.650442975418,2960.6671886479794,4368.251953125
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,3,,,,,
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2146.0,764.5487615081947,764.6948384935968,3572.448486328125
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,4131.5,1434.5611495373305,1559.5147270068992,3879.791259765625
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,4131.5,1467.8064189793076,1471.8865464965347,3879.791259765625
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1626.5,677.0166485221125,681.0967760393396,3491.096923828125
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1105.5,507.2431259904988,507.38920297590084,3409.598876953125
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2144.0,750.3802689607255,750.4620739491656,3572.2880859375
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,1.0,3361.0,1158.9998260024004,1249.43628301844,3759.78076171875
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,3361.0,1147.546018997673,1152.3538749897853,3759.78076171875
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,2144.0,741.2220250116661,746.0298810037784,3572.2880859375
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1104.0,426.3424609671347,426.4242659555748,3409.5068359375
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,full_context,2,0,0,0.5,3634.0,1267.413640016457,1267.413640016457,3806.3212890625
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,0.5,1720.0,638.3797769667581,641.1978289834224,3503.035888671875
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,0.5,1621.0,618.2826590084005,621.1007110250648,3489.47021484375
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,0.5,1102.0,468.5406459902879,468.5897739836946,3407.2255859375
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,0.5,2140.0,778.4836759965401,778.5328039899468,3571.71484375
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,0.5,1720.0,645.1672544935718,682.8684554784559,3503.035888671875
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2145.0,769.9466169578955,770.0028439285234,3572.37158203125
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1713.0,642.6356369629502,681.7903209012002,3500.58740234375
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,1713.0,606.3323820126243,608.9058560319245,3500.58740234375
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1104.0,440.64863095991313,443.2221049792133,3409.5068359375
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1104.0,425.7249670336023,425.7811940042302,3409.5068359375
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,1.0,1105.0,427.8366139915306,427.95885101077147,3409.57177734375
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,1.0,2146.5,763.1200905016158,763.2423275208566,3572.48876953125
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,1.0,6308.0,2125.9537505102344,2353.8579370069783,4222.802001953125
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,1.0,6308.0,2124.3971655203495,2127.2704470320605,4222.802001953125
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,1.0,1105.0,427.48312550247647,430.3564070141874,3409.57177734375
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1107.0,426.8797219847329,427.09933698643,3409.69091796875
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2147.0,760.0727170356549,760.292332037352,3572.52783203125
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,0,0,1,,,,,
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,0,0,1,,,,,
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1107.0,433.6068299598992,436.85747595736757,3409.69091796875
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,2,0,0,1.0,2146.5,748.5618630307727,748.6572785419412,3572.48876953125
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,2,0,0,1.0,3657.5,1256.762353470549,1358.3241199958138,3805.072998046875
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,2,,,,,
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,2,0,0,1.0,3657.5,1236.7538569960743,1239.6788314799778,3805.072998046875
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,2,0,0,1.0,1106.0,428.7293074885383,431.6542819724418,3409.63134765625
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,2,0,0,1.0,1106.0,441.9821290066466,442.0775445178151,3409.63134765625
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1102.0,444.68975701602176,447.24505598424,3407.2255859375
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1102.0,431.02485896088183,431.0912449727766,3407.2255859375
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2136.0,744.5067000226118,744.5730860345066,3571.45263671875
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,1.0,2192.0,751.1045219725929,805.3159450064413,3581.0556640625
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,2194.0,750.035856035538,752.5911550037563,3581.24462890625
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,0.0,1104.0,625.8775010355748,628.1341240392067,3409.5068359375
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,0.0,1104.0,625.3311150358059,625.3894960391335,3409.5068359375
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,0.0,2141.0,929.3573190225288,929.4157000258565,3571.7822265625
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,0.0,1692.0,784.3532619881444,820.5928800161928,3500.177734375
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,full_context,0,0,1,,,,,
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,1692.0,599.0158159984276,601.2724390020594,3500.177734375
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1103.0,450.34921495243907,452.774757926818,3409.447265625
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1103.0,443.4468639665283,443.50014498922974,3409.447265625
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2141.0,764.0314919990487,764.0847730217502,3571.7822265625
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,1.0,1232.0,479.8809260246344,508.25114105828106,3430.7607421875
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,full_context,1,0,0,1.0,3808.0,1297.110672981944,1297.110672981944,3831.1513671875
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,1232.0,480.16656399704516,482.5921069714241,3430.7607421875
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_matched_budget,1,0,0,1.0,1377.0,607.036484987475,659.5534649677575,3452.00830078125
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,full_context,1,0,0,0.0,7706.0,3393.4738769894466,3393.4738769894466,4436.9609375
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer,1,0,0,1.0,1377.0,584.3487629899755,587.3974160058424,3452.00830078125
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,pointer_off,1,0,0,1.0,1103.0,457.0121690048836,460.0608220207505,3409.447265625
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_2,1,0,0,1.0,1103.0,499.13158803246915,499.22058603260666,3409.447265625
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,bm25_4,1,0,0,1.0,2141.0,766.3663789862767,766.4553769864142,3571.7822265625
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,bm25_matched_budget,73,0,27,0.273972602739726,5245.520547945205,1931.3618478338133,2143.750744650925,4054.6415346746576
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,full_context,0,0,100,,,,,
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,sempointer,73,0,27,0.2328767123287671,5245.808219178082,1900.8377261526807,1906.688821069858,4054.679386504709
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,pointer_off,100,0,0,0.23,2265.43,839.5429996325402,845.7432787038852,3591.24888671875
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,bm25_2,100,0,0,0.31,1256.76,523.5400009935256,524.9022540001897,3433.48205078125
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,bm25_4,100,0,0,0.23,2296.6,864.8917081888067,866.2539611954708,3596.0836474609373
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,full_context,0,0,9,,,,,
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,sempointer,4,0,5,0.5,5803.25,2260.622187255649,2265.1529235154158,4141.44921875
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,pointer_off,9,0,0,0.2222222222222222,2058.8888888888887,916.3350511031846,921.5716876529364,3557.3913845486113
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,bm25_2,9,0,0,0.0,1135.111111111111,643.1596703348785,643.6427592286943,3415.040093315972
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,bm25_4,9,0,0,0.2222222222222222,2174.3333333333335,965.1154511116652,965.598540005481,3575.0203450520835
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,bm25_matched_budget,4,0,5,0.75,5802.75,2224.2559152509784,2452.2438365238486,4141.4158935546875
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_2,9,0,0,0.0,1132.888888888889,641.2943544435418,641.4518803422753,3415.4352213541665
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_4,9,0,0,0.0,2173.1111111111113,962.9254022212182,963.0829281199517,3574.470648871528
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_matched_budget,9,0,0,0.0,5086.0,3621.06631443991,3748.3909712302393,4028.4007161458335
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,full_context,0,0,9,,,,,
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer,9,0,0,0.0,5086.222222222223,1988.4420790023999,1990.4751662203732,4028.4249674479165
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,pointer_off,9,0,0,0.0,1132.888888888889,645.9669825595079,647.9484119982873,3415.4352213541665
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,full_context,0,0,9,,,,,
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,sempointer,0,0,9,,,,,
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,pointer_off,9,0,0,0.6666666666666666,1146.6666666666667,1572.145958004209,1574.226687345395,3414.8289930555557
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,bm25_2,9,0,0,0.6666666666666666,1146.6666666666667,1554.1520661144104,1554.493736210538,3414.8289930555557
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,bm25_4,9,0,0,0.6666666666666666,2186.777777777778,1658.9449668859338,1659.2866369820613,3580.2691514756943
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,bm25_matched_budget,0,0,9,,,,,
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,full_context,0,0,9,,,,,
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,sempointer,4,0,5,0.75,6192.25,2261.985518009169,2267.0412342704367,4201.3553466796875
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,pointer_off,9,0,0,0.7777777777777778,2070.777777777778,923.337737770958,928.9144089949938,3559.7529296875
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,bm25_2,9,0,0,0.7777777777777778,1145.4444444444443,634.7804722285623,635.3236200068043,3415.6238606770835
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,bm25_4,9,0,0,0.7777777777777778,2186.5555555555557,966.6716766660102,967.2148244442521,3578.093207465278
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,bm25_matched_budget,4,0,5,0.75,6192.0,2261.531540483702,2524.1216712020105,4201.3282470703125
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,bm25_2,8,0,0,0.05,1109.125,483.08719836495584,483.17694598517846,3409.9207763671875
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,bm25_4,8,0,0,0.175,2147.5,792.5058936234564,792.595641243679,3572.5478515625
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,bm25_matched_budget,8,0,0,0.125,2949.5,1073.5666943801334,1130.1656062350958,3697.596435546875
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,full_context,0,0,8,,,,,
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,sempointer,8,0,0,0.175,2949.5,1079.3545338819968,1082.848991267383,3697.596435546875
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,pointer_off,8,0,0,0.175,2147.5,796.2468638797873,799.7413212651736,3572.5478515625
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,pointer_off,8,0,0,0.49166666666666664,1469.75,697.7679181072745,701.7088813372538,3466.0877685546875
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bm25_2,8,0,0,0.49166666666666664,1079.625,600.8298268643557,601.070710363274,3406.1414794921875
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bm25_4,8,0,0,0.6166666666666667,2120.25,852.543169632554,852.7840531314723,3567.7675170898438
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bm25_matched_budget,6,0,2,0.6090277777777778,6474.0,2532.399540990203,2807.946932317767,4246.649332682292
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,full_context,0,0,8,,,,,
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer,6,0,2,0.5948275862068966,6474.666666666667,2510.7769325065115,2514.587946983132,4246.654703776042
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,sempointer,8,0,0,0.027153166621860365,5925.375,2819.5552046163357,2822.890491632279,4160.4058837890625
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,pointer_off,8,0,0,0.015065406698696989,1236.5,851.8488383560907,855.184125372034,3430.0081176757812
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,bm25_2,8,0,0,0.015345031696154945,1106.625,820.2403537507053,820.380337368988,3409.6685791015625
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,bm25_4,8,0,0,0.019849109328578626,2147.25,1274.2153162471368,1274.3552998654195,3572.5474243164062
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,bm25_matched_budget,8,0,0,0.03456534163056073,5925.375,3475.697273373953,3722.9461927345255,4160.4058837890625
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,full_context,0,0,8,,,,,
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer,8,0,0,0.125,6092.75,2137.7241363807116,2141.4001106313663,4185.73583984375
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,pointer_off,8,0,0,0.125,1496.5,689.747255986731,693.4232302373857,3470.7249755859375
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bm25_2,8,0,0,0.25,1106.5,491.11100962909404,491.2599663803121,3409.6611328125
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bm25_4,8,0,0,0.125,2147.375,885.5058935077977,885.6548502590158,3572.5574951171875
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,bm25_matched_budget,8,0,0,0.125,6092.75,2106.5788101259386,2325.8918432547944,4185.73583984375
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,full_context,0,0,8,,,,,
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,pointer_off,8,0,0,0.0,2144.25,1002.3998541219044,1005.2752625124413,3572.3096313476562
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_2,8,0,0,0.0,1107.375,506.37885838659713,506.45233725663275,3409.7132568359375
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_4,8,0,0,0.0,2144.25,1011.8683967521065,1011.9418756221421,3572.3096313476562
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_matched_budget,8,0,0,0.0,4269.75,2178.619326376065,2272.381416638382,3901.3765869140625
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,full_context,0,0,8,,,,,
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer,8,0,0,0.0,4270.0,2501.6305582466885,2504.5059666372254,3901.406005859375
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,full_context,0,0,8,,,,,
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer,8,0,0,0.25,6908.75,2501.3960339929326,2503.981006113463,4315.185729980469
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,pointer_off,8,0,0,0.5,2153.5,800.4072016046848,802.9921737252153,3573.9696655273438
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_2,8,0,0,0.375,1116.875,497.13208850153023,497.22615787322866,3410.9564208984375
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_4,8,0,0,0.5,2153.5,815.3031399997417,815.3972093714401,3573.9696655273438
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,bm25_matched_budget,8,0,0,0.5,6908.75,2517.1205162405386,2679.251589361229,4315.185729980469
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,bm25_4,8,0,0,1.0,2143.375,1016.3608512375504,1016.4952648628969,3572.2392578125
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,bm25_matched_budget,8,0,0,1.0,4409.0,1762.6143712477642,1876.1194283724762,3922.3369140625
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,full_context,0,0,8,,,,,
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,sempointer,8,0,0,1.0,4409.0,1741.4709145086817,1743.9094309957,3922.3369140625
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,pointer_off,8,0,0,1.0,1105.375,694.2128328591934,696.6513493462116,3409.5941162109375
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,bm25_2,8,0,0,1.0,1105.375,706.848101624928,706.9825152502744,3409.5941162109375
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,bm25_matched_budget,8,0,0,1.0,4408.0,1602.761368994834,1706.3147074877634,3922.20068359375
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,full_context,0,0,8,,,,,
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,sempointer,8,0,0,1.0,4408.0,1593.0679068696918,1595.3694507479668,3922.20068359375
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,pointer_off,8,0,0,1.0,1104.375,538.5015459905844,540.8030898688594,3409.5318603515625
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,bm25_2,8,0,0,1.0,1104.375,545.3926147674792,545.5063836488989,3409.5318603515625
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,bm25_4,8,0,0,1.0,2142.375,851.0095448873471,851.1233137687668,3572.127197265625
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,full_context,0,0,25,,,,,
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer,25,0,0,0.12992091599503605,2778.48,1616.1572096846066,1620.0221103639342,3670.8921484375
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,pointer_off,25,0,0,0.11603789776436592,1578.84,1303.4145213593729,1307.2794220387004,3483.27341796875
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bm25_2,25,0,0,0.11051070897780683,1121.64,1113.3379687997513,1113.4863055241294,3411.6344921875
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bm25_4,25,0,0,0.16252063620037183,2160.76,1465.2052223170176,1465.3535590413958,3574.55455078125
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bm25_matched_budget,25,0,0,0.19471200670866926,2778.44,1789.2635050439276,1869.1372392512858,3670.889453125
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,full_context,0,0,25,,,,,
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,sempointer,25,0,0,0.4733333333333333,3811.2,1595.515528197866,1600.8965663565323,3831.48044921875
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,pointer_off,25,0,0,0.5,2287.32,998.7859356007539,1004.1669737594202,3595.23482421875
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,bm25_2,25,0,0,0.5166666666666666,1248.04,598.0040687159635,598.6482698726468,3431.667734375
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,bm25_4,25,0,0,0.5,2287.32,1007.1753357956186,1007.8195369523019,3595.23482421875
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,bm25_matched_budget,25,0,0,0.4333333333333333,3811.0,1435.1821038499475,1558.9342140895315,3831.46466796875
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bm25_matched_budget,25,0,0,0.6025952954001064,2156.88,1518.3635862823576,1583.7648767535575,3573.48111328125
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,full_context,0,0,25,,,,,
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer,25,0,0,0.5858945429460592,2157.0,1352.5697088893503,1356.1242801765911,3573.4937109375
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,pointer_off,25,0,0,0.572901836543224,1356.64,1189.7077498817816,1193.2623211690225,3448.57697265625
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bm25_2,25,0,0,0.5691267384121375,1107.2,1140.4894964001141,1140.594737434294,3409.433984375
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,bm25_4,25,0,0,0.5810046792364351,2146.68,1514.6528000431135,1514.7580410772935,3572.366484375
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,full_context,0,0,25,,,,,
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,sempointer,25,0,0,0.16570025474059566,2409.16,3765.1106748799793,3768.5063880030066,3613.174453125
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,pointer_off,25,0,0,0.17232245042069572,1602.08,3802.1825554431416,3805.578268566169,3487.48876953125
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,bm25_2,25,0,0,0.15438898408589855,1103.6,3194.61370595498,3194.6707343216985,3409.39716796875
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,bm25_4,25,0,0,0.1779391168200539,2141.96,4351.735107728746,4351.792136095464,3572.0535546875
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,bm25_matched_budget,25,0,0,0.1796214394733822,2409.04,4268.204711892176,4326.71794953756,3613.16970703125
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,bm25_2,5,0,0,0.0,1129.6,1573.3727465965785,1573.4688117867336,3415.449609375
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,bm25_4,5,0,0,0.0,2167.6,3692.5256810034625,3692.6217461936176,3574.190234375
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.0,2564.4,3965.326786611695,4019.4545435952023,3636.37958984375
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,full_context,0,0,5,,,,,
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,sempointer,5,0,0,0.0,2564.8,1764.6114597795531,1767.3839393770322,3636.42724609375
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,pointer_off,5,0,0,0.0,1544.4,2654.085881402716,2656.858361000195,3479.0326171875
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.6,2182.0,927.4911375949159,978.5059491870925,3579.33359375
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,full_context,4,0,1,0.5,5934.0,2122.5585037464043,2122.5585037464043,4161.8634033203125
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,sempointer,5,0,0,0.6,2182.0,924.1159136057831,927.9189690132625,3579.33359375
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,pointer_off,5,0,0,0.8,1979.8,904.4681421830319,908.2711975905113,3546.390625
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,bm25_2,5,0,0,0.8,1148.6,655.9243448195048,656.0270328074694,3415.3046875
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,bm25_4,5,0,0,0.8,2187.4,963.5854620137252,963.6881500016898,3579.45703125
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,pointer_off,5,0,0,0.39129565174899017,1535.4,1787.739266990684,1790.8863751916215,3477.29052734375
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_2,5,0,0,0.369780889232944,1120.0,1958.233973197639,1958.3236945909448,3413.69111328125
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_4,5,0,0,0.5507238815703666,2158.2,2249.9438947765157,2250.0336161698215,3571.89072265625
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.4688629283489097,1709.6,2225.505300180521,2265.5468397773802,3504.0955078125
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,full_context,5,0,0,0.510627866756899,5478.2,3500.685200013686,3500.685200013686,4090.6162109375
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer,5,0,0,0.40098492672393177,1709.6,1787.9974951967597,1791.1446033976972,3504.0955078125
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,pointer_off,5,0,0,0.15731424551984455,1105.0,3175.5886417930014,3177.9198447824456,3409.5685546875
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_2,5,0,0,0.15731424551984455,1105.0,3183.4705149987713,3183.5269725881517,3409.5685546875
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_4,5,0,0,0.16216646418453834,2142.8,3706.1509635997936,3706.207421189174,3572.14111328125
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.13817678253200824,1434.6,2915.231622196734,2947.850601596292,3459.8572265625
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,full_context,3,0,2,0.1745047037143027,3554.3333333333335,4494.68401800065,4494.68401800065,3791.74072265625
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer,5,0,0,0.15279248761953163,1434.6,2711.611294595059,2713.942497584503,3459.8572265625
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,sempointer,5,0,0,0.0,1489.8,1687.7431297907606,1689.882465195842,3470.71240234375
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,pointer_off,5,0,0,0.0,1328.8,2220.6001701997593,2222.739505604841,3443.69794921875
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,bm25_2,5,0,0,0.0,1121.0,2156.5499452059157,2156.6347337909974,3411.38544921875
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,bm25_4,5,0,0,0.0,2159.6,2742.426533193793,2742.511321778875,3573.12587890625
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.0,1489.8,2792.8896633908153,2820.7160763908178,3470.71240234375
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,full_context,5,0,0,0.0,5229.8,3679.077669198159,3679.077669198159,4053.246875
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,pointer_off,5,0,0,0.34148094988717986,1978.6,1777.4277719901875,1781.8432931788266,3546.420703125
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_2,5,0,0,0.24880159502153987,1146.8,3488.1830822094344,3488.3014772087336,3415.83037109375
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_4,5,0,0,0.37277939949958294,2186.4,1895.9409217932262,1896.0593167925254,3579.513671875
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.34422526580261664,2671.6,2123.1235525920056,2195.280971995089,3654.378515625
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,full_context,1,0,4,0.8367346938775511,7081.0,4046.7270300141536,4046.7270300141536,4341.8701171875
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer,5,0,0,0.34238564372382685,2671.8,2377.0763060078025,2381.4918271964416,3654.4041015625
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_4,5,0,0,0.1298714079596495,2104.4,1477.6595045928843,1477.7313969912939,3565.9623046875
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.12527100746968628,2067.4,1460.6293075950816,1503.557657788042,3560.573828125
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,full_context,0,0,5,,,,,
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer,5,0,0,0.12065229164649216,2067.4,1501.643644401338,1504.186869401019,3560.573828125
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,pointer_off,5,0,0,0.10697245701096794,1273.6,1109.8797133890912,1112.4229383887723,3436.5748046875
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_2,5,0,0,0.10993541997393089,1066.0,1041.0199248115532,1041.0918172099628,3404.1123046875
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_2,5,0,0,0.29014499780652925,1029.0,1599.9700844171457,1600.0260672182776,3396.9486328125
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_4,5,0,0,0.4832119369991711,2066.6,1510.598873195704,1510.654855996836,3559.91923828125
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.4845106382978724,1329.4,1258.1622773897834,1289.5686217816547,3445.17607421875
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,full_context,5,0,0,0.5405454545454546,3267.2,1641.0041051916778,1641.0041051916778,3747.18955078125
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer,5,0,0,0.29573972017688177,1329.6,1677.70043220371,1680.059726187028,3445.18779296875
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,pointer_off,5,0,0,0.29014499780652925,1236.6,1671.0204013856128,1673.3796953689307,3429.94130859375
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,pointer_off,5,0,0,0.1564762716680875,1319.8,876.3373735942878,879.2088412097655,3442.87177734375
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_2,5,0,0,0.10236999147485082,1111.6,833.7022952036932,833.8125213980675,3410.2037109375
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_4,5,0,0,0.25033816425120775,2151.6,1089.5375637919642,1089.6477899863385,3573.06748046875
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.3061152882205514,3208.6,1424.2949430132285,1502.927060611546,3739.32060546875
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,full_context,0,0,5,,,,,
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer,5,0,0,0.12791327913279132,3209.2,1468.4672542032786,1471.3387218187563,3739.36796875
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,pointer_off,5,0,0,0.36666666666666664,1108.2,549.543421191629,552.151758573018,3409.89931640625
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,bm25_2,5,0,0,0.36666666666666664,1108.2,541.505593189504,541.5895321988501,3409.89931640625
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,bm25_4,5,0,0,0.580952380952381,2147.2,848.4976640087552,848.5816030181013,3572.54404296875
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.380952380952381,1981.4,800.9337576222606,845.5420058569871,3545.76357421875
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,full_context,2,0,3,0.7857142857142858,6595.0,2283.418678503949,2283.418678503949,4263.44677734375
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,sempointer,5,0,0,0.06666666666666667,1981.6,787.2431261930615,789.8514635744505,3545.78037109375
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.11832409532282676,1870.8,3545.6363028031774,3593.313878995832,3530.63857421875
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,full_context,4,0,1,0.12384283535479974,3630.75,4396.739882256952,4396.739882256952,3803.8836669921875
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer,5,0,0,0.11926242876002324,1870.8,3680.565622402355,3684.1065377928317,3530.63857421875
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,pointer_off,5,0,0,0.10662119528616516,1726.2,3087.303890613839,3090.8193423994817,3506.9880859375
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_2,5,0,0,0.09230816184467537,1103.0,2216.2127835908905,2216.261230199598,3409.447265625
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_4,5,0,0,0.11943086007772323,2141.6,3401.3218653853983,3401.3703119941056,3571.9919921875
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,sempointer,5,0,0,0.16380348619904936,2266.6,9636.754806002136,9640.4579485883,3592.3033203125
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,pointer_off,5,0,0,0.17649771111026347,1942.2,9990.411256626248,9994.114399212413,3539.1923828125
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,bm25_2,5,0,0,0.1656618623361204,1319.2,7993.291907198727,7993.515423790086,3443.61416015625
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,bm25_4,5,0,0,0.17137136804815847,2357.8,10376.605992589612,10376.82950918097,3604.2921875
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.17616598499082453,2266.6,9211.160099192057,9263.859136390965,3592.3033203125
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,full_context,2,0,3,0.18571614118258273,6318.0,11208.283585991012,11208.283585991012,4222.014892578125
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,pointer_off,5,0,0,0.2151842098882447,1318.2,4588.800914597232,4591.388570598792,3442.77080078125
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_2,5,0,0,0.20836602807006285,1111.0,4449.171582004055,4449.224579404108,3410.33154296875
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_4,5,0,0,0.24301569635763215,2148.8,4569.066002592444,4569.118999992497,3572.85126953125
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.22788323108146386,1515.4,4167.942404805217,4200.6806420045905,3474.298046875
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,full_context,4,0,1,0.18638233416677366,4652.75,5655.582071238314,5655.582071238314,3962.616943359375
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer,5,0,0,0.2144945856404691,1515.4,4312.143174011726,4314.730830013286,3474.298046875
+leval,quality,test,choice,local L-Eval task metric adaptation,bm25_2,5,0,0,1.0,1126.6,671.2654223898426,671.3528381776996,3413.8732421875
+leval,quality,test,choice,local L-Eval task metric adaptation,bm25_4,5,0,0,1.0,2163.6,979.9213233869523,980.0087391748093,3574.67880859375
+leval,quality,test,choice,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,1.0,1940.4,915.1897688047029,956.7569971899502,3540.24775390625
+leval,quality,test,choice,local L-Eval task metric adaptation,full_context,5,0,0,1.0,6213.6,2321.3961503934115,2321.3961503934115,4206.55234375
+leval,quality,test,choice,local L-Eval task metric adaptation,sempointer,5,0,0,1.0,1941.0,919.1378329996951,922.4435387994163,3540.31552734375
+leval,quality,test,choice,local L-Eval task metric adaptation,pointer_off,5,0,0,1.0,1749.4,855.0662468071096,858.3719526068307,3509.33359375
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.14125698451124694,2020.6,1833.1362435943447,1880.026446597185,3550.79482421875
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,full_context,0,0,5,,,,,
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer,5,0,0,0.15679344415805072,2020.6,2087.4705387977883,2090.4062880086713,3550.79482421875
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,pointer_off,5,0,0,0.1339770653393842,1323.4,1545.0608214130625,1547.9965706239454,3443.142578125
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_2,5,0,0,0.1142239789196311,1115.6,1398.3662978047505,1398.4482774045318,3410.4955078125
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_4,5,0,0,0.14163724491189783,2155.0,2157.545912603382,2157.6278922031634,3573.20888671875
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,bm25_2,5,0,0,0.4,1116.8,428.1166554079391,428.2181498128921,3411.6224609375
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,bm25_4,5,0,0,0.8,2147.6,737.333579803817,737.43507420877,3571.16962890625
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.8,2248.4,765.5823579989374,815.0399193982594,3589.1865234375
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,full_context,1,0,4,1.0,5210.0,1754.6310750185512,1754.6310750185512,4051.55859375
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,sempointer,5,0,0,0.8,2249.6,778.5513803944923,782.2944383951835,3590.10732421875
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,pointer_off,5,0,0,0.8,1732.4,615.9402543795295,619.6833123802207,3507.50400390625
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer,5,0,0,0.10082479642763331,1149.6,1477.273139997851,1479.3184549896978,3418.8126953125
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,pointer_off,5,0,0,0.09538542607648298,1021.6,1307.4213503859937,1309.4666653778404,3397.84599609375
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_2,5,0,0,0.09538542607648298,1021.6,1304.9931908142753,1305.046887404751,3397.84599609375
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_4,5,0,0,0.3058967668746455,2059.2,1574.8359107994474,1574.8896073899232,3559.59150390625
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.14302413273001507,1149.6,701.1992026004009,727.484713983722,3418.8126953125
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,full_context,5,0,0,0.34688372093023256,3967.4,2672.1245868015103,2672.1245868015103,3855.8529296875
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,bm25_4,5,0,0,0.5152136752136752,2157.4,896.0809941985644,896.1476469878107,3573.3068359375
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.19157731157731156,1628.2,732.1445705951191,771.8654157826677,3492.07607421875
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,full_context,0,0,5,,,,,
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,sempointer,5,0,0,0.19157731157731156,1629.2,739.8539618123323,742.5698393955827,3492.823828125
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,pointer_off,5,0,0,0.19157731157731156,1118.4,592.4809282063507,595.1968057896011,3410.59375
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,bm25_2,5,0,0,0.19157731157731156,1118.4,592.2442646115087,592.310917400755,3410.59375
+leval,tpo,test,choice,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.8,1667.8,886.9493776001036,924.61108781863,3497.5296875
+leval,tpo,test,choice,local L-Eval task metric adaptation,full_context,5,0,0,0.8,3791.8,1580.2170961978845,1580.2170961978845,3830.31875
+leval,tpo,test,choice,local L-Eval task metric adaptation,sempointer,5,0,0,0.8,1667.8,893.2427405845374,896.1436269921251,3497.5296875
+leval,tpo,test,choice,local L-Eval task metric adaptation,pointer_off,5,0,0,0.8,1562.8,864.1003991942853,867.001285601873,3481.36455078125
+leval,tpo,test,choice,local L-Eval task metric adaptation,bm25_2,5,0,0,0.8,1161.2,744.0251235966571,744.1232934012078,3418.16806640625
+leval,tpo,test,choice,local L-Eval task metric adaptation,bm25_4,5,0,0,0.8,2108.6,1028.5014263819903,1028.599596186541,3565.40849609375
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_2,5,0,0,0.10147751132299547,1032.0,1741.6893425863236,1741.7403583880514,3399.30712890625
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_4,5,0,0,0.1537606810789328,2069.4,2454.8536462010816,2454.9046620028093,3559.93056640625
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,bm25_matched_budget,5,0,0,0.1170976642290383,1568.8,1862.0007154066116,1891.2602274329402,3483.00390625
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,full_context,2,0,3,0.1948746831878344,6378.0,5738.232760981191,5738.232760981191,4229.539306640625
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer,5,0,0,0.11177394212556084,1569.0,2128.955657198094,2131.1223819851875,3483.0173828125
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,pointer_off,5,0,0,0.10646350572075458,1239.4,1800.8429337991402,1803.0096585862339,3431.76220703125
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,full_context,15,0,0,0.4666666666666667,2835.733333333333,1056.7723074733901,1056.7723074733901,3679.49765625
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer,15,0,0,0.3333333333333333,1388.2666666666667,589.9585093953647,592.735735400735,3454.62314453125
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,pointer_off,15,0,0,0.4,1311.0,564.7225449249769,567.4997709303474,3443.0475911458334
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_2,15,0,0,0.4,1111.2,509.6947778792431,509.76275188149884,3412.6961263020835
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_4,15,0,0,0.4,1897.2,739.9457353982143,740.01370940047,3532.6413736979166
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_matched_budget,15,0,0,0.4666666666666667,1388.2666666666667,588.0155556641208,621.378626069054,3454.62314453125
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_4,15,0,0,0.10785475898182315,2140.733333333333,4275.43996553092,4275.490546327394,3571.8415364583334
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_matched_budget,15,0,0,0.10365857265375371,2012.4666666666667,4118.038849928416,4169.2548638597755,3551.95244140625
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,full_context,10,0,5,0.13355474148250263,4856.9,5429.452983808005,5429.452983808005,3995.76884765625
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer,15,0,0,0.10059474597294038,2012.6,3749.314802213727,3752.96406315562,3552.0280924479166
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,pointer_off,15,0,0,0.09965157264222735,1725.3333333333333,3744.7044989210553,3748.353759862948,3506.299869791667
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_2,15,0,0,0.0877618472609673,1102.2,3038.8734422662915,3038.924023062767,3407.671809895833
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_2,14,0,0,0.21645119586296055,1108.5714285714287,738.2931695028674,738.4771307988558,3409.7696707589284
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_4,14,0,0,0.23471639668012956,2133.1428571428573,1139.2122710614265,1139.3962323574149,3570.549490792411
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_matched_budget,11,0,3,0.503349187958103,3682.3636363636365,1595.884640447118,1706.6690479087729,3812.2307350852275
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,full_context,0,0,14,,,,,
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer,11,0,3,0.31502157972746203,3682.4545454545455,1553.2000750959428,1556.968794722872,3812.2380149147725
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,pointer_off,14,0,0,0.19264167205343674,1554.0714285714287,901.8213457145196,905.7652957770707,3479.6228376116073
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer,14,0,0,0.1101802364781529,1552.5714285714287,873.8442067198256,877.1295179363473,3479.6551339285716
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,pointer_off,14,0,0,0.12502686017843126,1297.2142857142858,876.8048087118326,880.0901199283544,3440.1708635602677
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_2,14,0,0,0.12502686017843126,1074.7142857142858,801.2122072728483,801.2875899897024,3405.293526785714
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_4,14,0,0,0.26830115919977665,2111.0,1310.7559659360309,1310.8313486528848,3566.496163504464
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_matched_budget,14,0,0,0.12393740238776559,1552.5714285714287,1110.6569707875938,1156.7576047257587,3479.6551339285716
+scrolls,qasper,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,full_context,12,0,2,0.4473668150645838,5038.916666666667,2359.21646024993,2359.21646024993,4021.798299153646
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_4,14,0,0,0.1172154833083952,2144.8571428571427,2164.1713650647685,2164.2571982021245,3571.989920479911
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_matched_budget,14,0,0,0.11965129166120105,1881.357142857143,1923.5156770654223,1975.5339837034367,3530.6517508370534
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,full_context,2,0,12,0.1401301147063859,4895.0,3168.2856890256517,3168.2856890256517,4002.58544921875
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer,14,0,0,0.12959935296427663,1881.357142857143,1814.3756982837137,1817.4443986624412,3530.6517508370534
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,pointer_off,14,0,0,0.1347234744377682,1328.5,1930.4417106364522,1933.5104110151794,3444.0093122209823
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_2,14,0,0,0.14187267456664238,1105.857142857143,1713.7046965071931,1713.7905296445492,3409.1460309709823
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,pointer_off,14,0,0,0.7660398966029345,1691.857142857143,1011.2241595093759,1015.6195506528353,3501.416085379464
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_2,14,0,0,0.7660398966029345,1144.4285714285713,843.4522918666646,843.5933505783656,3416.3039899553573
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_4,14,0,0,0.7660398966029345,2121.5,1161.1267466380793,1161.2678053497802,3568.078055245536
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_matched_budget,14,0,0,0.7088970394600773,1883.7142857142858,1087.732786142234,1151.1948087136261,3529.9030412946427
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,full_context,14,0,0,0.7660398966029345,6217.0,2699.9805617129564,2699.9805617129564,4206.30744280134
+scrolls,quality,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer,14,0,0,0.7088970394600773,1884.0714285714287,1098.0450244221304,1102.4404155655898,3530.1689801897323
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_matched_budget,14,0,0,0.13965816119246535,2386.0714285714284,2858.8395162119664,2921.099606863988,3611.029471261161
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,full_context,8,0,6,0.1503817525654229,5706.125,5332.2583182525705,5332.2583182525705,4125.361145019531
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer,14,0,0,0.13290360858158473,2386.1428571428573,3316.061675502819,3320.552011211735,3611.037283761161
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,pointer_off,14,0,0,0.1368392856288274,2140.8571428571427,2945.9346145699133,2950.42495027883,3571.79296875
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_2,14,0,0,0.13663073239970347,1102.9285714285713,2788.3054035815544,2788.3679215862817,3409.28857421875
+scrolls,summ_screen_fd,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,bm25_4,14,0,0,0.1368392856288274,2140.8571428571427,2960.869669573315,2960.932187578042,3571.79296875

@@ -1,0 +1,29 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Complete retained V1 main-study controls under Qwen2.5. Each collection has identical scored IDs across its arms; metrics differ across collections. These original text-path results have different architecture/protocol conditions from the bounded main study.}
+\label{tab:v1-main}
+\begin{tabular}{llrrrr}
+\toprule
+Collection & Arm & $n$ & Score & Input & Answer ms \\
+\midrule
+RULER & V1 SemPointer & 180 & 45.56 & 1,869 & 1,445 \\
+RULER & V1 hybrid selector & 180 & 53.89 & 1,865 & 1,077 \\
+RULER & Full context & 180 & 69.78 & 13,089 & 8,661 \\
+RULER & Dense RAG-1 & 180 & 32.89 & 907 & 831 \\
+RULER & Dense RAG-4 & 180 & 54.11 & 2,437 & 1,220 \\
+RULER & BM25-4 & 180 & 62.33 & 2,416 & 1,197 \\
+RULER & Hybrid-4 & 180 & 60.11 & 2,427 & 1,215 \\
+LongBench & V1 SemPointer & 600 & 10.29 & 1,581 & 1,703 \\
+LongBench & Full context & 600 & 11.72 & 13,366 & 8,687 \\
+LongBench & Dense RAG-4 & 600 & 9.56 & 2,091 & 1,587 \\
+LongBench & Hybrid-4 & 600 & 10.60 & 2,096 & 1,548 \\
+LoCoMo & V1 SemPointer & 497 & 6.14 & 1,710 & 1,867 \\
+LoCoMo & Full context & 497 & 6.62 & 16,623 & 9,742 \\
+LoCoMo & Dense RAG-4 & 497 & 5.96 & 2,110 & 1,699 \\
+LoCoMo & Hybrid-4 & 497 & 6.81 & 2,122 & 1,692 \\
+\bottomrule
+\end{tabular}
+\end{table}

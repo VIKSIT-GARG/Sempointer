@@ -1,0 +1,60 @@
+{
+  "source": "development_only",
+  "max_development_loss": 0.02,
+  "rule": "Fewest mean tokens within 0.02 of development BM25-4; otherwise highest development score.",
+  "selected": {
+    "name": "loose",
+    "thresholds": {
+      "expand_coverage": 0.7,
+      "ambiguity_coverage": 0.9,
+      "expand_score_ratio": 0.8
+    },
+    "path": "/home/viksit/Projects/tokens2/experiments/results/local_ten_qwen35_nf4_100_v1/results/dev_loose",
+    "n_paired": 36,
+    "difference_from_bm25_4": 0.03611111111111112,
+    "mean_score": 0.7749999999999999,
+    "mean_tokens": 1814.9166666666667
+  },
+  "candidates": [
+    {
+      "name": "loose",
+      "thresholds": {
+        "expand_coverage": 0.7,
+        "ambiguity_coverage": 0.9,
+        "expand_score_ratio": 0.8
+      },
+      "path": "/home/viksit/Projects/tokens2/experiments/results/local_ten_qwen35_nf4_100_v1/results/dev_loose",
+      "n_paired": 36,
+      "difference_from_bm25_4": 0.03611111111111112,
+      "mean_score": 0.7749999999999999,
+      "mean_tokens": 1814.9166666666667
+    },
+    {
+      "name": "paper",
+      "thresholds": {
+        "expand_coverage": 0.8,
+        "ambiguity_coverage": 0.95,
+        "expand_score_ratio": 0.85
+      },
+      "path": "/home/viksit/Projects/tokens2/experiments/results/local_ten_qwen35_nf4_100_v1/results/dev_paper",
+      "n_paired": 36,
+      "difference_from_bm25_4": 0.03611111111111112,
+      "mean_score": 0.7749999999999999,
+      "mean_tokens": 1865.0277777777778
+    },
+    {
+      "name": "cautious",
+      "thresholds": {
+        "expand_coverage": 0.9,
+        "ambiguity_coverage": 0.98,
+        "expand_score_ratio": 0.9
+      },
+      "path": "/home/viksit/Projects/tokens2/experiments/results/local_ten_qwen35_nf4_100_v1/results/dev_cautious",
+      "n_paired": 36,
+      "difference_from_bm25_4": 0.03611111111111112,
+      "mean_score": 0.7749999999999999,
+      "mean_tokens": 1865.0277777777778
+    }
+  ],
+  "caution": "A small synthetic development heuristic, not evidence of test-set equivalence."
+}

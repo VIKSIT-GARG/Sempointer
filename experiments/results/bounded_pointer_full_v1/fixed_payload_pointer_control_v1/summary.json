@@ -1,0 +1,229 @@
+{
+  "source_run_id": "c73abaf595dc68e55696",
+  "analysis_kind": "retrospective_verified_existing_control",
+  "new_generations": 0,
+  "input_budget": 4096,
+  "all_pairs": {
+    "n": 1000,
+    "wins": 134,
+    "ties": 740,
+    "losses": 126,
+    "same_answer": 607,
+    "source_contexts": 859,
+    "mean_extra_input_tokens": 109.135,
+    "extra_input_pct": 6.3103037746180535,
+    "generation_time_reduction_pct": 1.6156684451779535,
+    "net_win_fraction": 0.008
+  },
+  "active_descriptor_pairs": {
+    "n": 990,
+    "wins": 134,
+    "ties": 730,
+    "losses": 126,
+    "same_answer": 597,
+    "source_contexts": 849,
+    "mean_extra_input_tokens": 110.23737373737374,
+    "extra_input_pct": 6.367559317168459,
+    "generation_time_reduction_pct": 1.627401424543462,
+    "net_win_fraction": 0.00808080808080808
+  },
+  "null_intervention_pairs": {
+    "n": 10,
+    "wins": 0,
+    "ties": 10,
+    "losses": 0,
+    "same_answer": 10,
+    "source_contexts": 10,
+    "mean_extra_input_tokens": 0.0,
+    "extra_input_pct": 0.0,
+    "generation_time_reduction_pct": 0.38438159150303575,
+    "net_win_fraction": 0.0
+  },
+  "net_win_fraction_ci95_clustered_active": [
+    -0.02469100654409741,
+    0.03957989296914898
+  ],
+  "net_win_fraction_ci95_clustered_all": [
+    -0.023455307916001377,
+    0.039782482400254074
+  ],
+  "question_independent_sign_test_p": 0.6642827233072025,
+  "sign_test_caution": "Assumes independent questions; same-source clustering violates that assumption.",
+  "on_generated_before_off": 742,
+  "families": {
+    "ruler": {
+      "n": 100,
+      "wins": 12,
+      "ties": 87,
+      "losses": 1,
+      "same_answer": 83,
+      "source_contexts": 100,
+      "mean_extra_input_tokens": 107.09,
+      "extra_input_pct": 6.071171431649014,
+      "generation_time_reduction_pct": -5.02972457861679,
+      "net_win_fraction": 0.11,
+      "active_descriptor_pairs": 100
+    },
+    "longbench": {
+      "n": 100,
+      "wins": 10,
+      "ties": 69,
+      "losses": 21,
+      "same_answer": 56,
+      "source_contexts": 100,
+      "mean_extra_input_tokens": 92.74,
+      "extra_input_pct": 4.658101198428888,
+      "generation_time_reduction_pct": 9.053988119019095,
+      "net_win_fraction": -0.11,
+      "active_descriptor_pairs": 91
+    },
+    "locomo": {
+      "n": 100,
+      "wins": 12,
+      "ties": 71,
+      "losses": 17,
+      "same_answer": 51,
+      "source_contexts": 4,
+      "mean_extra_input_tokens": 112.63,
+      "extra_input_pct": 8.093212422574481,
+      "generation_time_reduction_pct": 4.820821520799845,
+      "net_win_fraction": -0.05,
+      "active_descriptor_pairs": 100
+    },
+    "longmem": {
+      "n": 100,
+      "wins": 10,
+      "ties": 80,
+      "losses": 10,
+      "same_answer": 64,
+      "source_contexts": 100,
+      "mean_extra_input_tokens": 116.66,
+      "extra_input_pct": 5.3732388203378,
+      "generation_time_reduction_pct": 2.330082872750705,
+      "net_win_fraction": 0.0,
+      "active_descriptor_pairs": 100
+    },
+    "babilong": {
+      "n": 100,
+      "wins": 6,
+      "ties": 92,
+      "losses": 2,
+      "same_answer": 69,
+      "source_contexts": 100,
+      "mean_extra_input_tokens": 112.13,
+      "extra_input_pct": 8.894758969721494,
+      "generation_time_reduction_pct": -9.734699982328564,
+      "net_win_fraction": 0.04,
+      "active_descriptor_pairs": 100
+    },
+    "longbench_v2": {
+      "n": 100,
+      "wins": 8,
+      "ties": 91,
+      "losses": 1,
+      "same_answer": 83,
+      "source_contexts": 91,
+      "mean_extra_input_tokens": 114.41,
+      "extra_input_pct": 4.9962007738193925,
+      "generation_time_reduction_pct": -4.061421564061551,
+      "net_win_fraction": 0.07,
+      "active_descriptor_pairs": 100
+    },
+    "infinite": {
+      "n": 100,
+      "wins": 1,
+      "ties": 93,
+      "losses": 6,
+      "same_answer": 74,
+      "source_contexts": 95,
+      "mean_extra_input_tokens": 113.31,
+      "extra_input_pct": 7.089451851666473,
+      "generation_time_reduction_pct": 0.579828095250079,
+      "net_win_fraction": -0.05,
+      "active_descriptor_pairs": 100
+    },
+    "loogle": {
+      "n": 100,
+      "wins": 24,
+      "ties": 54,
+      "losses": 22,
+      "same_answer": 47,
+      "source_contexts": 91,
+      "mean_extra_input_tokens": 112.09,
+      "extra_input_pct": 6.498799846936998,
+      "generation_time_reduction_pct": 5.800939769801872,
+      "net_win_fraction": 0.02,
+      "active_descriptor_pairs": 100
+    },
+    "leval": {
+      "n": 100,
+      "wins": 26,
+      "ties": 56,
+      "losses": 18,
+      "same_answer": 39,
+      "source_contexts": 86,
+      "mean_extra_input_tokens": 108.49,
+      "extra_input_pct": 7.170948701509006,
+      "generation_time_reduction_pct": 3.577664455347751,
+      "net_win_fraction": 0.08,
+      "active_descriptor_pairs": 100
+    },
+    "scrolls": {
+      "n": 100,
+      "wins": 25,
+      "ties": 47,
+      "losses": 28,
+      "same_answer": 41,
+      "source_contexts": 94,
+      "mean_extra_input_tokens": 101.8,
+      "extra_input_pct": 6.400342022206296,
+      "generation_time_reduction_pct": -1.9289579230802767,
+      "net_win_fraction": -0.03,
+      "active_descriptor_pairs": 99
+    }
+  },
+  "task_inference": {
+    "minimum_source_contexts": 5,
+    "resamples": 10000,
+    "seed": 20261120,
+    "correction": "Holm over all eligible per-task cluster sign-flip p-values",
+    "task_groups": 123,
+    "eligible_groups": 53,
+    "holm_positive": [
+      {
+        "family": "ruler",
+        "task": "vt",
+        "metric": "all_containment",
+        "n": 17,
+        "wins": 12,
+        "ties": 5,
+        "losses": 0,
+        "same_answer": 4,
+        "source_contexts": 17,
+        "mean_extra_input_tokens": 108.82352941176471,
+        "extra_input_pct": 5.273660205245156,
+        "generation_time_reduction_pct": -11.910837779380978,
+        "net_win_fraction": 0.7058823529411765,
+        "on_mean_score": 0.7411764705882353,
+        "off_mean_score": 0.3764705882352941,
+        "mean_score_difference": 0.3647058823529412,
+        "difference_ci95_same_context_clustered": [
+          0.2235294117647059,
+          0.5176470588235293
+        ],
+        "cluster_sign_flip_p": 0.00048828125,
+        "holm_adjusted_p": 0.02587890625,
+        "inference_note": "Exploratory",
+        "holm_all_inspected_groups_sensitivity": 0.06005859375
+      }
+    ],
+    "holm_negative": []
+  },
+  "vt_mechanism": {
+    "n": 17,
+    "cases_with_gold_names_only_in_descriptors": 14,
+    "wins_with_gold_names_only_in_descriptors": 11,
+    "single_chain_cases": 17,
+    "cases_where_all_assigned_names_are_gold": 17
+  }
+}

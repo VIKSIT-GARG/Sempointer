@@ -1,22 +1,11 @@
-# Python bytecode and caches
+# Project-wide ignore rules live in ../.gitignore.
+# Keep these local guards for tools that inspect this directory independently.
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-.venv/
 .pytest_cache/
-
-# Execution logs and manuscript figures/tables
-figures/
-tables/
-logs/
-PROMPT_FOR_CODE_GENERATION.md
-
-# OS / Editor artifacts
-.DS_Store
-.vscode/
-.idea/
+.venv*/
+warden/
+.claude/
 .agents/
+PROMPT_FOR_CODE_GENERATION.md
+logs/

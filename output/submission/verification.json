@@ -1,0 +1,166 @@
+{
+  "document_checks_passed": true,
+  "pages_including_references": 11,
+  "maximum_pages": 11,
+  "template": "User-supplied sn-article-template; unchanged sn-jnl.cls and sn-mathphys-num.bst",
+  "ict_series_template_mapping_confirmed": false,
+  "author": "Viksit Garg",
+  "corresponding_authors": 1,
+  "department_and_designations_removed": true,
+  "numbered_objects_with_text_callouts": {
+    "figure": [
+      "fig:architecture",
+      "fig:family-costs"
+    ],
+    "table": [
+      "tab:budgets",
+      "tab:families",
+      "tab:kaggle",
+      "tab:kaggle-quality",
+      "tab:history",
+      "tab:audit"
+    ],
+    "equation": [
+      "eq:coverage",
+      "eq:budget"
+    ]
+  },
+  "editable_math_and_tables": true,
+  "references_cited_and_printed": 21,
+  "orphan_printed_references": [],
+  "unresolved_references": [],
+  "overfull_boxes": 0,
+  "all_pdf_fonts_embedded": true,
+  "raster_image_objects": 0,
+  "selectable_text_characters": 21470,
+  "table_body_font_points": 10,
+  "caption_font_points": 9,
+  "figure_label_font_points_approximate": "9-10",
+  "reference_sources_preserved": [
+    "paper/main.tex: OK",
+    "paper/extended.tex: OK",
+    "main.pdf: OK",
+    "sn-article-template/sn-jnl.cls: OK"
+  ],
+  "new_model_generations": 0,
+  "turnitin_similarity_and_ai_report": "To be supplied by author; no scores claimed",
+  "author_funding_and_competing_interests_confirmation": "Not supplied; no declaration invented",
+  "pdf_sha256": "5e512743a87fb6e9f7d3d7761f8e4eec87b4e79d8942817103cf74f6917660a7",
+  "visual_review": "Passed: 11 rendered pages reviewed; six-column native quality table inspected at readable scale; references start on a fresh page",
+  "new_model_generations_scope": "During manuscript preparation only; previously recorded outcomes reused",
+  "kaggle_integration": {
+    "illustrative_quality_examples_selected_after_inspection": [
+      {
+        "task": "LoCoMo QA",
+        "metric": "qa_f1",
+        "pairs": 300,
+        "sempointer": 24.729978127523246,
+        "matched_bm25": 24.690042883424688,
+        "paired_difference": 0.03993524409855291,
+        "paired_difference_ci95": [
+          -2.5182522618404426,
+          2.512099196865636
+        ]
+      },
+      {
+        "task": "HotpotQA",
+        "metric": "qa_f1",
+        "pairs": 27,
+        "sempointer": 73.28042328042328,
+        "matched_bm25": 68.1305114638448,
+        "paired_difference": 5.149911816578482,
+        "paired_difference_ci95": [
+          -5.652557319223986,
+          17.59259259259259
+        ]
+      },
+      {
+        "task": "Qasper",
+        "metric": "qa_f1",
+        "pairs": 8,
+        "sempointer": 50.15493278651173,
+        "matched_bm25": 39.47510822510822,
+        "paired_difference": 10.679824561403509,
+        "paired_difference_ci95": [
+          0.0,
+          31.77631578947368
+        ]
+      },
+      {
+        "task": "RepoBench-P",
+        "metric": "code_similarity",
+        "pairs": 26,
+        "sempointer": 24.690476216165433,
+        "matched_bm25": 20.94163119546589,
+        "paired_difference": 3.74884502069954,
+        "paired_difference_ci95": [
+          -1.539042758047741,
+          11.101013233795495
+        ]
+      },
+      {
+        "task": "InfiniteBench KV",
+        "metric": "all_containment",
+        "pairs": 25,
+        "sempointer": 80.0,
+        "matched_bm25": 80.0,
+        "paired_difference": 0.0,
+        "paired_difference_ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "quality_intervals": "Frozen example-level paired bootstrap; no multiplicity adjustment; raw archive validation pending",
+    "run": "8ef26bfd68509bae3b6b",
+    "raw_archive_validation": "pending; report-snapshot reconciliation only",
+    "snapshot_sha256": "ca547a2b7e605bf1ae218870737416e24cd63fd08cd4f5e21099806a96e26ac8",
+    "table_rows_system_pairs_tokens_seconds": [
+      [
+        "SemPointer",
+        2400,
+        4071.4379166666668,
+        5.504400633975823
+      ],
+      [
+        "Matched-budget BM25",
+        2400,
+        4071.3045833333335,
+        6.045203425748353
+      ],
+      [
+        "SemPointer",
+        622,
+        1875.144694533762,
+        4.864680611815058
+      ],
+      [
+        "Full context",
+        622,
+        8038.815112540193,
+        12.563837724741148
+      ]
+    ],
+    "matched_latency_reduction_percent": 8.94598169300782,
+    "full_input_reduction_percent": 76.67386712740016,
+    "full_latency_reduction_percent": 61.280297323202774,
+    "matched_quality_task_group_directions": {
+      "task_groups": 125,
+      "lower": 38,
+      "higher": 33,
+      "tied": 54
+    },
+    "full_quality_task_group_directions": {
+      "task_groups": 68,
+      "lower": 34,
+      "tied": 20,
+      "higher": 14
+    }
+  },
+  "unchanged_standalone_kaggle_pdf_sha256": "3365676a1cf92258cb94c3cc80b2c4b0e18ecd75b0e228ea55a6a36fac165153",
+  "clean_extracted_source_rebuild": "Passed: all 11 pages have matching text and dimensions; no raster objects",
+  "quality_table_body_font_measured_points": 10,
+  "delivered_pdf": "output/pdf/SemPointer_camera_ready.pdf",
+  "delivered_source": "output/submission/SemPointer_source.zip",
+  "source_package_sha256": "57ae2b9751c5b98a9752b9a2ed3d8ccceef1a3eb833135bbbbbf5e4cf9387ab8"
+}

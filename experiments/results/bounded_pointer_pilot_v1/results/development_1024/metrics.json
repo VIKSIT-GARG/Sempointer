@@ -1,0 +1,3137 @@
+{
+  "status_counts": {
+    "scored": 116,
+    "skipped": 34
+  },
+  "tasks": [
+    {
+      "family": "ruler",
+      "task": "vt",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "systems": {
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 2140.2609440265223,
+          "generation_ms_mean": 2114.2720240168273,
+          "ingestion_ms_mean": 17.368641041684896,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 1843.6669140355662
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 474.3270470062271,
+          "generation_ms_mean": 447.6679049548693,
+          "ingestion_ms_mean": 17.368641041684896,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 362.132963957265
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 465.163397078868,
+          "generation_ms_mean": 463.3285730378702,
+          "ingestion_ms_mean": 17.368641041684896,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 376.8856630194932
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 440.14143699314445,
+          "generation_ms_mean": 439.7105110110715,
+          "ingestion_ms_mean": 17.368641041684896,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 356.05067398864776
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        }
+      }
+    },
+    {
+      "family": "ruler",
+      "task": "niah_multikey_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "systems": {
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 615.9878309699707,
+          "generation_ms_mean": 593.083136016503,
+          "ingestion_ms_mean": 46.94143502274528,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 338.9589239959605
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 628.2881339429878,
+          "generation_ms_mean": 604.297729965765,
+          "ingestion_ms_mean": 46.94143502274528,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 348.2596189714968
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 616.7697249329649,
+          "generation_ms_mean": 614.9827169720083,
+          "ingestion_ms_mean": 46.94143502274528,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 362.27828200208023
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 616.104829008691,
+          "generation_ms_mean": 615.9752730163746,
+          "ingestion_ms_mean": 46.94143502274528,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 361.27895704703405
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        }
+      }
+    },
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "systems": {
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 607.3286809842102,
+          "generation_ms_mean": 586.4081269828603,
+          "ingestion_ms_mean": 32.566117006354034,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 333.8400919456035
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 616.1518709850498,
+          "generation_ms_mean": 594.2049259901978,
+          "ingestion_ms_mean": 32.566117006354034,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 342.03168796375394
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 587.7265520393848,
+          "generation_ms_mean": 586.3341130316257,
+          "ingestion_ms_mean": 32.566117006354034,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 333.9714130270295
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 611.5152020356618,
+          "generation_ms_mean": 611.4269610261545,
+          "ingestion_ms_mean": 32.566117006354034,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 353.8102289894596
+        }
+      }
+    },
+    {
+      "family": "longbench",
+      "task": "qmsum",
+      "split": "test",
+      "metric": "rouge_l",
+      "protocol": "ROUGE-L token-LCS adaptation",
+      "systems": {
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.28125,
+          "score_ci95": [
+            0.28125,
+            0.28125
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 1354.0011889999732,
+          "generation_ms_mean": 1333.858773985412,
+          "ingestion_ms_mean": 25.771841988898814,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 332.2154990164563
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.24615384615384617,
+          "score_ci95": [
+            0.24615384615384617,
+            0.24615384615384617
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 1400.4132710397243,
+          "generation_ms_mean": 1378.887613012921,
+          "ingestion_ms_mean": 25.771841988898814,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 335.3449460119009
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.15873015873015872,
+          "score_ci95": [
+            0.15873015873015872,
+            0.15873015873015872
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 1319.1371940192766,
+          "generation_ms_mean": 1317.713216994889,
+          "ingestion_ms_mean": 25.771841988898814,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 341.05318097863346
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.15873015873015872,
+          "score_ci95": [
+            0.15873015873015872,
+            0.15873015873015872
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 1538.3192090084776,
+          "generation_ms_mean": 1538.2477780221961,
+          "ingestion_ms_mean": 25.771841988898814,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 352.3866210016422
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        }
+      }
+    },
+    {
+      "family": "longbench",
+      "task": "repobench-p",
+      "split": "test",
+      "metric": "code_similarity",
+      "protocol": "first-line edit-similarity adaptation; no code execution",
+      "systems": {
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_256": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        }
+      }
+    },
+    {
+      "family": "longbench",
+      "task": "multifieldqa_zh",
+      "split": "test",
+      "metric": "char_f1",
+      "protocol": "Chinese character-F1 adaptation",
+      "systems": {
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 430.6543579441495,
+          "generation_ms_mean": 430.61361397849396,
+          "ingestion_ms_mean": 5.568550957832485,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 346.35185898514464
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 442.09429709007964,
+          "generation_ms_mean": 427.74930101586506,
+          "ingestion_ms_mean": 5.568550957832485,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 343.57201895909384
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 492.5558351096697,
+          "generation_ms_mean": 478.3236150396988,
+          "ingestion_ms_mean": 5.568550957832485,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 393.66609405260533
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 432.5955820386298,
+          "generation_ms_mean": 430.99344801157713,
+          "ingestion_ms_mean": 5.568550957832485,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 345.22371704224497
+        }
+      }
+    },
+    {
+      "family": "locomo",
+      "task": "qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "LoCoMo token-F1 adaptation; session dates included",
+      "systems": {
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 3
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.028985507246376805,
+          "score_ci95": [
+            0.0,
+            0.08695652173913042
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 892.1907020073073,
+          "generation_ms_mean": 869.5479573410315,
+          "ingestion_ms_mean": 58.079150679986924,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 343.93078432185575
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.0392156862745098,
+          "score_ci95": [
+            0.0,
+            0.1176470588235294
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 825.720812640308,
+          "generation_ms_mean": 802.2919486393221,
+          "ingestion_ms_mean": 58.079150679986924,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 348.2056543386231
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.09696969696969697,
+          "score_ci95": [
+            0.0,
+            0.20000000000000004
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 870.983524985301,
+          "generation_ms_mean": 868.4148756631961,
+          "ingestion_ms_mean": 58.079150679986924,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 354.25139067228884
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.09696969696969697,
+          "score_ci95": [
+            0.0,
+            0.20000000000000004
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 866.225972364191,
+          "generation_ms_mean": 866.1504110204987,
+          "ingestion_ms_mean": 58.079150679986924,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 362.41386402010295
+        }
+      }
+    },
+    {
+      "family": "longmem",
+      "task": "longmemeval_s_cleaned",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "token-F1 surrogate; official model-based judge NOT run",
+      "systems": {
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.3846153846153846,
+          "score_ci95": [
+            0.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 880.1022350089625,
+          "generation_ms_mean": 874.3767630076036,
+          "ingestion_ms_mean": 361.12444869165,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 358.31537736036506
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.3846153846153846,
+          "score_ci95": [
+            0.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 868.6456893725941,
+          "generation_ms_mean": 867.9873156943358,
+          "ingestion_ms_mean": 361.12444869165,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 354.5529850331756
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 3
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.3333333333333333,
+          "score_ci95": [
+            0.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 1274.7217899886891,
+          "generation_ms_mean": 1244.3065829963114,
+          "ingestion_ms_mean": 361.12444869165,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 351.81302967248484
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.3846153846153846,
+          "score_ci95": [
+            0.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 953.4919316647574,
+          "generation_ms_mean": 922.1091496486528,
+          "ingestion_ms_mean": 361.12444869165,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 360.78723300791654
+        }
+      }
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa6/256k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "systems": {
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 427.1807880140841,
+          "generation_ms_mean": 426.9484630203806,
+          "ingestion_ms_mean": 796.9162759836763,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 341.1373979761265
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 461.06714295456186,
+          "generation_ms_mean": 434.6630969666876,
+          "ingestion_ms_mean": 796.9162759836763,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 349.24933599540964
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 500.00634195748717,
+          "generation_ms_mean": 471.48867999203503,
+          "ingestion_ms_mean": 796.9162759836763,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 384.6578259835951
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 433.59210196649656,
+          "generation_ms_mean": 430.62982300762087,
+          "ingestion_ms_mean": 796.9162759836763,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 345.56199196958914
+        }
+      }
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa6/4k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "systems": {
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 449.0537879173644,
+          "generation_ms_mean": 427.38342395750806,
+          "ingestion_ms_mean": 11.236885969992727,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 338.1538600078784
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 448.2716769562103,
+          "generation_ms_mean": 426.5849739895202,
+          "ingestion_ms_mean": 11.236885969992727,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 341.39350400073454
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 973.0,
+          "latency_ms_mean": 673.2395579456352,
+          "generation_ms_mean": 671.261298994068,
+          "ingestion_ms_mean": 11.236885969992727,
+          "peak_vram_mb_mean": 3395.0302734375,
+          "ttft_ms_mean": 390.21240099100396
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 635.5411270051263,
+          "generation_ms_mean": 635.4914859985001,
+          "ingestion_ms_mean": 11.236885969992727,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 348.7595730111934
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        }
+      }
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa7/4k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "systems": {
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 431.0277209733613,
+          "generation_ms_mean": 428.49162098718807,
+          "ingestion_ms_mean": 12.43960001738742,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 343.2564369868487
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 429.93259604554623,
+          "generation_ms_mean": 429.870571999345,
+          "ingestion_ms_mean": 12.43960001738742,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 343.585135997273
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 467.5284879631363,
+          "generation_ms_mean": 443.0384589941241,
+          "ingestion_ms_mean": 12.43960001738742,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 357.93702700175345
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 462.16490492224693,
+          "generation_ms_mean": 437.57715699030086,
+          "ingestion_ms_mean": 12.43960001738742,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 352.7361309970729
+        }
+      }
+    },
+    {
+      "family": "longbench_v2",
+      "task": "data",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "choice accuracy; SemPointer retrieval prompt adaptation",
+      "systems": {
+        "bounded_128": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.3333333333333333,
+          "score_ci95": [
+            0.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 457.24360798097524,
+          "generation_ms_mean": 428.0793403352921,
+          "ingestion_ms_mean": 250.23143631794179,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 341.79453598335385
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 460.49223764566705,
+          "generation_ms_mean": 430.459617326657,
+          "ingestion_ms_mean": 250.23143631794179,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 344.6149756588663
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.3333333333333333,
+          "score_ci95": [
+            0.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 462.33958000084385,
+          "generation_ms_mean": 457.4462666835946,
+          "ingestion_ms_mean": 250.23143631794179,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 371.40791601268575
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 3
+          },
+          "n_scored": 3,
+          "score_mean": 0.3333333333333333,
+          "score_ci95": [
+            0.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 456.71633165329695,
+          "generation_ms_mean": 455.82949531186995,
+          "ingestion_ms_mean": 250.23143631794179,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 363.73734499405447
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 3
+          },
+          "n_scored": 0
+        }
+      }
+    },
+    {
+      "family": "infinite",
+      "task": "math_find",
+      "split": "test",
+      "metric": "numeric_sequence",
+      "protocol": "local InfiniteBench metric adaptation",
+      "systems": {
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1023.0,
+          "latency_ms_mean": 494.91864000447094,
+          "generation_ms_mean": 494.799051026348,
+          "ingestion_ms_mean": 311.2752580200322,
+          "peak_vram_mb_mean": 3397.66015625,
+          "ttft_ms_mean": 391.50044904090464
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 557.4334169505164,
+          "generation_ms_mean": 529.0976599790156,
+          "ingestion_ms_mean": 311.2752580200322,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 408.744903979823
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 512.8220840124413,
+          "generation_ms_mean": 484.8263200256042,
+          "ingestion_ms_mean": 311.2752580200322,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 399.7789860004559
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1023.0,
+          "latency_ms_mean": 500.2117829862982,
+          "generation_ms_mean": 496.6821990092285,
+          "ingestion_ms_mean": 311.2752580200322,
+          "peak_vram_mb_mean": 3397.66015625,
+          "ttft_ms_mean": 404.69270100584254
+        }
+      }
+    },
+    {
+      "family": "infinite",
+      "task": "longdialogue_qa_eng",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local InfiniteBench metric adaptation",
+      "systems": {
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 542.5524239544757,
+          "generation_ms_mean": 538.2689589750953,
+          "ingestion_ms_mean": 303.4941829973832,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 364.4860989879817
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 555.3895769990049,
+          "generation_ms_mean": 555.2061210037209,
+          "ingestion_ms_mean": 303.4941829973832,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 386.43859297735617
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 565.2292939485051,
+          "generation_ms_mean": 540.1239729835652,
+          "ingestion_ms_mean": 303.4941829973832,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 365.11813901597634
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 581.0744210029952,
+          "generation_ms_mean": 555.4326580022462,
+          "ingestion_ms_mean": 303.4941829973832,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 372.8422360145487
+        }
+      }
+    },
+    {
+      "family": "infinite",
+      "task": "longbook_choice_eng",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "local InfiniteBench metric adaptation",
+      "systems": {
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 573.6493869917467,
+          "generation_ms_mean": 567.8918900084682,
+          "ingestion_ms_mean": 639.1703590052202,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 367.2774839797057
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 611.930568004027,
+          "generation_ms_mean": 610.7580800307915,
+          "ingestion_ms_mean": 639.1703590052202,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 406.5802950062789
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 667.49131801771,
+          "generation_ms_mean": 636.60632801475,
+          "ingestion_ms_mean": 639.1703590052202,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 370.49318401841447
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 682.938773999922,
+          "generation_ms_mean": 651.0771560133435,
+          "ingestion_ms_mean": 639.1703590052202,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 421.5838569798507
+        }
+      }
+    },
+    {
+      "family": "loogle",
+      "task": "longdep_qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "systems": {
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.21476510067114093,
+          "score_ci95": [
+            0.21476510067114093,
+            0.21476510067114093
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 2256.235026929062,
+          "generation_ms_mean": 2231.9879069691524,
+          "ingestion_ms_mean": 134.08902200171724,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 347.3775679594837
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.21656050955414013,
+          "score_ci95": [
+            0.21656050955414013,
+            0.21656050955414013
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 2616.142700018827,
+          "generation_ms_mean": 2613.622672040947,
+          "ingestion_ms_mean": 134.08902200171724,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 361.71643499983475
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.21656050955414013,
+          "score_ci95": [
+            0.21656050955414013,
+            0.21656050955414013
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 2783.9588780188933,
+          "generation_ms_mean": 2783.8255030219443,
+          "ingestion_ms_mean": 134.08902200171724,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 399.21142597449943
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.2597402597402597,
+          "score_ci95": [
+            0.2597402597402597,
+            0.2597402597402597
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 2663.9507420477457,
+          "generation_ms_mean": 2640.2255080174655,
+          "ingestion_ms_mean": 134.08902200171724,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 414.3018000177108
+        }
+      }
+    },
+    {
+      "family": "loogle",
+      "task": "summarization",
+      "split": "test",
+      "metric": "rouge_l",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "systems": {
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.07964601769911504,
+          "score_ci95": [
+            0.07964601769911504,
+            0.07964601769911504
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 1869.2442169995047,
+          "generation_ms_mean": 1852.044984989334,
+          "ingestion_ms_mean": 91.18067700183019,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 345.9038059809245
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 568.2726000668481,
+          "generation_ms_mean": 550.0235630315728,
+          "ingestion_ms_mean": 91.18067700183019,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 348.3964719926007
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 565.8444929867983,
+          "generation_ms_mean": 563.9267059741542,
+          "ingestion_ms_mean": 91.18067700183019,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 370.12984103057534
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 553.7200190010481,
+          "generation_ms_mean": 553.6667610285804,
+          "ingestion_ms_mean": 91.18067700183019,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 355.5693270172924
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        }
+      }
+    },
+    {
+      "family": "loogle",
+      "task": "shortdep_qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "systems": {
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 671.0244540590793,
+          "generation_ms_mean": 640.5895330244675,
+          "ingestion_ms_mean": 92.31163799995556,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 348.1591130257584
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 675.3607530845329,
+          "generation_ms_mean": 643.9449920435436,
+          "ingestion_ms_mean": 92.31163799995556,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 362.12665104540065
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 635.3928630123846,
+          "generation_ms_mean": 632.3102479800582,
+          "ingestion_ms_mean": 92.31163799995556,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 339.72920197993517
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 652.1189370541833,
+          "generation_ms_mean": 652.0385300391354,
+          "ingestion_ms_mean": 92.31163799995556,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 367.54684802144766
+        }
+      }
+    },
+    {
+      "family": "leval",
+      "task": "topic_retrieval_longchat",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local L-Eval task metric adaptation",
+      "systems": {
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.2,
+          "score_ci95": [
+            0.2,
+            0.2
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 610.2442449191585,
+          "generation_ms_mean": 608.2318119588308,
+          "ingestion_ms_mean": 48.35610697045922,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 340.02989798318595
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.2,
+          "score_ci95": [
+            0.2,
+            0.2
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 631.399200996384,
+          "generation_ms_mean": 631.336165999528,
+          "ingestion_ms_mean": 48.35610697045922,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 376.0105340043083
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.5,
+          "score_ci95": [
+            0.5,
+            0.5
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 648.9430969231762,
+          "generation_ms_mean": 621.7911069979891,
+          "ingestion_ms_mean": 48.35610697045922,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 358.35549200419337
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.5,
+          "score_ci95": [
+            0.5,
+            0.5
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 674.0241969819181,
+          "generation_ms_mean": 645.2436179970391,
+          "ingestion_ms_mean": 48.35610697045922,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 370.2422740170732
+        }
+      }
+    },
+    {
+      "family": "leval",
+      "task": "natural_question",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local L-Eval task metric adaptation",
+      "systems": {
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 552.2450379794464,
+          "generation_ms_mean": 549.5153779629618,
+          "ingestion_ms_mean": 23.39447202393785,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 372.0530769787729
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 591.1292610107921,
+          "generation_ms_mean": 591.0318520036526,
+          "ingestion_ms_mean": 23.39447202393785,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 415.8941840287298
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 589.0045270207338,
+          "generation_ms_mean": 560.8584610163234,
+          "ingestion_ms_mean": 23.39447202393785,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 386.3594349822961
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 650.3797560581006,
+          "generation_ms_mean": 621.9828100292943,
+          "ingestion_ms_mean": 23.39447202393785,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 424.81277702609077
+        }
+      }
+    },
+    {
+      "family": "leval",
+      "task": "tpo",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "local L-Eval task metric adaptation",
+      "systems": {
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 739.2280700150877,
+          "generation_ms_mean": 711.4147280226462,
+          "ingestion_ms_mean": 14.158648962620646,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 370.5354260164313
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 807.8761940123513,
+          "generation_ms_mean": 779.0763800148852,
+          "ingestion_ms_mean": 14.158648962620646,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 437.0454809977673
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 731.5096179954708,
+          "generation_ms_mean": 726.3026000000536,
+          "ingestion_ms_mean": 14.158648962620646,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 375.38036599289626
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 733.5463099880144,
+          "generation_ms_mean": 733.3931889734231,
+          "ingestion_ms_mean": 14.158648962620646,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 392.9697629646398
+        }
+      }
+    },
+    {
+      "family": "scrolls",
+      "task": "summ_screen_fd",
+      "split": "validation",
+      "metric": "rouge_l",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "systems": {
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.1686746987951807,
+          "score_ci95": [
+            0.1686746987951807,
+            0.1686746987951807
+          ],
+          "active_tokens_mean": 1023.0,
+          "latency_ms_mean": 2850.559641083237,
+          "generation_ms_mean": 2850.504359055776,
+          "ingestion_ms_mean": 38.080943981185555,
+          "peak_vram_mb_mean": 3397.66015625,
+          "ttft_ms_mean": 349.5534020476043
+        },
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.1506849315068493,
+          "score_ci95": [
+            0.1506849315068493,
+            0.1506849315068493
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 1799.4184950366616,
+          "generation_ms_mean": 1775.7278310018592,
+          "ingestion_ms_mean": 38.080943981185555,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 384.043768979609
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.14705882352941177,
+          "score_ci95": [
+            0.14705882352941177,
+            0.14705882352941177
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 1466.1895710160024,
+          "generation_ms_mean": 1442.1567390090786,
+          "ingestion_ms_mean": 38.080943981185555,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 433.7353620212525
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.1686746987951807,
+          "score_ci95": [
+            0.1686746987951807,
+            0.1686746987951807
+          ],
+          "active_tokens_mean": 1023.0,
+          "latency_ms_mean": 2610.040627012495,
+          "generation_ms_mean": 2608.2625630078837,
+          "ingestion_ms_mean": 38.080943981185555,
+          "peak_vram_mb_mean": 3397.66015625,
+          "ttft_ms_mean": 361.0965959960595
+        }
+      }
+    },
+    {
+      "family": "scrolls",
+      "task": "contract_nli",
+      "split": "validation",
+      "metric": "exact",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "systems": {
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 524.7513399808668,
+          "generation_ms_mean": 497.25781101733446,
+          "ingestion_ms_mean": 11.397658963687718,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 352.74563502753153
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 553.666049905587,
+          "generation_ms_mean": 525.5726789473556,
+          "ingestion_ms_mean": 11.397658963687718,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 376.4275649446063
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 533.4588609985076,
+          "generation_ms_mean": 531.1061090324074,
+          "ingestion_ms_mean": 11.397658963687718,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 379.44003904704005
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 552.4055450223386,
+          "generation_ms_mean": 552.3369190050289,
+          "ingestion_ms_mean": 11.397658963687718,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 406.8034079973586
+        }
+      }
+    },
+    {
+      "family": "scrolls",
+      "task": "quality",
+      "split": "validation",
+      "metric": "qa_f1",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "systems": {
+        "original_sempointer": {
+          "status_counts": {
+            "skipped": 1
+          },
+          "n_scored": 0
+        },
+        "bounded_128": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.9411764705882353,
+          "score_ci95": [
+            0.9411764705882353,
+            0.9411764705882353
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 754.4868139666505,
+          "generation_ms_mean": 723.1289229821414,
+          "ingestion_ms_mean": 26.363693992607296,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 385.4985020007007
+        },
+        "bounded_256": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.9411764705882353,
+          "score_ci95": [
+            0.9411764705882353,
+            0.9411764705882353
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 790.8835639827885,
+          "generation_ms_mean": 759.6000690246001,
+          "ingestion_ms_mean": 26.363693992607296,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 409.00789300212637
+        },
+        "adaptive_no_index": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.9411764705882353,
+          "score_ci95": [
+            0.9411764705882353,
+            0.9411764705882353
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 714.3386470270343,
+          "generation_ms_mean": 711.7675720364787,
+          "ingestion_ms_mean": 26.363693992607296,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 365.1358290226199
+        },
+        "bm25_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.9411764705882353,
+          "score_ci95": [
+            0.9411764705882353,
+            0.9411764705882353
+          ],
+          "active_tokens_mean": 1024.0,
+          "latency_ms_mean": 718.5988159617409,
+          "generation_ms_mean": 718.4962369501591,
+          "ingestion_ms_mean": 26.363693992607296,
+          "peak_vram_mb_mean": 3402.7060546875,
+          "ttft_ms_mean": 375.2564189489931
+        }
+      }
+    }
+  ],
+  "paired": [
+    {
+      "family": "ruler",
+      "task": "vt",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 1665.9338970202953,
+      "generation_ms_difference": 1666.604119061958
+    },
+    {
+      "family": "ruler",
+      "task": "vt",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 1675.0975469476543,
+      "generation_ms_difference": 1650.9434509789571
+    },
+    {
+      "family": "ruler",
+      "task": "vt",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 1700.1195070333779,
+      "generation_ms_difference": 1674.5615130057558
+    },
+    {
+      "family": "ruler",
+      "task": "niah_multikey_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -12.300302973017097,
+      "generation_ms_difference": -11.214593949262053
+    },
+    {
+      "family": "ruler",
+      "task": "niah_multikey_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -0.7818939629942179,
+      "generation_ms_difference": -21.89958095550537
+    },
+    {
+      "family": "ruler",
+      "task": "niah_multikey_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -0.11699803872033954,
+      "generation_ms_difference": -22.892136999871582
+    },
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -8.823190000839531,
+      "generation_ms_difference": -7.79679900733754
+    },
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 19.60212894482538,
+      "generation_ms_difference": 0.07401395123451948
+    },
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -4.186521051451564,
+      "generation_ms_difference": -25.01883404329419
+    },
+    {
+      "family": "longbench",
+      "task": "qmsum",
+      "split": "test",
+      "metric": "rouge_l",
+      "protocol": "ROUGE-L token-LCS adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.03509615384615383,
+      "score_difference_ci95": [
+        0.03509615384615383,
+        0.03509615384615383
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -46.41208203975111,
+      "generation_ms_difference": -45.02883902750909
+    },
+    {
+      "family": "longbench",
+      "task": "qmsum",
+      "split": "test",
+      "metric": "rouge_l",
+      "protocol": "ROUGE-L token-LCS adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.12251984126984128,
+      "score_difference_ci95": [
+        0.12251984126984128,
+        0.12251984126984128
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 34.86399498069659,
+      "generation_ms_difference": 16.14555699052289
+    },
+    {
+      "family": "longbench",
+      "task": "qmsum",
+      "split": "test",
+      "metric": "rouge_l",
+      "protocol": "ROUGE-L token-LCS adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.12251984126984128,
+      "score_difference_ci95": [
+        0.12251984126984128,
+        0.12251984126984128
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -184.3180200085044,
+      "generation_ms_difference": -204.38900403678417
+    },
+    {
+      "family": "longbench",
+      "task": "multifieldqa_zh",
+      "split": "test",
+      "metric": "char_f1",
+      "protocol": "Chinese character-F1 adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 11.439939145930111,
+      "generation_ms_difference": -2.864312962628901
+    },
+    {
+      "family": "longbench",
+      "task": "multifieldqa_zh",
+      "split": "test",
+      "metric": "char_f1",
+      "protocol": "Chinese character-F1 adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -50.46153801959008,
+      "generation_ms_difference": -50.57431402383372
+    },
+    {
+      "family": "longbench",
+      "task": "multifieldqa_zh",
+      "split": "test",
+      "metric": "char_f1",
+      "protocol": "Chinese character-F1 adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 9.498715051449835,
+      "generation_ms_difference": -3.2441469957120717
+    },
+    {
+      "family": "locomo",
+      "task": "qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "LoCoMo token-F1 adaptation; session dates included",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 3,
+      "score_difference": -0.010230179028132997,
+      "score_difference_ci95": [
+        -0.03069053708439899,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 66.46988936699927,
+      "generation_ms_difference": 67.2560087017094
+    },
+    {
+      "family": "locomo",
+      "task": "qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "LoCoMo token-F1 adaptation; session dates included",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 3,
+      "score_difference": -0.06798418972332017,
+      "score_difference_ci95": [
+        -0.20000000000000004,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 21.207177022006363,
+      "generation_ms_difference": 1.1330816778354347
+    },
+    {
+      "family": "locomo",
+      "task": "qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "LoCoMo token-F1 adaptation; session dates included",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 3,
+      "score_difference": -0.06798418972332017,
+      "score_difference_ci95": [
+        -0.20000000000000004,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 25.964729643116396,
+      "generation_ms_difference": 3.397546320532759
+    },
+    {
+      "family": "longmem",
+      "task": "longmemeval_s_cleaned",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "token-F1 surrogate; official model-based judge NOT run",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 3,
+      "score_difference": -0.05128205128205129,
+      "score_difference_ci95": [
+        -0.15384615384615385,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 394.6195549797267,
+      "generation_ms_difference": 369.9298199887077
+    },
+    {
+      "family": "longmem",
+      "task": "longmemeval_s_cleaned",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "token-F1 surrogate; official model-based judge NOT run",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 3,
+      "score_difference": -0.05128205128205129,
+      "score_difference_ci95": [
+        -0.15384615384615385,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 406.07610061609495,
+      "generation_ms_difference": 376.31926730197546
+    },
+    {
+      "family": "longmem",
+      "task": "longmemeval_s_cleaned",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "token-F1 surrogate; official model-based judge NOT run",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 3,
+      "score_difference": -0.05128205128205129,
+      "score_difference_ci95": [
+        -0.15384615384615385,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 321.2298583239317,
+      "generation_ms_difference": 322.19743334765855
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa6/256k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 33.88635494047776,
+      "generation_ms_difference": 7.7146339463070035
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa6/256k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -38.93919900292531,
+      "generation_ms_difference": -36.82558302534744
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa6/256k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 27.475040988065302,
+      "generation_ms_difference": 4.033273959066719
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa6/4k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 0.7821109611541033,
+      "generation_ms_difference": 0.7984499679878354
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa6/4k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 1.0,
+      "score_difference_ci95": [
+        1.0,
+        1.0
+      ],
+      "active_tokens_difference": 51.0,
+      "latency_ms_difference": -224.18577002827078,
+      "generation_ms_difference": -243.87787503656
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa6/4k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 1.0,
+      "score_difference_ci95": [
+        1.0,
+        1.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -186.48733908776194,
+      "generation_ms_difference": -208.10806204099208
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa7/4k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 36.500766989775,
+      "generation_ms_difference": 14.546838006936014
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa7/4k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 37.59589191759005,
+      "generation_ms_difference": 13.16788699477911
+    },
+    {
+      "family": "babilong",
+      "task": "data/qa7/4k",
+      "split": "test",
+      "metric": "exact",
+      "protocol": "normalized answer exact match; retrieval adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 5.363583040889353,
+      "generation_ms_difference": 5.461302003823221
+    },
+    {
+      "family": "longbench_v2",
+      "task": "data",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "choice accuracy; SemPointer retrieval prompt adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 3,
+      "score_difference": 0.3333333333333333,
+      "score_difference_ci95": [
+        0.0,
+        1.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -3.248629664691786,
+      "generation_ms_difference": -2.3802769913648567
+    },
+    {
+      "family": "longbench_v2",
+      "task": "data",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "choice accuracy; SemPointer retrieval prompt adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 3,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -5.095972019868593,
+      "generation_ms_difference": -29.366926348302513
+    },
+    {
+      "family": "longbench_v2",
+      "task": "data",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "choice accuracy; SemPointer retrieval prompt adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 3,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 0.5272763276783129,
+      "generation_ms_difference": -27.750154976577807
+    },
+    {
+      "family": "infinite",
+      "task": "math_find",
+      "split": "test",
+      "metric": "numeric_sequence",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 1.0,
+      "latency_ms_difference": 62.51477694604546,
+      "generation_ms_difference": 34.298608952667564
+    },
+    {
+      "family": "infinite",
+      "task": "math_find",
+      "split": "test",
+      "metric": "numeric_sequence",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 44.611332938075066,
+      "generation_ms_difference": 44.27133995341137
+    },
+    {
+      "family": "infinite",
+      "task": "math_find",
+      "split": "test",
+      "metric": "numeric_sequence",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 1.0,
+      "latency_ms_difference": 57.2216339642182,
+      "generation_ms_difference": 32.41546096978709
+    },
+    {
+      "family": "infinite",
+      "task": "longdialogue_qa_eng",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 22.676869994029403,
+      "generation_ms_difference": 1.8550140084698796
+    },
+    {
+      "family": "infinite",
+      "task": "longdialogue_qa_eng",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 9.839716949500144,
+      "generation_ms_difference": -15.082148020155728
+    },
+    {
+      "family": "infinite",
+      "task": "longdialogue_qa_eng",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -15.845127054490149,
+      "generation_ms_difference": -15.30868501868099
+    },
+    {
+      "family": "infinite",
+      "task": "longbook_choice_eng",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": -1.0,
+      "score_difference_ci95": [
+        -1.0,
+        -1.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 93.84193102596328,
+      "generation_ms_difference": 68.71443800628185
+    },
+    {
+      "family": "infinite",
+      "task": "longbook_choice_eng",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": -1.0,
+      "score_difference_ci95": [
+        -1.0,
+        -1.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 55.56075001368299,
+      "generation_ms_difference": 25.848247983958572
+    },
+    {
+      "family": "infinite",
+      "task": "longbook_choice_eng",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "local InfiniteBench metric adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -15.447455982211977,
+      "generation_ms_difference": -14.47082799859345
+    },
+    {
+      "family": "loogle",
+      "task": "longdep_qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.04497515906911878,
+      "score_difference_ci95": [
+        0.04497515906911878,
+        0.04497515906911878
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 407.7157151186839,
+      "generation_ms_difference": 408.2376010483131
+    },
+    {
+      "family": "loogle",
+      "task": "longdep_qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.04317975018611958,
+      "score_difference_ci95": [
+        0.04317975018611958,
+        0.04317975018611958
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 47.80804202891886,
+      "generation_ms_difference": 26.60283597651869
+    },
+    {
+      "family": "loogle",
+      "task": "longdep_qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.04317975018611958,
+      "score_difference_ci95": [
+        0.04317975018611958,
+        0.04317975018611958
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -120.00813597114757,
+      "generation_ms_difference": -143.59999500447884
+    },
+    {
+      "family": "loogle",
+      "task": "summarization",
+      "split": "test",
+      "metric": "rouge_l",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.07964601769911504,
+      "score_difference_ci95": [
+        0.07964601769911504,
+        0.07964601769911504
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 1300.9716169326566,
+      "generation_ms_difference": 1302.021421957761
+    },
+    {
+      "family": "loogle",
+      "task": "summarization",
+      "split": "test",
+      "metric": "rouge_l",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.07964601769911504,
+      "score_difference_ci95": [
+        0.07964601769911504,
+        0.07964601769911504
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 1303.3997240127064,
+      "generation_ms_difference": 1288.1182790151797
+    },
+    {
+      "family": "loogle",
+      "task": "summarization",
+      "split": "test",
+      "metric": "rouge_l",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.07964601769911504,
+      "score_difference_ci95": [
+        0.07964601769911504,
+        0.07964601769911504
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 1315.5241979984567,
+      "generation_ms_difference": 1298.3782239607535
+    },
+    {
+      "family": "loogle",
+      "task": "shortdep_qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -4.336299025453627,
+      "generation_ms_difference": -3.355459019076079
+    },
+    {
+      "family": "loogle",
+      "task": "shortdep_qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 35.631591046694666,
+      "generation_ms_difference": 8.279285044409335
+    },
+    {
+      "family": "loogle",
+      "task": "shortdep_qa",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local LooGLE metric adaptation; no model-based judge",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 18.905517004895955,
+      "generation_ms_difference": -11.448997014667839
+    },
+    {
+      "family": "leval",
+      "task": "topic_retrieval_longchat",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.3,
+      "score_difference_ci95": [
+        0.3,
+        0.3
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 38.69885200401768,
+      "generation_ms_difference": 13.559295039158314
+    },
+    {
+      "family": "leval",
+      "task": "topic_retrieval_longchat",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.3,
+      "score_difference_ci95": [
+        0.3,
+        0.3
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 17.543895926792175,
+      "generation_ms_difference": -9.545059001538903
+    },
+    {
+      "family": "leval",
+      "task": "topic_retrieval_longchat",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -25.081100058741868,
+      "generation_ms_difference": -23.45251099904999
+    },
+    {
+      "family": "leval",
+      "task": "natural_question",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 36.75948904128745,
+      "generation_ms_difference": 11.343083053361624
+    },
+    {
+      "family": "leval",
+      "task": "natural_question",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -2.124733990058303,
+      "generation_ms_difference": -30.173390987329185
+    },
+    {
+      "family": "leval",
+      "task": "natural_question",
+      "split": "test",
+      "metric": "qa_f1",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -61.37522903736681,
+      "generation_ms_difference": -61.124349012970924
+    },
+    {
+      "family": "leval",
+      "task": "tpo",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -68.64812399726361,
+      "generation_ms_difference": -67.66165199223906
+    },
+    {
+      "family": "leval",
+      "task": "tpo",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 7.7184520196169615,
+      "generation_ms_difference": -14.887871977407485
+    },
+    {
+      "family": "leval",
+      "task": "tpo",
+      "split": "test",
+      "metric": "choice",
+      "protocol": "local L-Eval task metric adaptation",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 5.681760027073324,
+      "generation_ms_difference": -21.978460950776935
+    },
+    {
+      "family": "scrolls",
+      "task": "summ_screen_fd",
+      "split": "validation",
+      "metric": "rouge_l",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": -0.017989767288331404,
+      "score_difference_ci95": [
+        -0.017989767288331404,
+        -0.017989767288331404
+      ],
+      "active_tokens_difference": 1.0,
+      "latency_ms_difference": -1051.1411460465752,
+      "generation_ms_difference": -1074.776528053917
+    },
+    {
+      "family": "scrolls",
+      "task": "summ_screen_fd",
+      "split": "validation",
+      "metric": "rouge_l",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.003626107977437537,
+      "score_difference_ci95": [
+        0.003626107977437537,
+        0.003626107977437537
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 333.2289240206592,
+      "generation_ms_difference": 333.57109199278057
+    },
+    {
+      "family": "scrolls",
+      "task": "summ_screen_fd",
+      "split": "validation",
+      "metric": "rouge_l",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": -0.017989767288331404,
+      "score_difference_ci95": [
+        -0.017989767288331404,
+        -0.017989767288331404
+      ],
+      "active_tokens_difference": 1.0,
+      "latency_ms_difference": -810.6221319758333,
+      "generation_ms_difference": -832.5347320060246
+    },
+    {
+      "family": "scrolls",
+      "task": "contract_nli",
+      "split": "validation",
+      "metric": "exact",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -28.914709924720228,
+      "generation_ms_difference": -28.314867930021137
+    },
+    {
+      "family": "scrolls",
+      "task": "contract_nli",
+      "split": "validation",
+      "metric": "exact",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -8.707521017640829,
+      "generation_ms_difference": -33.84829801507294
+    },
+    {
+      "family": "scrolls",
+      "task": "contract_nli",
+      "split": "validation",
+      "metric": "exact",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -27.65420504147187,
+      "generation_ms_difference": -55.07910798769444
+    },
+    {
+      "family": "scrolls",
+      "task": "quality",
+      "split": "validation",
+      "metric": "qa_f1",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_bounded_256",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": -36.39675001613796,
+      "generation_ms_difference": -36.47114604245871
+    },
+    {
+      "family": "scrolls",
+      "task": "quality",
+      "split": "validation",
+      "metric": "qa_f1",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_adaptive_no_index",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 40.1481669396162,
+      "generation_ms_difference": 11.361350945662707
+    },
+    {
+      "family": "scrolls",
+      "task": "quality",
+      "split": "validation",
+      "metric": "qa_f1",
+      "protocol": "SCROLLS merged-reference local metric adaptation; not official aggregate",
+      "comparison": "bounded_128_vs_bm25_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 35.887998004909605,
+      "generation_ms_difference": 4.632686031982303
+    }
+  ],
+  "notes": [
+    "No pooled score across different tasks or metrics.",
+    "CIs resample examples, not independent document clusters; correlated questions limit inference.",
+    "Latency is generation plus measured selector cost; suite prompt construction and shared ingestion are logged separately.",
+    "Local surrogate scores are not official judge-based benchmark results."
+  ]
+}

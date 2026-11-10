@@ -1,0 +1,6 @@
+{
+  "purpose": "Qwen3.5 source before cloud hooks; reconstructed by removing only the new optional cloud hooks.",
+  "expected_smoke_code_sha256": "4a3ed8dc828769c3f0bf97b9b6c32e6bc5723c51e6353677b01796231706c968",
+  "snapshot_code_sha256": "4a3ed8dc828769c3f0bf97b9b6c32e6bc5723c51e6353677b01796231706c968",
+  "matches_recorded_smoke": true
+}

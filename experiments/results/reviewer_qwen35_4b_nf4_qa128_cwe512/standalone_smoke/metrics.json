@@ -1,0 +1,409 @@
+{
+  "status_counts": {
+    "scored": 12
+  },
+  "tasks": [
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "systems": {
+        "bm25_2": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1157.0,
+          "latency_ms_mean": 13345.466703001875,
+          "generation_ms_mean": 13345.330802025273,
+          "ingestion_ms_mean": 14.071787998545915,
+          "peak_vram_mb_mean": 3514.8193359375,
+          "ttft_ms_mean": 12097.725401981734
+        },
+        "bm25_4": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 2194.0,
+          "latency_ms_mean": 1773.1172229978256,
+          "generation_ms_mean": 1772.9813220212236,
+          "ingestion_ms_mean": 14.071787998545915,
+          "peak_vram_mb_mean": 3760.15771484375,
+          "ttft_ms_mean": 1357.35874902457
+        },
+        "bm25_matched_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1237.0,
+          "latency_ms_mean": 1181.6143679898232,
+          "generation_ms_mean": 1151.6436910023913,
+          "ingestion_ms_mean": 14.071787998545915,
+          "peak_vram_mb_mean": 3531.94091796875,
+          "ttft_ms_mean": 721.998994005844,
+          "budget_slack_tokens_mean": 1.0
+        },
+        "full_context": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 4070.0,
+          "latency_ms_mean": 2894.0077069564722,
+          "generation_ms_mean": 2894.0077069564722,
+          "ingestion_ms_mean": 14.071787998545915,
+          "peak_vram_mb_mean": 4177.93017578125,
+          "ttft_ms_mean": 2504.1100209928118
+        },
+        "sempointer": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1238.0,
+          "latency_ms_mean": 1072.8581480216235,
+          "generation_ms_mean": 1070.660377969034,
+          "ingestion_ms_mean": 14.071787998545915,
+          "peak_vram_mb_mean": 3531.99658203125,
+          "ttft_ms_mean": 681.2466979608871
+        },
+        "pointer_off": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 1.0,
+          "score_ci95": [
+            1.0,
+            1.0
+          ],
+          "active_tokens_mean": 1157.0,
+          "latency_ms_mean": 1036.5773540688679,
+          "generation_ms_mean": 1034.3795840162784,
+          "ingestion_ms_mean": 14.071787998545915,
+          "peak_vram_mb_mean": 3513.9755859375,
+          "ttft_ms_mean": 650.9385150275193
+        }
+      }
+    },
+    {
+      "family": "ruler",
+      "task": "cwe",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "systems": {
+        "bm25_4": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 3366.0,
+          "latency_ms_mean": 3929.3059029150754,
+          "generation_ms_mean": 3928.490021964535,
+          "ingestion_ms_mean": 9.86085896147415,
+          "peak_vram_mb_mean": 4016.5654296875,
+          "ttft_ms_mean": 1996.95082497783
+        },
+        "bm25_matched_budget": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 2398.0,
+          "latency_ms_mean": 3342.7588379126973,
+          "generation_ms_mean": 3296.1316779837944,
+          "ingestion_ms_mean": 9.86085896147415,
+          "peak_vram_mb_mean": 3799.42529296875,
+          "ttft_ms_mean": 1371.8810469727032,
+          "budget_slack_tokens_mean": 0.0
+        },
+        "full_context": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 3826.0,
+          "latency_ms_mean": 4229.399853036739,
+          "generation_ms_mean": 4229.399853036739,
+          "ingestion_ms_mean": 9.86085896147415,
+          "peak_vram_mb_mean": 4117.5888671875,
+          "ttft_ms_mean": 2251.278431038372
+        },
+        "sempointer": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 2398.0,
+          "latency_ms_mean": 3417.671376024373,
+          "generation_ms_mean": 3415.083603991661,
+          "ingestion_ms_mean": 9.86085896147415,
+          "peak_vram_mb_mean": 3799.42529296875,
+          "ttft_ms_mean": 1459.527405037079
+        },
+        "pointer_off": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 2329.0,
+          "latency_ms_mean": 3426.76271405071,
+          "generation_ms_mean": 3424.1749420179985,
+          "ingestion_ms_mean": 9.86085896147415,
+          "peak_vram_mb_mean": 3781.9501953125,
+          "ttft_ms_mean": 1437.5177629990503
+        },
+        "bm25_2": {
+          "status_counts": {
+            "scored": 1
+          },
+          "n_scored": 1,
+          "score_mean": 0.0,
+          "score_ci95": [
+            0.0,
+            0.0
+          ],
+          "active_tokens_mean": 2329.0,
+          "latency_ms_mean": 3473.672388936393,
+          "generation_ms_mean": 3472.8565079858527,
+          "ingestion_ms_mean": 9.86085896147415,
+          "peak_vram_mb_mean": 3781.9501953125,
+          "ttft_ms_mean": 1390.4225209844299
+        }
+      }
+    }
+  ],
+  "paired": [
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_bm25_2",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 81.0,
+      "latency_ms_difference": -12272.608554980252,
+      "generation_ms_difference": -12274.67042405624
+    },
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_bm25_4",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": -956.0,
+      "latency_ms_difference": -700.2590749762021,
+      "generation_ms_difference": -702.3209440521896
+    },
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_bm25_matched_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 1.0,
+      "latency_ms_difference": -108.75621996819973,
+      "generation_ms_difference": -80.98331303335726
+    },
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_full_context",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": -2832.0,
+      "latency_ms_difference": -1821.1495589348488,
+      "generation_ms_difference": -1823.3473289874382
+    },
+    {
+      "family": "ruler",
+      "task": "niah_single_1",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_pointer_off",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 81.0,
+      "latency_ms_difference": 36.28079395275563,
+      "generation_ms_difference": 36.28079395275563
+    },
+    {
+      "family": "ruler",
+      "task": "cwe",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_bm25_4",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": -968.0,
+      "latency_ms_difference": -511.63452689070255,
+      "generation_ms_difference": -513.4064179728739
+    },
+    {
+      "family": "ruler",
+      "task": "cwe",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_bm25_matched_budget",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 0.0,
+      "latency_ms_difference": 74.91253811167553,
+      "generation_ms_difference": 118.95192600786686
+    },
+    {
+      "family": "ruler",
+      "task": "cwe",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_full_context",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": -1428.0,
+      "latency_ms_difference": -811.728477012366,
+      "generation_ms_difference": -814.3162490450777
+    },
+    {
+      "family": "ruler",
+      "task": "cwe",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_pointer_off",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 69.0,
+      "latency_ms_difference": -9.091338026337326,
+      "generation_ms_difference": -9.091338026337326
+    },
+    {
+      "family": "ruler",
+      "task": "cwe",
+      "split": "test",
+      "metric": "all_containment",
+      "protocol": "project RULER generator; documented upstream deviations",
+      "comparison": "sempointer_vs_bm25_2",
+      "n_paired": 1,
+      "score_difference": 0.0,
+      "score_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "active_tokens_difference": 69.0,
+      "latency_ms_difference": -56.00101291202009,
+      "generation_ms_difference": -57.77290399419144
+    }
+  ],
+  "notes": [
+    "No pooled score across different tasks or metrics.",
+    "CIs resample examples, not independent document clusters; correlated questions limit inference.",
+    "Latency is generation plus measured selector cost; suite prompt construction and shared ingestion are logged separately.",
+    "Local surrogate scores are not official judge-based benchmark results."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "engine": {
+    "model_id": "/home/viksit/Projects/tokens2/models/Qwen3.5-4B",
+    "dtype": "nf4",
+    "nf4_compute_dtype": "torch.bfloat16",
+    "device": "cuda",
+    "max_new_tokens": 128,
+    "decoding": "greedy",
+    "attn_implementation": "sdpa",
+    "seed": 20261114,
+    "model_config_revision": null,
+    "engine": "qwen35_native_generate",
+    "enable_thinking": false,
+    "prompt_format": "native_chat_template",
+    "cache": "transformers_native_hybrid"
+  },
+  "environment": {
+    "timestamp": "2026-11-10T14:30:32+0530",
+    "python_version": "3.11.16",
+    "os": "Linux-7.2.9-2-cachyos-x86_64-with-glibc2.44",
+    "git_commit": "1724dc4f04bef0a612b99771fc1a4e481b3298d8",
+    "torch_version": "2.14.0+cu130",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "gpu_total_memory_mb": 7776.6,
+    "gpu_driver": "615.78.08",
+    "transformers_version": "5.2.0",
+    "sentence_transformers_version": "6.1.0",
+    "datasets_version": "5.0.1",
+    "bitsandbytes_version": "0.50.2",
+    "kvpress_version": null,
+    "numpy_version": "2.4.6",
+    "rank_bm25_version": null
+  },
+  "packages": {
+    "torch": "2.14.0",
+    "transformers": "5.2.0",
+    "bitsandbytes": "0.50.2",
+    "numpy": "2.4.6",
+    "ijson": "3.6.0",
+    "pyarrow": "25.0.1",
+    "tokenizers": "0.22.2",
+    "rank_bm25": "0.2.2"
+  }
+}

@@ -87,7 +87,7 @@ class SemPointerV2Pipeline(SemPointerPipeline):
         weighted_coverage = self._weighted_coverage(query, protected)
         route = "lexical"
         target = self.min_m
-        boundary = float(scores[lexical[self.min_m - 1]])
+        boundary = float(scores[protected[-1]])
         next_score = float(scores[lexical[self.min_m]]) if len(lexical) > self.min_m else 0.0
         score_ratio = next_score / boundary if boundary > 0 else 1.0
         if weighted_coverage < self.expand_coverage or (weighted_coverage < self.ambiguity_coverage and

@@ -1,0 +1,146 @@
+{
+  "experiments/results": {
+    "files": 2,
+    "bytes": 887
+  },
+  "experiments/results/bounded_pointer_full_v1": {
+    "files": 1116,
+    "bytes": 957711420
+  },
+  "experiments/results/bounded_pointer_pilot_v1": {
+    "files": 258,
+    "bytes": 125719070
+  },
+  "experiments/results/dataset_counts": {
+    "files": 4,
+    "bytes": 201436
+  },
+  "experiments/results/downloaded_suite": {
+    "files": 25,
+    "bytes": 282465454
+  },
+  "experiments/results/local_ten_qwen35_nf4_100_v1": {
+    "files": 1157,
+    "bytes": 1572756306
+  },
+  "experiments/results/paper_ablation": {
+    "files": 6,
+    "bytes": 1216321
+  },
+  "experiments/results/paper_kv": {
+    "files": 6,
+    "bytes": 306849
+  },
+  "experiments/results/paper_locomo": {
+    "files": 6,
+    "bytes": 1881037
+  },
+  "experiments/results/paper_longbench": {
+    "files": 6,
+    "bytes": 2370538
+  },
+  "experiments/results/paper_ruler": {
+    "files": 6,
+    "bytes": 1050227
+  },
+  "experiments/results/reviewer_qwen35_4b_nf4_qa128_cwe512": {
+    "files": 14,
+    "bytes": 914309
+  },
+  "experiments/results/reviewer_suite_validation": {
+    "files": 14,
+    "bytes": 960345
+  },
+  "experiments/results/suite_preflight": {
+    "files": 4,
+    "bytes": 316806
+  },
+  "experiments/results/suite_reference_checks": {
+    "files": 2,
+    "bytes": 2074
+  },
+  "experiments/results/throughput_pilot": {
+    "files": 14,
+    "bytes": 23332958
+  },
+  "experiments/results/v2_locomo": {
+    "files": 6,
+    "bytes": 1009974
+  },
+  "experiments/results/v2_longbench": {
+    "files": 5,
+    "bytes": 1270075
+  },
+  "experiments/results/v2_ruler": {
+    "files": 5,
+    "bytes": 471670
+  },
+  "experiments/modal_runs": {
+    "files": 3,
+    "bytes": 145454
+  },
+  "experiments/modal_runs/precision_pilot": {
+    "files": 13,
+    "bytes": 1118816
+  },
+  "experiments/modal_runs/preparation_validation": {
+    "files": 5,
+    "bytes": 302439
+  },
+  "experiments/modal_runs/ten_qwen35_measured_v1": {
+    "files": 3090,
+    "bytes": 821000919
+  },
+  "experiments/modal_runs/ten_qwen35_recovered_v1": {
+    "files": 3087,
+    "bytes": 598494197
+  },
+  "experiments/modal_runs/ten_qwen35_v1": {
+    "files": 3093,
+    "bytes": 603551423
+  },
+  "experiments/reference_code": {
+    "files": 1,
+    "bytes": 619
+  },
+  "experiments/reference_code/before_bounded_pointer_20261110": {
+    "files": 1,
+    "bytes": 18500
+  },
+  "experiments/reference_code/before_precision_pilot_20261110": {
+    "files": 9,
+    "bytes": 66369
+  },
+  "experiments/reference_code/before_qwen35_20261109T180506Z": {
+    "files": 60,
+    "bytes": 457558
+  },
+  "experiments/reference_code/preparation_before_parallel_20261110": {
+    "files": 4,
+    "bytes": 21761
+  },
+  "experiments/reference_code/qwen35_before_modal_20261110": {
+    "files": 42,
+    "bytes": 315145
+  },
+  "submission/camera_ready": {
+    "files": 6,
+    "bytes": 1082730
+  },
+  "kaggle_upload/report_review_2026-11-10": {
+    "files": 12,
+    "bytes": 2701368
+  },
+  "kaggle_upload/publication_2026-11-11": {
+    "files": 20,
+    "bytes": 2434309
+  },
+  "kaggle_upload/reference_before_attention_fix": {
+    "files": 2,
+    "bytes": 44247
+  },
+  "kaggle_upload/sempointer_qwen35_frozen.bin": {
+    "files": 1,
+    "bytes": 196418923
+  }
+}

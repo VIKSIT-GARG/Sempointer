@@ -1,0 +1,528 @@
+{
+  "benchmark": "kv_compare",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 32,
+    "decoding": "greedy",
+    "attn_implementation": "sdpa",
+    "seed": 42,
+    "model_config_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "n_examples": 50,
+  "system_info": {
+    "sempointer": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__substrate-kv": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_kv",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "full": {
+      "system": "full_context",
+      "block_size": 512,
+      "n_blocks": 0,
+      "ingestion_tokens": null,
+      "ingestion_latency_ms": null,
+      "has_system_prompt": true
+    },
+    "kvpress_snapkv_0.3": {
+      "system": "kvpress:snapkv",
+      "press": "snapkv",
+      "press_class": "SnapKVPress",
+      "compression_ratio": 0.3,
+      "model_id": "Qwen/Qwen2.5-3B-Instruct",
+      "dtype": "nf4",
+      "device": "cuda",
+      "max_new_tokens": 32,
+      "decoding": "greedy",
+      "seed": 42,
+      "attn_implementation": "eager",
+      "engine": "separate model instance (press modifies attention); identical model/precision/decoding to the shared LLMEngine",
+      "ingestion_tokens": null,
+      "has_system_prompt": true
+    },
+    "kvpress_tova_0.3": {
+      "system": "kvpress:tova",
+      "press": "tova",
+      "press_class": "TOVAPress",
+      "compression_ratio": 0.3,
+      "model_id": "Qwen/Qwen2.5-3B-Instruct",
+      "dtype": "nf4",
+      "device": "cuda",
+      "max_new_tokens": 32,
+      "decoding": "greedy",
+      "seed": 42,
+      "attn_implementation": "eager",
+      "engine": "separate model instance (press modifies attention); identical model/precision/decoding to the shared LLMEngine",
+      "ingestion_tokens": null,
+      "has_system_prompt": true
+    },
+    "kvpress_knorm_0.3": {
+      "system": "kvpress:knorm",
+      "press": "knorm",
+      "press_class": "KnormPress",
+      "compression_ratio": 0.3,
+      "model_id": "Qwen/Qwen2.5-3B-Instruct",
+      "dtype": "nf4",
+      "device": "cuda",
+      "max_new_tokens": 32,
+      "decoding": "greedy",
+      "seed": 42,
+      "attn_implementation": "eager",
+      "engine": "separate model instance (press modifies attention); identical model/precision/decoding to the shared LLMEngine",
+      "ingestion_tokens": 3627,
+      "has_system_prompt": true
+    }
+  },
+  "systems": {
+    "sempointer": {
+      "n_scored": 50,
+      "metric": "ruler_containment",
+      "score_mean": 0.9,
+      "score_ci95": [
+        0.8,
+        0.98
+      ],
+      "active_tokens_mean": 1230.8,
+      "latency_ms_mean": 996.3098317997355,
+      "peak_vram_mb_mean": 2238.682138671875,
+      "selection_latency_ms_mean": 106.07741559972055,
+      "ttft_ms_mean": 297.8243853399181,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 80.28299505953328,
+      "generation_latency_ms_mean": 888.1824990999303,
+      "retrieval_hit_mean": 0.9375,
+      "retrieval_hit_n": 48,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 25,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1274.88
+        },
+        "niah_single_1": {
+          "n": 25,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1186.72
+        }
+      },
+      "per_task_context_length": {
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1274.88
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1186.72
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__substrate-kv": {
+      "n_scored": 50,
+      "metric": "ruler_containment",
+      "score_mean": 0.86,
+      "score_ci95": [
+        0.76,
+        0.94
+      ],
+      "active_tokens_mean": 1231.18,
+      "latency_ms_mean": 2039.1293334192596,
+      "peak_vram_mb_mean": 2211.994287109375,
+      "selection_latency_ms_mean": 91.34793516015634,
+      "ttft_ms_mean": 187.1759116993053,
+      "n_hops_mean": 1.0,
+      "kv_bytes_mean": 134901596.16,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 45.444142800115515,
+      "generation_latency_ms_mean": 699.8078811397136,
+      "kv_encode_ms_mean": 1030.8879435595009,
+      "computed_tokens_mean": 209.56,
+      "reused_tokens_mean": 1021.62,
+      "transfer_ms_mean": 3.061943739739945,
+      "retrieval_hit_mean": 0.9375,
+      "retrieval_hit_n": 48,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 25,
+          "score_mean": 0.72,
+          "active_tokens_mean": 1275.12
+        },
+        "niah_single_1": {
+          "n": 25,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1187.24
+        }
+      },
+      "per_task_context_length": {
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 0.72,
+          "active_tokens_mean": 1275.12
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1187.24
+        }
+      },
+      "n_errors": 0
+    },
+    "full": {
+      "n_scored": 50,
+      "metric": "ruler_containment",
+      "score_mean": 0.96,
+      "score_ci95": [
+        0.88,
+        1.0
+      ],
+      "active_tokens_mean": 3806.26,
+      "latency_ms_mean": 1586.5714348407346,
+      "peak_vram_mb_mean": 2513.228896484375,
+      "selection_latency_ms_mean": 0.0,
+      "ttft_ms_mean": 969.9628221007879,
+      "active_tokens_core_mean": 3806.26,
+      "ingest_ms_mean": 11.037805199885042,
+      "generation_latency_ms_mean": 1576.753841660102,
+      "retrieval_hit_mean": 1.0,
+      "retrieval_hit_n": 48,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 25,
+          "score_mean": 0.92,
+          "active_tokens_mean": 3770.12
+        },
+        "niah_single_1": {
+          "n": 25,
+          "score_mean": 1.0,
+          "active_tokens_mean": 3842.4
+        }
+      },
+      "per_task_context_length": {
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 0.92,
+          "active_tokens_mean": 3770.12
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 1.0,
+          "active_tokens_mean": 3842.4
+        }
+      },
+      "n_errors": 0
+    },
+    "kvpress_snapkv_0.3": {
+      "n_scored": 50,
+      "metric": "ruler_containment",
+      "score_mean": 0.52,
+      "score_ci95": [
+        0.38,
+        0.64
+      ],
+      "active_tokens_mean": 2660.82,
+      "latency_ms_mean": 2174.6604802001093,
+      "peak_vram_mb_mean": 4309.116025390625,
+      "ingest_ms_mean": 3.2711414791992866,
+      "generation_latency_ms_mean": 2152.0648800802883,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 25,
+          "score_mean": 0.36,
+          "active_tokens_mean": 2636.72
+        },
+        "niah_single_1": {
+          "n": 25,
+          "score_mean": 0.68,
+          "active_tokens_mean": 2684.92
+        }
+      },
+      "per_task_context_length": {
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 0.36,
+          "active_tokens_mean": 2636.72
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 0.68,
+          "active_tokens_mean": 2684.92
+        }
+      },
+      "n_errors": 0
+    },
+    "kvpress_tova_0.3": {
+      "n_scored": 50,
+      "metric": "ruler_containment",
+      "score_mean": 0.66,
+      "score_ci95": [
+        0.52,
+        0.8
+      ],
+      "active_tokens_mean": 2660.82,
+      "latency_ms_mean": 2043.1166013205075,
+      "peak_vram_mb_mean": 4309.116025390625,
+      "ingest_ms_mean": 3.0828840399044566,
+      "generation_latency_ms_mean": 2020.7856272000936,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 25,
+          "score_mean": 0.32,
+          "active_tokens_mean": 2636.72
+        },
+        "niah_single_1": {
+          "n": 25,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2684.92
+        }
+      },
+      "per_task_context_length": {
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 0.32,
+          "active_tokens_mean": 2636.72
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2684.92
+        }
+      },
+      "n_errors": 0
+    },
+    "kvpress_knorm_0.3": {
+      "n_scored": 50,
+      "metric": "ruler_containment",
+      "score_mean": 0.46,
+      "score_ci95": [
+        0.32,
+        0.6
+      ],
+      "active_tokens_mean": 2660.82,
+      "latency_ms_mean": 2005.8738414396066,
+      "peak_vram_mb_mean": 4309.116025390625,
+      "ingest_ms_mean": 2.967633979860693,
+      "generation_latency_ms_mean": 1974.7890395799186,
+      "per_task": {
+        "niah_multikey_1": {
+          "n": 25,
+          "score_mean": 0.08,
+          "active_tokens_mean": 2636.72
+        },
+        "niah_single_1": {
+          "n": 25,
+          "score_mean": 0.84,
+          "active_tokens_mean": 2684.92
+        }
+      },
+      "per_task_context_length": {
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 0.08,
+          "active_tokens_mean": 2636.72
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 25,
+          "score_mean": 0.84,
+          "active_tokens_mean": 2684.92
+        }
+      },
+      "n_errors": 0
+    }
+  },
+  "paired": {
+    "sempointer": {
+      "vs_full": {
+        "n_paired": 50,
+        "mean_a": 0.9,
+        "mean_b": 0.96,
+        "mean_diff": -0.06,
+        "diff_ci95": [
+          -0.14,
+          0.0
+        ],
+        "wins": 0,
+        "losses": 3,
+        "ties": 47,
+        "wilcoxon_p": 0.0832645166635504
+      }
+    },
+    "sempointer__substrate-kv": {
+      "vs_full": {
+        "n_paired": 50,
+        "mean_a": 0.86,
+        "mean_b": 0.96,
+        "mean_diff": -0.1,
+        "diff_ci95": [
+          -0.18,
+          -0.02
+        ],
+        "wins": 0,
+        "losses": 5,
+        "ties": 45,
+        "wilcoxon_p": 0.025347318677468252
+      }
+    },
+    "kvpress_snapkv_0.3": {
+      "vs_full": {
+        "n_paired": 50,
+        "mean_a": 0.52,
+        "mean_b": 0.96,
+        "mean_diff": -0.44,
+        "diff_ci95": [
+          -0.58,
+          -0.3
+        ],
+        "wins": 0,
+        "losses": 22,
+        "ties": 28,
+        "wilcoxon_p": 2.7265046561554873e-06
+      }
+    },
+    "kvpress_tova_0.3": {
+      "vs_full": {
+        "n_paired": 50,
+        "mean_a": 0.66,
+        "mean_b": 0.96,
+        "mean_diff": -0.3,
+        "diff_ci95": [
+          -0.42049999999999993,
+          -0.18
+        ],
+        "wins": 0,
+        "losses": 15,
+        "ties": 35,
+        "wilcoxon_p": 0.00010751117672950055
+      }
+    },
+    "kvpress_knorm_0.3": {
+      "vs_full": {
+        "n_paired": 50,
+        "mean_a": 0.46,
+        "mean_b": 0.96,
+        "mean_diff": -0.5,
+        "diff_ci95": [
+          -0.6405,
+          -0.34
+        ],
+        "wins": 1,
+        "losses": 26,
+        "ties": 23,
+        "wilcoxon_p": 1.4998757938933049e-06
+      }
+    }
+  }
+}

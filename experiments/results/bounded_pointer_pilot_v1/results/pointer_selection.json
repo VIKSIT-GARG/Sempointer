@@ -1,0 +1,77 @@
+{
+  "1024": {
+    "source": "development_only",
+    "pointer_cap": 128,
+    "candidates": [
+      {
+        "pointer_cap": 128,
+        "wins": 5,
+        "ties": 19,
+        "losses": 5,
+        "skips": 1,
+        "utility": 0,
+        "mean_tokens": 1024.0
+      },
+      {
+        "pointer_cap": 256,
+        "wins": 4,
+        "ties": 20,
+        "losses": 5,
+        "skips": 1,
+        "utility": -1,
+        "mean_tokens": 1024.0
+      }
+    ],
+    "rule": "Maximize question wins minus losses against budgeted BM25; ties prefer coverage, fewer tokens, smaller cap"
+  },
+  "2048": {
+    "source": "development_only",
+    "pointer_cap": 128,
+    "candidates": [
+      {
+        "pointer_cap": 128,
+        "wins": 10,
+        "ties": 18,
+        "losses": 2,
+        "skips": 0,
+        "utility": 8,
+        "mean_tokens": 1653.8333333333333
+      },
+      {
+        "pointer_cap": 256,
+        "wins": 8,
+        "ties": 18,
+        "losses": 4,
+        "skips": 0,
+        "utility": 4,
+        "mean_tokens": 1702.9
+      }
+    ],
+    "rule": "Maximize question wins minus losses against budgeted BM25; ties prefer coverage, fewer tokens, smaller cap"
+  },
+  "4096": {
+    "source": "development_only",
+    "pointer_cap": 128,
+    "candidates": [
+      {
+        "pointer_cap": 128,
+        "wins": 5,
+        "ties": 19,
+        "losses": 6,
+        "skips": 0,
+        "utility": -1,
+        "mean_tokens": 1835.3333333333333
+      },
+      {
+        "pointer_cap": 256,
+        "wins": 2,
+        "ties": 19,
+        "losses": 9,
+        "skips": 0,
+        "utility": -7,
+        "mean_tokens": 1935.5666666666666
+      }
+    ],
+    "rule": "Maximize question wins minus losses against budgeted BM25; ties prefer coverage, fewer tokens, smaller cap"
+  }
+}

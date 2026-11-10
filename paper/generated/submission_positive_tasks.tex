@@ -1,0 +1,39 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{All 25 positive mean differences among 123 active task/metric groups (22 negative, 76 zero). Scores are native metric $\times100$, not a pooled accuracy; $n/c$ is questions/exact contexts. Holm uses 53 eligible groups; dashes are descriptive groups with fewer than five contexts. Variable tracking is 0.060 under all 123 hypotheses.}
+\label{tab:sub-positive}
+\begin{tabular}{llrrrrr}
+\toprule
+Family & Task & $n/c$ & Off & On & $\Delta$ & Holm $p$ \\
+\midrule
+BABILong & qa1/64k & 2/2 & 0.00 & 50.00 & +50.00 & -- \\
+BABILong & qa10/64k & 3/3 & 33.33 & 66.67 & +33.33 & -- \\
+BABILong & qa5/8k & 3/3 & 33.33 & 66.67 & +33.33 & -- \\
+BABILong & qa6/8k & 2/2 & 50.00 & 100.00 & +50.00 & -- \\
+BABILong & qa7/4k & 1/1 & 0.00 & 100.00 & +100.00 & -- \\
+L-Eval & Gov. report & 5/5 & 13.03 & 14.94 & +1.90 & 1.000 \\
+L-Eval & Meeting summary & 5/5 & 19.34 & 22.21 & +2.88 & 1.000 \\
+L-Eval & Multi-doc QA & 5/5 & 42.74 & 46.71 & +3.97 & 1.000 \\
+L-Eval & NarrativeQA & 6/6 & 9.58 & 14.48 & +4.90 & 1.000 \\
+L-Eval & Natural questions & 5/5 & 45.07 & 46.97 & +1.90 & 1.000 \\
+L-Eval & News summary & 2/2 & 7.97 & 8.39 & +0.43 & -- \\
+L-Eval & Paper assistant & 5/4 & 12.27 & 13.82 & +1.55 & -- \\
+L-Eval & Scientific QA & 5/5 & 25.44 & 44.11 & +18.67 & 1.000 \\
+L-Eval & Topic retrieval & 6/6 & 21.43 & 22.59 & +1.16 & 1.000 \\
+LoCoMo & QA & 100/4 & 25.28 & 25.59 & +0.31 & -- \\
+LongBench & HotpotQA & 11/11 & 56.86 & 57.14 & +0.28 & 1.000 \\
+LongBench v2 & Choice QA & 100/91 & 27.00 & 34.00 & +7.00 & 1.000 \\
+LongMemEval & Memory QA & 100/100 & 39.22 & 40.86 & +1.64 & 1.000 \\
+LooGLE & Short cloze & 25/24 & 60.00 & 60.13 & +0.13 & 1.000 \\
+LooGLE & Short QA & 25/23 & 58.64 & 62.18 & +3.54 & 1.000 \\
+RULER & Variable tracking & 17/17 & 37.65 & 74.12 & +36.47 & 0.026 \\
+SCROLLS & Gov. report & 14/14 & 8.03 & 8.73 & +0.69 & 1.000 \\
+SCROLLS & NarrativeQA & 14/13 & 23.05 & 29.93 & +6.88 & 1.000 \\
+SCROLLS & QMSum & 14/11 & 17.33 & 18.15 & +0.83 & 1.000 \\
+SCROLLS & QuALITY & 15/14 & 66.71 & 75.20 & +8.48 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}

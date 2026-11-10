@@ -1,0 +1,606 @@
+family,task,split,metric,protocol,comparison,n_paired,score_difference,score_difference_ci95,active_tokens_difference,latency_ms_difference,generation_ms_difference
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,-0.08,"[-0.24, 0.04]",0.04,-492.3531468802412,-50.21326252005565
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,-0.04,"[-0.16, 0.08]",6427.64,6125.92081867997,6125.92081867997
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,0.08,"[-0.12, 0.32]",7385.32,6883.479120759912,6876.324094040119
+infinite,longbook_choice_eng,test,choice,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,-0.08,"[-0.24, 0.04]",6344.32,6068.115675039799,6060.960648320007
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,0.022395952660808342,"[-0.025881823769514777, 0.0723662243905877]",5771.32,5574.771172719894,5574.771172719894
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,0.028837055417700576,"[-0.0222849344204183, 0.07730169561621174]",6146.12,5929.630481320091,5924.200340559918
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,-0.09027735852413073,"[-0.2170232868150525, 0.014837164561527857]",5105.2,5132.091087000126,5126.660946239954
+infinite,longbook_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,-0.07923251504228085,"[-0.2164510934246683, 0.03376736222485226]",0.24,-439.73578083974644,-85.2623556000708
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.046899561175457655,"[-0.0032847891311697094, 0.10588815084385467]",2252.0,1755.6252558747758,1755.6252558747758
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.08147604296661337,"[0.013172052125487107, 0.16864755583804875]",2576.9375,1899.5960416869907,1894.2612646871737
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.031066734038280013,"[-0.14037556412830018, 0.0649746843818548]",1537.25,1407.2429486870278,1401.9081716872108
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,-0.06512387488343069,"[-0.15866729835123808, 0.007452701997240257]",0.25,-23.175914687641352,137.64690062474472
+leval,narrative_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_full_context,2,-0.23529411764705882,"[-0.47058823529411764, 0.0]",-7765.0,-7493.700016500043,-7498.024898499352
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.10642510566271415,"[-0.3104694015120281, 0.09448390601354158]",-901.125,-945.9338438130942,-950.5048541249153
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,-0.028964978960415964,"[-0.06036352322660729, -0.005577012498261725]",0.0,698.1516857494654,748.846691937672
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_full_context,16,-0.16684172125795182,"[-0.3175568549663401, -0.04296634860544635]",-2477.4375,-2866.383961375064,-2871.110324687109
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.026006274082302508,"[-0.09951602987877257, 0.18558922344929266]",113.6875,165.9907985000757,165.9907985000757
+leval,scientific_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.026006274082302508,"[-0.09951602987877257, 0.18558922344929266]",113.6875,135.72424324917165,131.1532329373506
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,sempointer_vs_bm25_2,300,0.023654418636350556,"[0.005387018935450365, 0.046978522072347845]",1088.59,651.6213399565852,646.2981125098676
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,sempointer_vs_bm25_4,300,-0.005975194637515107,"[-0.028108730364205067, 0.018439098806536994]",54.776666666666664,-131.87056123992153,-137.19378868663927
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,sempointer_vs_bm25_matched_budget,300,0.0003993524409855291,"[-0.025182522618404427, 0.02512099196865636]",0.016666666666666666,-218.9067668568032,-134.5363309634672
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,sempointer_vs_pointer_off,300,0.0124052817894597,"[-0.005087115276870981, 0.034043879881082546]",795.2933333333333,366.02478777662475,366.02478777662475
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_full_context,8,-0.0262951417018683,"[-0.09949806025096108, 0.04688513196242017]",-9669.625,-11616.367517499839,-11621.10654775006
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_pointer_off,15,-0.0008211769530744428,"[-0.02286376903526462, 0.01904890434989841]",591.5333333333333,533.9686462665213,533.9686462665213
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_bm25_2,15,0.002183727117895315,"[-0.01948940493208205, 0.019412394133460333]",799.5333333333333,894.8048317329722,890.0118299999576
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_bm25_4,15,-0.012976574050664557,"[-0.03908413105726061, 0.01202105294843717]",-239.66666666666666,103.06349940007446,98.27049766705993
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_bm25_matched_budget,15,-0.023145144662648002,"[-0.060784047378453894, 0.007906531624004598]",0.0,207.40873733282874,280.18776466651616
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_pointer_off,26,0.002792834914707065,"[-0.01821109411331492, 0.025378383343967907]",440.65384615384613,306.98387046148724,306.98387046148724
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_bm25_2,26,0.027711223934274394,"[-0.07774498698438158, 0.13764577355421453]",1413.1923076923076,1587.0569630768177,1579.4420086535865
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_bm25_4,26,0.006406505195044014,"[-0.01455760763479292, 0.028644561729332465]",400.7307692307692,308.9994143077862,301.38445988455504
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_bm25_matched_budget,26,0.0374884502069954,"[-0.01539042758047741, 0.11101013233795495]",0.4230769230769231,-392.8146930781465,-242.26478492387463
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_full_context,16,-0.012359337399250592,"[-0.142511036925283, 0.07853998461950079]",-5027.4375,-6581.180192562897,-6590.123205125337
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,sempointer_vs_full_context,13,-0.07692307692307693,"[-0.3076923076923077, 0.15384615384615385]",-10831.23076923077,-11211.207446155044,-11219.921202770489
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,sempointer_vs_pointer_off,300,0.02,"[-0.013333333333333334, 0.056666666666666664]",3658.463333333333,3425.493604456598,3425.493604456598
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,sempointer_vs_bm25_2,300,-0.02,"[-0.07333333333333333, 0.03]",4667.1,4245.484671799974,4237.186694083484
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,sempointer_vs_bm25_4,300,0.023333333333333334,"[-0.013333333333333334, 0.06]",3627.29,3410.921141679785,3402.623163963295
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,sempointer_vs_bm25_matched_budget,300,-0.02,"[-0.06666666666666667, 0.02666666666666667]",0.21666666666666667,-331.5944900767082,-1.1041584465639669
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,sempointer_vs_bm25_4,300,0.003974117012915089,"[-0.015553070177912028, 0.02464128470964544]",4486.66,4127.753462226653,4119.001183816638
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,sempointer_vs_bm25_matched_budget,300,-0.00948367301696513,"[-0.046550204300237714, 0.0295078466865625]",0.06666666666666667,-1343.295968823398,-955.5523188666931
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,sempointer_vs_pointer_off,300,0.007320076608874684,"[-0.010478817607097818, 0.026649560452472368]",4507.483333333334,4126.50439807671,4126.50439807671
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,sempointer_vs_bm25_2,300,0.0800789414137702,"[0.04607699257839721, 0.11582482933765051]",5527.72,5099.417074533477,5090.66479612346
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_2,75,0.03236747924493966,"[-0.018052047853570504, 0.07994886098317251]",1030.48,583.3923878937974,577.5444418001916
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_4,75,-0.004908831041730486,"[-0.05076115601102296, 0.04512229841046608]",-9.146666666666667,-191.90993803954976,-197.75788413315544
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_matched_budget,75,-0.016257262063677305,"[-0.0745875490211671, 0.04448685535103778]",0.2,-250.1626822665033,-153.79054685330024
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_full_context,22,-0.05659095833752852,"[-0.20452379644925847, 0.08640300387394784]",-13302.363636363636,-15632.267929045569,-15637.729973863648
+loogle,shortdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_pointer_off,75,0.03283166842379936,"[-0.0113774495375259, 0.07702750592481689]",836.4266666666666,430.1251836800475,430.1251836800475
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,sempointer_vs_full_context,25,-0.014766095890277539,"[-0.02852823563693513, -0.0015279288241045927]",-13114.8,-22224.647804839005,-22231.63465687965
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,sempointer_vs_pointer_off,75,-0.0014398645883404808,"[-0.008760385745182071, 0.005479092216168315]",804.3066666666666,195.54384461357589,195.54384461357589
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_2,75,0.010788801758733447,"[0.002494800824239433, 0.019392682606979402]",1399.4133333333334,2018.356709267494,2011.2695302936118
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_4,75,-0.011760616733576326,"[-0.020804303581312217, -0.0033843804496297824]",361.3333333333333,-1128.29177237298,-1135.3789513468626
+loogle,summarization,test,rouge_l,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_matched_budget,75,-0.020523683418566634,"[-0.03122062576455448, -0.01012694733011626]",0.12,-1712.1210922394798,-1598.1535013464752
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_2,47,0.0,"[-0.06382978723404255, 0.06382978723404255]",305.3829787234043,160.44914480995004,156.85687857525255
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_4,47,-0.11702127659574468,"[-0.2128191489361702, -0.0425531914893617]",-724.6595744680851,-438.2380271691023,-441.83029340379977
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_matched_budget,47,0.00851063829787234,"[-0.025531914893617023, 0.059574468085106386]",0.10638297872340426,126.60276010641358,210.2284540845592
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_full_context,38,-0.10526315789473684,"[-0.23684210526315788, 0.02631578947368421]",-5161.315789473684,-5153.602123341676,-5158.662229710079
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_pointer_off,48,0.0,"[-0.0625, 0.0625]",304.2916666666667,109.9432947700194,109.9432947700194
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_full_context,1,0.0,"[0.0, 0.0]",0.0,-9.386696000092343,-11.947658000053707
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_pointer_off,1,0.0,"[0.0, 0.0]",0.0,-4.731050000145842,-4.731050000145842
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_2,1,0.0,"[0.0, 0.0]",0.0,-2.0380549999572395,-4.465265999897383
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_4,1,0.0,"[0.0, 0.0]",0.0,-3.8981220000096073,-6.325332999949751
+scrolls,contract_nli,validation,exact,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_matched_budget,1,0.0,"[0.0, 0.0]",0.0,-0.8858260000579321,4.361673999937921
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_2,1,-0.06281661600810537,"[-0.06281661600810537, -0.06281661600810537]",9997.0,13873.837956000216,13869.645621000245
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_4,1,-0.1123404255319149,"[-0.1123404255319149, -0.1123404255319149]",8955.0,12719.709452000188,12715.517117000218
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_matched_budget,1,-0.3268858800773694,"[-0.3268858800773694, -0.3268858800773694]",0.0,3042.2040139999353,3659.3150710000373
+scrolls,narrative_qa,validation,qa_f1,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_pointer_off,1,-0.06281661600810537,"[-0.06281661600810537, -0.06281661600810537]",9997.0,13840.316287000405,13840.316287000405
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,7,0.14285714285714285,"[0.0, 0.42857142857142855]",5233.714285714285,4106.554906857257,4106.554906857257
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,7,0.14285714285714285,"[0.0, 0.42857142857142855]",5233.714285714285,4096.65231085741,4092.401201571582
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,7,0.14285714285714285,"[0.0, 0.42857142857142855]",4194.0,3162.881706857466,3158.630597571638
+babilong,data/qa1/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,7,0.2857142857142857,"[0.0, 0.5714285714285714]",0.14285714285714285,-379.19232799984974,-82.35375114275355
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",588.3333333333334,402.46678433322813,402.46678433322813
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",588.3333333333334,427.19353299965707,423.472427333157
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",-450.3333333333333,-185.48869300032797,-189.20979866682805
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.0,"[0.0, 0.0]",0.3333333333333333,-62.58476966680367,-2.1043676667128843
+babilong,data/qa1/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,3,0.0,"[0.0, 0.0]",-13691.333333333334,-13263.426211666685,-13267.277325666631
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",10717.0,10799.27904633314,10799.27904633314
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",10717.0,10802.799819666234,10798.602087999825
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",9677.0,9980.83182133299,9976.63408966658
+babilong,data/qa1/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.0,"[0.0, 0.0]",0.0,-465.61412933366836,234.57186566656674
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.0,"[0.0, 0.0]",1242.6,921.9771766000122,917.9483301998516
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.2,"[0.0, 0.6]",203.8,91.41274760013403,87.38390119997348
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.2,"[0.0, 0.6]",0.0,-125.19665059990075,-35.77804200012906
+babilong,data/qa1/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.0,"[0.0, 0.0]",1242.6,918.0591606000235,918.0591606000235
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,2,0.5,"[0.0, 1.0]",-2575.0,-2157.102360499948,-2161.039451999841
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.5,"[0.0, 1.0]",129.0,-452.08410600002935,-452.08410600002935
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.5,"[0.0, 1.0]",129.0,-430.0788299999567,-433.86950399985835
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.5,"[0.0, 1.0]",-909.0,-765.8088879998104,-769.599561999712
+babilong,data/qa1/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.5,"[0.0, 1.0]",0.0,-96.79384700007176,-33.45134649998727
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.2,"[0.0, 0.6]",2571.4,1940.978081600042,1936.9719551999879
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.2,"[0.0, 0.6]",1532.6,1168.0242184001145,1164.0180920000603
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.2,"[0.0, 0.6]",0.0,-347.5283665999086,-207.41369819998
+babilong,data/qa1/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.2,"[0.0, 0.6]",2571.4,1940.3716857999825,1940.3716857999825
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.0,"[0.0, 0.0]",260.6,155.549940200126,155.549940200126
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.0,"[0.0, 0.0]",260.6,158.394343800137,154.89414260009653
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.2,"[0.0, 0.6]",-778.0,-552.2493189999295,-555.74952019997
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.2,"[0.0, 0.6]",0.0,-27.055764999749954,22.098906000246643
+babilong,data/qa1/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,5,0.2,"[0.0, 0.6]",-6044.6,-5578.419125199889,-5582.053120599903
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.2,"[-0.4, 0.8]",0.6,-523.8557384005617,-248.36109940033566
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,-0.2,"[-0.6, 0.0]",5136.2,4315.838685199833,4315.838685199833
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,-0.2,"[-0.6, 0.0]",5136.2,4324.1996155997185,4320.295459999761
+babilong,data/qa10/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,-0.4,"[-0.8, 0.0]",4095.0,3657.473933199708,3653.5697775997505
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",563.3333333333334,427.9996723333473,424.11629166675385
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,-0.3333333333333333,"[-1.0, 0.0]",-475.6666666666667,-362.97854866673634,-366.8619293333298
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,-0.3333333333333333,"[-1.0, 0.0]",2.0,-70.39286433337111,-10.045816666661267
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,3,0.0,"[0.0, 0.0]",-13177.333333333334,-13456.506238666558,-13460.541765333042
+babilong,data/qa10/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",563.3333333333334,432.2456276666647,432.2456276666647
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,-0.2,"[-0.6, 0.0]",9546.2,9513.25606440032,9508.716621000258
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.0,"[-0.6, 0.6]",0.0,-614.698196399695,38.38452200025131
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.2,"[0.0, 0.6]",10587.0,10172.84359080013,10172.84359080013
+babilong,data/qa10/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.2,"[0.0, 0.6]",10587.0,10193.002207600148,10188.462764200085
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",453.5,351.5925105000406,346.8303087499862
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.25,"[0.0, 0.75]",0.0,-97.04386374983187,-1.8322445000649168
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[-0.75, 0.75]",1212.0,941.6134179998608,941.6134179998608
+babilong,data/qa10/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.25,"[-0.5, 1.0]",1472.0,992.7796622499727,988.0174604999183
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,-0.25,"[-0.75, 0.0]",0.25,-46.760881500176765,-3.0346387500230776
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,0.0,"[0.0, 0.0]",-2530.75,-2149.612084250066,-2153.355161250147
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",124.0,-121.26716100010526,-121.26716100010526
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",124.0,-103.13448625026922,-106.75401975015575
+babilong,data/qa10/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",-893.0,-744.1518075002023,-747.7713410000888
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,6,-0.16666666666666666,"[-0.5, 0.0]",0.0,-131.35773733339798,11.987122999926214
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,6,0.0,"[0.0, 0.0]",2567.5,2119.824358500106,2119.824358500106
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,6,0.0,"[0.0, 0.0]",2567.5,2130.0231696667047,2126.191326999939
+babilong,data/qa10/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,6,0.0,"[0.0, 0.0]",1527.1666666666667,1324.6510064999864,1320.819163833221
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",280.0,173.75164066682677,170.05964866696863
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",-758.6666666666666,-634.008020666594,-637.7000126664522
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.0,"[0.0, 0.0]",0.0,-50.37393366683318,-0.8261606665958728
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,3,0.0,"[0.0, 0.0]",-6483.666666666667,-6023.29012233334,-6027.122236000044
+babilong,data/qa10/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",280.0,169.35683466666282,169.35683466666282
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,6,0.0,"[0.0, 0.0]",4230.5,3668.934204833249,3664.9631986665554
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,6,0.0,"[0.0, 0.0]",0.0,-713.111738333358,-415.3461253333717
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,6,0.0,"[0.0, 0.0]",5271.166666666667,4574.784169833265,4574.784169833265
+babilong,data/qa2/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,6,0.0,"[0.0, 0.0]",5271.166666666667,4561.803830500139,4557.832824333445
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.0,"[0.0, 0.0]",-433.0,-1083.7860445001297,-1087.5115450000976
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.0,"[0.0, 0.0]",0.0,-792.3195589999068,-727.8466344998833
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,2,0.0,"[0.0, 0.0]",-14127.0,-17682.311974499724,-17686.170050999637
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.0,"[0.0, 0.0]",607.0,254.77027550027742,254.77027550027742
+babilong,data/qa2/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.0,"[0.0, 0.0]",607.0,312.9973580000751,309.2718575001072
+babilong,data/qa2/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",10657.0,10158.860694000054,10154.566463750143
+babilong,data/qa2/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",9617.0,9199.913897749979,9195.619667500068
+babilong,data/qa2/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.0,-1113.4676107499217,-426.28642899990155
+babilong,data/qa2/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",10657.0,10107.714781000253,10107.714781000253
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,6,0.0,"[0.0, 0.0]",191.16666666666666,358.8099324998287,355.1598611665365
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,6,0.0,"[0.0, 0.0]",0.0,124.43713833325394,210.65286500000488
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,6,0.0,"[0.0, 0.0]",1231.1666666666667,1224.0144291664212,1224.0144291664212
+babilong,data/qa2/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,6,0.0,"[0.0, 0.0]",1231.1666666666667,1213.71336533313,1210.0632939998377
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",2440.0,2013.8029714998993,2013.8029714998993
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",2440.0,1998.539618000109,1994.5887145000825
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",1400.75,1232.4641730000394,1228.513269500013
+babilong,data/qa2/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",1.25,-366.2381674998869,-223.78607549978824
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,8,0.0,"[0.0, 0.0]",268.125,155.965095375052,152.4371528751658
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,8,0.0,"[0.0, 0.0]",-769.875,-1040.116047875017,-1043.6439903749033
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,8,0.0,"[0.0, 0.0]",0.0,-196.7505963749545,-147.47120362488886
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,8,-0.125,"[-0.375, 0.0]",-6187.75,-5994.935395250024,-5998.589118249982
+babilong,data/qa2/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,8,0.0,"[0.0, 0.0]",268.125,142.0387815001618,142.0387815001618
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,6,0.0,"[0.0, 0.0]",5213.333333333333,4736.820704333392,4736.820704333392
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,6,0.0,"[0.0, 0.0]",5559.833333333333,4730.457572833302,4724.776475166664
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,6,0.0,"[0.0, 0.0]",4560.333333333333,3926.1354913335254,3920.454393666887
+babilong,data/qa3/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,6,0.0,"[0.0, 0.0]",0.6666666666666666,-377.06968249995043,-43.27896799994354
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",587.75,128.13921524980287,128.13921524980287
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",847.75,587.9042075001735,583.4336257501036
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",-192.0,-122.5770979998515,-127.04767974992137
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.25,209.2824804999509,281.43222524988687
+babilong,data/qa3/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,0.0,"[0.0, 0.0]",-13685.25,-13842.459407749971,-13847.078254000055
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",10544.25,9925.58333600016,9925.58333600016
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",10804.5,10145.058326750132,10139.906294249955
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",9763.25,9641.045260000283,9635.893227500106
+babilong,data/qa3/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,-0.25,"[-0.75, 0.0]",0.0,-1281.5946954997344,-557.2877509998762
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,6,0.0,"[0.0, 0.0]",1199.6666666666667,432.6925383334886,432.6925383334886
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,6,0.0,"[0.0, 0.0]",1719.3333333333333,1225.4994019999685,1220.0215863333597
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,6,-0.16666666666666666,"[-0.5, 0.0]",679.8333333333334,62.85545833331222,57.377642666703345
+babilong,data/qa3/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,6,0.0,"[-0.5, 0.5]",0.3333333333333333,-32.44214250003097,74.62289516668837
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",378.5,45.84129925024172,41.68833175015152
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,-0.5,"[-1.0, 0.0]",-562.25,-469.28628899979685,-473.43925649988705
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.0,-372.6858310000125,-325.7035859999178
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,-0.25,"[-0.75, 0.0]",-2436.5,-2090.2264274999425,-2094.5128750000777
+babilong,data/qa3/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",119.0,-54.96338099987952,-54.96338099987952
+babilong,data/qa3/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",2489.25,2622.1776062502613,2622.1776062502613
+babilong,data/qa3/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",3269.0,2811.7509184999108,2805.7026005000125
+babilong,data/qa3/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",2229.25,2544.409628500034,2538.361310500136
+babilong,data/qa3/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.0,305.5395269998371,484.98831699998846
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.0,"[0.0, 0.0]",252.0,-248.13637099987318,-248.13637099987318
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.0,"[0.0, 0.0]",252.0,-272.39508350021424,-275.63321649995487
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.0,"[0.0, 0.0]",-702.5,-425.2351704999455,-428.47330349968615
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.0,"[0.0, 0.0]",0.0,-8.771767500320493,33.62781949999771
+babilong,data/qa3/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,2,-0.5,"[-1.0, 0.0]",-5689.5,-4335.203151999849,-4338.58556149994
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.0,"[0.0, 0.0]",0.0,-322.2937689999223,-35.589767999984666
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",5251.0,4640.312821333434,4640.312821333434
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",5251.0,4638.055141999605,4633.89443366638
+babilong,data/qa4/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",4209.666666666667,3829.7645080000016,3825.603799666775
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,3,0.3333333333333333,"[0.0, 1.0]",-13620.333333333334,-14155.670772333602,-14159.075354333558
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",592.75,445.94670025003325,445.94670025003325
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",592.75,459.6752865002145,456.43877750023876
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,-0.25,"[-0.75, 0.0]",-445.5,-341.10939649963257,-344.3459054996083
+babilong,data/qa4/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[-0.75, 0.75]",0.0,-48.8810219997049,7.606988500128864
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,7,0.0,"[0.0, 0.0]",10673.57142857143,10212.684384142905,10212.684384142905
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,7,0.0,"[0.0, 0.0]",10822.142857142857,10242.79865585741,10237.9384370003
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,7,0.0,"[0.0, 0.0]",9781.285714285714,9715.457052142776,9710.596833285666
+babilong,data/qa4/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,7,0.0,"[0.0, 0.0]",0.0,-728.7210318567239,-23.514533999819573
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,8,0.125,"[0.0, 0.375]",1238.25,925.5604056246511,925.5604056246511
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,8,0.125,"[0.0, 0.375]",1238.25,926.9804427498229,922.9518859999644
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,8,0.125,"[0.0, 0.375]",199.125,125.21823487475103,121.18967812489245
+babilong,data/qa4/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,8,0.125,"[0.0, 0.375]",0.0,-218.81264062517403,-129.13652187501157
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.0,-39.56990399910865,2.8326730005119316
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,0.0,"[0.0, 0.0]",-2549.25,-2168.231872499291,-2171.650969749635
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",129.0,58.70375925019289,58.70375925019289
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",129.0,53.38939625062267,50.09792900023058
+babilong,data/qa4/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",-908.75,-747.3420709991387,-750.6335382495308
+babilong,data/qa4/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.0,"[0.0, 0.0]",2431.0,1964.5302194999203,1964.5302194999203
+babilong,data/qa4/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.0,"[0.0, 0.0]",2431.0,1965.4707484996834,1961.4406685000176
+babilong,data/qa4/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.0,"[0.0, 0.0]",1390.5,1141.631141000289,1137.6010610006233
+babilong,data/qa4/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.0,"[0.0, 0.0]",0.0,-143.4719999997469,-11.523841499638365
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.0,"[0.0, 0.0]",263.0,157.34515499980262,154.03617150013815
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.0,"[0.0, 0.0]",-775.0,-656.6713535003146,-659.980336999979
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.0,"[0.0, 0.0]",0.5,-45.42865550001807,1.0177710000789375
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,2,0.0,"[0.0, 0.0]",-5941.0,-5504.6992649995445,-5508.141043999785
+babilong,data/qa4/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.0,"[0.0, 0.0]",263.0,152.73246149990882,152.73246149990882
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,6,0.16666666666666666,"[0.0, 0.5]",5196.5,4617.463567499726,4617.463567499726
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,6,0.16666666666666666,"[0.0, 0.5]",5543.0,4841.4136260000005,4836.453560666541
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,6,0.16666666666666666,"[0.0, 0.5]",4502.833333333333,4162.230863833277,4157.270798499819
+babilong,data/qa5/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,6,0.16666666666666666,"[0.0, 0.5]",0.0,-293.6886046665374,8.896582999871802
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.0,"[0.0, 0.0]",555.5,396.26777800003765,396.26777800003765
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.0,"[0.0, 0.0]",555.5,414.8757535003824,411.21485499979826
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.0,"[0.0, 0.0]",-484.5,-391.1323514994365,-394.79325000002063
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.0,"[0.0, 0.0]",0.0,-69.42687299942918,-7.732380000106787
+babilong,data/qa5/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,2,0.0,"[0.0, 0.0]",-13136.5,-13542.439056999683,-13546.254116
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,-0.25,"[-1.0, 0.5]",11028.75,11066.760869500058,11060.655964500256
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,-0.5,"[-1.0, 0.0]",9987.75,10441.654416250003,10435.549511250201
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,-0.75,"[-1.0, -0.25]",0.25,-288.6165242498464,421.4476104998539
+babilong,data/qa5/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,-0.25,"[-1.0, 0.5]",10508.5,10677.244864000158,10677.244864000158
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.0,"[0.0, 0.0]",169.0,113.20391039989772,109.55829579997953
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.0,"[0.0, 0.0]",0.0,-87.9273678001482,-4.189845199834963
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.2,"[0.0, 0.6]",1209.0,801.1318037999445,801.1318037999445
+babilong,data/qa5/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.2,"[0.0, 0.6]",1209.0,822.331026199754,818.6854115998358
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.0,"[0.0, 0.0]",2542.8,2106.2300978001076,2106.2300978001076
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.0,"[0.0, 0.0]",2750.8,2198.4093091998147,2193.978962000074
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.2,"[0.0, 0.6]",1710.4,1339.1792180002085,1334.7488708004676
+babilong,data/qa5/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.2,"[0.0, 0.6]",0.0,-265.51198700053646,-119.92949039995437
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,7,0.0,"[-0.42857142857142855, 0.42857142857142855]",270.7142857142857,155.63842614262416,155.63842614262416
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,7,0.0,"[-0.42857142857142855, 0.42857142857142855]",270.7142857142857,156.53443071408088,152.48994228581327
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,7,0.0,"[-0.5714285714285714, 0.5714285714285714]",-757.1428571428571,-644.2902235717805,-648.3347120000482
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,7,0.0,"[-0.42857142857142855, 0.42857142857142855]",0.0,-54.647871857274104,-8.93119071419538
+babilong,data/qa5/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,7,0.14285714285714285,"[-0.2857142857142857, 0.5714285714285714]",-6278.428571428572,-5813.399302000237,-5817.597188000036
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,7,0.0,"[-0.42857142857142855, 0.42857142857142855]",5322.428571428572,4617.9252202859325,4612.660003000071
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,7,0.14285714285714285,"[-0.2857142857142857, 0.5714285714285714]",4282.142857142857,3897.8357248574216,3892.5705075715605
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,7,0.2857142857142857,"[0.0, 0.5714285714285714]",0.2857142857142857,-456.344699714074,-154.21082071432986
+babilong,data/qa6/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,7,0.0,"[-0.42857142857142855, 0.42857142857142855]",5173.714285714285,4492.824500142888,4492.824500142888
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,-0.3333333333333333,"[-1.0, 0.0]",609.6666666666666,458.7021206665061,458.7021206665061
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,-0.3333333333333333,"[-1.0, 0.0]",609.6666666666666,468.9689986677574,465.1017773339845
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",-428.3333333333333,-334.243606332772,-338.1108276665448
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.3333333333333333,"[0.0, 1.0]",0.0,-253.5365606651491,-191.33326966615036
+babilong,data/qa6/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,3,0.6666666666666666,"[0.0, 1.0]",-14158.666666666666,-15801.681652999227,-15805.68564866644
+babilong,data/qa6/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.3333333333333333,"[0.0, 1.0]",10584.0,10151.833152333287,10151.833152333287
+babilong,data/qa6/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.3333333333333333,"[0.0, 1.0]",10584.0,10154.69210966603,10150.191620999976
+babilong,data/qa6/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",9542.0,9548.03806266591,9543.537573999856
+babilong,data/qa6/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.3333333333333333,"[0.0, 1.0]",0.0,-921.3643390006231,-263.1881676667642
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.0,"[0.0, 0.0]",1234.6,916.6371589997652,916.6371589997652
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.0,"[0.0, 0.0]",1234.6,922.2784860001411,918.5291706004136
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.0,"[0.0, 0.0]",196.6,120.88083339967852,117.13151799995103
+babilong,data/qa6/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.2,"[0.0, 0.6]",0.0,-92.28838220060425,-4.6217470000556204
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.25,-42.04343750029693,0.9807479998471536
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,0.0,"[0.0, 0.0]",-2551.25,-2140.3723394998906,-2143.9445999997133
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.25,"[0.0, 0.75]",124.0,-79.85221474973514,-79.85221474973514
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.25,"[0.0, 0.75]",124.0,-79.81007600005796,-83.25549899973339
+babilong,data/qa6/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.25,"[0.0, 0.75]",-914.25,-907.2638890002054,-910.7093119998808
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.0,"[0.0, 0.0]",1542.4,1315.539457399791,1311.5877303998786
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.0,"[0.0, 0.0]",0.0,-154.14827800013882,-11.66142160018353
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.0,"[0.0, 0.0]",2581.4,2119.5202927998253,2119.5202927998253
+babilong,data/qa6/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.0,"[0.0, 0.0]",2581.4,2120.5329367998274,2116.581209799915
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.3333333333333333,"[0.0, 1.0]",-763.6666666666666,-1096.6952600001605,-1100.4109066670935
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.0,"[0.0, 0.0]",0.0,-29.54891499909233,21.233426333613654
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,3,0.0,"[0.0, 0.0]",-6139.0,-5593.903964333246,-5597.7735563334745
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.6666666666666666,"[0.0, 1.0]",273.3333333333333,-498.10678933348146,-498.10678933348146
+babilong,data/qa6/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.6666666666666666,"[0.0, 1.0]",273.3333333333333,-488.8673709995904,-492.5830176665234
+babilong,data/qa7/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",5268.0,4676.59299033312,4676.59299033312
+babilong,data/qa7/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",5615.333333333333,4956.727287998547,4951.243567332615
+babilong,data/qa7/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",4573.666666666667,4369.148690665497,4363.664969999566
+babilong,data/qa7/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,-0.3333333333333333,"[-1.0, 0.0]",0.0,-181.61784200068118,131.06076333315286
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.0,-61.435783999286286,1.1778275002143346
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,0.0,"[0.0, 0.0]",-13915.0,-14374.269088999881,-14378.091166749755
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",598.5,378.3831842501968,378.3831842501968
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",598.5,377.0300660000885,373.36949824998555
+babilong,data/qa7/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,-0.25,"[-0.75, 0.0]",-440.5,-343.88080600024296,-347.5413737503459
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,7,-0.2857142857142857,"[-0.5714285714285714, 0.0]",10641.142857142857,10487.27398857162,10487.27398857162
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,7,0.0,"[-0.42857142857142855, 0.42857142857142855]",11385.142857142857,10964.815118857327,10958.103221571426
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,7,-0.42857142857142855,"[-0.8571428571428571, -0.14285714285714285]",10343.285714285714,10267.48960200049,10260.77770471459
+babilong,data/qa7/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,7,-0.14285714285714285,"[-0.42857142857142855, 0.0]",0.0,-850.7034782852705,-87.2600862854337
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",545.6666666666666,438.73452166675025,433.9380650001961
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.0,"[0.0, 0.0]",0.0,-87.61963566727597,12.922443999438352
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",1239.3333333333333,979.2830700001408,979.2830700001408
+babilong,data/qa7/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",1585.6666666666667,1132.5547583331474,1127.7583016665933
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.25,"[0.0, 0.75]",122.0,77.90933924957244,77.90933924957244
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.25,"[0.0, 0.75]",122.0,86.40418049981236,82.98614074965371
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.5,"[0.0, 1.0]",-916.0,-722.505716000569,-725.9237557507277
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.5,"[0.0, 1.0]",0.0,-59.693441000490566,-14.439360750429842
+babilong,data/qa7/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,0.5,"[0.0, 1.0]",-2551.25,-2095.559888249909,-2099.117609000132
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,7,-0.14285714285714285,"[-0.42857142857142855, 0.0]",2493.0,1925.1684659997668,1925.1684659997668
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,7,0.0,"[0.0, 0.0]",2939.0,2183.8827042850294,2178.742029713638
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,7,-0.14285714285714285,"[-0.42857142857142855, 0.0]",1898.7142857142858,1638.158081142917,1633.0174065715255
+babilong,data/qa7/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,7,0.0,"[0.0, 0.0]",0.0,-162.38091071461116,-8.821427857453402
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.0,"[0.0, 0.0]",0.0,-44.11675700066553,5.172269999548007
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,2,0.0,"[0.0, 0.0]",-6512.0,-6074.266108999836,-6077.952816499419
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.0,"[0.0, 0.0]",284.0,167.5199999999677,167.5199999999677
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.0,"[0.0, 0.0]",284.0,170.71056849999877,167.14880500057916
+babilong,data/qa7/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.0,"[0.0, 0.0]",-738.5,-606.7325840003832,-610.2943474998028
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,7,0.14285714285714285,"[0.0, 0.42857142857142855]",5123.285714285715,4700.73075428562,4700.73075428562
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,7,0.14285714285714285,"[0.0, 0.42857142857142855]",6015.571428571428,5372.534867856952,5365.9120458568
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,7,0.14285714285714285,"[0.0, 0.42857142857142855]",4974.428571428572,4588.0891167144,4581.466294714249
+babilong,data/qa8/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,7,-0.14285714285714285,"[-0.42857142857142855, 0.0]",0.0,-260.94113171412965,77.79568157132287
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.3333333333333333,"[0.0, 1.0]",0.0,-83.06294566652166,-20.130302666681626
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,3,0.3333333333333333,"[0.0, 1.0]",-13979.333333333334,-14371.100306666753,-14375.073245666803
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",601.6666666666666,463.38085599988216,463.38085599988216
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",601.6666666666666,456.71312666642433,452.8888913331078
+babilong,data/qa8/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[-1.0, 1.0]",-438.3333333333333,-333.01192433373217,-336.83615966704866
+babilong,data/qa8/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.0,"[0.0, 0.0]",0.0,-411.34068099897075,292.657573000118
+babilong,data/qa8/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",10503.0,10665.026816999974,10665.026816999974
+babilong,data/qa8/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,-0.3333333333333333,"[-1.0, 0.0]",10850.0,10973.720983333806,10968.861297333206
+babilong,data/qa8/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",9809.333333333334,9889.654665334092,9884.794979333492
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.0,"[0.0, 0.0]",707.0,-274.99629349904353,-280.28615199946216
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.0,"[0.0, 0.0]",0.0,-908.5962464992008,-801.1609984996539
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.0,"[0.0, 0.0]",1227.5,1120.5364745001134,1120.5364745001134
+babilong,data/qa8/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.0,"[0.0, 0.0]",1747.5,1535.9692750012073,1530.6794165007886
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.0,"[0.0, 0.0]",99.0,51.85387300025468,51.85387300025468
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.0,"[0.0, 0.0]",618.0,452.1744319999925,446.97819349948986
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.0,"[0.0, 0.0]",-420.0,-360.9684849993755,-366.16472349987816
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.0,"[0.0, 0.0]",0.0,-61.82242199929533,-2.9984134998812806
+babilong,data/qa8/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,2,0.0,"[0.0, 0.0]",-1914.0,-1601.6721875002986,-1606.9906135003293
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,8,0.0,"[0.0, 0.0]",2514.25,1763.8354623750558,1763.8354623750558
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,8,0.0,"[0.0, 0.0]",2904.625,2083.2182536249775,2077.693566999955
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,8,0.0,"[0.0, 0.0]",1864.625,1594.957845125208,1589.433158500185
+babilong,data/qa8/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,8,0.0,"[0.0, 0.0]",0.0,-178.3419298751312,-18.26819450005246
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,-0.2,"[-0.6, 0.0]",0.0,-29.1249202000472,17.57948180038511
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,5,-0.2,"[-0.6, 0.0]",-6312.2,-5874.549039200065,-5878.203052199751
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.0,"[0.0, 0.0]",272.8,147.21367480033223,147.21367480033223
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.0,"[0.0, 0.0]",272.8,152.09625540010165,148.56995760037535
+babilong,data/qa8/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,-0.2,"[-0.6, 0.0]",-765.0,-691.5204052002082,-695.0467029999345
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,3,0.0,"[0.0, 0.0]",4176.0,3733.2479299996826,3729.220069333375
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,3,0.0,"[0.0, 0.0]",0.0,-285.2621900004427,-10.322591666711864
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,3,0.0,"[0.0, 0.0]",5217.333333333333,4531.972321333342,4531.972321333342
+babilong,data/qa9/128k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,3,0.0,"[0.0, 0.0]",5217.333333333333,4530.611666666421,4526.583806000114
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,2,0.5,"[0.0, 1.0]",-13827.5,-14881.620920999467,-14885.937591499442
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,2,0.5,"[0.0, 1.0]",587.5,144.10863900047843,144.10863900047843
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,2,0.5,"[0.0, 1.0]",587.5,145.55600850007977,141.42992900042373
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,2,0.5,"[0.0, 1.0]",-450.5,-641.2601114998324,-645.3861909994885
+babilong,data/qa9/16k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,2,0.5,"[0.0, 1.0]",0.0,-360.8963430001495,-297.76156849948165
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,7,-0.14285714285714285,"[-0.42857142857142855, 0.0]",10694.0,10659.62990557143,10654.723039142742
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,7,-0.5714285714285714,"[-0.8571428571428571, -0.14285714285714285]",9652.57142857143,9906.74574728577,9901.838880857083
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,7,0.14285714285714285,"[-0.2857142857142857, 0.5714285714285714]",0.0,-887.1844800001521,-198.59454914291877
+babilong,data/qa9/256k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,7,-0.2857142857142857,"[-0.5714285714285714, 0.0]",10545.142857142857,10578.985883571348,10578.985883571348
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.2,"[0.0, 0.6]",1175.2,765.098953800225,765.098953800225
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.0,"[-0.6, 0.6]",1383.2,925.7756405999316,921.3365539999359
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.0,"[0.0, 0.0]",344.8,273.10998760003713,268.67090100004134
+babilong,data/qa9/32k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.0,"[0.0, 0.0]",0.4,-109.48008440009289,-11.563111199939158
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,-0.25,"[-0.75, 0.0]",-918.75,-576.1730167496353,-579.5778549995703
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.0,-50.71604975023547,-6.048970000392728
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,-0.25,"[-0.75, 0.0]",-2438.0,-1860.0799922498936,-1863.5990594998475
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",119.0,31.186517249807366,31.186517249807366
+babilong,data/qa9/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",119.0,30.285851750250004,26.88101350031502
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,5,0.0,"[0.0, 0.0]",1517.6,1293.3203856002365,1289.3288668001333
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,5,0.0,"[0.0, 0.0]",0.0,-140.4791953998938,5.280403600045247
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,5,0.0,"[0.0, 0.0]",2558.0,2088.055028400049,2088.055028400049
+babilong,data/qa9/64k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,5,0.0,"[0.0, 0.0]",2558.0,2087.656880400027,2083.665361599924
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,4,0.0,"[0.0, 0.0]",0.0,-46.75701750011285,2.2597214999677817
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,4,0.5,"[0.0, 1.0]",-5720.75,-5568.30216225012,-5571.906181000031
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,4,0.0,"[0.0, 0.0]",251.5,168.83874725021997,168.83874725021997
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,4,0.0,"[0.0, 0.0]",251.5,156.68205550014136,153.20581075025075
+babilong,data/qa9/8k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,4,0.0,"[0.0, 0.0]",-786.25,-671.7805422499623,-675.2567869998529
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,26,-0.07692307692307693,"[-0.23173076923076918, 0.11538461538461539]",5716.961538461538,5345.0752702691925,5345.0752702691925
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,26,0.07692307692307693,"[-0.07692307692307693, 0.23076923076923078]",6676.423076923077,6136.322566307626,6129.214729730743
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,26,-0.07692307692307693,"[-0.23173076923076918, 0.11538461538461539]",5652.115384615385,5315.199451038552,5308.0916144616685
+infinite,code_debug,test,choice,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,26,-0.23076923076923078,"[-0.46153846153846156, 0.0]",0.34615384615384615,-352.23771684629287,74.49086249996002
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,0.0,"[0.0, 0.0]",4032.48,3522.2692723598448,3522.2692723598448
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,0.0,"[0.0, 0.0]",4032.48,3525.1618731198682,3522.189181399917
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,0.0,"[0.0, 0.0]",2992.2,2727.809572879814,2724.836881159863
+infinite,code_run,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,0.0,"[0.0, 0.0]",0.88,-5185.074539120287,-5011.400905200207
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,0.04,"[0.0, 0.12]",6121.76,6087.858256760009,6085.6021739599955
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,0.0,"[0.0, 0.0]",0.0,-312.89814244006266,-56.72914448012307
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,0.04,"[0.0, 0.12]",7119.84,6567.860686080022,6567.860686080022
+infinite,kv_retrieval,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,0.04,"[0.0, 0.12]",7161.48,6631.9215094800165,6629.665426680003
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,24,0.002229601518026565,"[-0.0021347248576850074, 0.008823529411764702]",0.0,-94.11446395839107,-5.03446187488521
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,24,-0.00696157495256167,"[-0.020173149905123342, 0.0]",739.875,656.7752317083659,656.7752317083659
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,24,0.0236300414474733,"[-0.07366067870237526, 0.1507323051171688]",1691.625,434.4525887083819,428.9506414584518
+infinite,longbook_qa_chn,test,char_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,24,0.002229601518026565,"[-0.0021347248576850074, 0.008823529411764702]",653.25,568.7127952915981,563.2108480416681
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,0.0027085282580535087,"[-0.01007899912279618, 0.017012739832334575]",4887.88,5843.508528680068,5838.854212080078
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,-0.009075308247839468,"[-0.02108581539194365, 0.004603105998256543]",0.04,-1168.1904896800552,-826.0187458799555
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,0.006958698820882456,"[-0.0050014606090252565, 0.02007454280662782]",5762.36,6905.410689679994,6905.410689679994
+infinite,longbook_sum_eng,test,rouge_l,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,0.010567228321375839,"[0.0021220268151969745, 0.022319990314821916]",5928.76,7482.043535919984,7477.389219319994
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,-0.02,"[-0.18, 0.16]",4593.92,3852.9105464800155,3852.9105464800155
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,-0.02,"[-0.18, 0.16]",4926.96,4182.808506240036,4177.86241935999
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,-0.04,"[-0.2, 0.12]",3886.32,3420.359278400247,3415.4131915202015
+infinite,longdialogue_qa_eng,test,qa_f1,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,-0.04,"[-0.12, 0.0]",0.08,-241.72728028002894,24.007490440017136
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,0.0,"[0.0, 0.0]",2124.2,48.0248723996192,48.0248723996192
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,0.0,"[0.0, 0.0]",3161.12,3541.246251759585,3536.992013719573
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,0.0,"[0.0, 0.0]",2124.2,40.71868959952553,36.46445155951369
+infinite,math_calc,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,0.0,"[0.0, 0.0]",0.32,-1684.4424772801722,-1559.9572456002716
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,-0.08,"[-0.24, 0.08]",4755.2,4363.984985599955,4363.984985599955
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,-0.04,"[-0.2, 0.12]",5791.8,5161.48748968003,5157.532106160106
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,-0.08,"[-0.24, 0.08]",4755.2,4372.304144079844,4368.34876055992
+infinite,math_find,test,numeric_sequence,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,-0.08,"[-0.24, 0.04]",0.08,-212.54805159998796,-2.2932965999098087
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,0.0,"[0.0, 0.0]",0.0,-161.62059239948576,10.267852200267953
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,0.0,"[0.0, 0.0]",3303.52,2760.4571432799275,2760.4571432799275
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,0.0,"[0.0, 0.0]",3303.52,2762.263728959879,2758.6870707599883
+infinite,number_string,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,0.0,"[0.0, 0.0]",2265.52,1961.5994581198174,1958.022799919927
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_4,25,0.0,"[0.0, 0.0]",2265.32,1966.0295126398705,1962.1894255199004
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_matched_budget,25,0.0,"[0.0, 0.0]",0.0,-170.0066169600177,1.9166264400701039
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_pointer_off,25,0.0,"[0.0, 0.0]",3303.32,2754.453355040241,2754.453355040241
+infinite,passkey,test,all_containment,local InfiniteBench metric adaptation,sempointer_vs_bm25_2,25,0.0,"[0.0, 0.0]",3303.32,2761.9300325198856,2758.0899453999155
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_bm25_4,17,0.0,"[0.0, 0.0]",664.0,-4518.732287529287,-4525.18217094086
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,17,-0.058823529411764705,"[-0.17647058823529413, 0.0]",0.23529411764705882,-3270.9249511772214,-3152.131580941547
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_pointer_off,17,0.0,"[0.0, 0.0]",1030.5294117647059,-13.039019470799008,-13.039019470799008
+leval,codeU,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_bm25_2,17,0.0,"[0.0, 0.0]",1701.8823529411766,2235.517196176207,2229.0673127646346
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,sempointer_vs_full_context,17,0.0,"[-0.17647058823529413, 0.17647058823529413]",-4714.0,-4465.864731058593,-4473.126791470617
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,sempointer_vs_pointer_off,17,0.0,"[0.0, 0.0]",214.0,65.49199805877994,65.49199805877994
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,sempointer_vs_bm25_2,17,-0.058823529411764705,"[-0.17647058823529413, 0.0]",886.0588235294117,570.2871712945072,563.3236003531479
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,sempointer_vs_bm25_4,17,-0.058823529411764705,"[-0.17647058823529413, 0.0]",-134.76470588235293,-268.71708476483036,-275.68065570618967
+leval,coursera,test,choice_set,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,17,0.0,"[0.0, 0.0]",0.058823529411764705,-74.65861194095048,13.278938352882237
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_2,17,0.0035402596978081347,"[-0.03321140260443065, 0.03433320351410802]",593.4705882352941,170.1742579408507,164.06963870576874
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_4,17,-0.07738308478767632,"[-0.15746540437500792, -0.003935511934395481]",-427.11764705882354,-1768.8190550590448,-1774.9236742941266
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,17,-0.03320464238578558,"[-0.08838565895006215, 0.02183402087182384]",0.0,-1189.3446130588393,-1114.7526186469966
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_full_context,17,-0.07333207647079389,"[-0.14756148454241066, 0.003779808451275694]",-4020.9411764705883,-8091.637256647278,-8097.9762181766155
+leval,financial_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_pointer_off,17,-0.012779122511896708,"[-0.039129141374957696, 0.003605983390132254]",183.52941176470588,-1007.2675979410953,-1007.2675979410953
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_pointer_off,11,-0.00038973738456407993,"[-0.017037705104425156, 0.01528113186834738]",240.8181818181818,-1113.9153828181325,-1113.9153828181325
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_2,11,0.0015122419302754818,"[-0.01638032508840201, 0.0187500861398514]",429.3636363636364,-1082.545651545264,-1088.1105935457692
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_4,11,-0.011575329590397636,"[-0.03241675004516242, 0.008329875321148556]",-608.7272727272727,-2172.4549817273246,-2178.01992372783
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,11,0.002339514663879359,"[-0.023330300738641927, 0.02576293295148775]",0.0,-1366.3336405449875,-1303.5938782724604
+leval,gov_report_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_full_context,10,-0.012480822593463541,"[-0.028202196376041152, 0.0020797889586601386]",-3882.2,-6867.83076460033,-6873.6522314004105
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_pointer_off,17,0.0,"[0.0, 0.0]",145.47058823529412,417.4094533525075,417.4094533525075
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_bm25_2,17,0.0,"[0.0, 0.0]",751.8823529411765,924.6143856467182,919.5048502935927
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_bm25_4,17,0.0,"[0.0, 0.0]",-282.1764705882353,-255.6442964118212,-260.75383176494677
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,17,0.0,"[0.0, 0.0]",0.0,-346.61009352984206,-279.1799786472813
+leval,gsm100,test,numeric_sequence,local L-Eval task metric adaptation,sempointer_vs_full_context,17,0.0,"[0.0, 0.0]",-3348.9411764705883,-3876.4570300593145,-3881.827406824039
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_4,17,-0.02630582652724649,"[-0.10517753701388177, 0.04974649120593552]",779.8823529411765,1904.9091125284845,1897.1494034700727
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,17,-0.009704939357054024,"[-0.04795051035375857, 0.029592189477778863]",0.11764705882352941,4550.443096705268,4692.530238587899
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_full_context,9,-0.10984160562427925,"[-0.24093432035594287, 0.011457380143173905]",-10155.555555555555,-7948.629512221993,-7956.1182579998585
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_pointer_off,17,-0.03239451781771616,"[-0.10244065570354204, 0.025157774635906884]",963.1764705882352,2857.744475882154,2857.744475882154
+leval,legal_contract_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_2,17,0.09115414910981495,"[-0.03083316466576336, 0.21598082716584135]",1819.1764705882354,4068.992473116904,4061.232764058492
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.005458327323302432,"[-0.0510613783489924, 0.0323309737136128]",19.3125,-94.55081175065061,-99.81221043778987
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,-0.020580909981544746,"[-0.05817816372228594, 0.00947582374354771]",0.0625,-87.03538325028148,-4.499513937389565
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_full_context,8,-0.004496678212986431,"[-0.07029446174134976, 0.0483465492238432]",-9475.625,-12203.167462126203,-12209.021500625568
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,-0.007616690113064855,"[-0.04730022230976798, 0.022049097315897694]",668.6875,929.033469187516,929.033469187516
+leval,meeting_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,-0.017008106167487977,"[-0.053683503910382666, 0.005850050015432927]",1058.375,1432.1285471869487,1426.8671484998094
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.041821100567416045,"[-0.014995472959159107, 0.10183658946492385]",225.9375,117.55710049953905,112.93073356205241
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.07887561162312756,"[-0.17921009504277918, 0.016587268215273274]",-812.0625,-435.3076325625125,-439.9339994999991
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,-0.03607087863133315,"[-0.13632003324043862, 0.061933958382396306]",0.125,377.3637773125529,432.7945403750846
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_full_context,16,-0.09538677399778844,"[-0.20018930573629445, 0.008759752963961904]",-1924.4375,-2308.051354875033,-2312.8416943125103
+leval,multidoc_qa,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.021550830297145773,"[-0.03203337656893133, 0.0675571995982408]",96.1875,-24.200197625418696,-24.200197625418696
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.11904761904761907,"[-0.31104910714285716, 0.0536830357142856]",-127.3125,-24.72361318757521,-29.3023243124253
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,-0.06696428571428573,"[-0.22321428571428573, 0.0625]",0.1875,50.78146174946596,128.67274693735453
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_full_context,8,-0.05684523809523814,"[-0.443452380952381, 0.3001413690476189]",-7459.5,-7685.294320000139,-7690.22560475014
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.025815217391304345,"[-0.1875, 0.24456521739130435]",781.625,536.0121208124156,536.0121208124156
+leval,natural_question,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.025815217391304345,"[-0.1875, 0.24456521739130435]",911.4375,632.8632000619336,628.2844889370836
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_full_context,8,-0.01600087602553782,"[-0.031324418769670265, -0.0002774150093143018]",-3580.25,-7370.613219999996,-7377.260180125177
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_pointer_off,8,-0.0037219907139246413,"[-0.017906537012883923, 0.010330371667566646]",162.375,-531.3929244996416,-531.3929244996416
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_2,8,0.01036264596818224,"[-0.005707170771361903, 0.029061171726227734]",681.875,968.0905116254053,961.5779816249415
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_4,8,-0.011829154262409087,"[-0.02454528865157284, 0.0015400431806000844]",-356.75,-1535.4833796238836,-1541.9959096243474
+leval,news_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,8,-0.008425087486274963,"[-0.022291877788192593, 0.0041340108929834776]",0.125,-2035.4906762493101,-1958.6119308751222
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.00687641387826976,"[-0.0007924185607781429, 0.014761887458887051]",688.8125,2442.7840563122345,2437.178039499713
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.008280109163423076,"[-0.02414623587096423, 0.004275707568302702]",-349.6875,-768.8585186875798,-774.4645355001012
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,0.0038610695031194658,"[-0.005307258034551786, 0.012106664861814609]",0.0,731.1554281875488,809.5556783126767
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_full_context,15,-0.019643466619552165,"[-0.04544537856011521, 0.0006408874476615986]",-7022.733333333334,-13267.570168666134,-13273.349288999574
+leval,paper_assistant,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.003521276099707137,"[-0.006398229684196514, 0.013240900519604448]",364.375,502.416793624775,502.416793624775
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_full_context,9,-0.02304768937082169,"[-0.09715899052772257, 0.02277292029725969]",-4755.333333333333,-8169.128037556018,-8174.390471333835
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_pointer_off,9,0.002745105306126696,"[-0.01193694047120478, 0.018331501647277183]",215.33333333333334,-331.20833966697523,-331.20833966697523
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_2,9,0.006963873914673186,"[-0.006803310297658963, 0.020969718223108343]",445.44444444444446,1142.4572111110238,1137.3379693331017
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_4,9,-0.02726999803868382,"[-0.07349401651635819, 0.007641045097418429]",-592.1111111111111,-1410.3842611117823,-1415.5035028897046
+leval,patent_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,9,-0.007462607523191036,"[-0.03170010776854359, 0.013473947713628531]",0.1111111111111111,1153.3634474441594,1213.8293837773138
+leval,quality,test,choice,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.125,"[-0.3125, 0.0]",-153.1875,-145.9091995621975,-152.32443531249373
+leval,quality,test,choice,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,-0.0625,"[-0.1875, 0.0]",0.3125,-51.784866562798015,28.88847793713012
+leval,quality,test,choice,local L-Eval task metric adaptation,sempointer_vs_full_context,16,-0.125,"[-0.3125, 0.0]",-3794.8125,-3638.5601212498386,-3645.2661591874858
+leval,quality,test,choice,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,-0.0625,"[-0.1875, 0.0]",170.9375,142.86455474973536,142.86455474973536
+leval,quality,test,choice,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.125,"[0.0, 0.3125]",872.9375,605.623944125,599.2087083747037
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,-0.006796780586645416,"[-0.027090273095778914, 0.016322855098920588]",0.0,-1195.0319645000036,-1107.2581843123999
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.013739500232517113,"[-0.003019494825278278, 0.031067312811804648]",693.0625,637.3192373747543,637.3192373747543
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.023785026345925414,"[-0.0016739627188070007, 0.05076101258677246]",1017.875,1169.9700233747308,1164.2799824999202
+leval,review_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.0011353679431619149,"[-0.022415723884203636, 0.020599425814806744]",-21.5,-1414.8535769372756,-1420.5436178120863
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,0.125,"[0.0, 0.3125]",262.0625,228.38172468709672,221.871150312154
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,0.0625,"[-0.125, 0.25]",1.25,-88.51307181294032,9.581080249745355
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,sempointer_vs_full_context,9,0.0,"[0.0, 0.0]",-10608.555555555555,-10773.681709222526,-10780.127162111361
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.125,"[0.0, 0.3125]",586.625,483.11843124974985,483.11843124974985
+leval,sci_fi,test,exact,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.3125,"[0.125, 0.5625]",1298.875,1046.7810115621887,1040.270437187246
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.012932900432900442,"[0.002272727272727277, 0.028950216450216462]",418.5,300.7022599998663,295.96029456251927
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.05610257797757798,"[-0.22011491113053613, 0.07500124875124874]",-600.375,-484.22125268757554,-488.9632181249226
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,0.0366883116883117,"[-0.006977137445887433, 0.09149959415584415]",1.5625,-63.34956006253378,3.0014321874887173
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_full_context,16,-0.7133311133311133,"[-0.7868133429070929, -0.6091083222333223]",-9729.25,-9655.929886437549,-9660.858329812527
+leval,topic_retrieval_longchat,test,qa_f1,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.012932900432900442,"[0.002272727272727277, 0.028950216450216462]",418.5,303.45055675002186,303.45055675002186
+leval,tpo,test,choice,local L-Eval task metric adaptation,sempointer_vs_bm25_4,16,-0.0625,"[-0.1875, 0.0]",-375.0625,-321.6887093751666,-327.4154500624036
+leval,tpo,test,choice,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,16,0.0,"[0.0, 0.0]",0.125,-82.85548312562696,-11.266773625266069
+leval,tpo,test,choice,local L-Eval task metric adaptation,sempointer_vs_full_context,16,-0.0625,"[-0.1875, 0.0]",-1927.1875,-1633.645544937508,-1639.617946687281
+leval,tpo,test,choice,local L-Eval task metric adaptation,sempointer_vs_pointer_off,16,0.0,"[0.0, 0.0]",94.0,39.556086437414706,39.556086437414706
+leval,tpo,test,choice,local L-Eval task metric adaptation,sempointer_vs_bm25_2,16,0.0,"[0.0, 0.0]",584.6875,442.14132349952706,436.41458281229006
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_pointer_off,11,-0.009366661048700866,"[-0.023117257049721233, 0.005443051546542347]",327.6363636363636,-666.4952609090423,-666.4952609090423
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_2,11,-0.006699546255360997,"[-0.01914740355277281, 0.005706106050755598]",610.6363636363636,-471.31953318173396,-475.9559065455092
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_4,11,-0.026922845102742867,"[-0.05104851406919833, -0.0037837418730788997]",-427.3636363636364,-1719.9856362731225,-1724.6220096368977
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_bm25_matched_budget,11,-0.012847142948258517,"[-0.027177261366497712, 0.0022468757055364203]",0.09090909090909091,-531.5128202734988,-473.4435390005687
+leval,tv_show_summ,test,rouge_l,local L-Eval task metric adaptation,sempointer_vs_full_context,11,-0.028021664436302354,"[-0.051858902924401505, 0.008627747386911973]",-7520.636363636364,-13202.765173636593,-13207.560157091146
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_4,27,0.05086684879713202,"[-0.037498126822745566, 0.1611910813708199]",-216.88888888888889,-313.64406022125706,-319.5647628882499
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_matched_budget,27,0.05149911816578482,"[-0.05652557319223986, 0.17592592592592593]",0.037037037037037035,-359.96335692443944,-281.19085211020086
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_full_context,15,0.027777777777777776,"[-0.04499999999999997, 0.15]",-7764.333333333333,-7684.144060333104,-7689.81157379967
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_pointer_off,27,0.11259524385886044,"[0.013821238371891965, 0.22607167352537716]",472.14814814814815,193.06205226018426,193.06205226018426
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_2,27,0.18946016409784525,"[0.0690897937274749, 0.32719020780614977]",817.0,450.841493926688,444.92079125969514
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_bm25_4,24,0.010561075323762908,"[0.00045268911002787054, 0.023008016286402595]",78.58333333333333,-1292.6726006245797,-1299.3058859162072
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_bm25_matched_budget,24,0.007226182510460213,"[-0.007139632078948904, 0.023781799452214956]",0.25,-1184.1376655415843,-1124.7246648743687
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_full_context,23,0.0072300412399154195,"[-0.008035580875865287, 0.025749578782307398]",-934.304347826087,-2048.1094649123565,-2054.781289478263
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_pointer_off,24,0.010561075323762908,"[0.00045268911002787054, 0.023008016286402595]",78.58333333333333,-1295.2213739167746,-1295.2213739167746
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer_vs_bm25_2,24,-0.01599087880581072,"[-0.043659133008871774, 0.012409444631490116]",1007.75,1497.7642479583058,1491.1309626666782
+longbench,lsht,test,exact,normalized label exact-match adaptation,sempointer_vs_bm25_matched_budget,13,0.0,"[0.0, 0.0]",0.0,-135.8578593846967,-17.229867385035156
+longbench,lsht,test,exact,normalized label exact-match adaptation,sempointer_vs_full_context,8,-0.125,"[-0.375, 0.0]",-7540.125,-7512.878192500097,-7520.521816999973
+longbench,lsht,test,exact,normalized label exact-match adaptation,sempointer_vs_pointer_off,13,0.0,"[0.0, 0.0]",296.61538461538464,280.4114859222164,280.4114859222164
+longbench,lsht,test,exact,normalized label exact-match adaptation,sempointer_vs_bm25_2,13,-0.15384615384615385,"[-0.38461538461538464, 0.0]",1326.3076923076924,1058.9563923068768,1051.5678741527993
+longbench,lsht,test,exact,normalized label exact-match adaptation,sempointer_vs_bm25_4,13,0.0,"[0.0, 0.0]",296.61538461538464,291.17101938397985,283.7825012299023
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_bm25_4,17,-0.0011842739495156968,"[-0.013955723811643629, 0.015274795501654356]",98.0,-97.41382535329488,-103.59094258803773
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_bm25_matched_budget,17,-0.006888578666621873,"[-0.02572921780757001, 0.012433397881857737]",0.058823529411764705,-464.250940293034,-405.41398576354317
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_full_context,17,-0.03534568373419672,"[-0.05944638467998034, -0.014931811135793118]",-2084.294117647059,-4482.069973469686,-4488.357700587211
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_pointer_off,17,-0.0011842739495156968,"[-0.013955723811643629, 0.015274795501654356]",98.0,-97.44995099945567,-97.44995099945567
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer_vs_bm25_2,17,0.00030975687503646945,"[-0.020485389768059116, 0.019129942970446224]",847.5882352941177,750.8763558241085,744.6992385893656
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_2,8,-0.049761135949660536,"[-0.15784375000000003, 0.04638888888888888]",638.25,649.1967321258016,643.4581970006548
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_4,8,-0.011525596496526729,"[-0.11183328299607367, 0.07469926948051947]",-400.5,-1683.8333337495897,-1689.5718688747365
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_matched_budget,8,0.002282301032301027,"[-0.06424908424908425, 0.07153846153846152]",0.0,-350.46681375069966,-281.41938487578955
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_full_context,8,0.03691356888725309,"[-0.045445190774138146, 0.11916666666666666]",-5607.875,-5482.521699999779,-5488.468906750313
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_pointer_off,8,-0.020827922077922084,"[-0.13974025974025978, 0.07469926948051947]",248.5,-946.6587762503877,-946.6587762503877
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,sempointer_vs_full_context,34,-0.140271009655782,"[-0.240565394255355, -0.06188800161276527]",-1923.3529411764705,-1927.6704670298975,-1933.468389294884
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,sempointer_vs_pointer_off,34,-0.03518700360972584,"[-0.09565389697169889, 0.007801172248692394]",80.17647058823529,-81.22276547168012,-81.22276547168012
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,sempointer_vs_bm25_2,34,0.03848034211644341,"[-0.05224823105517152, 0.12707207639080562]",911.7647058823529,799.2784137055851,793.6077176168243
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,sempointer_vs_bm25_4,34,-0.055965420239535664,"[-0.14122357503621996, 0.009963352531153293]",-39.088235294117645,-245.38154305906465,-251.05223914782553
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,sempointer_vs_bm25_matched_budget,34,-0.009729209960378779,"[-0.05548932528512047, 0.02573623492268293]",0.029411764705882353,-216.6895075889068,-153.76253738309862
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_pointer_off,23,0.031150009410878976,"[-0.0681841709015622, 0.15022350837568227]",599.3478260869565,336.5723905653399,336.5723905653399
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_2,23,0.011387163561076602,"[-0.03105590062111802, 0.06521739130434782]",1037.608695652174,667.9300807826739,661.9945191313215
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_4,23,0.010860154338415208,"[-0.10831027667984192, 0.13883022774327114]",26.08695652173913,60.0490690004612,54.113507349108616
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_matched_budget,23,0.012149940067560205,"[-0.041189931350114416, 0.06935817805383024]",0.043478260869565216,-227.19196860935367,-136.53270030424565
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_full_context,6,0.0,"[0.0, 0.0]",-10806.666666666666,-11085.037815833251,-11091.006396500234
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,sempointer_vs_pointer_off,13,0.0,"[0.0, 0.0]",578.0769230769231,-1800.4641626158934,-1800.4641626158934
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,sempointer_vs_bm25_2,13,0.0,"[0.0, 0.0]",1616.2307692307693,-942.6707250005655,-950.1304969999183
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,sempointer_vs_bm25_4,13,0.0,"[0.0, 0.0]",578.0769230769231,-1824.344572539233,-1831.8043445385858
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,sempointer_vs_bm25_matched_budget,13,0.0,"[0.0, 0.0]",0.0,-3519.8293296937036,-3407.8614486159213
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,sempointer_vs_full_context,8,0.0,"[0.0, 0.0]",-10806.125,-16659.65894862711,-16667.50761250114
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,sempointer_vs_bm25_4,11,0.0,"[0.0, 0.0]",-497.72727272727275,-2094.4753019082946,-2099.0508518179095
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,sempointer_vs_bm25_matched_budget,11,0.0,"[0.0, 0.0]",0.5454545454545454,-1301.1910744545194,-1232.0443420000877
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,sempointer_vs_full_context,11,0.0,"[0.0, 0.0]",-11367.0,-14198.43891627302,-14203.752541818341
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,sempointer_vs_pointer_off,11,0.0,"[0.0, 0.0]",486.45454545454544,-1882.6050062714123,-1882.6050062714123
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,sempointer_vs_bm25_2,11,0.0,"[0.0, 0.0]",486.45454545454544,-1842.263375272358,-1846.8389251819726
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,sempointer_vs_pointer_off,26,0.07692307692307693,"[0.0, 0.19230769230769232]",117.46153846153847,-873.7231826540105,-873.7231826540105
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,sempointer_vs_bm25_2,26,0.07692307692307693,"[0.0, 0.19230769230769232]",556.5384615384615,-594.1960373076234,-598.5067180769804
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,sempointer_vs_bm25_4,26,0.07692307692307693,"[0.0, 0.19230769230769232]",-481.38461538461536,-1199.9780968078715,-1204.2887775772285
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,sempointer_vs_bm25_matched_budget,26,0.07692307692307693,"[0.0, 0.19230769230769232]",0.0,-1227.3625494621788,-1168.8678844234696
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,sempointer_vs_full_context,26,0.038461538461538464,"[-0.07692307692307693, 0.15480769230769145]",-2645.846153846154,-5578.438142461611,-5582.897635000336
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_2,8,0.24334225715804664,"[0.014175590491379966, 0.5445256132756131]",291.125,-110.8316160002687,-115.24703762461286
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_4,8,0.13081502340988263,"[0.003571428571428569, 0.3544878089576682]",-729.875,-941.48820349983,-945.9036251241741
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_matched_budget,8,0.10679824561403509,"[0.0, 0.3177631578947368]",0.0,-221.50799574865232,-167.1237372484029
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_full_context,8,0.15794624384374772,"[-0.013392857142857144, 0.4237927971329875]",-3614.625,-4709.3739669999195,-4713.926471124523
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_pointer_off,8,0.11834225715804662,"[0.005263157894736845, 0.3301767676767676]",161.375,-158.4528144990145,-158.4528144990145
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_2,17,-0.014358591567857274,"[-0.06109177250048757, 0.03930437484983969]",1172.4117647058824,747.2597955882734,740.7538884698998
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_4,17,0.01789355964449867,"[-0.029807552822640762, 0.06586995784662371]",158.1764705882353,53.997333000819815,47.49142588244628
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_matched_budget,17,0.0007545042650198351,"[-0.056844675021201545, 0.0664106226568198]",0.058823529411764705,-391.2150467046612,-302.94771311759285
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_full_context,16,-0.014963630969099393,"[-0.08212423725235948, 0.050963932694098275]",-5895.5625,-6487.688727563182,-6494.552383687733
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_pointer_off,17,0.018034285791416773,"[-0.029807552822640762, 0.06589885616200361]",280.2352941176471,217.93708870566607,217.93708870566607
+longbench,trec,test,exact,normalized label exact-match adaptation,sempointer_vs_bm25_2,10,-0.1,"[-0.3, 0.0]",1200.9,1009.2858053998498,1001.8622217001393
+longbench,trec,test,exact,normalized label exact-match adaptation,sempointer_vs_bm25_4,10,0.0,"[0.0, 0.0]",163.2,140.40707039930567,132.98348669959523
+longbench,trec,test,exact,normalized label exact-match adaptation,sempointer_vs_bm25_matched_budget,10,0.0,"[0.0, 0.0]",0.1,-89.80985780144692,14.9947115991381
+longbench,trec,test,exact,normalized label exact-match adaptation,sempointer_vs_full_context,10,-0.1,"[-0.3, 0.0]",-3589.6,-3335.1651815006335,-3343.2144700003846
+longbench,trec,test,exact,normalized label exact-match adaptation,sempointer_vs_pointer_off,10,0.0,"[0.0, 0.0]",163.2,141.36914150003577,141.36914150003577
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_2,10,0.0,"[0.0, 0.0]",1503.5,1308.7505580988363,1300.5082685987873
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_4,10,0.0,"[0.0, 0.0]",477.0,424.0992181988986,415.8569286988495
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_bm25_matched_budget,10,0.0,"[0.0, 0.0]",0.7,-158.43448909945437,-7.602735899854451
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_full_context,6,-0.011111111111111108,"[-0.033333333333333326, 0.0]",-6705.5,-6816.145587833792,-6825.473343834044
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer_vs_pointer_off,10,0.0,"[0.0, 0.0]",477.0,417.8092187998118,417.8092187998118
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,sempointer_vs_bm25_2,18,-0.013611295078671318,"[-0.05093927765714457, 0.020381303830757834]",1191.4444444444443,353.7891779993111,347.3249606668105
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,sempointer_vs_bm25_4,18,-0.03735516452434322,"[-0.06450076347758697, -0.013447365541275966]",153.44444444444446,-821.9657629447788,-828.4299802772795
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,sempointer_vs_bm25_matched_budget,18,-0.017340428206676722,"[-0.05539424202487684, 0.023066277601315147]",0.0,367.4495445540945,453.65941527739375
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,sempointer_vs_full_context,18,-0.06283045085556198,"[-0.1092042251952003, -0.016026663703313668]",-4677.5,-8000.148781333539,-8006.730749222091
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,sempointer_vs_pointer_off,18,-0.03735516452434322,"[-0.06450076347758697, -0.013447365541275966]",153.44444444444446,-855.0042472775708,-855.0042472775708
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_pointer_off,75,0.004491245768903954,"[-0.02502943252983542, 0.02846099913156704]",1288.84,1107.2566271067383,1107.2566271067383
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_2,75,0.028992521933911723,"[0.009539034612943342, 0.05180271436950674]",1832.6133333333332,1268.2460664270911,1261.787597133419
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_4,75,-0.006772093764676921,"[-0.05556832743461296, 0.03206077258329148]",803.7466666666667,757.1964621870817,750.7379928934097
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_matched_budget,75,-0.0215972110373131,"[-0.06448752871329386, 0.012570722791492359]",0.04,-509.1253973194398,-385.0516918397625
+loogle,longdep_qa,test,qa_f1,local LooGLE metric adaptation; no model-based judge,sempointer_vs_full_context,5,-0.007850851569444529,"[-0.05328228443806331, 0.03213213213213214]",-12161.6,-15114.255533598043,-15122.064164398762
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_4,75,-0.008444444444444442,"[-0.06444444444444444, 0.048899999999999985]",1334.2266666666667,1405.9366638672266,1398.476127933315
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_matched_budget,75,0.010666666666666668,"[-0.04001111111111111, 0.0640111111111111]",0.14666666666666667,-78.49571970605514,74.60554898685587
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,sempointer_vs_pointer_off,75,0.011555555555555557,"[-0.04888888888888888, 0.07777777777777778]",1402.7466666666667,1467.2257199198764,1467.2257199198764
+loogle,shortdep_cloze,test,all_containment,local LooGLE metric adaptation; no model-based judge,sempointer_vs_bm25_2,75,0.07222222222222222,"[0.003333333333333334, 0.1388888888888889]",2372.693333333333,2667.667206107699,2660.2066701737867
+babilong,data/qa5/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_4,1,0.0,"[0.0, 0.0]",-947.0,-617.7030350002042,-620.4247720002058
+babilong,data/qa5/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_matched_budget,1,-1.0,"[-1.0, -1.0]",2.0,-8.98703400002887,24.676001999978325
+babilong,data/qa5/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_full_context,1,-1.0,"[-1.0, -1.0]",-1983.0,-1342.4330930001815,-1345.2733870001339
+babilong,data/qa5/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_pointer_off,1,0.0,"[0.0, 0.0]",89.0,14.839210999980423,14.839210999980423
+babilong,data/qa5/4k,test,exact,normalized answer exact match; retrieval adaptation,sempointer_vs_bm25_2,1,0.0,"[0.0, 0.0]",89.0,70.06610999997065,67.34437299996898
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_pointer_off,1,0.0,"[0.0, 0.0]",589.0,503.94231300015235,503.94231300015235
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_2,1,0.0,"[0.0, 0.0]",1628.0,1343.432636000216,1336.1393090001457
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_4,1,0.0,"[0.0, 0.0]",589.0,451.7047250001269,444.4113980000566
+ruler,niah_single_3,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_matched_budget,1,0.0,"[0.0, 0.0]",1.0,-94.61818399995536,20.667641000045478
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_4,1,-0.20000000000000007,"[-0.20000000000000007, -0.20000000000000007]",-844.0,-1291.6531960001976,-1295.1547929999379
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_matched_budget,1,0.0,"[0.0, 0.0]",0.0,-278.36646900050255,-220.29047400019408
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_full_context,1,-0.4,"[-0.4, -0.4]",-6457.0,-6560.909407999816,-6565.424355999767
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_pointer_off,1,0.0,"[0.0, 0.0]",194.0,-326.69363199988766,-326.69363199988766
+ruler,vt,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_2,1,0.0,"[0.0, 0.0]",194.0,-347.5613850002901,-351.0629820000304
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_pointer_off,1,0.022534254056481268,"[0.022534254056481268, 0.022534254056481268]",274.0,2971.5633289999914,2971.5633289999914
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_2,1,0.022534254056481268,"[0.022534254056481268, 0.022534254056481268]",274.0,3071.090409999897,3066.775253999822
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_4,1,-0.010008733822578636,"[-0.010008733822578636, -0.010008733822578636]",-764.0,-2901.694760000055,-2906.00991600013
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_matched_budget,1,-0.0014127834111883342,"[-0.0014127834111883342, -0.0014127834111883342]",0.0,-1336.9327870000234,-1278.164607000008
+scrolls,gov_report,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_full_context,1,-0.03612254332653038,"[-0.03612254332653038, -0.03612254332653038]",-6023.0,-8399.944086000005,-8404.401086999997
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_2,1,0.0,"[0.0, 0.0]",1028.0,787.1230789996844,782.957869999791
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_4,1,0.0031446540880503138,"[0.0031446540880503138, 0.0031446540880503138]",-12.0,-272.1145770003659,-276.27978600025926
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_bm25_matched_budget,1,0.0031446540880503138,"[0.0031446540880503138, 0.0031446540880503138]",0.0,-238.35827100015194,-152.24752600011016
+scrolls,qmsum,validation,rouge_l,SCROLLS merged-reference local metric adaptation; not official aggregate,sempointer_vs_pointer_off,1,0.0,"[0.0, 0.0]",1028.0,725.2217200000359,725.2217200000359
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_full_context,15,0.0,"[0.0, 0.0]",-4904.6,-4627.754453199062,-4634.707628332156
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_pointer_off,22,0.0,"[0.0, 0.0]",338.6363636363636,268.2035451358719,268.2035451358719
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_2,22,0.0,"[0.0, 0.0]",1047.2272727272727,819.2771304539664,812.4696590457461
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_4,22,0.0,"[0.0, 0.0]",21.818181818181817,32.317844544278074,25.51037313605775
+ruler,niah_multikey_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer_vs_bm25_matched_budget,22,0.0,"[0.0, 0.0]",0.0,-92.20961350134034,0.27375949966054497

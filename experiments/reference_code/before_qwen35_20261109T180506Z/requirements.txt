@@ -1,0 +1,17 @@
+# SemPointer reconstruction — validated stack (uv, Python 3.11)
+# Install:  uv pip install --python warden/bin/python -r requirements.txt
+torch>=2.14.0
+transformers>=5.2.0
+sentence-transformers>=6.0.0
+datasets>=5.0.1
+accelerate>=1.10.0
+bitsandbytes>=0.50.2
+kvpress==0.5.5
+rank_bm25>=0.2.2
+nltk>=3.9
+numpy>=2.0
+matplotlib>=3.10,<3.11   # paper figures from real benchmark rows
+pyyaml>=6.0
+rich>=13.0
+pytest>=9.0
+huggingface_hub>=1.0

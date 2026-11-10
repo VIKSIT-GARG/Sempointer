@@ -1,0 +1,19 @@
+{
+  "run_id": "8ef26bfd68509bae3b6b",
+  "source_metrics_sha256": "8ff2dde050f242a8de09434d270f10bc3a0d989aa92f3cea02fab8e17aaedf74",
+  "selected_task_groups": 138,
+  "system_task_cells": 828,
+  "paired_comparisons": 605,
+  "matched_budget_questions": 2400,
+  "full_context_paired_questions": 622,
+  "active_token_reduction_vs_full_percent": 76.67386712740016,
+  "reported_latency_reduction_vs_full_percent": 61.280297323202774,
+  "reported_latency_reduction_vs_matched_percent": 8.94598169300782,
+  "quality_examples": 5,
+  "pdf_pages": 8,
+  "raw_archive_validation": "pending; combined report snapshot only",
+  "latex_compilation": "passed",
+  "latex_overfull_boxes": 0,
+  "pdf_rendered_and_visually_reviewed": true,
+  "original_metrics_hash_verified": true
+}

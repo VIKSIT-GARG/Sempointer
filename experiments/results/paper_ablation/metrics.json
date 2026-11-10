@@ -1,0 +1,2203 @@
+{
+  "benchmark": "ruler",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 32,
+    "decoding": "greedy",
+    "attn_implementation": "sdpa",
+    "seed": 42,
+    "model_config_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "n_examples": 120,
+  "system_info": {
+    "sempointer": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__ptype-random_id": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "random_id",
+        "generator": "SemanticIDPointerGenerator",
+        "embedder": "SentenceTransformer(\n  (0): Transformer({'transformer_task': 'feature-extraction', 'modality_config': {'text': {'method': 'forward', 'method_output_name': 'last_hidden_state'}}, 'module_output_name': 'token_embeddings', 'architecture': 'BertModel'})\n  (1): Pooling({'embedding_dimension': 384, 'pooling_mode': 'mean', 'include_prompt': True})\n  (2): Normalize({'module_input_name': 'sentence_embedding', 'module_output_name': 'sentence_embedding'})\n)",
+        "k": 16,
+        "pointer_vocab_size": 256,
+        "id_offset": 1000,
+        "seed": 42
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__ptype-none": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "none",
+        "k": 0
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__ptype-lead": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "lead",
+        "k": 16
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__k-8": {
+      "system": "sempointer",
+      "k": 8,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 8,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__k-32": {
+      "system": "sempointer",
+      "k": 32,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 32,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__m-1": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 1,
+      "m_max": 1,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__m-adaptive": {
+      "system": "sempointer",
+      "k": 16,
+      "m": "adaptive",
+      "m_max": 4,
+      "adaptive_ratio": 0.5,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__hops-2": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 2,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__selector-dense": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "dense",
+        "components": [
+          "dense"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": null
+      }
+    },
+    "sempointer__selector-bm25": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "bm25",
+        "components": [
+          "bm25"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "bm25": 1.0
+        },
+        "embedder_id": null,
+        "embedder_device": null,
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "sempointer__selector-attention": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "attention",
+        "components": [
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "attention": 1.0
+        },
+        "embedder_id": null,
+        "embedder_device": null,
+        "bm25": null
+      }
+    }
+  },
+  "systems": {
+    "sempointer": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.5258333333333334,
+      "score_ci95": [
+        0.44829166666666664,
+        0.6116875
+      ],
+      "active_tokens_mean": 1692.8583333333333,
+      "latency_ms_mean": 1276.6190287002853,
+      "peak_vram_mb_mean": 2371.740869140625,
+      "selection_latency_ms_mean": 268.90874160853855,
+      "ttft_ms_mean": 413.2367881669173,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 98.80087014995904,
+      "generation_latency_ms_mean": 1005.1629705084148,
+      "retrieval_hit_mean": 0.7468354430379747,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 3113.9
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1332.8
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1264.1
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1335.25
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.65,
+          "active_tokens_mean": 1342.25
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.30000000000000004,
+          "active_tokens_mean": 1768.85
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2804.0
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3423.8
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1279.9
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1385.7
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1219.5
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1308.7
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1258.2
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.4,
+          "active_tokens_mean": 1412.3
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1272.0
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1412.5
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.32,
+          "active_tokens_mean": 1722.8
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.2800000000000001,
+          "active_tokens_mean": 1814.9
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__ptype-random_id": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.5325,
+      "score_ci95": [
+        0.4507916666666667,
+        0.6183333333333334
+      ],
+      "active_tokens_mean": 1711.05,
+      "latency_ms_mean": 1285.3077356917008,
+      "peak_vram_mb_mean": 2373.563728841146,
+      "selection_latency_ms_mean": 263.2523627914755,
+      "ttft_ms_mean": 418.482662216411,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 153.5546173585923,
+      "generation_latency_ms_mean": 1019.1353586666688,
+      "retrieval_hit_mean": 0.7974683544303798,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 3127.6
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1325.95
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1320.05
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.65,
+          "active_tokens_mean": 1333.95
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1335.75
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.24000000000000007,
+          "active_tokens_mean": 1823.0
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2810.3
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3444.9
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1261.1
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1390.8
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1227.2
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1412.9
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1253.0
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.4,
+          "active_tokens_mean": 1414.9
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1256.4
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1415.1
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.2,
+          "active_tokens_mean": 1745.6
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.28,
+          "active_tokens_mean": 1900.4
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__ptype-none": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.4125,
+      "score_ci95": [
+        0.335,
+        0.4984166666666666
+      ],
+      "active_tokens_mean": 1479.375,
+      "latency_ms_mean": 1130.4996159332707,
+      "peak_vram_mb_mean": 2349.8285970052084,
+      "selection_latency_ms_mean": 172.22672405835814,
+      "ttft_ms_mean": 358.07709149988415,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 80.29807955833046,
+      "generation_latency_ms_mean": 955.7237460500497,
+      "retrieval_hit_mean": 0.620253164556962,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 2500.2
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.65,
+          "active_tokens_mean": 1165.95
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 0.65,
+          "active_tokens_mean": 1178.65
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.35,
+          "active_tokens_mean": 1177.65
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1181.0
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.22000000000000006,
+          "active_tokens_mean": 1672.8
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2442.0
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 2558.4
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1167.2
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1164.7
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1165.6
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1191.7
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1164.0
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.2,
+          "active_tokens_mean": 1191.3
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1170.5
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1191.5
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.2,
+          "active_tokens_mean": 1659.6
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.24000000000000005,
+          "active_tokens_mean": 1686.0
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__ptype-lead": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.4408333333333333,
+      "score_ci95": [
+        0.3566458333333333,
+        0.5242083333333333
+      ],
+      "active_tokens_mean": 1711.8083333333334,
+      "latency_ms_mean": 1281.7687452920534,
+      "peak_vram_mb_mean": 2373.7693440755206,
+      "selection_latency_ms_mean": 262.88086290799885,
+      "ttft_ms_mean": 414.85191014210915,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 88.32214538391175,
+      "generation_latency_ms_mean": 1015.9674043254805,
+      "retrieval_hit_mean": 0.6582278481012658,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 3121.8
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.75,
+          "active_tokens_mean": 1322.3
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 0.65,
+          "active_tokens_mean": 1337.75
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.55,
+          "active_tokens_mean": 1335.1
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1333.5
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.19,
+          "active_tokens_mean": 1820.4
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2808.3
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3435.3
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1259.6
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1385.0
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1266.4
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1409.1
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1258.1
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1412.1
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.4,
+          "active_tokens_mean": 1255.1
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1411.9
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.20000000000000004,
+          "active_tokens_mean": 1743.8
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.18,
+          "active_tokens_mean": 1897.0
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__k-8": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.4741666666666667,
+      "score_ci95": [
+        0.3958125,
+        0.5567291666666666
+      ],
+      "active_tokens_mean": 1604.8583333333333,
+      "latency_ms_mean": 1208.3978517667372,
+      "peak_vram_mb_mean": 2362.8288411458334,
+      "selection_latency_ms_mean": 215.697807084022,
+      "ttft_ms_mean": 386.66235701633315,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 92.76822708331262,
+      "generation_latency_ms_mean": 989.8861736995362,
+      "retrieval_hit_mean": 0.7341772151898734,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 2824.9
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.65,
+          "active_tokens_mean": 1255.1
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1264.1
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.55,
+          "active_tokens_mean": 1261.3
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1270.4
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.14,
+          "active_tokens_mean": 1753.35
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2633.2
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3016.6
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1228.4
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1281.8
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1219.5
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1308.7
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1214.1
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.3,
+          "active_tokens_mean": 1308.5
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.4,
+          "active_tokens_mean": 1232.0
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1308.8
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.20000000000000004,
+          "active_tokens_mean": 1704.7
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.08,
+          "active_tokens_mean": 1802.0
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__k-32": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.5758333333333333,
+      "score_ci95": [
+        0.49997916666666664,
+        0.6583333333333333
+      ],
+      "active_tokens_mean": 1858.0666666666666,
+      "latency_ms_mean": 1407.6926581083778,
+      "peak_vram_mb_mean": 2388.201729329427,
+      "selection_latency_ms_mean": 345.1251191330205,
+      "ttft_ms_mean": 456.67502175880753,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 93.03897561706738,
+      "generation_latency_ms_mean": 1059.3620205003997,
+      "retrieval_hit_mean": 0.810126582278481,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 3691.5
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1468.8
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1264.05
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.75,
+          "active_tokens_mean": 1477.2
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1477.65
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.30000000000000004,
+          "active_tokens_mean": 1769.2
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 3144.7
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 4238.3
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1343.8
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1593.8
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1219.5
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1308.6
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1334.2
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1620.2
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1334.7
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1620.6
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.32000000000000006,
+          "active_tokens_mean": 1723.2
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.2800000000000001,
+          "active_tokens_mean": 1815.2
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__m-1": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.4625,
+      "score_ci95": [
+        0.3816458333333333,
+        0.5525
+      ],
+      "active_tokens_mean": 1190.3,
+      "latency_ms_mean": 1140.2991784001642,
+      "peak_vram_mb_mean": 2323.572831217448,
+      "selection_latency_ms_mean": 257.7721472752576,
+      "ttft_ms_mean": 293.7949105995358,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 1.0,
+      "ingest_ms_mean": 93.03604848282703,
+      "generation_latency_ms_mean": 880.1972283248688,
+      "retrieval_hit_mean": 0.6708860759493671,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 2616.35
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.7,
+          "active_tokens_mean": 825.05
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 758.25
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.35,
+          "active_tokens_mean": 836.55
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.5,
+          "active_tokens_mean": 835.8
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.22000000000000003,
+          "active_tokens_mean": 1269.8
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2306.3
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 2926.4
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 762.1
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 888.0
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 713.6
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 802.9
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.4,
+          "active_tokens_mean": 758.4
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.3,
+          "active_tokens_mean": 914.7
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 756.9
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 914.7
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.36000000000000004,
+          "active_tokens_mean": 1223.1
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.08,
+          "active_tokens_mean": 1316.5
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__m-adaptive": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.5591666666666666,
+      "score_ci95": [
+        0.47333333333333333,
+        0.6416666666666667
+      ],
+      "active_tokens_mean": 2687.766666666667,
+      "latency_ms_mean": 1527.7393161500488,
+      "peak_vram_mb_mean": 2469.559016927083,
+      "selection_latency_ms_mean": 257.7758449996206,
+      "ttft_ms_mean": 670.3106501335545,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 4.0,
+      "ingest_ms_mean": 93.47409596672757,
+      "generation_latency_ms_mean": 1265.669301550285,
+      "retrieval_hit_mean": 0.8481012658227848,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 4109.35
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.8,
+          "active_tokens_mean": 2333.0
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2250.5
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.65,
+          "active_tokens_mean": 2330.9
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.7,
+          "active_tokens_mean": 2341.65
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.20000000000000004,
+          "active_tokens_mean": 2761.2
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 3799.4
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 4419.3
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 2284.5
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 2381.5
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2190.9
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2310.1
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 2254.0
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.4,
+          "active_tokens_mean": 2407.8
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 2275.0
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 2408.3
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.26000000000000006,
+          "active_tokens_mean": 2698.4
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.14,
+          "active_tokens_mean": 2824.0
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__hops-2": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.5225,
+      "score_ci95": [
+        0.4408125,
+        0.6066666666666667
+      ],
+      "active_tokens_mean": 2187.1833333333334,
+      "latency_ms_mean": 1715.1261808579875,
+      "peak_vram_mb_mean": 2420.5475260416665,
+      "selection_latency_ms_mean": 557.8671782832922,
+      "ttft_ms_mean": 544.3967620500189,
+      "n_hops_mean": 2.0,
+      "n_selected_mean": 3.0,
+      "ingest_ms_mean": 93.33560324157588,
+      "generation_latency_ms_mean": 1153.5976015831086,
+      "retrieval_hit_mean": 0.7974683544303798,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 3611.6
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1832.95
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1735.2
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.55,
+          "active_tokens_mean": 1833.4
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.65,
+          "active_tokens_mean": 1842.35
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.23000000000000004,
+          "active_tokens_mean": 2267.6
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 3301.8
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3921.4
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1782.3
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1883.6
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1725.1
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1745.3
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1756.4
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.3,
+          "active_tokens_mean": 1910.4
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1774.1
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1910.6
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.28,
+          "active_tokens_mean": 2221.7
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.18,
+          "active_tokens_mean": 2313.5
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__selector-dense": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.4375,
+      "score_ci95": [
+        0.3516666666666667,
+        0.5258333333333334
+      ],
+      "active_tokens_mean": 1662.7416666666666,
+      "latency_ms_mean": 1000.616629424682,
+      "peak_vram_mb_mean": 2369.6304565429687,
+      "selection_latency_ms_mean": 3.797940358951261,
+      "ttft_ms_mean": 395.69521905850706,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 92.72574181662397,
+      "generation_latency_ms_mean": 992.2103256833603,
+      "retrieval_hit_mean": 0.6708860759493671,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 3114.25
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1318.9
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1108.5
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.45,
+          "active_tokens_mean": 1331.95
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1334.15
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.06999999999999999,
+          "active_tokens_mean": 1768.7
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2804.2
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3424.3
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1252.1
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1385.7
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 977.6
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1239.4
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1251.2
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.4,
+          "active_tokens_mean": 1412.7
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1255.5
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1412.8
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.08,
+          "active_tokens_mean": 1721.9
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.06000000000000001,
+          "active_tokens_mean": 1815.5
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__selector-bm25": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.6474999999999999,
+      "score_ci95": [
+        0.5641666666666667,
+        0.725
+      ],
+      "active_tokens_mean": 1675.4083333333333,
+      "latency_ms_mean": 1001.0331724333204,
+      "peak_vram_mb_mean": 2370.8660563151043,
+      "selection_latency_ms_mean": 0.31447125832831563,
+      "ttft_ms_mean": 398.6645965167554,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 22.26914649139265,
+      "generation_latency_ms_mean": 996.3466033999794,
+      "retrieval_hit_mean": 0.9367088607594937,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 3113.8
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1320.95
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1264.2
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1332.4
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1333.75
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.28,
+          "active_tokens_mean": 1687.35
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2803.8
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3423.8
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1256.1
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1385.8
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1219.5
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1308.9
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1252.3
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1412.5
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1254.9
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1412.6
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.2,
+          "active_tokens_mean": 1560.0
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.36000000000000004,
+          "active_tokens_mean": 1814.7
+        }
+      },
+      "n_errors": 0
+    },
+    "sempointer__selector-attention": {
+      "n_scored": 120,
+      "metric": "ruler_containment",
+      "score_mean": 0.33416666666666667,
+      "score_ci95": [
+        0.25583333333333336,
+        0.4166666666666667
+      ],
+      "active_tokens_mean": 1691.45,
+      "latency_ms_mean": 1263.961452033315,
+      "peak_vram_mb_mean": 2372.2864217122396,
+      "selection_latency_ms_mean": 252.95789492532398,
+      "ttft_ms_mean": 408.7074314581211,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 21.20598105799824,
+      "generation_latency_ms_mean": 1007.721917833563,
+      "retrieval_hit_mean": 0.4430379746835443,
+      "retrieval_hit_n": 79,
+      "per_task": {
+        "cwe": {
+          "n": 20,
+          "score_mean": 0.005,
+          "active_tokens_mean": 3091.95
+        },
+        "niah_multikey_1": {
+          "n": 20,
+          "score_mean": 0.5,
+          "active_tokens_mean": 1337.2
+        },
+        "niah_single_1": {
+          "n": 20,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1264.2
+        },
+        "niah_single_2": {
+          "n": 20,
+          "score_mean": 0.15,
+          "active_tokens_mean": 1335.7
+        },
+        "niah_single_3": {
+          "n": 20,
+          "score_mean": 0.05,
+          "active_tokens_mean": 1347.65
+        },
+        "vt": {
+          "n": 20,
+          "score_mean": 0.30000000000000004,
+          "active_tokens_mean": 1772.0
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2759.8
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3424.1
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1288.4
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.4,
+          "active_tokens_mean": 1386.0
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1219.5
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1308.9
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.3,
+          "active_tokens_mean": 1258.4
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 1413.0
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.1,
+          "active_tokens_mean": 1282.5
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 1412.8
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.32,
+          "active_tokens_mean": 1723.7
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.28,
+          "active_tokens_mean": 1820.3
+        }
+      },
+      "n_errors": 0
+    }
+  },
+  "paired": {}
+}

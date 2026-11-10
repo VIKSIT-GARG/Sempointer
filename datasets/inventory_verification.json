@@ -1,0 +1,104 @@
+{
+  "checked_at": 1794124192.8000457,
+  "repositories": [
+    {
+      "repo": "xiaowu0162/longmemeval-cleaned",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "upstream_files": 5,
+      "manifest_files": 5,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "RMT-team/babilong",
+      "revision": "ee0d588794c7ac098062ee0d247c733d62e94fe2",
+      "upstream_files": 137,
+      "manifest_files": 137,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "bigai-nlco/LooGLE",
+      "revision": "4b50b4cb9333b48b3f7ddfd307c1d13369be5d1e",
+      "upstream_files": 7,
+      "manifest_files": 7,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "L4NLP/LEval",
+      "revision": "43b9dbf06c239360b183c76cb5d90ebe4f5e3070",
+      "upstream_files": 24,
+      "manifest_files": 24,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "tau/scrolls",
+      "revision": "927b875150ac8f02262ddd3b078d33a9debc935b",
+      "upstream_files": 14,
+      "manifest_files": 14,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "allenai/qasper",
+      "revision": "fdc9d8214fbab5dd782958601db4d678e6934a54",
+      "upstream_files": 5,
+      "manifest_files": 5,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "zai-org/LongBench-v2",
+      "revision": "2b48e494f2c7a2f0af81aae178e05c7e1dde0fe9",
+      "upstream_files": 3,
+      "manifest_files": 3,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "zai-org/LongBench",
+      "revision": "5e628be450b7e67fb7ae6e201bd6d8f7056f7672",
+      "upstream_files": 4,
+      "manifest_files": 4,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "xinrongzhang2022/InfiniteBench",
+      "revision": "90f0394333616266d9fe85824ceaf505093cbaa5",
+      "upstream_files": 14,
+      "manifest_files": 14,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "deepmind/narrativeqa",
+      "revision": "2e643e7363944af1c33a652d1c87320d0871c4e4",
+      "upstream_files": 39,
+      "manifest_files": 39,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    },
+    {
+      "repo": "hotpotqa/hotpot_qa",
+      "revision": "1908d6afbbead072334abe2965f91bd2709910ab",
+      "upstream_files": 9,
+      "manifest_files": 9,
+      "missing_from_manifest": [],
+      "extra_in_manifest": [],
+      "metadata_mismatches": []
+    }
+  ]
+}

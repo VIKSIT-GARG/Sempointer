@@ -42,7 +42,7 @@ def test_assets_exclude_legacy_retry_errors_and_do_not_invent_missing_data(tmp_p
     ])
     out = tmp_path / "generated"
     out.mkdir()
-    placeholder = Path(__file__).resolve().parents[2] / "paper/generated/macros_placeholder.tex"
+    placeholder = Path(__file__).resolve().parents[1] / "analysis/macros_placeholder.tex"
     (out / "macros_placeholder.tex").write_text(placeholder.read_text())
 
     runs, _ = load_runs(results)

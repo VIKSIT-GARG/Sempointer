@@ -1,0 +1,24 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{All ten families at 4K, 100 pairs each. Savings compare bounded with budget-filling BM25. W/T/L columns distinguish that comparison from pointer-on versus fixed-payload pointer-off; counts are descriptive, including null interventions.}
+\label{tab:sub-families}
+\begin{tabular}{lrrrr}
+\toprule
+Family & Tokens saved (\%) & Time saved (\%) & vs BM25 & vs off \\
+\midrule
+RULER & 53.70 & 36.36 & 1/85/14 & 12/87/1 \\
+LongBench & 44.10 & 37.54 & 11/58/31 & 10/69/21 \\
+LoCoMo & 63.27 & 53.51 & 14/51/35 & 12/71/17 \\
+LongMemEval & 44.15 & 41.77 & 16/73/11 & 10/80/10 \\
+BABILong & 66.27 & 57.62 & 6/86/8 & 6/92/2 \\
+LongBench v2 & 41.30 & 40.25 & 8/87/5 & 8/91/1 \\
+InfiniteBench & 58.21 & 50.22 & 2/80/18 & 1/93/6 \\
+LooGLE & 55.15 & 39.07 & 21/50/29 & 24/54/22 \\
+L-Eval & 59.27 & 40.17 & 24/41/35 & 26/56/18 \\
+SCROLLS & 55.60 & 40.03 & 20/37/43 & 25/47/28 \\
+\bottomrule
+\end{tabular}
+\end{table}

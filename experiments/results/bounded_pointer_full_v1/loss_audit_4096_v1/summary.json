@@ -1,0 +1,251 @@
+{
+  "run_id": "c73abaf595dc68e55696",
+  "input_budget": 4096,
+  "losses": 229,
+  "families": {
+    "babilong": 8,
+    "infinite": 18,
+    "leval": 35,
+    "locomo": 35,
+    "longbench": 31,
+    "longbench_v2": 5,
+    "longmem": 11,
+    "loogle": 29,
+    "ruler": 14,
+    "scrolls": 43
+  },
+  "tasks": {
+    "ruler": {
+      "cwe": 1,
+      "niah_single_2": 1,
+      "niah_single_3": 3,
+      "vt": 9
+    },
+    "longbench": {
+      "hotpotqa": 3,
+      "lcc": 3,
+      "multi_news": 3,
+      "multifieldqa_zh": 3,
+      "musique": 1,
+      "passage_retrieval_zh": 1,
+      "qmsum": 3,
+      "repobench-p": 4,
+      "samsum": 6,
+      "vcsum": 4
+    },
+    "locomo": {
+      "qa": 35
+    },
+    "longmem": {
+      "longmemeval_s_cleaned": 11
+    },
+    "babilong": {
+      "data/qa10/128k": 1,
+      "data/qa6/32k": 1,
+      "data/qa7/128k": 1,
+      "data/qa7/16k": 1,
+      "data/qa8/16k": 1,
+      "data/qa8/64k": 1,
+      "data/qa8/8k": 1,
+      "data/qa9/256k": 1
+    },
+    "longbench_v2": {
+      "data": 5
+    },
+    "infinite": {
+      "code_debug": 3,
+      "longbook_choice_eng": 2,
+      "longbook_qa_chn": 1,
+      "longbook_qa_eng": 5,
+      "longbook_sum_eng": 6,
+      "math_find": 1
+    },
+    "loogle": {
+      "longdep_qa": 5,
+      "shortdep_cloze": 1,
+      "shortdep_qa": 4,
+      "summarization": 19
+    },
+    "leval": {
+      "financial_qa": 4,
+      "gov_report_summ": 3,
+      "legal_contract_qa": 3,
+      "meeting_summ": 1,
+      "multidoc_qa": 1,
+      "narrative_qa": 1,
+      "natural_question": 1,
+      "news_summ": 2,
+      "paper_assistant": 4,
+      "patent_summ": 2,
+      "quality": 2,
+      "review_summ": 4,
+      "scientific_qa": 2,
+      "topic_retrieval_longchat": 3,
+      "tv_show_summ": 2
+    },
+    "scrolls": {
+      "contract_nli": 1,
+      "gov_report": 12,
+      "narrative_qa": 3,
+      "qasper": 5,
+      "qmsum": 8,
+      "quality": 2,
+      "summ_screen_fd": 12
+    }
+  },
+  "diagnoses": {
+    "reference_not_evidence_manual_review_required": 134,
+    "answer_mention_present_not_evidence_proof": 10,
+    "answer_mention_omitted_bm25_retains_proxy_only": 9,
+    "answer_mention_absent_both_cause_unresolved": 22,
+    "annotated_units_omitted_bm25_retains": 18,
+    "annotated_units_present_cause_unresolved": 9,
+    "annotated_units_incomplete_both": 16,
+    "support_session_coverage_requires_review": 11
+  },
+  "annotation_kinds": {
+    "not_available": 165,
+    "locomo_dialogue_annotations": 27,
+    "abstention": 8,
+    "longmem_support_sessions": 11,
+    "ruler_generated_support_facts": 13,
+    "qasper_evidence_paragraphs": 5
+  },
+  "support_statuses": {
+    "bounded_pointer": {
+      "unavailable": 173,
+      "absent": 19,
+      "present": 9,
+      "partial": 26,
+      "unmapped": 2
+    },
+    "adaptive_no_index": {
+      "unavailable": 173,
+      "absent": 19,
+      "present": 9,
+      "partial": 26,
+      "unmapped": 2
+    },
+    "bm25_budget": {
+      "unavailable": 173,
+      "present": 27,
+      "absent": 4,
+      "partial": 23,
+      "unmapped": 2
+    }
+  },
+  "summary_task_losses": 91,
+  "same_payload_pointer_off_cases": 229,
+  "pointer_off_rescues": 47,
+  "pointer_off_improves": 94,
+  "bounded_partial_payloads": 0,
+  "bounded_output_cap_hits": 1,
+  "mean_bounded_input_tokens": 1764.7816593886462,
+  "family_details": {
+    "ruler": {
+      "losses": 14,
+      "summaries": 0,
+      "pointer_off_rescues": 1,
+      "diagnoses": {
+        "answer_mention_present_not_evidence_proof": 1,
+        "annotated_units_present_cause_unresolved": 2,
+        "annotated_units_omitted_bm25_retains": 9,
+        "annotated_units_incomplete_both": 2
+      }
+    },
+    "longbench": {
+      "losses": 31,
+      "summaries": 16,
+      "pointer_off_rescues": 11,
+      "diagnoses": {
+        "answer_mention_omitted_bm25_retains_proxy_only": 2,
+        "answer_mention_absent_both_cause_unresolved": 4,
+        "reference_not_evidence_manual_review_required": 24,
+        "answer_mention_present_not_evidence_proof": 1
+      }
+    },
+    "locomo": {
+      "losses": 35,
+      "summaries": 0,
+      "pointer_off_rescues": 5,
+      "diagnoses": {
+        "annotated_units_omitted_bm25_retains": 6,
+        "annotated_units_present_cause_unresolved": 6,
+        "annotated_units_incomplete_both": 14,
+        "reference_not_evidence_manual_review_required": 8,
+        "answer_mention_absent_both_cause_unresolved": 1
+      }
+    },
+    "longmem": {
+      "losses": 11,
+      "summaries": 0,
+      "pointer_off_rescues": 2,
+      "diagnoses": {
+        "support_session_coverage_requires_review": 11
+      }
+    },
+    "babilong": {
+      "losses": 8,
+      "summaries": 0,
+      "pointer_off_rescues": 1,
+      "diagnoses": {
+        "reference_not_evidence_manual_review_required": 3,
+        "answer_mention_present_not_evidence_proof": 3,
+        "answer_mention_omitted_bm25_retains_proxy_only": 2
+      }
+    },
+    "longbench_v2": {
+      "losses": 5,
+      "summaries": 0,
+      "pointer_off_rescues": 0,
+      "diagnoses": {
+        "reference_not_evidence_manual_review_required": 5
+      }
+    },
+    "infinite": {
+      "losses": 18,
+      "summaries": 6,
+      "pointer_off_rescues": 6,
+      "diagnoses": {
+        "reference_not_evidence_manual_review_required": 12,
+        "answer_mention_absent_both_cause_unresolved": 5,
+        "answer_mention_present_not_evidence_proof": 1
+      }
+    },
+    "loogle": {
+      "losses": 29,
+      "summaries": 19,
+      "pointer_off_rescues": 4,
+      "diagnoses": {
+        "answer_mention_absent_both_cause_unresolved": 5,
+        "reference_not_evidence_manual_review_required": 20,
+        "answer_mention_present_not_evidence_proof": 2,
+        "answer_mention_omitted_bm25_retains_proxy_only": 2
+      }
+    },
+    "leval": {
+      "losses": 35,
+      "summaries": 18,
+      "pointer_off_rescues": 4,
+      "diagnoses": {
+        "reference_not_evidence_manual_review_required": 28,
+        "answer_mention_absent_both_cause_unresolved": 3,
+        "answer_mention_present_not_evidence_proof": 2,
+        "answer_mention_omitted_bm25_retains_proxy_only": 2
+      }
+    },
+    "scrolls": {
+      "losses": 43,
+      "summaries": 32,
+      "pointer_off_rescues": 13,
+      "diagnoses": {
+        "reference_not_evidence_manual_review_required": 34,
+        "answer_mention_absent_both_cause_unresolved": 4,
+        "answer_mention_omitted_bm25_retains_proxy_only": 1,
+        "annotated_units_present_cause_unresolved": 1,
+        "annotated_units_omitted_bm25_retains": 3
+      }
+    }
+  },
+  "no_gpu_inference": true
+}

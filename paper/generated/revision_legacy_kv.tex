@@ -1,0 +1,20 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Complete retained V1 text/KV comparison: 50 Qwen2.5 questions per arm. The three KVpress arms use compression setting 0.3. This is a small historical configuration comparison, not validation of KV serving for the current bounded design.}
+\label{tab:legacy-kv}
+\begin{tabular}{lrrrr}
+\toprule
+Arm & Score & Input & Answer ms & TTFT ms \\
+\midrule
+V1 default text & 90.00 & 1,231 & 996 & 298 \\
+Cached KV substrate & 86.00 & 1,231 & 2,039 & 187 \\
+Full context & 96.00 & 3,806 & 1,587 & 970 \\
+SnapKV (0.3) & 52.00 & 2,661 & 2,175 & -- \\
+TOVA (0.3) & 66.00 & 2,661 & 2,043 & -- \\
+K-norm (0.3) & 46.00 & 2,661 & 2,006 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}

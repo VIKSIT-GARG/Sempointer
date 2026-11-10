@@ -1,0 +1,17 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Retained 100-question pilot test, separate from the 1,000-question full study. W/T/L are bounded relative to the named baseline; savings use paired BM25 totals. At 1K/2K the no-index comparison need not hold payload fixed. Pilot descriptor gains are not an independent replication of an overall full-study benefit.}
+\label{tab:pilot}
+\begin{tabular}{rrrrrr}
+\toprule
+Input & $n$ & vs BM25 W/T/L & Tokens saved (\%) & Time saved (\%) & vs off W/T/L \\
+\midrule
+1,024 & 97 & 12/69/16 & 0.07 & 14.87 & 12/69/16 \\
+2,048 & 100 & 15/69/16 & 19.54 & 14.63 & 15/74/11 \\
+4,096 & 100 & 18/61/21 & 54.73 & 37.65 & 16/75/9 \\
+\bottomrule
+\end{tabular}
+\end{table}

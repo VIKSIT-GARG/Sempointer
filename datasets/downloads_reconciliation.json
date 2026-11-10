@@ -1,0 +1,68 @@
+{
+  "checked_at": 1794130721.7596571,
+  "manual_files": [
+    {
+      "path": "/home/viksit/Downloads/hotpot_dev_distractor_v1.json",
+      "bytes": 61065698,
+      "sha256": "e3da074df24e8369009918aa5cdbdd254dadcde4c63f7569d36afd6f2268caa8",
+      "json_valid": true,
+      "rows": 7405,
+      "unique_ids": 7405,
+      "fields": [
+        "_id",
+        "answer",
+        "context",
+        "level",
+        "question",
+        "supporting_facts",
+        "type"
+      ],
+      "ids_present_in_HF": 7405,
+      "ids_not_in_HF": 0,
+      "HF_sample_question_answer_matches": null,
+      "HF_samples_compared": 0
+    },
+    {
+      "path": "/home/viksit/Downloads/hotpot_dev_fullwiki_v1.json",
+      "bytes": 47454698,
+      "sha256": "2f1f3e594a3066a3084cc57950ca2713c24712adaad03af6ccce18d1846d5618",
+      "json_valid": true,
+      "rows": 7405,
+      "unique_ids": 7405,
+      "fields": [
+        "_id",
+        "answer",
+        "context",
+        "level",
+        "question",
+        "supporting_facts",
+        "type"
+      ],
+      "ids_present_in_HF": 7405,
+      "ids_not_in_HF": 0,
+      "HF_sample_question_answer_matches": null,
+      "HF_samples_compared": 0
+    },
+    {
+      "path": "/home/viksit/Downloads/hotpot_train_v1.json",
+      "bytes": 566426227,
+      "sha256": "26650cf50234ef5fb2e664ed70bbecdfd87815e6bffc257e068efea5cf7cd316",
+      "json_valid": true,
+      "rows": 90447,
+      "unique_ids": 90447,
+      "fields": [
+        "_id",
+        "answer",
+        "context",
+        "level",
+        "question",
+        "supporting_facts",
+        "type"
+      ],
+      "ids_present_in_HF": 90447,
+      "ids_not_in_HF": 0,
+      "HF_sample_question_answer_matches": true,
+      "HF_samples_compared": 5
+    }
+  ]
+}

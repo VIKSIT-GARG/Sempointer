@@ -1,0 +1,714 @@
+{
+  "benchmark": "ruler",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "nf4_compute_dtype": "torch.bfloat16",
+    "device": "cuda",
+    "max_new_tokens": 32,
+    "decoding": "greedy",
+    "attn_implementation": "sdpa",
+    "seed": 42,
+    "model_config_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "n_examples": 180,
+  "system_info": {
+    "sempointer_v2": {
+      "system": "sempointer_v2",
+      "k": 16,
+      "m": 4,
+      "m_max": 4,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "bm25",
+        "components": [
+          "bm25"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "bm25": 1.0
+        },
+        "embedder_id": null,
+        "embedder_device": null,
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      },
+      "router": {
+        "min_m": 2,
+        "m_max": 4,
+        "expand_coverage": 0.8,
+        "ambiguity_coverage": 0.95,
+        "rescue_coverage": 0.5,
+        "expand_score_ratio": 0.85,
+        "max_resolved_tokens": 2560,
+        "semantic_rescue": false,
+        "embedder_device": null
+      }
+    },
+    "bm25_m2": {
+      "system": "bm25",
+      "selection_mode": "top_m",
+      "m": 2,
+      "token_budget": null,
+      "block_size": 512,
+      "n_blocks": 112,
+      "ingestion_tokens": 57407,
+      "ingestion_latency_ms": 53.03854899830185,
+      "has_system_prompt": true,
+      "bm25_backend": "rank_bm25.BM25Okapi",
+      "bm25_params": {
+        "k1": 1.5,
+        "b": 0.75
+      }
+    },
+    "bm25_m4": {
+      "system": "bm25",
+      "selection_mode": "top_m",
+      "m": 4,
+      "token_budget": null,
+      "block_size": 512,
+      "n_blocks": 112,
+      "ingestion_tokens": 57407,
+      "ingestion_latency_ms": 53.32771300163586,
+      "has_system_prompt": true,
+      "bm25_backend": "rank_bm25.BM25Okapi",
+      "bm25_params": {
+        "k1": 1.5,
+        "b": 0.75
+      }
+    }
+  },
+  "systems": {
+    "sempointer_v2": {
+      "n_scored": 180,
+      "metric": "ruler_containment",
+      "score_mean": 0.6211111111111111,
+      "score_ci95": [
+        0.5555277777777778,
+        0.6816944444444444
+      ],
+      "active_tokens_mean": 2200.8,
+      "latency_ms_mean": 1251.8384826168283,
+      "peak_vram_mb_mean": 2246.5782904730904,
+      "selection_latency_ms_mean": 2.206902550501076,
+      "ttft_ms_mean": 594.2098096505409,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.688888888888889,
+      "ingest_ms_mean": 35.38995804491505,
+      "generation_latency_ms_mean": 1244.590460722894,
+      "retrieval_hit_mean": 0.9473684210526315,
+      "retrieval_hit_n": 114,
+      "per_task": {
+        "cwe": {
+          "n": 30,
+          "score_mean": 0.006666666666666667,
+          "active_tokens_mean": 3639.5666666666666
+        },
+        "niah_multikey_1": {
+          "n": 30,
+          "score_mean": 0.9333333333333333,
+          "active_tokens_mean": 2113.3333333333335
+        },
+        "niah_single_1": {
+          "n": 30,
+          "score_mean": 0.9666666666666667,
+          "active_tokens_mean": 1343.7
+        },
+        "niah_single_2": {
+          "n": 30,
+          "score_mean": 0.8666666666666667,
+          "active_tokens_mean": 2120.766666666667
+        },
+        "niah_single_3": {
+          "n": 30,
+          "score_mean": 0.6666666666666666,
+          "active_tokens_mean": 2121.866666666667
+        },
+        "vt": {
+          "n": 30,
+          "score_mean": 0.2866666666666667,
+          "active_tokens_mean": 1865.5666666666666
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2803.8
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3423.8
+        },
+        "cwe@16384": {
+          "task": "cwe",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 4691.1
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1355.8
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 2281.8
+        },
+        "niah_multikey_1@16384": {
+          "task": "niah_multikey_1",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2702.4
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1219.5
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1308.9
+        },
+        "niah_single_1@16384": {
+          "task": "niah_single_1",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1502.7
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1252.3
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 2407.9
+        },
+        "niah_single_2@16384": {
+          "task": "niah_single_2",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 2702.1
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1254.9
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 2408.2
+        },
+        "niah_single_3@16384": {
+          "task": "niah_single_3",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 2702.5
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.26000000000000006,
+          "active_tokens_mean": 1760.4
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.36000000000000004,
+          "active_tokens_mean": 1814.7
+        },
+        "vt@16384": {
+          "task": "vt",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.24,
+          "active_tokens_mean": 2021.6
+        }
+      },
+      "n_errors": 0
+    },
+    "bm25_m2": {
+      "n_scored": 180,
+      "metric": "ruler_containment",
+      "score_mean": 0.5972222222222222,
+      "score_ci95": [
+        0.5316666666666667,
+        0.6588888888888889
+      ],
+      "active_tokens_mean": 1381.4666666666667,
+      "latency_ms_mean": 1050.7189063009314,
+      "peak_vram_mb_mean": 2166.7180908203127,
+      "selection_latency_ms_mean": 1.3121563052765042,
+      "ttft_ms_mean": 441.76384209422395,
+      "active_tokens_core_mean": 1381.4666666666667,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 39.58552882840094,
+      "generation_latency_ms_mean": 1044.4382807114582,
+      "retrieval_hit_mean": 0.9385964912280702,
+      "retrieval_hit_n": 114,
+      "per_task": {
+        "cwe": {
+          "n": 30,
+          "score_mean": 0.0033333333333333335,
+          "active_tokens_mean": 2359.4333333333334
+        },
+        "niah_multikey_1": {
+          "n": 30,
+          "score_mean": 0.9333333333333333,
+          "active_tokens_mean": 1133.4333333333334
+        },
+        "niah_single_1": {
+          "n": 30,
+          "score_mean": 0.9666666666666667,
+          "active_tokens_mean": 962.6666666666666
+        },
+        "niah_single_2": {
+          "n": 30,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1140.4
+        },
+        "niah_single_3": {
+          "n": 30,
+          "score_mean": 0.6666666666666666,
+          "active_tokens_mean": 1142.0666666666666
+        },
+        "vt": {
+          "n": 30,
+          "score_mean": 0.21333333333333337,
+          "active_tokens_mean": 1550.8
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 2356.5
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 2354.9
+        },
+        "cwe@16384": {
+          "task": "cwe",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 2366.9
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1148.0
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1112.8
+        },
+        "niah_multikey_1@16384": {
+          "task": "niah_multikey_1",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1139.5
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 736.6
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1040.9
+        },
+        "niah_single_1@16384": {
+          "task": "niah_single_1",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 1110.5
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1142.2
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 1138.9
+        },
+        "niah_single_2@16384": {
+          "task": "niah_single_2",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1140.1
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1146.9
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 1139.6
+        },
+        "niah_single_3@16384": {
+          "task": "niah_single_3",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 1139.7
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 1466.3
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.36,
+          "active_tokens_mean": 1547.6
+        },
+        "vt@16384": {
+          "task": "vt",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.28,
+          "active_tokens_mean": 1638.5
+        }
+      },
+      "n_errors": 0
+    },
+    "bm25_m4": {
+      "n_scored": 180,
+      "metric": "ruler_containment",
+      "score_mean": 0.6233333333333333,
+      "score_ci95": [
+        0.5594444444444445,
+        0.6844444444444444
+      ],
+      "active_tokens_mean": 2416.2277777777776,
+      "latency_ms_mean": 1485.1377192119091,
+      "peak_vram_mb_mean": 2268.3382432725693,
+      "selection_latency_ms_mean": 1.3139215826716584,
+      "ttft_ms_mean": 848.6057564497363,
+      "active_tokens_core_mean": 2416.2277777777776,
+      "n_selected_mean": 4.0,
+      "ingest_ms_mean": 40.00271077845051,
+      "generation_latency_ms_mean": 1476.9581153229713,
+      "retrieval_hit_mean": 0.9473684210526315,
+      "retrieval_hit_n": 114,
+      "per_task": {
+        "cwe": {
+          "n": 30,
+          "score_mean": 0.006666666666666667,
+          "active_tokens_mean": 3394.633333333333
+        },
+        "niah_multikey_1": {
+          "n": 30,
+          "score_mean": 0.9333333333333333,
+          "active_tokens_mean": 2174.8333333333335
+        },
+        "niah_single_1": {
+          "n": 30,
+          "score_mean": 0.9666666666666667,
+          "active_tokens_mean": 1997.2
+        },
+        "niah_single_2": {
+          "n": 30,
+          "score_mean": 0.8,
+          "active_tokens_mean": 2178.766666666667
+        },
+        "niah_single_3": {
+          "n": 30,
+          "score_mean": 0.6666666666666666,
+          "active_tokens_mean": 2177.766666666667
+        },
+        "vt": {
+          "n": 30,
+          "score_mean": 0.3666666666666666,
+          "active_tokens_mean": 2574.1666666666665
+        }
+      },
+      "per_task_context_length": {
+        "cwe@4096": {
+          "task": "cwe",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 3391.7
+        },
+        "cwe@8192": {
+          "task": "cwe",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.0,
+          "active_tokens_mean": 3390.1
+        },
+        "cwe@16384": {
+          "task": "cwe",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.01,
+          "active_tokens_mean": 3402.1
+        },
+        "niah_multikey_1@4096": {
+          "task": "niah_multikey_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 2200.5
+        },
+        "niah_multikey_1@8192": {
+          "task": "niah_multikey_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 2148.5
+        },
+        "niah_multikey_1@16384": {
+          "task": "niah_multikey_1",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2175.5
+        },
+        "niah_single_1@4096": {
+          "task": "niah_single_1",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 1771.7
+        },
+        "niah_single_1@8192": {
+          "task": "niah_single_1",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2075.4
+        },
+        "niah_single_1@16384": {
+          "task": "niah_single_1",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.9,
+          "active_tokens_mean": 2144.5
+        },
+        "niah_single_2@4096": {
+          "task": "niah_single_2",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 1.0,
+          "active_tokens_mean": 2186.3
+        },
+        "niah_single_2@8192": {
+          "task": "niah_single_2",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.8,
+          "active_tokens_mean": 2174.9
+        },
+        "niah_single_2@16384": {
+          "task": "niah_single_2",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 2175.1
+        },
+        "niah_single_3@4096": {
+          "task": "niah_single_3",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 2182.9
+        },
+        "niah_single_3@8192": {
+          "task": "niah_single_3",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.7,
+          "active_tokens_mean": 2174.9
+        },
+        "niah_single_3@16384": {
+          "task": "niah_single_3",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.6,
+          "active_tokens_mean": 2175.5
+        },
+        "vt@4096": {
+          "task": "vt",
+          "context_length": 4096,
+          "n": 10,
+          "score_mean": 0.30000000000000004,
+          "active_tokens_mean": 2452.9
+        },
+        "vt@8192": {
+          "task": "vt",
+          "context_length": 8192,
+          "n": 10,
+          "score_mean": 0.34,
+          "active_tokens_mean": 2595.5
+        },
+        "vt@16384": {
+          "task": "vt",
+          "context_length": 16384,
+          "n": 10,
+          "score_mean": 0.4600000000000001,
+          "active_tokens_mean": 2674.1
+        }
+      },
+      "n_errors": 0
+    }
+  },
+  "paired": {
+    "sempointer_v2": {
+      "vs_bm25_m2": {
+        "n_paired": 180,
+        "mean_a": 0.6211111111111112,
+        "mean_b": 0.5972222222222223,
+        "mean_diff": 0.023888888888888883,
+        "diff_ci95": [
+          -0.0016805555555555551,
+          0.052222222222222225
+        ],
+        "wins": 19,
+        "losses": 8,
+        "ties": 153,
+        "wilcoxon_p": 0.15274108641573356
+      },
+      "vs_bm25_m4": {
+        "n_paired": 180,
+        "mean_a": 0.6211111111111112,
+        "mean_b": 0.6233333333333334,
+        "mean_diff": -0.002222222222222222,
+        "diff_ci95": [
+          -0.03111111111111111,
+          0.027777777777777776
+        ],
+        "wins": 9,
+        "losses": 10,
+        "ties": 161,
+        "wilcoxon_p": 0.9195056008941386
+      },
+      "matched_retrieval": "bm25_m4"
+    },
+    "bm25_m2": {
+      "vs_bm25_m4": {
+        "n_paired": 180,
+        "mean_a": 0.5972222222222223,
+        "mean_b": 0.6233333333333334,
+        "mean_diff": -0.026111111111111113,
+        "diff_ci95": [
+          -0.04168055555555556,
+          -0.011097222222222236
+        ],
+        "wins": 2,
+        "losses": 18,
+        "ties": 160,
+        "wilcoxon_p": 0.0016715700805233907
+      },
+      "matched_retrieval": "bm25_m4"
+    },
+    "bm25_m4": {
+      "vs_bm25_m2": {
+        "n_paired": 180,
+        "mean_a": 0.6233333333333334,
+        "mean_b": 0.5972222222222223,
+        "mean_diff": 0.026111111111111113,
+        "diff_ci95": [
+          0.011097222222222224,
+          0.04168055555555555
+        ],
+        "wins": 18,
+        "losses": 2,
+        "ties": 160,
+        "wilcoxon_p": 0.0016715700805233907
+      },
+      "matched_retrieval": "bm25_m2"
+    }
+  }
+}

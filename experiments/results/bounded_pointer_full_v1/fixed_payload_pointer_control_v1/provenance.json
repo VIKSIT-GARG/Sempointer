@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-11-10T14:59:53.615592+00:00",
+  "source_files_sha256": {
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/manifest.json": "2e6d28c5e3f8f21245d87abc85da7dbb6eb220e8ae528765078c5f95bcea2eba",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/results/test_4096/results.sqlite": "22ab4406b4247a0083562fd78949ad1816f211cdfc6ff4ebe5818d968f74de41",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/results/test_4096/config.json": "26fe48dcefc2d3f4d4fe43c45a0872ebb3628bd0b761cc05ea86fb63870a99d6",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/environment.json": "4d71d9fc4b759ff0af95a5d7475f5af2b6333f48a12b0544dd1011f63a21216e",
+    "/home/viksit/Projects/tokens2/experiments/analysis/fixed_payload_control.py": "de24423a8d960a7397434747c7fb55d41d91d84084777bf4fc5b7084e6ba45ee",
+    "/home/viksit/Projects/tokens2/experiments/analysis/audit_bounded_losses.py": "39dc213a19c95d4b601c8ea2fef2d1676e2793ac8d9a279aca2fb72762574110",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/d4cc02c525b09bf4980580c62633fda8c084b6b43c0386352da299273c7417f4.json": "1eb40bda9b474ad9d94c5d27b4b0cd254384d78c2703fef5d4ce3033409059c6",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/2760a55b094e45e066ccfdb806caf2eff814ce61b668622262714d308016cfe0.json": "ae025efafabd7bc609631464da3265cbfc76259085a4d4fdede75560144794cc",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/8fc3cdc64c5f42bf9cf375ec69ee7bfb52e78752f9915f26c8ae463221dadfc2.json": "0f3149be1684a33820d6fa1153b0ea410172c3f75528993433c12b8e04f2feb4",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/b850b83cd7e42a2ec1c35ec8c0bd15a99bd766a83b0ce65174a56b85fca2070a.json": "7a2f9f6efabfbecc4a652686e5bd7d0ffbb43450868c67f351be6776896da8a8",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/43acfacea22ed89f0eed39345565e617ce7cd29bfff77716b1a300139fa5b6de.json": "43e3e95d55dd1218c19a184158fc5518a877759619a9c984396d11a45788d328",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/58b0bb547b8e72a0943f0a5a5d09cbc5027ac0c3b47ab250b69c986000182d61.json": "b67a68d205932f2079c19f8f36938a880a14fb251c0261fe45368872c51f2829",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/2a99831e742000c982750ae6020925ded516251d06d02f14fe348cdeaffc76a2.json": "459c18a63b55816992cdabb6a52725ac8281236213143e12bf2199cd6bc8acd7",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/1a3e349e60181ad0ae5d820cce806950a492ff808a9419ef05d4d94c7ae041bd.json": "03f7d31758dabed798e59cbe60988cefe7b4ea8ffc1a26e9b1f7ceccbeb9b0a4",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/99f2fb189852eb15d414699bd9e4963aa2b23929363e7e5228e639ed33176b54.json": "c941bc71a4ce84fc5d7eaa71d9c7b72762ab1bbca430600a1b4a2b8823c080a6",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/dd7918ba937032f0b183a7c471ae48cfb9d4c2167ed45869097dcb8dcceb0c74.json": "8def3fa1183034856253a130fb9db528dc82ed24068d0d8ecf1feb928b12eabe",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/59bde6d49131e05f1a81c837603cd0153ed16b359c20cb98f61b9f0e54ddd1c5.json": "de164dc8053d5280f2c857a77f774759679ed5158c7db98a333b6b81552e7a86",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/9bf3ef8a066e77c00794ae5c28070f106e8861057caf5194e5f728ef08ced9cc.json": "8506bf6a213292edbbe842910d4a4013e26388e8fd92bf6c659b443b731c1441",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/554cecda6a6b0377501b798abe75060ac64805c5fdd438f6fa8c496564bd37fc.json": "b2e0ef19ec3b97195af0cba4c471e8423fecc488bf11bed820bb65a41346e352",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/bd1b068057101e3cc71bf2d306bd49a327bc0c09674fa5005406d0c53214c924.json": "89b850d8caa9d5211e82ff984412c768adf61437002b28d1692dd9439ec2d600",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/8f70ad8dc38db938539838dd621a0b4ef072dfde1baf84f65dbfd901de107609.json": "a81acb3e1c134485b0a6c116f455e9b1eae2f8697c682747210f45a78ddbea4b",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/333489b8d776255ff96be1b7d4cf54d871c5febd9bb56aea17bca250cb590227.json": "26a96866d0c5b46c405027618f389e22b471070d96dba2bc2f984c6f92bdd255",
+    "/home/viksit/Projects/tokens2/experiments/results/bounded_pointer_full_v1/input/examples/test/90b766cf69a3bf8a34b75448c7e0d93781bd7549f43f4e8014d897dcfe6fa561.json": "899339c5f5442089c4d697f3d7f867e0ffadef1d0fa780591790a1a4faec7ed9"
+  },
+  "new_model_inference": false,
+  "new_generations": 0,
+  "note": "Exact saved-prompt verification and secondary analysis; not a new independent experiment."
+}

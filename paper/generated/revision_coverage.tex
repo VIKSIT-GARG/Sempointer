@@ -1,0 +1,17 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Scored coverage out of the same 1,000 questions per input limit. The bounded version reaches 100\% coverage at 2K and 4K; coverage means an evaluated request, not a correct answer. Skips are reported explicitly and no inference errors were recorded.}
+\label{tab:coverage}
+\begin{tabular}{rrrrr}
+\toprule
+Input limit & Bounded & No index & BM25 budget & Full index \\
+\midrule
+1,024 & 972 & 972 & 972 & 6 \\
+2,048 & 1000 & 1000 & 1000 & 319 \\
+4,096 & 1000 & 1000 & 1000 & 700 \\
+\bottomrule
+\end{tabular}
+\end{table}

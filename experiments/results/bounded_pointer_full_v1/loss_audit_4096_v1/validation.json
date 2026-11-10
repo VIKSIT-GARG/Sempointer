@@ -1,0 +1,25 @@
+{
+  "verified_cases": 229,
+  "unique_cases": 229,
+  "source_files_unchanged": 237,
+  "tokenizer_matches_frozen_manifest": true,
+  "generations_run": 0,
+  "audit_tests_passed": 10,
+  "full_suite": {
+    "passed": 129,
+    "failed": 7,
+    "errors": 21,
+    "deselected": 7
+  },
+  "files": {
+    "summary.json": 6545,
+    "cases.jsonl": 9342851,
+    "cases.csv": 41012,
+    "REPORT.md": 4405,
+    "casebook.md": 9204227,
+    "provenance.json": 56567,
+    "full_tests.log": 144491,
+    "MANUAL_REVIEW.md": 9587,
+    "review_index.csv": 309569
+  }
+}

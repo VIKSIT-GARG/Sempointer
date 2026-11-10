@@ -1,0 +1,274 @@
+family,task,split,metric,protocol,system,n_scored,n_errors,n_skipped,score_mean,active_tokens_mean,generation_ms_mean,latency_ms_mean,peak_vram_mb_mean
+longbench,2wikimqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.0,7463.0,22758.073485980276,22758.073485980276,2544.5849609375
+longbench,2wikimqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.0,57.0,1468.8465049839579,1468.8465049839579,1998.00244140625
+longbench,2wikimqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.08333333333333333,1365.0,2075.736118014902,2077.8219919884577,2164.541015625
+longbench,2wikimqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.04347826086956522,1093.0,3026.312294998206,3028.398168971762,2139.162109375
+longbench,2wikimqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.04347826086956522,1093.0,3005.400917958468,3005.529547925107,2139.162109375
+longbench,2wikimqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.03508771929824561,2130.0,3900.194872985594,3900.323502952233,2235.9208984375
+longbench,2wikimqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.0,1365.0,4304.008204024285,4327.112040948123,2164.541015625
+longbench,2wikimqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.05405405405405405,64.0,2070.4795329947956,2070.4795329947956,1998.8017578125
+longbench,2wikimqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.025316455696202535,1247.0,4515.874309989158,4518.089847988449,2153.5302734375
+longbench,2wikimqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.039215686274509796,1099.0,3198.627177043818,3200.842715043109,2139.7216796875
+longbench,2wikimqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.039215686274509796,1099.0,3184.372528048698,3184.6450790180825,2139.7216796875
+longbench,2wikimqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.059701492537313446,2135.0,4653.561658982653,4653.834209952038,2236.3876953125
+longbench,2wikimqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.02898550724637681,1246.0,4433.922143012751,4453.8082059589215,2153.4365234375
+longbench,2wikimqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.025,4583.0,5722.4339849781245,5722.4339849781245,2459.5859375
+longbench,dureader,test,char_f1,Chinese character-F1 adaptation,bm25_4,1,0,0,0.07407407407407407,2121.0,4746.122140029911,4746.188254037406,2235.08203125
+longbench,dureader,test,char_f1,Chinese character-F1 adaptation,bm25_matched_budget,1,0,0,0.05747126436781609,2397.0,4700.861586024985,4731.280556006823,2265.47412109375
+longbench,dureader,test,char_f1,Chinese character-F1 adaptation,full_context,0,0,1,,,,,
+longbench,dureader,test,char_f1,Chinese character-F1 adaptation,no_context,1,0,0,0.08,51.0,4097.361040010583,4097.361040010583,1999.783203125
+longbench,dureader,test,char_f1,Chinese character-F1 adaptation,sempointer,1,0,0,0.08187134502923976,2397.0,4754.45981399389,4756.980776030105,2265.47412109375
+longbench,dureader,test,char_f1,Chinese character-F1 adaptation,pointer_off,1,0,0,0.07407407407407407,2121.0,4574.869152973406,4577.390115009621,2235.08203125
+longbench,dureader,test,char_f1,Chinese character-F1 adaptation,bm25_2,1,0,0,0.041237113402061855,1086.0,4537.385540024843,4537.451654032338,2138.505859375
+longbench,gov_report,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer,1,0,0,0.11311053984575835,2496.0,17054.674140003044,17058.09061002219,2276.7880859375
+longbench,gov_report,test,rouge_l,ROUGE-L token-LCS adaptation,pointer_off,1,0,0,0.32800851970181044,2116.0,17148.59231497394,17152.008784993086,2234.615234375
+longbench,gov_report,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_2,1,0,0,0.28888888888888886,1081.0,16924.96321600629,16925.0370740192,2138.0400390625
+longbench,gov_report,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_4,1,0,0,0.32800851970181044,2116.0,17315.620257984847,17315.694115997758,2234.615234375
+longbench,gov_report,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_matched_budget,1,0,0,0.16753926701570682,2496.0,17400.856464984827,17448.52853001794,2276.7880859375
+longbench,gov_report,test,rouge_l,ROUGE-L token-LCS adaptation,full_context,0,0,1,,,,,
+longbench,gov_report,test,rouge_l,ROUGE-L token-LCS adaptation,no_context,1,0,0,0.022598870056497175,45.0,669.0445769927464,669.0445769927464,1996.63134765625
+longbench,gov_report_e,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer,1,0,0,0.08320493066255778,2166.0,2460.8699870295823,2464.9049510480836,2239.2783203125
+longbench,gov_report_e,test,rouge_l,ROUGE-L token-LCS adaptation,pointer_off,1,0,0,0.10192837465564739,2118.0,6017.149151011836,6021.184115030337,2234.8017578125
+longbench,gov_report_e,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_2,1,0,0,0.0713224368499257,1082.0,3288.946508022491,3289.009807049297,2138.1328125
+longbench,gov_report_e,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_4,1,0,0,0.10192837465564739,2118.0,6051.359207020141,6051.422506046947,2234.8017578125
+longbench,gov_report_e,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_matched_budget,1,0,0,0.11041405269761606,2166.0,10763.164839998353,10809.049549978226,2239.2783203125
+longbench,gov_report_e,test,rouge_l,ROUGE-L token-LCS adaptation,full_context,1,0,0,0.184,3114.0,17335.69797099335,17335.69797099335,2347.4287109375
+longbench,gov_report_e,test,rouge_l,ROUGE-L token-LCS adaptation,no_context,1,0,0,0.016474464579901153,45.0,639.0599550213665,639.0599550213665,1996.63134765625
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,0,0,1,,,,,
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.3333333333333333,62.0,210.59210400562733,210.59210400562733,1998.5732421875
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.024691358024691357,2534.0,5053.91753197182,5058.371634979267,2281.1328125
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.04166666666666667,2134.0,3120.189216977451,3124.643319984898,2236.2939453125
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.06666666666666667,1097.0,4460.226038994733,4460.391247994266,2139.53515625
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.04166666666666667,2134.0,3103.905047988519,3104.0702569880523,2236.2939453125
+longbench,hotpotqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.1276595744680851,2533.0,2895.784543012269,2944.8926170589402,2281.01904296875
+longbench,hotpotqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.03333333333333333,1329.0,4524.056866008323,4548.693132994231,2161.1806640625
+longbench,hotpotqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.024999999999999998,6447.0,6894.990433997009,6894.990433997009,2459.6142578125
+longbench,hotpotqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.02469135802469136,63.0,4105.559118033852,4105.559118033852,2000.205078125
+longbench,hotpotqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.028985507246376812,1330.0,4433.516944001894,4435.824652027804,2161.2734375
+longbench,hotpotqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.023529411764705882,1099.0,4418.321461009327,4420.629169035237,2139.7216796875
+longbench,hotpotqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.023529411764705882,1099.0,4328.6687129875645,4328.763760975562,2139.7216796875
+longbench,hotpotqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.030303030303030307,2136.0,4741.38236802537,4741.4774160133675,2236.48046875
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_matched_budget,1,0,0,0.08695652173913043,2512.0,4883.248281024862,4928.273970086593,2278.619140625
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,full_context,0,0,1,,,,,
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,no_context,1,0,0,0.0,45.0,647.6017840323038,647.6017840323038,1996.63134765625
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer,1,0,0,0.13114754098360656,2513.0,3625.7448559626937,3629.3431959929876,2278.73388671875
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,pointer_off,1,0,0,0.04591104734576758,2112.0,4672.7704830118455,4676.368823042139,2234.2392578125
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_2,1,0,0,0.0744047619047619,1077.0,4373.119461000897,4373.20048303809,2137.6669921875
+longbench,lcc,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_4,1,0,0,0.04591104734576758,2112.0,4686.11171504017,4686.192737077363,2234.2392578125
+longbench,lcc_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_4,1,0,0,0.06800618238021638,1821.0,4604.7691510175355,4604.819606000092,2207.0888671875
+longbench,lcc_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_matched_budget,1,0,0,0.06800618238021638,1821.0,4655.374619003851,4663.251027988736,2207.0888671875
+longbench,lcc_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,full_context,1,0,0,0.06800618238021638,1821.0,4590.149364958052,4590.149364958052,2207.0888671875
+longbench,lcc_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,no_context,1,0,0,0.0,45.0,632.9808289883658,632.9808289883658,1996.63134765625
+longbench,lcc_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer,1,0,0,0.06800618238021638,1821.0,4495.498580974527,4497.582431009505,2207.0888671875
+longbench,lcc_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,pointer_off,1,0,0,0.06800618238021638,1821.0,4493.827608996071,4495.911459031049,2207.0888671875
+longbench,lcc_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_2,1,0,0,0.09333333333333334,1081.0,4298.0553939705715,4298.105848953128,2138.0400390625
+longbench,lsht,test,exact,normalized label exact-match adaptation,sempointer,1,0,0,0.0,4706.0,5540.897348022554,5544.880222005304,2459.587890625
+longbench,lsht,test,exact,normalized label exact-match adaptation,pointer_off,1,0,0,0.0,4518.0,5445.6436729524285,5449.626546935178,2459.5849609375
+longbench,lsht,test,exact,normalized label exact-match adaptation,bm25_2,1,0,0,0.0,3481.0,5131.328519026283,5131.818778987508,2389.37939453125
+longbench,lsht,test,exact,normalized label exact-match adaptation,bm25_4,1,0,0,0.0,4518.0,5913.283200992737,5913.773460953962,2459.5849609375
+longbench,lsht,test,exact,normalized label exact-match adaptation,bm25_matched_budget,1,0,0,0.0,4706.0,5685.508872033097,5787.530336005148,2459.587890625
+longbench,lsht,test,exact,normalized label exact-match adaptation,full_context,0,0,1,,,,,
+longbench,lsht,test,exact,normalized label exact-match adaptation,no_context,1,0,0,0.0,2444.0,4879.266647971235,4879.266647971235,2270.8466796875
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,pointer_off,1,0,0,0.13471502590673576,2117.0,16889.64670500718,16893.821291043423,2234.708984375
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_2,1,0,0,0.09523809523809523,1081.0,1980.561383010354,1980.6324359960854,2138.0400390625
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_4,1,0,0,0.13471502590673576,2117.0,16777.498369978275,16777.569422964007,2234.708984375
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_matched_budget,1,0,0,0.13333333333333333,2165.0,16950.463112967554,17004.725950944703,2239.185546875
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,full_context,1,0,0,0.11913357400722022,2740.0,17623.681066033896,17623.681066033896,2304.6787109375
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,no_context,1,0,0,0.04419889502762431,45.0,657.6405339874327,657.6405339874327,1996.63134765625
+longbench,multi_news,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer,1,0,0,0.16129032258064516,2165.0,4133.67718597874,4137.851772014983,2239.185546875
+longbench,multi_news_e,test,rouge_l,ROUGE-L token-LCS adaptation,pointer_off,1,0,0,0.1292517006802721,2117.0,4886.026763007976,4889.998200058471,2234.708984375
+longbench,multi_news_e,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_2,1,0,0,0.08695652173913043,1081.0,16910.031286999583,16910.08571902057,2138.0400390625
+longbench,multi_news_e,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_4,1,0,0,0.1292517006802721,2117.0,5017.4528359784745,5017.507267999463,2234.708984375
+longbench,multi_news_e,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_matched_budget,1,0,0,0.11382113821138211,2145.0,17140.966046019457,17193.459812027868,2237.3203125
+longbench,multi_news_e,test,rouge_l,ROUGE-L token-LCS adaptation,full_context,1,0,0,0.13114754098360656,2580.0,3066.256769991014,3066.256769991014,2286.3916015625
+longbench,multi_news_e,test,rouge_l,ROUGE-L token-LCS adaptation,no_context,1,0,0,0.03980099502487562,45.0,635.4059669538401,635.4059669538401,1996.63134765625
+longbench,multi_news_e,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer,1,0,0,0.19182948490230906,2145.0,17114.968473033514,17118.93991008401,2237.3203125
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.2631578947368421,1138.0,1804.7200629953295,1807.4474550085142,2143.3583984375
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.25,1090.0,1819.3518999614753,1822.07929197466,2138.8818359375
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.25,1090.0,1868.9884159830399,1869.087541999761,2138.8818359375
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.21739130434782605,1747.0,2262.7727370127104,2262.8718630294316,2200.1845703125
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.14492753623188406,1137.0,3504.727632040158,3531.394087069202,2143.265625
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.21739130434782605,1747.0,2322.0326480222866,2322.0326480222866,2200.1845703125
+longbench,multifieldqa_en,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.040816326530612256,55.0,4035.4459390509874,4035.4459390509874,1999.923828125
+longbench,multifieldqa_en_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.2772277227722772,1096.0,4314.140568021685,4316.805664042477,2139.44140625
+longbench,multifieldqa_en_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.2772277227722772,1096.0,4380.43632695917,4380.535553966183,2139.44140625
+longbench,multifieldqa_en_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.2745098039215686,1949.0,4113.824415020645,4113.9236420276575,2219.0322265625
+longbench,multifieldqa_en_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.23728813559322035,1259.0,4441.4602250326425,4470.80084803747,2154.6494140625
+longbench,multifieldqa_en_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.2616822429906542,5055.0,5760.486849001609,5760.486849001609,2459.5927734375
+longbench,multifieldqa_en_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.15652173913043477,60.0,4130.1094079972245,4130.1094079972245,2000.099609375
+longbench,multifieldqa_en_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.25225225225225223,1260.0,4372.682154003996,4375.347250024788,2154.7421875
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,bm25_matched_budget,1,0,0,0.04419889502762431,2236.0,4709.251305030193,4755.05397899542,2247.0693359375
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,full_context,1,0,0,0.04790419161676647,6700.0,7041.524033003952,7041.524033003952,2459.6181640625
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,no_context,1,0,0,0.0196078431372549,61.0,4267.945293977391,4267.945293977391,2000.134765625
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,sempointer,1,0,0,0.032,2236.0,4842.684905976057,4846.329713007435,2247.0693359375
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,pointer_off,1,0,0,0.03305785123966942,2132.0,3302.7018739958294,3306.3466810272075,2236.107421875
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,bm25_2,1,0,0,0.034482758620689655,1096.0,1515.066695981659,1515.126938931644,2139.44140625
+longbench,multifieldqa_zh,test,char_f1,Chinese character-F1 adaptation,bm25_4,1,0,0,0.03305785123966942,2132.0,3335.0862369989045,3335.1464799488895,2236.107421875
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.0,2134.0,4635.8682650025,4641.346657008398,2236.2939453125
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.0,1097.0,1684.0527289896272,1684.1949559748173,2139.53515625
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.0,2134.0,4831.603339000139,4831.745565985329,2236.2939453125
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.0,2740.0,1670.2088210149668,1739.7120019886643,2304.6787109375
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,0,0,1,,,,,
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.0,61.0,3980.3877389640547,3980.3877389640547,2000.134765625
+longbench,musique,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.0,2740.0,4801.7590650124475,4807.237457018346,2304.6787109375
+longbench,narrativeqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.06976744186046513,2348.0,4625.105668033939,4680.63991307281,2259.8720703125
+longbench,narrativeqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,0,0,1,,,,,
+longbench,narrativeqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.07058823529411765,52.0,3339.0011900337413,3339.0011900337413,1999.080078125
+longbench,narrativeqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.06593406593406594,2348.0,4600.323231017683,4603.315362997819,2259.8720703125
+longbench,narrativeqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.05797101449275363,1090.0,3440.305714029819,3443.297846009955,2138.8818359375
+longbench,narrativeqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.05797101449275363,1090.0,3416.534282034263,3416.640592040494,2138.8818359375
+longbench,narrativeqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.04301075268817204,2128.0,4592.649502039421,4592.755812045652,2235.734375
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,bm25_4,1,0,0,0.0,2115.0,4526.5009959694,4526.56573796412,2234.5224609375
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,bm25_matched_budget,1,0,0,0.0,2600.0,2892.556669015903,2950.741784006823,2288.6767578125
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,full_context,0,0,1,,,,,
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,no_context,1,0,0,0.0,45.0,631.5988450078294,631.5988450078294,1996.63134765625
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,sempointer,1,0,0,0.0,2600.0,4510.714666976128,4515.205315954518,2288.6767578125
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,pointer_off,1,0,0,0.0,2115.0,4575.959908950608,4580.450557928998,2234.5224609375
+longbench,passage_count,test,numeric_sequence,numeric exact-match adaptation,bm25_2,1,0,0,0.0,1079.0,3494.06072095735,3494.12546295207,2137.853515625
+longbench,passage_count_e,test,numeric_sequence,numeric exact-match adaptation,bm25_matched_budget,1,0,0,0.0,2226.0,3799.144738004543,3857.1046569850296,2245.9267578125
+longbench,passage_count_e,test,numeric_sequence,numeric exact-match adaptation,full_context,1,0,0,0.0,4588.0,5412.811991001945,5412.811991001945,2459.5859375
+longbench,passage_count_e,test,numeric_sequence,numeric exact-match adaptation,no_context,1,0,0,0.0,45.0,625.4170419997536,625.4170419997536,1996.63134765625
+longbench,passage_count_e,test,numeric_sequence,numeric exact-match adaptation,sempointer,1,0,0,0.0,2226.0,4566.896712000016,4571.53954700334,2245.9267578125
+longbench,passage_count_e,test,numeric_sequence,numeric exact-match adaptation,pointer_off,1,0,0,0.0,2118.0,4587.030728987884,4591.673563991208,2234.8017578125
+longbench,passage_count_e,test,numeric_sequence,numeric exact-match adaptation,bm25_2,1,0,0,0.0,1081.0,3348.5493129701354,3348.6077829729766,2138.0400390625
+longbench,passage_count_e,test,numeric_sequence,numeric exact-match adaptation,bm25_4,1,0,0,0.0,2118.0,4549.358427000698,4549.416897003539,2234.8017578125
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,bm25_4,1,0,0,0.0,2194.0,4553.374664043076,4553.678515076172,2242.2705078125
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,bm25_matched_budget,1,0,0,0.0,2592.0,1027.4776009609923,1089.93176498916,2287.7626953125
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,full_context,0,0,1,,,,,
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,no_context,1,0,0,0.0,117.0,4034.108669962734,4034.108669962734,2046.09228515625
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,sempointer,1,0,0,0.0,2592.0,4765.435294015333,4771.303122048266,2287.7626953125
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,pointer_off,1,0,0,0.0,2194.0,4780.050292960368,4785.918120993301,2242.2705078125
+longbench,passage_retrieval_en,test,all_containment,reference containment adaptation,bm25_2,1,0,0,0.0,1156.0,4350.432434002869,4350.736285035964,2145.0400390625
+longbench,passage_retrieval_en_e,test,all_containment,reference containment adaptation,bm25_matched_budget,1,0,0,0.0,1347.0,4386.339935997967,4418.298440985382,2162.8623046875
+longbench,passage_retrieval_en_e,test,all_containment,reference containment adaptation,full_context,1,0,0,0.0,4693.0,5495.687360991724,5495.687360991724,2459.587890625
+longbench,passage_retrieval_en_e,test,all_containment,reference containment adaptation,no_context,1,0,0,0.0,164.0,4186.19912705617,4186.19912705617,2049.6748046875
+longbench,passage_retrieval_en_e,test,all_containment,reference containment adaptation,sempointer,1,0,0,0.0,1347.0,4454.581215977669,4457.767003972549,2162.8623046875
+longbench,passage_retrieval_en_e,test,all_containment,reference containment adaptation,pointer_off,1,0,0,0.0,1199.0,4410.845712001901,4414.031499996781,2149.05078125
+longbench,passage_retrieval_en_e,test,all_containment,reference containment adaptation,bm25_2,1,0,0,0.0,1199.0,4388.272934011184,4388.521100045182,2149.05078125
+longbench,passage_retrieval_en_e,test,all_containment,reference containment adaptation,bm25_4,1,0,0,0.0,2235.0,4699.438135023229,4699.686301057227,2246.95556640625
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,bm25_2,1,0,0,0.0,833.0,4320.5859860172495,4320.6891100271605,2114.90234375
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,bm25_4,1,0,0,0.0,1869.0,4560.480939981062,4560.584063990973,2211.568359375
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,bm25_matched_budget,1,0,0,0.0,979.0,4340.7260429812595,4361.354777996894,2128.5244140625
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,full_context,1,0,0,0.0,4458.0,5499.678449006751,5499.678449006751,2459.583984375
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,no_context,1,0,0,0.0,158.0,4096.586442959961,4096.586442959961,2049.2177734375
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,sempointer,1,0,0,0.0,979.0,4289.982216025237,4291.50060005486,2128.5244140625
+longbench,passage_retrieval_zh,test,all_containment,reference containment adaptation,pointer_off,1,0,0,0.0,833.0,4240.873149014078,4242.391533043701,2114.90234375
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.0980392156862745,4004.0,5219.78935203515,5219.78935203515,2449.1591796875
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.08771929824561403,54.0,4025.358870974742,4025.358870974742,1999.888671875
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.07407407407407407,1218.0,4318.111962988041,4320.786771015264,2150.8251953125
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.09523809523809523,1090.0,4324.017699982505,4326.692508009728,2138.8818359375
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.09523809523809523,1090.0,4341.941347985994,4342.034822970163,2138.8818359375
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.12195121951219512,2127.0,3721.478708961513,3721.572183945682,2235.6416015625
+longbench,qasper,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.09523809523809523,1218.0,4431.912086030934,4460.957364994101,2150.8251953125
+longbench,qasper_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.0,52.0,4014.8340620216914,4014.8340620216914,1999.818359375
+longbench,qasper_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.4424778761061947,1236.0,4415.085127984639,4418.339486001059,2152.50390625
+longbench,qasper_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.4347826086956522,1088.0,4347.820327035151,4351.074685051572,2138.6923828125
+longbench,qasper_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.4347826086956522,1088.0,4442.904906987678,4442.9734259611,2138.6923828125
+longbench,qasper_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.42016806722689076,2124.0,4735.798181965947,4735.8667009393685,2235.361328125
+longbench,qasper_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.4464285714285714,1235.0,4391.351115016732,4423.786251980346,2152.4111328125
+longbench,qasper_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.47619047619047616,4454.0,5393.4665730339475,5393.4665730339475,2459.583984375
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,pointer_off,1,0,0,0.11211573236889692,1096.0,16299.787374038715,16302.682876994368,2139.44140625
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_2,1,0,0,0.11211573236889692,1096.0,16365.234702010639,16365.331553970464,2139.44140625
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_4,1,0,0,0.1259259259259259,2133.0,16880.868079024367,16880.96493098419,2236.201171875
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,bm25_matched_budget,1,0,0,0.1319073083778966,1472.0,16682.809275982436,16715.316180954687,2174.5224609375
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,full_context,0,0,1,,,,,
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,no_context,1,0,0,0.09737827715355805,60.0,16053.676626994275,16053.676626994275,2013.60986328125
+longbench,qmsum,test,rouge_l,ROUGE-L token-LCS adaptation,sempointer,1,0,0,0.1169811320754717,1472.0,16497.72101501003,16500.616517965682,2174.5224609375
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_matched_budget,1,0,0,0.1099290780141844,2962.0,4829.054027039092,4909.076243988238,2330.0556640625
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,full_context,0,0,1,,,,,
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,no_context,1,0,0,0.10495626822157435,461.0,4107.978696003556,4107.978696003556,2080.19140625
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer,1,0,0,0.14035087719298245,2962.0,4894.271672994364,4900.6669690134,2330.0556640625
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,pointer_off,1,0,0,0.3076923076923077,2532.0,4740.576516021974,4746.971812041011,2280.904296875
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_2,1,0,0,0.11513157894736842,1496.0,4393.604416982271,4394.525758980308,2176.763671875
+longbench,repobench-p,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_4,1,0,0,0.3076923076923077,2532.0,4766.715741017833,4767.63708301587,2280.904296875
+longbench,repobench-p_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,no_context,1,0,0,0.03859649122807018,1231.0,4295.542627980467,4295.542627980467,2152.0380859375
+longbench,repobench-p_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,sempointer,1,0,0,0.08849557522123894,3426.0,5030.624189996161,5036.837565014139,2383.091796875
+longbench,repobench-p_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,pointer_off,1,0,0,0.0851063829787234,3298.0,5141.857522947248,5148.070897965226,2368.4609375
+longbench,repobench-p_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_2,1,0,0,0.11320754716981132,2264.0,4670.759005995933,4672.064860991668,2250.271484375
+longbench,repobench-p_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_4,1,0,0,0.0851063829787234,3298.0,4968.624203000218,4969.930057995953,2368.4609375
+longbench,repobench-p_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,bm25_matched_budget,1,0,0,0.22641509433962265,3426.0,4996.3775830110535,5094.536553951912,2383.091796875
+longbench,repobench-p_e,test,code_similarity,first-line edit-similarity adaptation; no code execution,full_context,1,0,0,0.033950617283950615,6154.0,6256.293999962509,6256.293999962509,2459.6103515625
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,0,0,1,,,,,
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.05714285714285714,240.0,4114.375311997719,4114.375311997719,2055.466796875
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.061855670103092786,2565.0,4740.6875640153885,4745.674983016215,2284.67822265625
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.0792079207920792,2312.0,4665.5521739739925,4670.539592974819,2255.7587890625
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.08247422680412372,1276.0,4292.962324980181,4293.173882935662,2156.234375
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.0792079207920792,2312.0,4642.410110973287,4642.6216689287685,2255.7587890625
+longbench,samsum,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.07999999999999999,2565.0,4795.458085020073,4855.298575013876,2284.67822265625
+longbench,samsum_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.35,2171.0,1946.0140650044195,1951.455978967715,2239.7451171875
+longbench,samsum_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.18367346938775508,1134.0,4284.248440002557,4284.374837996438,2142.9853515625
+longbench,samsum_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.35,2171.0,1987.5268949544989,1987.65329294838,2239.7451171875
+longbench,samsum_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.4090909090909091,2218.0,2176.4028560137376,2229.6472650486976,2245.0126953125
+longbench,samsum_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.27450980392156865,2930.0,2809.120985039044,2809.120985039044,2326.396484375
+longbench,samsum_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.1923076923076923,99.0,3996.3546090293676,3996.3546090293676,2044.72119140625
+longbench,samsum_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.17307692307692307,2219.0,4600.399313960224,4605.84122792352,2245.12744140625
+longbench,trec,test,exact,normalized label exact-match adaptation,pointer_off,1,0,0,0.0,2316.0,1328.2442039926536,1333.133460022509,2256.2158203125
+longbench,trec,test,exact,normalized label exact-match adaptation,bm25_2,1,0,0,0.0,1280.0,4330.701950995717,4331.069352047052,2156.607421875
+longbench,trec,test,exact,normalized label exact-match adaptation,bm25_4,1,0,0,0.0,2316.0,1396.7079620342702,1397.0753630856052,2256.2158203125
+longbench,trec,test,exact,normalized label exact-match adaptation,bm25_matched_budget,1,0,0,0.0,2443.0,1420.358788978774,1477.7883120113984,2270.73291015625
+longbench,trec,test,exact,normalized label exact-match adaptation,full_context,1,0,0,0.0,5273.0,5741.747851017863,5741.747851017863,2459.5966796875
+longbench,trec,test,exact,normalized label exact-match adaptation,no_context,1,0,0,0.0,244.0,1210.5148250120692,1210.5148250120692,2055.771484375
+longbench,trec,test,exact,normalized label exact-match adaptation,sempointer,1,0,0,0.0,2444.0,1330.642800021451,1335.5320560513064,2270.8466796875
+longbench,trec_e,test,exact,normalized label exact-match adaptation,bm25_matched_budget,1,0,0,0.0,1679.0,571.7901940224692,581.1810769955628,2193.83984375
+longbench,trec_e,test,exact,normalized label exact-match adaptation,full_context,1,0,0,0.0,1679.0,618.7474849866703,618.7474849866703,2193.83984375
+longbench,trec_e,test,exact,normalized label exact-match adaptation,no_context,1,0,0,0.0,238.0,2374.9592269887216,2374.9592269887216,2055.314453125
+longbench,trec_e,test,exact,normalized label exact-match adaptation,sempointer,1,0,0,0.0,1679.0,576.7438969924115,580.448594992049,2193.83984375
+longbench,trec_e,test,exact,normalized label exact-match adaptation,pointer_off,1,0,0,0.0,1679.0,616.7719949735329,620.4766929731704,2193.83984375
+longbench,trec_e,test,exact,normalized label exact-match adaptation,bm25_2,1,0,0,0.0,1273.0,622.3303900333121,622.598514019046,2155.955078125
+longbench,trec_e,test,exact,normalized label exact-match adaptation,bm25_4,1,0,0,0.0,1679.0,592.2275329940021,592.4956569797359,2193.83984375
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.075,5754.0,5989.868691016454,5989.868691016454,2459.603515625
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.15789473684210525,204.0,1542.0808540075086,1542.0808540075086,2052.724609375
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.05063291139240507,2277.0,4624.569303006865,4629.212026018649,2251.75732421875
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.09411764705882353,2129.0,4577.478424995206,4582.121148006991,2235.828125
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.06666666666666667,1095.0,4270.189805014525,4270.394390041474,2139.3486328125
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.09411764705882353,2129.0,4554.855423979461,4555.060009006411,2235.828125
+longbench,triviaqa,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.10666666666666667,2276.0,4623.070442001335,4677.402151981369,2251.642578125
+longbench,triviaqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,sempointer,1,0,0,0.025641025641025647,2603.0,4739.081446023192,4744.158565008547,2289.02001953125
+longbench,triviaqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,pointer_off,1,0,0,0.02857142857142857,2495.0,4679.347172030248,4684.424291015603,2276.67431640625
+longbench,triviaqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_2,1,0,0,0.030303030303030307,1459.0,4342.206074972637,4342.479187995195,2173.310546875
+longbench,triviaqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_4,1,0,0,0.02857142857142857,2495.0,4685.697108041495,4685.9702210640535,2276.67431640625
+longbench,triviaqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,bm25_matched_budget,1,0,0,0.02857142857142857,2603.0,4778.299363038968,4841.804952069651,2289.02001953125
+longbench,triviaqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,full_context,1,0,0,0.04597701149425288,4630.0,5463.279621966649,5463.279621966649,2459.5869140625
+longbench,triviaqa_e,test,qa_f1,LongBench normalized QA token-F1; retrieval prompt adaptation,no_context,1,0,0,0.0689655172413793,424.0,2581.992319028359,2581.992319028359,2076.7373046875
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,no_context,1,0,0,0.0,45.0,626.8432050128467,626.8432050128467,1996.63134765625
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,sempointer,1,0,0,0.0,2269.0,1977.8711809776723,1981.6832909709774,2250.84326171875
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,pointer_off,1,0,0,0.18686868686868688,2117.0,16617.19274695497,16621.004856948275,2234.708984375
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,bm25_2,1,0,0,0.13823272090988625,1081.0,16339.047559013125,16339.104756014422,2138.0400390625
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,bm25_4,1,0,0,0.18686868686868688,2117.0,16594.29190098308,16594.349097984377,2234.708984375
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,bm25_matched_budget,1,0,0,0.13388429752066117,2269.0,16572.569086041767,16620.45260402374,2250.84326171875
+longbench,vcsum,test,char_rouge_l,Chinese character-token ROUGE-L adaptation,full_context,1,0,0,0.137291280148423,8067.0,19314.862769970205,19314.862769970205,2620.19775390625
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,full_context,0,0,1,,,,,
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,no_context,1,0,0,0.0,143.0,1061.0109639819711,1061.0109639819711,2048.07568359375
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,sempointer,1,0,0,0.0,3706.0,2114.9111480335705,2120.5463490332477,2415.095703125
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,pointer_off,1,0,0,0.0,2215.0,1619.2331369966269,1624.868337996304,2244.67041015625
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,bm25_2,1,0,0,0.0,1179.0,1319.0397379803471,1319.6045400109142,2147.185546875
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,bm25_4,1,0,0,0.0,2215.0,1645.87293099612,1646.437733026687,2244.67041015625
+longbench_v2,data,test,choice,choice accuracy; SemPointer retrieval prompt adaptation,bm25_matched_budget,1,0,0,1.0,3705.0,2125.8954189834185,2225.4288690164685,2414.98193359375
+longmem,longmemeval_m_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,sempointer,0,0,1,,,,,
+longmem,longmemeval_m_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,pointer_off,0,0,1,,,,,
+longmem,longmemeval_m_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_2,0,0,1,,,,,
+longmem,longmemeval_m_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_4,0,0,1,,,,,
+longmem,longmemeval_m_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_matched_budget,0,0,1,,,,,
+longmem,longmemeval_m_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,full_context,0,0,1,,,,,
+longmem,longmemeval_m_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,no_context,0,0,1,,,,,
+longmem,longmemeval_oracle,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_2,1,0,0,0.0392156862745098,1120.0,4289.897571958136,4290.0515019427985,2141.6796875
+longmem,longmemeval_oracle,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_4,1,0,0,0.038461538461538464,2156.0,4600.653610017616,4600.807540002279,2238.345703125
+longmem,longmemeval_oracle,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_matched_budget,1,0,0,0.0392156862745098,2451.0,4794.988708046731,4856.622074032202,2271.64697265625
+longmem,longmemeval_oracle,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,full_context,0,0,1,,,,,
+longmem,longmemeval_oracle,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,no_context,1,0,0,0.0392156862745098,84.0,1939.446978038177,1939.446978038177,2001.08984375
+longmem,longmemeval_oracle,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,sempointer,1,0,0,0.041237113402061855,2451.0,4781.510272005107,4787.0129739749245,2271.64697265625
+longmem,longmemeval_oracle,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,pointer_off,1,0,0,0.038461538461538464,2156.0,4659.410331980325,4664.913033950143,2238.345703125
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_matched_budget,1,0,0,0.0,6518.0,6480.037118017208,6703.370865958277,2459.615234375
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,full_context,0,0,1,,,,,
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,no_context,1,0,0,0.0,75.0,3178.354859992396,3178.354859992396,2000.06201171875
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,sempointer,1,0,0,0.0,6518.0,6463.929314049892,6469.730107055511,2459.615234375
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,pointer_off,1,0,0,0.0,2150.0,4654.65745102847,4660.458244034089,2237.7861328125
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_2,1,0,0,0.0,1113.0,4318.721210991498,4319.087990967091,2141.02734375
+longmem,longmemeval_s_cleaned,test,qa_f1,token-F1 surrogate; official model-based judge NOT run,bm25_4,1,0,0,0.0,2150.0,4633.412794966716,4633.779574942309,2237.7861328125
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,bm25_matched_budget,1,0,0,0.06060606060606061,1656.0,3674.2031360045075,3716.226864955388,2191.69140625
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,full_context,0,0,1,,,,,
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,no_context,1,0,0,0.018867924528301886,54.0,4056.0738499625586,4056.0738499625586,1999.888671875
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,sempointer,1,0,0,0.05263157894736842,1656.0,4115.6297019915655,4118.615719024092,2191.69140625
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,pointer_off,1,0,0,0.06349206349206349,1090.0,3458.7275160010904,3461.713533033617,2138.8818359375
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,bm25_2,1,0,0,0.06349206349206349,1090.0,3416.4647449506447,3416.58189491136,2138.8818359375
+locomo,qa,test,qa_f1,LoCoMo token-F1 adaptation; session dates included,bm25_4,1,0,0,0.1176470588235294,2127.0,2807.3525030049495,2807.469652965665,2235.6416015625

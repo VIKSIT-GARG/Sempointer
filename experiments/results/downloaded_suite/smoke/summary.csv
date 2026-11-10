@@ -1,0 +1,8 @@
+family,task,split,metric,protocol,system,n_scored,n_errors,n_skipped,score_mean,active_tokens_mean,generation_ms_mean,latency_ms_mean,peak_vram_mb_mean
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,1,0,0,1.0,1219.0,16013.391402026173,16033.50949299056,2150.9189453125
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,full_context,1,0,0,1.0,4034.0,5329.490942996927,5329.490942996927,2452.58984375
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,no_context,1,0,0,0.0,104.0,1171.9853310496546,1171.9853310496546,2045.1015625
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer,1,0,0,1.0,1219.0,3369.5275119971484,3371.3908750214614,2150.9189453125
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,1,0,0,1.0,1139.0,4280.351346998941,4282.214710023254,2143.4521484375
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,1,0,0,1.0,1139.0,4311.031848017592,4311.143269005697,2143.4521484375
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,1,0,0,1.0,2174.0,3767.0893809990957,3767.200801987201,2240.0244140625

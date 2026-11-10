@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Paired SemPointer minus BM25-4 on identical example IDs. Intervals are 95\% bootstrap CIs; $p$ is a two-sided sign-flip test of the score difference. Negative token and latency differences favor SemPointer.}
+\label{tab:paired}
+\begin{tabular}{lrlrr}
+\toprule
+Task & $\Delta$ score (pp) [CI] & $p$ & $\Delta$ tokens [CI] & $\Delta$ answer ms [CI] \\
+\midrule
+RULER & -0.22 [-3.00, +2.67] & 0.943 & -215 [-311, -117] & -233 [-267, -198] \\
+LongBench & -0.13 [-1.04, +0.79] & 0.775 & -223 [-277, -167] & -135 [-166, -104] \\
+LoCoMo & -0.37 [-0.85, +0.13] & 0.139 & -226 [-263, -188] & -68 [-98, -39] \\
+\bottomrule
+\end{tabular}
+\end{table}

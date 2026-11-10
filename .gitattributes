@@ -1,0 +1,16 @@
+# Preserve frozen scientific inputs and supplied vendor styles byte for byte.
+# Ignore their upstream formatting rather than rewriting provenance inputs.
+sn-article-template/** -text -whitespace
+*.bst -text -whitespace
+paper/llncs.cls -text -whitespace
+submission/camera_ready/sn-jnl.cls -text -whitespace
+experiments/reference_code/** -text -whitespace
+experiments/results/** -text -whitespace
+submission/camera_ready/kaggle_evidence/** -text -whitespace
+kaggle_upload/report_review_2026-11-10/** -text -whitespace
+kaggle_upload/publication_2026-11-11/** -text -whitespace
+datasets/BEIR_SOURCE_README.md -text -whitespace
+*.csv -text whitespace=cr-at-eol
+experiments/results/**/*.csv -text -whitespace
+submission/camera_ready/kaggle_evidence/*.csv -text -whitespace
+kaggle_upload/**/*.csv -text -whitespace

@@ -1,0 +1,27 @@
+{
+  "imported_at": "2026-11-08T11:29:22+00:00",
+  "files": [
+    {
+      "source": "/home/viksit/Downloads/hotpot_train_v1.json",
+      "destination": "/home/viksit/Projects/tokens2/datasets/originals/hotpotqa/hotpot_train_v1.json",
+      "bytes": 566426227,
+      "sha256": "26650cf50234ef5fb2e664ed70bbecdfd87815e6bffc257e068efea5cf7cd316",
+      "verified": true
+    },
+    {
+      "source": "/home/viksit/Downloads/hotpot_dev_distractor_v1.json",
+      "destination": "/home/viksit/Projects/tokens2/datasets/originals/hotpotqa/hotpot_dev_distractor_v1.json",
+      "bytes": 61065698,
+      "sha256": "e3da074df24e8369009918aa5cdbdd254dadcde4c63f7569d36afd6f2268caa8",
+      "verified": true
+    },
+    {
+      "source": "/home/viksit/Downloads/hotpot_dev_fullwiki_v1.json",
+      "destination": "/home/viksit/Projects/tokens2/datasets/originals/hotpotqa/hotpot_dev_fullwiki_v1.json",
+      "bytes": 47454698,
+      "sha256": "2f1f3e594a3066a3084cc57950ca2713c24712adaad03af6ccce18d1846d5618",
+      "verified": true
+    }
+  ],
+  "note": "Manual import while the downloader continues. Live status.json may still record the original failed URLs. Training v1 is preserved under its original name; equivalence to requested v1.1 is not claimed."
+}

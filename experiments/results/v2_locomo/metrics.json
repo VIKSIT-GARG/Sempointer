@@ -1,0 +1,159 @@
+{
+  "benchmark": "locomo",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "nf4_compute_dtype": "torch.bfloat16",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "sdpa",
+    "seed": 42,
+    "model_config_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "n_examples": 497,
+  "system_info": {
+    "sempointer_v2": {
+      "system": "sempointer_v2",
+      "k": 16,
+      "m": 4,
+      "m_max": 4,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "bm25",
+        "components": [
+          "bm25"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "bm25": 1.0
+        },
+        "embedder_id": null,
+        "embedder_device": null,
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      },
+      "router": {
+        "min_m": 2,
+        "m_max": 4,
+        "expand_coverage": 0.8,
+        "ambiguity_coverage": 0.95,
+        "rescue_coverage": 0.5,
+        "expand_score_ratio": 0.85,
+        "max_resolved_tokens": 2560,
+        "semantic_rescue": false,
+        "embedder_device": null
+      }
+    },
+    "bm25_m4": {
+      "system": "bm25",
+      "selection_mode": "top_m",
+      "m": 4,
+      "token_budget": null,
+      "block_size": 512,
+      "n_blocks": 42,
+      "ingestion_tokens": 21361,
+      "ingestion_latency_ms": 28.930351996677928,
+      "has_system_prompt": true,
+      "bm25_backend": "rank_bm25.BM25Okapi",
+      "bm25_params": {
+        "k1": 1.5,
+        "b": 0.75
+      }
+    }
+  },
+  "systems": {
+    "sempointer_v2": {
+      "n_scored": 497,
+      "metric": "locomo_f1",
+      "score_mean": 0.068739029697371,
+      "score_ci95": [
+        0.06106869722966829,
+        0.07715666574308915
+      ],
+      "active_tokens_mean": 1896.2454728370221,
+      "latency_ms_mean": 1849.4649947947337,
+      "peak_vram_mb_mean": 2216.2428870095573,
+      "selection_latency_ms_mean": 1.9535205251257586,
+      "ttft_ms_mean": 476.1120412974563,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.3541247484909458,
+      "ingest_ms_mean": 48.55882539410941,
+      "generation_latency_ms_mean": 1841.6386436315213,
+      "per_task": {
+        "locomo_qa": {
+          "n": 497,
+          "score_mean": 0.068739029697371,
+          "active_tokens_mean": 1896.2454728370221
+        }
+      },
+      "n_errors": 0
+    },
+    "bm25_m4": {
+      "n_scored": 497,
+      "metric": "locomo_f1",
+      "score_mean": 0.07241508893854064,
+      "score_ci95": [
+        0.06414326564028565,
+        0.08016185408690946
+      ],
+      "active_tokens_mean": 2122.348088531187,
+      "latency_ms_mean": 1917.7368878975667,
+      "peak_vram_mb_mean": 2235.207265074824,
+      "selection_latency_ms_mean": 0.18254951136472486,
+      "ttft_ms_mean": 519.3847456478907,
+      "active_tokens_core_mean": 2122.348088531187,
+      "n_selected_mean": 4.0,
+      "ingest_ms_mean": 64.75719116120229,
+      "generation_latency_ms_mean": 1909.3738435448738,
+      "per_task": {
+        "locomo_qa": {
+          "n": 497,
+          "score_mean": 0.07241508893854064,
+          "active_tokens_mean": 2122.348088531187
+        }
+      },
+      "n_errors": 0
+    }
+  },
+  "paired": {
+    "sempointer_v2": {
+      "vs_bm25_m4": {
+        "n_paired": 497,
+        "mean_a": 0.068739029697371,
+        "mean_b": 0.07241508893854064,
+        "mean_diff": -0.0036760592411696083,
+        "diff_ci95": [
+          -0.008189993397441659,
+          0.0010304533926535472
+        ],
+        "wins": 152,
+        "losses": 169,
+        "ties": 176,
+        "wilcoxon_p": 0.26471348281482887
+      },
+      "matched_retrieval": "bm25_m4"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "fixed_payload_pairs": 1000,
+  "descriptor_interventions": 990,
+  "null_interventions": 10,
+  "native_metric_task_groups": 123,
+  "source_files_unchanged": 23,
+  "new_generations": 0,
+  "focused_control_and_audit_tests_passed": 18,
+  "full_suite": {
+    "passed": 137,
+    "failed": 7,
+    "errors": 21,
+    "deselected": 7
+  }
+}

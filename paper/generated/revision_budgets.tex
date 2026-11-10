@@ -1,0 +1,17 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Bounded SemPointer versus BM25 filling the same maximum input allowance. Counts use scored shared IDs; input limits are not equal realized token counts. Savings use paired total input tokens and generation time (prefill plus decode), excluding ingestion and shared prompt preparation.}
+\label{tab:budgets}
+\begin{tabular}{rrrrrrr}
+\toprule
+Input limit & $n$ & Wins & Ties & Losses & Token savings (\%) & Time savings (\%) \\
+\midrule
+1,024 & 972 & 111 & 727 & 134 & 0.09 & 6.40 \\
+2,048 & 1000 & 132 & 686 & 182 & 17.90 & 13.65 \\
+4,096 & 1000 & 123 & 648 & 229 & 54.16 & 42.69 \\
+\bottomrule
+\end{tabular}
+\end{table}

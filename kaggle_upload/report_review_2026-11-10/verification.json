@@ -1,0 +1,14 @@
+{
+  "source_counts_reconciled": true,
+  "system_task_rows": 828,
+  "scored": 13055,
+  "skipped": 1798,
+  "unrecorded": 3147,
+  "task_groups": 138,
+  "recorded_task_groups": 133,
+  "paired_comparisons": 605,
+  "browser_checks_passed": 10,
+  "javascript_syntax": "passed",
+  "latest_browser_console_errors": 0,
+  "raw_database_audit": "not performed; source download incomplete"
+}

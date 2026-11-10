@@ -1,0 +1,449 @@
+{
+  "benchmark": "longbench",
+  "engine": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "nf4",
+    "device": "cuda",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "attn_implementation": "sdpa",
+    "seed": 42,
+    "model_config_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "n_examples": 600,
+  "system_info": {
+    "sempointer": {
+      "system": "sempointer",
+      "k": 16,
+      "m": 2,
+      "m_max": 2,
+      "adaptive_ratio": null,
+      "block_size": 512,
+      "hops": 1,
+      "substrate": "M_text",
+      "show_pointers": true,
+      "attn_layers": "upper_half",
+      "attn_agg": "mean",
+      "pointer_generator": {
+        "pointer_kind": "keyword",
+        "k": 16,
+        "idf_scope": "blocks of the current context",
+        "number_boost": 2.0,
+        "entity_boost": 1.5,
+        "long_boost": 1.2,
+        "long_len": 8,
+        "min_len": 2,
+        "max_term_tokens": null
+      },
+      "selector": {
+        "selector_mode": "hybrid+attention",
+        "components": [
+          "dense",
+          "bm25",
+          "attention"
+        ],
+        "fusion": "weighted reciprocal rank fusion",
+        "rrf_k": 60,
+        "weights": {
+          "dense": 1.0,
+          "bm25": 1.0,
+          "attention": 1.0
+        },
+        "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedder_device": "cuda",
+        "bm25": {
+          "k1": 1.5,
+          "b": 0.75,
+          "stopwords": true
+        }
+      }
+    },
+    "full": {
+      "system": "full_context",
+      "block_size": 512,
+      "n_blocks": 92,
+      "ingestion_tokens": 46698,
+      "ingestion_latency_ms": 58.09156999748666,
+      "has_system_prompt": true
+    },
+    "rag_m4": {
+      "system": "rag",
+      "selection_mode": "top_m",
+      "m": 4,
+      "token_budget": null,
+      "block_size": 512,
+      "n_blocks": 0,
+      "ingestion_tokens": null,
+      "ingestion_latency_ms": null,
+      "has_system_prompt": true,
+      "rag_backend": "torch exact cosine (normalized embeddings)",
+      "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "embedder_device": "cuda"
+    },
+    "hybrid_m4": {
+      "system": "hybrid",
+      "selection_mode": "top_m",
+      "m": 4,
+      "token_budget": null,
+      "block_size": 512,
+      "n_blocks": 0,
+      "ingestion_tokens": null,
+      "ingestion_latency_ms": null,
+      "has_system_prompt": true,
+      "fusion": "rrf",
+      "rrf_k": 60,
+      "weights": {
+        "bm25": 1.0,
+        "dense": 1.0
+      },
+      "bm25_backend": "rank_bm25.BM25Okapi",
+      "embedder_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "embedder_device": "cuda"
+    }
+  },
+  "systems": {
+    "sempointer": {
+      "n_scored": 600,
+      "metric": "longbench_f1",
+      "score_mean": 0.10293719699802976,
+      "score_ci95": [
+        0.09138546092276371,
+        0.1163527210272128
+      ],
+      "active_tokens_mean": 1581.0283333333334,
+      "latency_ms_mean": 1703.2352834382739,
+      "peak_vram_mb_mean": 2359.148770345052,
+      "selection_latency_ms_mean": 202.4116812249728,
+      "ttft_ms_mean": 382.75708923694765,
+      "n_hops_mean": 1.0,
+      "n_selected_mean": 2.0,
+      "ingest_ms_mean": 160.13954194337808,
+      "generation_latency_ms_mean": 1497.2448124601458,
+      "per_task": {
+        "2wikimqa": {
+          "n": 100,
+          "score_mean": 0.06937433396920428,
+          "active_tokens_mean": 1336.53
+        },
+        "hotpotqa": {
+          "n": 100,
+          "score_mean": 0.05231877364225194,
+          "active_tokens_mean": 1601.61
+        },
+        "multifieldqa_en": {
+          "n": 100,
+          "score_mean": 0.24229726473679622,
+          "active_tokens_mean": 1338.12
+        },
+        "musique": {
+          "n": 100,
+          "score_mean": 0.033359922802697894,
+          "active_tokens_mean": 1721.84
+        },
+        "narrativeqa": {
+          "n": 100,
+          "score_mean": 0.06341632632323246,
+          "active_tokens_mean": 2251.98
+        },
+        "qasper": {
+          "n": 100,
+          "score_mean": 0.15685656051399577,
+          "active_tokens_mean": 1236.09
+        }
+      },
+      "n_errors": 0
+    },
+    "full": {
+      "n_scored": 600,
+      "metric": "longbench_f1",
+      "score_mean": 0.117207382987056,
+      "score_ci95": [
+        0.10639987794377492,
+        0.12933974043786972
+      ],
+      "active_tokens_mean": 13365.695,
+      "latency_ms_mean": 8687.025759330014,
+      "peak_vram_mb_mean": 2933.3254915364582,
+      "selection_latency_ms_mean": 0.0,
+      "ttft_ms_mean": 7376.330058856498,
+      "active_tokens_core_mean": 13365.695,
+      "ingest_ms_mean": 50.96641844499876,
+      "generation_latency_ms_mean": 8646.170816839804,
+      "per_task": {
+        "2wikimqa": {
+          "n": 100,
+          "score_mean": 0.06382307896589193,
+          "active_tokens_mean": 7565.62
+        },
+        "hotpotqa": {
+          "n": 100,
+          "score_mean": 0.06175171140547861,
+          "active_tokens_mean": 13865.48
+        },
+        "multifieldqa_en": {
+          "n": 100,
+          "score_mean": 0.2711282570859148,
+          "active_tokens_mean": 7230.38
+        },
+        "musique": {
+          "n": 100,
+          "score_mean": 0.04477495528440203,
+          "active_tokens_mean": 16532.16
+        },
+        "narrativeqa": {
+          "n": 100,
+          "score_mean": 0.07037627921610932,
+          "active_tokens_mean": 29594.94
+        },
+        "qasper": {
+          "n": 100,
+          "score_mean": 0.1913900159645393,
+          "active_tokens_mean": 5405.59
+        }
+      },
+      "n_errors": 0
+    },
+    "rag_m4": {
+      "n_scored": 600,
+      "metric": "longbench_f1",
+      "score_mean": 0.09561102685248253,
+      "score_ci95": [
+        0.08566834924466382,
+        0.10589500872973767
+      ],
+      "active_tokens_mean": 2090.8316666666665,
+      "latency_ms_mean": 1587.248720965096,
+      "peak_vram_mb_mean": 2405.6189510091144,
+      "selection_latency_ms_mean": 2.698233885009055,
+      "ttft_ms_mean": 443.6695979334763,
+      "active_tokens_core_mean": 2090.8316666666665,
+      "n_selected_mean": 3.993333333333333,
+      "ingest_ms_mean": 166.74094432972197,
+      "generation_latency_ms_mean": 1576.7810581367303,
+      "per_task": {
+        "2wikimqa": {
+          "n": 100,
+          "score_mean": 0.05381819673052168,
+          "active_tokens_mean": 2070.53
+        },
+        "hotpotqa": {
+          "n": 100,
+          "score_mean": 0.05166202364888906,
+          "active_tokens_mean": 2113.33
+        },
+        "multifieldqa_en": {
+          "n": 100,
+          "score_mean": 0.23093125114857702,
+          "active_tokens_mean": 2075.34
+        },
+        "musique": {
+          "n": 100,
+          "score_mean": 0.026681918669861943,
+          "active_tokens_mean": 2114.74
+        },
+        "narrativeqa": {
+          "n": 100,
+          "score_mean": 0.057760292804109124,
+          "active_tokens_mean": 2111.04
+        },
+        "qasper": {
+          "n": 100,
+          "score_mean": 0.15281247811293627,
+          "active_tokens_mean": 2060.01
+        }
+      },
+      "n_errors": 0
+    },
+    "hybrid_m4": {
+      "n_scored": 600,
+      "metric": "longbench_f1",
+      "score_mean": 0.1059663127606228,
+      "score_ci95": [
+        0.09469800996225461,
+        0.11754758022329614
+      ],
+      "active_tokens_mean": 2096.44,
+      "latency_ms_mean": 1547.6092447752187,
+      "peak_vram_mb_mean": 2406.153829752604,
+      "selection_latency_ms_mean": 2.765898303465898,
+      "ttft_ms_mean": 440.7872286468167,
+      "active_tokens_core_mean": 2096.44,
+      "n_selected_mean": 3.993333333333333,
+      "ingest_ms_mean": 162.25767761162084,
+      "generation_latency_ms_mean": 1537.3453409082745,
+      "per_task": {
+        "2wikimqa": {
+          "n": 100,
+          "score_mean": 0.05643792759909138,
+          "active_tokens_mean": 2068.99
+        },
+        "hotpotqa": {
+          "n": 100,
+          "score_mean": 0.0549438439276647,
+          "active_tokens_mean": 2115.49
+        },
+        "multifieldqa_en": {
+          "n": 100,
+          "score_mean": 0.2581108386309081,
+          "active_tokens_mean": 2080.58
+        },
+        "musique": {
+          "n": 100,
+          "score_mean": 0.03687276414891384,
+          "active_tokens_mean": 2120.29
+        },
+        "narrativeqa": {
+          "n": 100,
+          "score_mean": 0.07143571108379573,
+          "active_tokens_mean": 2115.55
+        },
+        "qasper": {
+          "n": 100,
+          "score_mean": 0.15799679117336293,
+          "active_tokens_mean": 2077.74
+        }
+      },
+      "n_errors": 0
+    }
+  },
+  "paired": {
+    "sempointer": {
+      "vs_full": {
+        "n_paired": 600,
+        "mean_a": 0.10293719699802976,
+        "mean_b": 0.117207382987056,
+        "mean_diff": -0.01427018598902624,
+        "diff_ci95": [
+          -0.024997022586642693,
+          -0.0040982675788521295
+        ],
+        "wins": 185,
+        "losses": 259,
+        "ties": 156,
+        "wilcoxon_p": 2.0838433695811675e-05
+      },
+      "vs_rag_m4": {
+        "n_paired": 600,
+        "mean_a": 0.10293719699802976,
+        "mean_b": 0.09561102685248252,
+        "mean_diff": 0.007326170145547247,
+        "diff_ci95": [
+          -0.0008928784195480032,
+          0.015983776910210214
+        ],
+        "wins": 206,
+        "losses": 206,
+        "ties": 188,
+        "wilcoxon_p": 0.9296555444702335
+      },
+      "vs_hybrid_m4": {
+        "n_paired": 600,
+        "mean_a": 0.10293719699802976,
+        "mean_b": 0.10596631276062281,
+        "mean_diff": -0.003029115762593032,
+        "diff_ci95": [
+          -0.010685052981748972,
+          0.005545599363679849
+        ],
+        "wins": 193,
+        "losses": 231,
+        "ties": 176,
+        "wilcoxon_p": 0.13492067500081337
+      },
+      "matched_retrieval": "rag_m4"
+    },
+    "full": {
+      "vs_rag_m4": {
+        "n_paired": 600,
+        "mean_a": 0.117207382987056,
+        "mean_b": 0.09561102685248252,
+        "mean_diff": 0.02159635613457349,
+        "diff_ci95": [
+          0.01379692360466961,
+          0.030056757632765205
+        ],
+        "wins": 266,
+        "losses": 173,
+        "ties": 161,
+        "wilcoxon_p": 4.420219794677966e-08
+      },
+      "vs_hybrid_m4": {
+        "n_paired": 600,
+        "mean_a": 0.117207382987056,
+        "mean_b": 0.10596631276062281,
+        "mean_diff": 0.011241070226433211,
+        "diff_ci95": [
+          0.0022618908891008293,
+          0.019906076388342585
+        ],
+        "wins": 248,
+        "losses": 189,
+        "ties": 163,
+        "wilcoxon_p": 0.00023419969135825817
+      },
+      "matched_retrieval": "hybrid_m4"
+    },
+    "rag_m4": {
+      "vs_full": {
+        "n_paired": 600,
+        "mean_a": 0.09561102685248252,
+        "mean_b": 0.117207382987056,
+        "mean_diff": -0.02159635613457349,
+        "diff_ci95": [
+          -0.030056757632765205,
+          -0.013796923604669614
+        ],
+        "wins": 173,
+        "losses": 266,
+        "ties": 161,
+        "wilcoxon_p": 4.420219794677966e-08
+      },
+      "vs_hybrid_m4": {
+        "n_paired": 600,
+        "mean_a": 0.09561102685248252,
+        "mean_b": 0.10596631276062281,
+        "mean_diff": -0.010355285908140275,
+        "diff_ci95": [
+          -0.01795190306471527,
+          -0.003730880640259064
+        ],
+        "wins": 177,
+        "losses": 205,
+        "ties": 218,
+        "wilcoxon_p": 0.07969110708325841
+      },
+      "matched_retrieval": "hybrid_m4"
+    },
+    "hybrid_m4": {
+      "vs_full": {
+        "n_paired": 600,
+        "mean_a": 0.10596631276062281,
+        "mean_b": 0.117207382987056,
+        "mean_diff": -0.011241070226433211,
+        "diff_ci95": [
+          -0.019906076388342585,
+          -0.002261890889100831
+        ],
+        "wins": 189,
+        "losses": 248,
+        "ties": 163,
+        "wilcoxon_p": 0.00023419969135825817
+      },
+      "vs_rag_m4": {
+        "n_paired": 600,
+        "mean_a": 0.10596631276062281,
+        "mean_b": 0.09561102685248252,
+        "mean_diff": 0.010355285908140275,
+        "diff_ci95": [
+          0.0037308806402590634,
+          0.017951903064715266
+        ],
+        "wins": 205,
+        "losses": 177,
+        "ties": 218,
+        "wilcoxon_p": 0.07969110708325841
+      },
+      "matched_retrieval": "rag_m4"
+    }
+  }
+}

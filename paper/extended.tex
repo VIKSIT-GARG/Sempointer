@@ -1,0 +1,233 @@
+\documentclass[runningheads]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+\raggedbottom
+\title{SemPointer: Adaptive Evidence Selection and Bounded Descriptors for Long-Context Question Answering}
+\titlerunning{Adaptive Evidence Selection and Bounded Descriptors}
+\author{Viksit Garg}
+\authorrunning{V. Garg}
+\institute{Department of Artificial Intelligence and Machine Learning\\ Dr. Akhilesh Das Gupta Institute of Professional Studies, New Delhi, India\\ \email{viksitg427@gmail.com}}
+\maketitle
+
+\begin{abstract}
+SemPointer combines adaptive BM25 evidence selection, exact text resolution, and bounded descriptors to make long-context question answering practical under limited input and hardware budgets. On 1,000 questions from ten benchmark families using Qwen3.5-4B NF4 on an 8-GB GPU, it reduces input tokens by 54.2\% and generation time by 42.7\% against budget-filling BM25 at a 4,096-token limit. Both costs fall in every family. Bounded descriptors also improve scored coverage from 700 to all 1,000 questions relative to the full-index design at that limit. A fixed-payload control identifies selective descriptor utility: single-chain variable tracking improves from 37.65 to 74.12 on 17 questions, with 12 wins and no losses; descriptors expose otherwise missing gold variable names in 14 cases. Five families have positive descriptive win balances, and all 25 positive task-level mean differences are reported alongside the complete outcome inventory. The variable-tracking Holm value is 0.026 over 53 eligible groups and 0.060 over all 123 inspected groups. Overall descriptor benefit remains inconclusive: 134 wins versus 126 losses among 990 active interventions. The efficiency comparison also entails a quality tradeoff, with 123 wins and 229 losses against budget-filling BM25. Historical gains and a source-grounded loss audit further characterize when the design is useful. The evidence supports an efficient, inspectable context interface with task-dependent descriptor benefits.
+\keywords{Long-context language models \and adaptive retrieval \and semantic pointers \and failure analysis}
+\end{abstract}
+
+\section{Introduction}
+Repeated questions over a long document or conversation require different evidence from the same history. Passing every token to the model repeats prefill work; passing a few passages can omit essential facts. We study this evidence--cost tradeoff with an inspectable lexical router and a separate, bounded channel of descriptors for unexpanded blocks.
+
+SemPointer binds each block to a stable identifier and a short readable descriptor. The resolver places selected blocks in the model's prompt as exact text. These are external text addresses, not learned reconstruction codes, and the model does not issue dereference requests. Presenting a descriptor can reveal names or keywords, but also consumes tokens and changes the answer prompt. Its contribution must therefore be separated from passage selection.
+
+The design offers three complementary benefits. Adaptive selection avoids filling a generous input allowance on every query. A bounded descriptor section keeps the index usable when the complete pointer list would exceed that allowance. Exact block identifiers make the retrieved evidence inspectable, while descriptors can expose useful entities beyond the expanded text. The measured configuration requires neither fine-tuning nor an additional model-selection pass.
+
+The evaluation separates these benefits. The bounded study measures efficiency and coverage across ten families; a verified fixed-payload control measures descriptor display independently of passage choice. Earlier Qwen2.5 runs provide a $+16.56$-point RULER improvement over V1, while the intervening full-index Qwen3.5 result explains the need to bound index overhead. We retain the complete comparison history and concentrate the interpretation on measured benefits and their operating conditions.
+
+Our contributions are:
+\begin{enumerate}
+\item An implementation of adaptive lexical evidence selection with a stable external registry, bounded descriptors, and exact whole-input accounting, including instructions, labels, the question, and native chat framing.
+\item Measured efficiency across all ten families, including 54.2\% fewer input tokens and 42.7\% less generation time at 4K, together with improved input-budget coverage and the associated quality outcomes.
+\item A verified fixed-payload study of descriptor utility, including the single-chain entity-recovery gain, all family outcomes, and the complete inventory of 123 task groups with sample sizes and multiplicity qualifications.
+\item A reproducible account of historical design gains and a source-grounded 229-case audit that identifies evidence-boundary and scoring improvements worth testing.
+\end{enumerate}
+
+\section{Related Work and Scope}
+BM25 and dense retrieval select external evidence for retrieval-augmented generation~\cite{robertson2009bm25,lewis2020rag,reimers2019sbert}. Rank fusion, landmark-style access, and learned compressed representations address related retrieval or memory problems~\cite{cormack2009rrf,mohtashami2023landmark,mu2023gist,cheng2024xrag}. Our registry resolves ordinary stored text and introduces neither a new retrieval score nor an end-to-end trained memory representation.
+
+Adaptive context sizing is established prior work. Adaptive-$k$ selects a query-specific passage count through similarity thresholds without extra language-model calls~\cite{taguchi2025adaptivek}. Our contribution is the inspectable bounded interface, its measured operating tradeoff, and the separate descriptor evaluation. An Adaptive-$k$ comparison remains a priority (Section~\ref{sec:limits}).
+
+Cache compression and KV reuse address related costs~\cite{li2024snapkv,lu2024turborag}. The present experiments use text resolution. Older KV experiments do not validate a KV advantage for the bounded design.
+
+\section{Method}
+\subsection{Registry and adaptive lexical selection}
+The source is divided into blocks $X_i$ of at most 512 target-model tokens. Each registry entry stores an identifier $i$, exact text $X_i$, and a descriptor $P_i$ capped at 16 tokens. Descriptor terms favor distinctive words, numbers, and entity-like strings. Neither questions' gold answers nor evidence annotations are used to construct them.
+
+BM25 ranks the blocks for question $q$. The router protects the first two and may request four. For query terms $T(q)$ and selected-block terms $T(S)$, its IDF-weighted surface coverage is
+\begin{equation}
+C_w(q,S)=\frac{\sum_{t\in T(q)\cap T(S)}\max(0,\operatorname{idf}(t))}
+{\sum_{t\in T(q)}\max(0,\operatorname{idf}(t))},
+\end{equation}
+with zero returned for a zero denominator. The bounded study expands if $C_w<0.70$, or if $C_w<0.90$ and the third BM25 score is at least 0.80 times the second. Block order breaks ties; a 2,560-token resolved-text cap can reject candidates. Semantic rescue and model-attention selection are disabled. Historical Qwen2.5 runs instead used thresholds 0.80, 0.95, and 0.85, respectively; they are not the same configuration.
+
+\subsection{Bounded descriptors and whole-input limits}
+The historical full-index version includes descriptors for every unexpanded block. Its index cost grows with document length and can exceed the payload savings. The bounded version considers only unselected blocks within the top 16 BM25 ranks and admits their descriptors under a 128-token section allowance. A 30-question development pilot selected 128 rather than 256 tokens at all three budgets; those choices were frozen for the full evaluation.
+
+Let $D(q)$ denote admitted descriptor entries, $S(q)$ selected block IDs, and $X_{S(q)}$ their payloads. The authoritative input constraint is
+\begin{equation}
+\begin{aligned}
+L_{\mathrm{input}}(q)&=\left|\operatorname{ChatTemplate}\!\left(\operatorname{Frame}(q,X_{S(q)},D(q))\right)\right|_{\mathrm{tok}},\\
+L_{\mathrm{input}}(q)&\leq L,\qquad L\in\{1024,2048,4096\}.
+\end{aligned}
+\end{equation}
+All instructions, identifiers, section headers, and question tokens count. Blocks are rendered in source order. Packing may include a final partial block at a tight limit; if the question and framing alone exceed the limit, the request is explicitly skipped rather than silently truncating the question. At 4K, the bounded expanded payload is identical to the no-index arm for all 1,000 questions; this does not hold generally at 1K or 2K.
+
+\begin{figure}[t]
+\centering
+\small
+\begin{tabular}{c}
+\fbox{\shortstack{512-token source blocks + question\\Stable registry; BM25 ranks all blocks}}\\[3pt]
+$\swarrow\hspace{3.4cm}\searrow$\\[3pt]
+\fbox{\shortstack{Coverage gate\\Two/four payload blocks}}\quad
+\fbox{\shortstack{Top-16 shortlist\\128-token descriptor cap}}\\[3pt]
+$\searrow\hspace{3.4cm}\swarrow$\\[3pt]
+\fbox{\shortstack{Exact chat-input packing\\1K / 2K / 4K limit}}
+$\longrightarrow$\ \fbox{Model answer}
+\end{tabular}
+\caption{Bounded text architecture. Selection and the optional descriptor section are separate inputs to the packer. The registry remains external; no learned reconstruction or model-issued dereference is used.}
+\label{fig:router}
+\end{figure}
+
+\section{Experimental Protocol}
+\subsection{Models, tasks, and development history}
+The main bounded study uses Qwen/Qwen3.5-4B at pinned revision
+\begin{center}\small\texttt{851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a}.\end{center}
+It uses NF4 double quantization, BF16 compute, greedy non-thinking decoding, native chat formatting, and batch size one on an 8-GB RTX 5060 Laptop GPU. The checkpoint is fixed across its four arms. QA and non-CWE RULER outputs are capped at 128 new tokens; CWE uses 512, and other tasks use the retained task-specific caps. Source guards exclude contexts exceeding two million characters or 262,144 model tokens. Guards and input-budget skips restrict the evaluated distribution.
+
+The same 1,000 questions are evaluated at each input budget: 100 each from RULER, LongBench, LoCoMo, LongMemEval, BABILong, LongBench v2, InfiniteBench, LooGLE, L-Eval, and SCROLLS~\cite{hsieh2024ruler,bai2024longbench,maharana2024locomo,wu2024longmemeval,kuratov2024babilong,bai2024longbenchv2,zhang2024infinitebench,li2024loogle,an2024leval,shaham2022scrolls}. These are 1,000 distinct questions, not 3,000 independent questions. Sampling seed 20261118 balances available task/category strata as far as exclusions permit. Coverage is not exhaustive: the sampled LongBench v2 set covers four of six broad categories; LongMemEval preference questions number only six.
+
+Question IDs from earlier local runs, pilots, and the Modal cost pilot were excluded, as were the pointer-development groups. Nevertheless, sources overlap older evaluations: all 100 LoCoMo questions reuse previously seen conversations, and eight families have some source-group overlap. The 4K set contains 859 distinct exact-context hashes; LoCoMo contributes only four conversations. The full test set is now exposed. The bounded architecture follows examination of earlier negative experiments, so the overall research sequence is exploratory despite freezing pilot choices before the full run.
+
+Historical results use Qwen2.5-3B-Instruct NF4~\cite{qwen2025qwen25,dettmers2023qlora}: 180 RULER questions (six tasks at 4K/8K/16K), the first 100 examples of each of six English LongBench QA tasks, and 497 LoCoMo questions from conversations 0--2. Their output caps were 32 for RULER and 64 for the other two. The intervening original-index Qwen3.5 run used a separate 1,000-question sample, an 8,192-token prompt guard, six arms, and the looser router thresholds. Changes in model, sample, framing, and caps prevent a controlled cross-model comparison.
+
+\subsection{Arms, metrics, and timing}
+The bounded study compares (i) bounded pointers, (ii) the same adaptive router without an index, (iii) BM25 that fills the available input allowance, and (iv) the original full unresolved-pointer index when it fits. All share the same maximum input limit, not necessarily the same realized token count. Four arms, three budgets, and 1,000 questions schedule 12,000 records: 9,941 scored, 2,059 explicitly skipped, and zero recorded inference errors. Bounded-pointer coverage is 972, 1,000, and 1,000 at 1K/2K/4K; full-index coverage is only 6, 319, and 700. We compare scored shared IDs and report coverage rather than assigning skipped requests a success score.
+
+Task adapters retain containment, exact-match/choice, token-F1, ROUGE, and code-task metrics as documented in the saved records. LoCoMo and LongMemEval use local lexical adaptations rather than their official judging protocols; six audited SAMSum losses use QA-F1. These are restricted, adapted benchmark evaluations, not leaderboard submissions. Cross-task summaries count within-question score wins, ties, and losses; they do not average heterogeneous scores into an overall accuracy. A tie can include two incorrect answers.
+
+For the newer studies, generation time includes prefill and decoding but excludes ingestion and shared prompt preparation. The older Qwen2.5 answer-call timing includes selection and prompt assembly as well as generation; its separate TTFT is retained in Appendix~\ref{sec:historical}. Timing reductions are ratios of summed times over paired questions. Neither scope establishes end-to-end serving throughput, amortized repeated-query savings, energy savings, or a cross-run speedup.
+
+\subsection{Fixed-payload verification and exploratory inference}
+The 4K control is a retrospective verification and secondary analysis of existing generations, with zero new model calls. For every pair, expanded text, selected IDs, question, gold references, source hash, output cap, and stage configuration agree. Removing only the entire descriptor section from the pointer-on prompt reproduces the pointer-off prompt byte for byte. At 1K/2K, descriptors can displace payload text, so those stages are not used as the fixed-payload control.
+
+Overall uncertainty uses 10,000 family-stratified exact-source-context cluster bootstrap resamples, seed 20261120, for $(W-L)/n$. This is a question-wise win balance, not mean accuracy or an equivalence test. Task-specific inference requires at least five distinct contexts: 53 of 123 inspected task/metric groups qualify; the remaining 70 are descriptive. Paired context-cluster score intervals and cluster sign-flip tests are exploratory. Holm adjustment~\cite{holm1979} covers the 53 eligible groups, with a sensitivity analysis including all 123 groups and assigning untestable groups $p=1$. Exact-context clustering can still miss related-document dependence, especially with only four LoCoMo conversations. Historical question-bootstrap intervals in the appendix do not incorporate this clustering.
+
+\section{Results: Efficiency and Coverage Across Ten Families}
+\subsection{Lower input and generation cost}
+\input{generated/revision_budgets.tex}
+At a 4K input limit, bounded SemPointer saves 54.2\% of input tokens and 42.7\% of generation time relative to BM25 filling the same allowance. The benefit is already visible at 2K: 17.9\% fewer tokens and 13.7\% less generation time. At 1K, the input is nearly saturated for both methods, but recorded generation time is 6.4\% lower (Table~\ref{tab:budgets}). The earlier 100-question pilot also showed 54.7\% token and 37.7\% generation-time savings at 4K; its complete results are retained in Appendix~\ref{sec:additional-history}.
+
+\input{generated/revision_family_efficiency.tex}
+Both input and generation cost fall in every one of the ten families at 4K (Table~\ref{tab:family-efficiency}). Token savings range from 41.3\% on LongBench v2 to 66.3\% on BABILong; generation-time savings range from 36.4\% on RULER to 57.6\% on BABILong. LoCoMo saves 63.3\% of input tokens and 53.5\% of generation time, and InfiniteBench saves 58.2\% and 50.2\%, respectively. This breadth supports an efficiency benefit across the sampled task mix rather than a saving confined to one collection.
+
+Quality determines the useful operating point. On 4K shared questions SemPointer has 123 wins, 648 ties, and 229 losses against budget-filling BM25. LongMemEval and LongBench v2 have more wins than losses in this comparison (16 versus 11 and eight versus five), while other families favor the larger evidence set. The cost reductions therefore describe a measured quality--cost tradeoff under a common maximum allowance, not equal-realized-token accuracy superiority.
+
+\subsection{More requests fit a strict budget}
+\input{generated/revision_coverage.tex}
+Bounding the descriptor section makes a substantial difference to request coverage. At 1K, the bounded arm scores 972 questions versus six for the original full index; at 2K the counts are 1,000 versus 319; at 4K they are 1,000 versus 700 (Table~\ref{tab:coverage}). The 4K gain is 30 percentage points of coverage. All 12,000 scheduled arm/budget records resolve to a score or an explicit skip, with zero recorded inference errors. Coverage indicates an evaluated answer, not correctness, but it is a practical prerequisite for using a context interface under a hard input limit.
+
+\paragraph{Inspectable operation on modest hardware.}
+The measured path runs locally on an 8-GB GPU with one checkpoint. BM25 selection and short descriptors avoid an embedding model and extra language-model calls for routing. Stable block identifiers link selected text back to the source; the 128-token descriptor allowance and exact chat-template accounting make input use explicit. These are implementation properties of the tested text path, rather than separately measured energy or end-to-end serving claims.
+
+\section{Results: Selective Benefits from Fixed-Payload Descriptors}
+\subsection{Entity recovery in variable tracking}
+On 17 RULER variable-tracking questions, pointer-on scores 74.12 versus 37.65 without pointers: a $+36.47$-point difference, with 12 wins, five ties, and no losses. The exploratory context-cluster 95\% interval is $[22.35,51.76]$. Source inspection provides a concrete mechanism: descriptors expose gold variable names absent from expanded evidence in 14/17 cases, including 11/12 wins. Gold names are used only in this retrospective audit, not in descriptor construction.
+
+The raw cluster sign-flip $p$ is 0.000488. Holm adjustment yields $p=0.026$ over the 53 inference-eligible groups and $p=0.060$ over all 123 inspected groups. This remains a post hoc, multiplicity-sensitive result. Every example has a single chain and every assigned variable is a gold answer name, so the supported benefit is entity recovery in this setup. Budget-filling BM25 scores 96.47 on the same questions. Pointers add 5.3\% input tokens and 11.9\% generation time relative to pointer-off on this subset.
+
+\subsection{All family and task outcomes}
+\input{generated/revision_descriptor_families.tex}
+Five families have positive descriptive win balances for pointer-on: RULER (12 wins, one loss), LongBench v2 (eight, one), BABILong (six, two), L-Eval (26, 18), and LooGLE (24, 22). LongMemEval has ten wins and ten losses. Table~\ref{tab:descriptor-families} reports every family, including the less favorable outcomes, rather than selecting examples from only one side.
+
+The full task inventory contains 25 positive, 22 negative, and 76 zero mean differences. Positive point estimates include L-Eval scientific QA ($+18.67$ points, $n=5$), SCROLLS QuALITY ($+8.48$, $n=15$), SCROLLS NarrativeQA ($+6.88$, $n=14$), LooGLE short-dependency QA ($+3.54$, $n=25$), and the local LongMemEval lexical metric ($+1.64$, $n=100$). These heterogeneous native-score differences are descriptive, not a shared accuracy scale. Several BABILong gains involve just one to three questions. Appendix~\ref{sec:task-inventory} lists all 123 groups, including every positive estimate, source-context counts, and eligible Holm values; only variable tracking passes the narrower Holm correction.
+
+\subsection{Overall verified intervention}
+\input{generated/revision_control.tex}
+All 1,000 pairs pass the fixed-payload prompt checks. Among 990 actual descriptor interventions, pointer-on has 134 wins, 730 ties, and 126 losses. Its net win balance is $+0.81$ percentage points, exploratory clustered 95\% interval $[-2.47,3.96]$. Thus the selective gains coexist with an inconclusive overall effect. The other ten pairs have identical prompts and identical answers.
+
+Pointer-on adds 110.2 input tokens on average (6.4\%). Its recorded generation time is 1.6\% lower, but this small difference is order sensitive: pointer-on executes first in 742/1,000 pairs. The family timing values are descriptive for the same reason. The control changes the complete descriptor section, including length and position; a matched-length shuffled control is still needed to isolate descriptor semantics.
+
+\section{Results: Historical Design Gains and Comparative Context}
+\input{generated/revision_history.tex}
+The Qwen2.5 study establishes several earlier benefits. Adaptive SemPointer improves RULER from V1's 45.6 to 62.1: $+16.56$ points, question-bootstrap 95\% CI $[11.00,22.56]$. Against BM25-4 it uses 8.9\% fewer input tokens and 15.7\% less answer-call time; LongBench saves 10.6\% and 7.2\%, and LoCoMo saves approximately 10.7\% and 3.6\%. Mean TTFT falls from 849 to 594\,ms on RULER, 494 to 457\,ms on LongBench, and 519 to 476\,ms on LoCoMo. The router uses its smaller two-block route on 118/180, 421/600, and 409/497 questions, respectively.
+
+Against BM25-2 on RULER, SemPointer has a $+2.39$-point score estimate with 19 wins, 153 ties, and eight losses, while spending more tokens and time; its score interval includes zero. The second single-needle task scores 86.7 versus BM25-4's 80.0, and multikey retrieval retains the same 93.3 score. Relative to V1, LongBench and LoCoMo point estimates also rise by 0.15 and 0.73 points. These task and cross-run observations are descriptive. The BM25-4 score differences remain inconclusive, and earlier full context is stronger on RULER. Original scores, intervals, and route counts remain in Appendix~\ref{sec:historical}.
+
+The adjacent Qwen3.5 full-index result explains why bounded descriptors matter: on 936 shared questions it uses 48.9\% more tokens and 21.4\% more generation time than BM25-4, with 137 wins and 175 losses (Table~\ref{tab:history}). Its mean unresolved-index overhead is 1,575 tokens. Other original-index comparisons include 6.0\% less generation time than matched-token BM25 and 64.1\% fewer tokens and 49.5\% less generation time than full context; their quality and coverage differences are retained in Table~\ref{tab:original-controls}. These are distinct historical operating points, not a controlled replication of the bounded design.
+
+\paragraph{Development and diagnostic benefits.}
+All three threshold settings score 77.5 on 36 RULER development questions versus 73.9 for BM25-4; the selected loose setting uses 1,815 mean input tokens versus 1,865 for the others. The 32-versus-512-token CWE audit removes output-cap hits and improves original SemPointer's score from 0.00 to 0.56, while BM25-4 moves from 15.00 to 18.33. These protocol and development gains have limited scope. Earlier ablation and text/KV observations, including favorable variants and their costs, are preserved together in Appendix~\ref{sec:additional-history}.
+
+\section{Results: Evidence Audit and Improvement Targets}
+The source-grounded audit covers all 229 lower-scoring 4K cases with no new generations. It compares saved expanded text against frozen sources using actual tokenizer offsets. Fine-grained generated facts or publisher dialogue/paragraph annotations are distinguished from coarse LongMemEval session labels and weak answer-mention proxies.
+
+\input{generated/revision_loss_families.tex}
+\input{generated/revision_evidence.tex}
+The breakdown identifies concrete improvement targets. Fine annotations align in 43 cases: bounded selection omits units retained by BM25 in 18, retains all annotated units in nine, and leaves incomplete sets in both arms in 16. Eleven further cases have only session-level labels; 175 lack usable aligned fine annotations. Annotation coverage alone does not establish a unique cause. SCROLLS, LoCoMo, L-Eval, and LongBench account for 144 cases; 91 are summary tasks, including six scored by the local SAMSum QA-F1 adapter.
+
+Two UUID examples expose facts split across adjacent blocks, and the nine variable-tracking losses have incomplete bounded chains. Yet no audited bounded payload reaches the 4K input ceiling: mean input is 1,765 tokens and only one answer hits its output cap. This leaves room to test boundary-preserving or evidence-set expansion within the existing allowance. Those repairs have not been evaluated. Removing descriptors improves 94 of these selected losses and reaches BM25 in 47; this selected-subset observation does not overturn the full-test control.
+
+The audit also protects useful answers from an overly negative interpretation. Spot checks find correct lactose-intolerance and date answers penalized for wording or verbosity, a singular/plural mismatch, and a longer refusal rewarded by lexical overlap. Thus the 229 are metric losses, not 229 verified factual failures. These qualitative examples are not replacement semantic scores; all case packets and unresolved annotation issues remain in the retained audit.
+
+\section{Discussion and Limitations}\label{sec:limits}
+The strongest supported benefit is a compact, inspectable evidence interface: lower input and generation cost in every sampled family, higher budget coverage than a full index, and selective entity-recovery gains. The complete task inventory and historical controls specify where those benefits occur. The following limits define the scope of that interpretation.
+
+\paragraph{Single quantized checkpoint and timing scope.}
+The bounded study uses one Qwen3.5-4B NF4 checkpoint, one 8-GB GPU, and batch size one. Historical Qwen2.5 protocols differ, so they are not a controlled second-model replication. Timing excludes ingestion/shared preparation and needs serving-concurrency and repeated-query replication; energy, end-to-end throughput, and current-design KV gains are unmeasured.
+
+\paragraph{Exposed tests and source dependence.}
+Earlier outcomes informed the bounded architecture, and all current test results are now exposed. Frozen pilot choices and fresh question IDs coexist with source reuse, restricted category coverage, guards, and only four LoCoMo conversations. New repairs need fresh confirmation data; exact-context clustering cannot remove every dependence.
+
+\paragraph{Lexical metrics and exploratory descriptor effects.}
+Token-F1 and related adaptations can penalize correct paraphrases or reward refusals. Official task-specific judging and independent semantic annotation remain incomplete. Most positive task estimates are descriptive, the variable-tracking result is multiplicity sensitive, and whole-section controls leave semantic content confounded with length/position. These scores do not establish official benchmark standing or a general accuracy advantage.
+
+\paragraph{Missing adaptive baseline.}
+Adaptive-$k$~\cite{taguchi2025adaptivek} and a fresh realized-token-matched bounded baseline remain untested. Existing fixed-count, budget-filling, and historical matched-token controls delimit the operating tradeoff but do not establish superiority over prior adaptive retrieval.
+
+\section{Conclusion}
+SemPointer provides adaptive, addressable evidence access with measurable efficiency on modest hardware. At 4K, it saves 54.2\% of input tokens and 42.7\% of generation time against budget-filling BM25, reduces both costs in all ten sampled families, and evaluates all 1,000 questions where the full index fits only 700. Fixed-payload descriptors improve single-chain variable tracking by 36.47 points and reveal otherwise missing answer entities; the complete family and task inventory records the other positive observations. Historical results document further routing, latency, and design gains. These benefits accompany a quality--cost tradeoff and an inconclusive overall descriptor effect, with explicit multiplicity qualifications. The registry, controls, and evidence audit provide a reproducible basis for testing broader adaptive selection and fresh confirmation data.
+
+\paragraph{Artifacts and code.}
+The project repository is
+\begin{center}\url{https://github.com/VIKSIT-GARG/Sempointer}.\end{center}
+Retained local results use the following run identifiers:
+\begin{quote}\small
+Bounded: \texttt{c73abaf595dc68e55696}\\
+Earlier full-index Qwen3.5: \texttt{2146b7900c244e92e6f3}.
+\end{quote}
+The bounded run contains the verified-pair export, all 123 task groups, all 229 audit packets, and source/configuration hashes. \texttt{paper/REVISION.md} maps the manuscript tables to those records and gives local reproduction commands. Not every local artifact has been published to the repository.
+
+\clearpage
+\appendix
+\section{Retained Qwen2.5 Results}\label{sec:historical}
+The following original tables concern Qwen2.5-3B-Instruct NF4 under the earlier three-collection protocol only. Their confidence intervals resample questions, not source clusters, and their answer-call times include selection, prompt assembly, and generation. They are retained for historical comparison, not pooled with the Qwen3.5 results. The per-task RULER table uses 30 examples per task and is descriptive. Its 32-token CWE cap differs from the later cap audit.
+\begingroup
+\setlength{\intextsep}{6pt}
+\let\historicaltable\table
+\renewcommand{\table}[1][]{\historicaltable[H]}
+\input{generated/main.tex}
+\input{generated/paired.tex}
+\input{generated/ruler.tex}
+\input{generated/routes.tex}
+\endgroup
+\clearpage
+\section{Additional Development and Historical Controls}\label{sec:additional-history}
+The tables below preserve useful secondary observations without treating historical or development comparisons as replication of the bounded main study.
+\input{generated/revision_pilot.tex}
+\input{generated/revision_original_controls.tex}
+\clearpage
+\subsection{Earlier ablation and substrate observations}
+The original V1 main-study controls also contain useful positive operating points. On LongBench, default SemPointer scores 10.29 versus 9.56 for dense RAG-4; on LoCoMo it scores 6.14 versus 5.96. Against full context in those original runs, V1 uses 85.7--89.7\% fewer input tokens and 80.4--83.3\% less answer-call time across the three collections, with lower mean scores. Table~\ref{tab:v1-main} retains all original systems so that these descriptive benefits remain tied to their baselines and quality levels.
+\input{generated/revision_v1_main.tex}
+\clearpage
+In the 120-question V1 ablation, 32-token descriptors score 57.58 versus 52.58 for the default, and adaptive block count scores 55.92. The BM25 selector scores 64.75 and uses less input and answer-call time than the default. Default pointers score 52.58 versus 41.25 without pointers and 44.08 with lead descriptors; random IDs score 53.25. These comparisons change parts of the old selection/prompt pipeline and do not establish semantic-descriptor superiority.
+
+In the separate 50-question text/KV diagnostic, text SemPointer scores 90 versus full context's 96 while using 67.7\% fewer input tokens and 37.2\% less answer-call time. It scores above the three aggressive KVpress configurations (46--66). Cached KV reduces TTFT from 298 to 187\,ms relative to the text variant, but increases total answer-call time from 996 to 2,039\,ms and scores 86. Table~\ref{tab:legacy-kv} retains these complementary costs and outcomes.
+\input{generated/revision_legacy_ablation.tex}
+\input{generated/revision_legacy_kv.tex}
+\clearpage
+\section{Complete Task-Level Descriptor Inventory}\label{sec:task-inventory}
+Table~\ref{tab:task-inventory} includes every active task/metric group, so all 25 positive mean differences can be inspected with their sample sizes and complementary outcomes. It partitions the 990 actual descriptor interventions; the ten identical-input pairs are outside this task inventory. Positive point estimates are not additional confirmatory discoveries. Groups with fewer than five exact source contexts have no inferential $p$-value, and the main text gives both Holm families for variable tracking.
+\input{generated/revision_task_inventory.tex}
+\clearpage
+\bibliographystyle{splncs04}
+\bibliography{references}
+\end{document}

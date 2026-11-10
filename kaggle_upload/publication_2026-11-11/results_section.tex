@@ -1,0 +1,51 @@
+% Insert with \input; requires booktabs. All values derive from the saved Kaggle report.
+% Draft evidence status: raw archive validation pending. See manuscript notes.
+\section{Kaggle Evaluation: Resource Use and Matched-Budget Operating Points}
+This supplement reports frozen run 8ef26bfd68509bae3b6b using Qwen3.5-4B (revision \texttt{851bf6e8\allowbreak{}06efd8d0\allowbreak{}a36b00dd\allowbreak{}f55e13cc\allowbreak{}b7b8cd0a}), NF4 weights, FP16 compute, batch size one, and one independent worker on each of two NVIDIA T4 GPUs. Eight 300-question dataset subsets are complete: BABILong, InfiniteBench, L-Eval, LoCoMo, LongBench, LongBench v2, LongMemEval, and LooGLE. Their first five systems score the same 2,400 selected questions. The archived snapshot records 13,055 scored outcomes and 1,798 skips across all ten selected families; RULER and SCROLLS have partial coverage. The planned 3,000 questions produce up to 18,000 system-question outcomes, rather than 18,000 independent questions.
+
+
+Active tokens count the model input reported by the frozen evaluator. Reported latency includes generation and measured selector cost; shared ingestion and outer prompt preparation are accounted for separately. Means below are question-weighted, and savings are ratios of paired totals. Both workers operate concurrently, but the latency column measures individual requests rather than serving throughput. Timing percentages describe this recorded execution; no repeat-run timing interval has been estimated.
+
+
+\paragraph{Resource use.}
+Within the 622-question full-context-eligible subset, mean active input falls from 8,038.8 to 1,875.1 tokens. Mean reported latency falls from 12.564 to 4.865 s, corresponding to 76.7\% and 61.3\% reductions, respectively. Eligibility is defined by the original evaluator and its 16,384-token prompt limit; these resource estimates apply to the scored shared subset.
+
+
+Over all 2,400 questions in the eight complete subsets, SemPointer and matched-budget BM25 use 4,071.4 and 4,071.3 active input tokens on average. Reported latency is 5.504 versus 6.045 s, a 8.9\% reduction at an effectively matched input budget.
+
+
+\begin{table}[t]\centering\small\setlength{\tabcolsep}{3pt}
+\caption{Resource measurements on shared scored question sets. The two comparison blocks use different eligible sets.}
+\label{tab:kaggle_resources}
+\begin{tabular}{lrrr}\toprule
+System & $n$ & Active tokens & Latency (s) \\ \midrule
+SemPointer & 2400 & 4,071.4 & 5.504 \\
+Matched-budget BM25 & 2400 & 4,071.3 & 6.045 \\
+\midrule
+SemPointer & 622 & 1,875.1 & 4.865 \\
+Full context & 622 & 8,038.8 & 12.564 \\
+\bottomrule\end{tabular}\end{table}
+\paragraph{Illustrative matched-budget comparisons.}
+Table 2 presents illustrative matched-budget operating points selected after inspection of the recorded task inventory. On LoCoMo QA, SemPointer scores 24.73 versus 24.69 with approximately 2,197 active tokens in each system. On HotpotQA it records 73.28 versus 68.13; on RepoBench-P it records 24.69 versus 20.94. InfiniteBench key-value retrieval scores 80.00 in both systems. These examples span conversational memory, multi-hop QA, code completion, and retrieval. Each comparison uses the same scored question IDs and the task-specific adapted metric.
+
+
+\begin{table}[t]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{Illustrative matched-budget quality results selected after inspection. Scores are task-specific and displayed on a 0--100 scale. The interval is the paired difference interval.}
+\label{tab:kaggle_examples}
+\begin{tabular}{lrrrrl}\toprule
+Task & $n$ & SemPointer & Matched BM25 & $\Delta$ & 95\% interval \\ \midrule
+LoCoMo QA & 300 & 24.73 & 24.69 & +0.04 & [-2.52, +2.51] \\
+LongBench HotpotQA & 27 & 73.28 & 68.13 & +5.15 & [-5.65, +17.59] \\
+LongBench Qasper & 8 & 50.15 & 39.48 & +10.68 & [+0.00, +31.78] \\
+LongBench RepoBench-P & 26 & 24.69 & 20.94 & +3.75 & [-1.54, +11.10] \\
+InfiniteBench KV retrieval & 25 & 80.00 & 80.00 & +0.00 & [+0.00, +0.00] \\
+\bottomrule\end{tabular}\end{table}
+Quality scores are shown on a 0-100 display scale while retaining each task metric. Confidence intervals are the frozen evaluator's paired example-level bootstrap intervals, with no multiple-comparison adjustment. Shared source documents and conversations can introduce dependence between questions. Missing scores and recorded skips are distinguished from zero scores. These are adapted local benchmark metrics; code similarity is not executable-code correctness. The selected examples are illustrative rather than a prespecified confirmatory test. No heterogeneous overall accuracy is computed.
+
+
+\paragraph{Interpretation.}
+Together, the measurements support lower active-input and recorded request cost relative to eligible full context, and lower recorded latency at a matched retrieval budget. The quality examples document task-specific operating points; their score intervals are reported directly, without an equivalence or universal-improvement claim. The complete all-system inventory accompanies these examples in Appendix A.
+
+
+% Include the complete result inventory and all controls as an appendix or supplement.
+% This fragment concerns the T4 run only; do not merge its percentages with other runs.

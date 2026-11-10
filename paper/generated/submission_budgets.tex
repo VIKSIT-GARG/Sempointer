@@ -1,0 +1,17 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Bounded versus budget-filling BM25: paired W/T/L and cost savings. $n$ is bounded/BM25 scored coverage out of 1,000; last column is full-index coverage. Input ceilings are equal, realized tokens need not be.}
+\label{tab:sub-budgets}
+\begin{tabular}{rrrrrr}
+\toprule
+Limit & $n$ & W/T/L & Tokens saved (\%) & Time saved (\%) & Index $n$ \\
+\midrule
+1,024 & 972 & 111/727/134 & 0.09 & 6.40 & 6 \\
+2,048 & 1000 & 132/686/182 & 17.90 & 13.65 & 319 \\
+4,096 & 1000 & 123/648/229 & 54.16 & 42.69 & 700 \\
+\bottomrule
+\end{tabular}
+\end{table}

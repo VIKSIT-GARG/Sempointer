@@ -1,0 +1,24 @@
+{
+  "new_generations": 0,
+  "sources_sha256": {
+    "experiments/results/bounded_pointer_full_v1/fixed_payload_pointer_control_v1/per_task.csv": "811d5cf203f85ec4d01ec2e6ba3823fcccd292bbaf55c84f4161cabf21e02663",
+    "experiments/results/bounded_pointer_full_v1/fixed_payload_pointer_control_v1/summary.json": "315ea785b96e298be310a1b32d83ad58bb7ba456af7a68e1704a68f3237d99c4",
+    "experiments/results/bounded_pointer_full_v1/loss_audit_4096_v1/summary.json": "f18337922624f576b33f592821568dc53d063c6a8ef085a2563e7475fc800a24",
+    "experiments/results/bounded_pointer_full_v1/results/summary.json": "683b40d3cbc57eab773c60405f42fe9e202190b83b7eb5871d05acc60bb51b31",
+    "experiments/results/bounded_pointer_full_v1/results/test_1024/results.sqlite": "228489f3e038ec90751ac9114142a51b7d0948c64238b08736c50a27b3ade169",
+    "experiments/results/bounded_pointer_full_v1/results/test_2048/results.sqlite": "9c0c61bfbadd7a0f3317ab88fd50ff4ff9aa9881d89d22bdb8abc6011d45d681",
+    "experiments/results/bounded_pointer_full_v1/results/test_4096/results.sqlite": "22ab4406b4247a0083562fd78949ad1816f211cdfc6ff4ebe5818d968f74de41",
+    "experiments/results/bounded_pointer_pilot_v1/results/test_1024/results.sqlite": "d9a2f8817b3b2238e3d480733b11a7f64a8f7bf00a16f29b482c758900aabdf7",
+    "experiments/results/bounded_pointer_pilot_v1/results/test_2048/results.sqlite": "f4223f221b86eb02423a55559c551a23a6cbf23e5c999cc2408c5e26dfa61ef9",
+    "experiments/results/bounded_pointer_pilot_v1/results/test_4096/results.sqlite": "c9c767585dd15cf2d0dcda07e2a79baad1fae877db0ab7506c2d503282466e0a",
+    "experiments/results/local_ten_qwen35_nf4_100_v1/results/test/results.sqlite": "2d67276d0dc2fc3f6018fdb94f90909cfaf2475fa13d7a380531259bc31ff7ed",
+    "experiments/results/paper_ablation/metrics.json": "8abc91649e1c92705d0614ce1b9eabf8a84b48b9275e220e0a98d395e5e36b3c",
+    "experiments/results/paper_kv/metrics.json": "c2918d4c44db5b6f8e1b65fe1309c4b744e90ffa3a45d67c441585d88b177086",
+    "experiments/results/paper_locomo/metrics.json": "0ddcc2dd1f05f043833fdb2a3131bf900ba4661f0f5b3800c1cf768abca2bbd8",
+    "experiments/results/paper_longbench/metrics.json": "d389683b9b1f63099cb37cb9d5df9e6d842eba8872bc107af60e61b2b0665c52",
+    "experiments/results/paper_ruler/metrics.json": "d481c35cd90150f5b6c9ff3eaa897ac52e23c54e8ce1f2a2b1a1adbed3fb71c9",
+    "experiments/results/v2_locomo/predictions.jsonl": "607f3ca5b69b54371279f16c199ae774bfe7b1c6291165fd8794167f6b9b32c7",
+    "experiments/results/v2_longbench/predictions.jsonl": "181189c15fdb1f865712944ee773d67a98ed868d3bb069d0ba0490a34eb02884",
+    "experiments/results/v2_ruler/predictions.jsonl": "b2d21bbb40de550eff0ca628e9c785300eaf1563c466ddd2ece4a89369ef4b53"
+  }
+}

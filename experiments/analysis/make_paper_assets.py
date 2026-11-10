@@ -33,7 +33,8 @@ from analysis.stats import holm, paired_bootstrap_diff, sign_flip_permutation_p 
 
 ROOT = Path(__file__).resolve().parents[2]
 RESULTS = ROOT / "experiments" / "results"
-OUTPUT = ROOT / "paper" / "generated"
+# V1 diagnostics must not overwrite the current V2 manuscript's tables.
+OUTPUT = Path(__file__).resolve().parent / "generated_v1"
 TBD = r"\textbf{TBD}"
 MAIN_RUNS = {"ruler": "paper_ruler", "longbench": "paper_longbench",
              "locomo": "paper_locomo", "kv_compare": "paper_kv"}
@@ -59,7 +60,7 @@ ABLATIONS = {
     "tab_ablation_m.tex": ("Resolved blocks $m$", [("1", "sempointer__m-1"),
         ("2 (default)", "sempointer"), ("adaptive", "sempointer__m-adaptive")]),
     "tab_ablation_hops.tex": ("Expansion", [("one hop (default)", "sempointer"),
-        ("two hops", "sempointer__hops-2"), ("adaptive $m$", "sempointer__m-adaptive")]),
+        ("two hops", "sempointer__hops-2"), ("adaptive blocks", "sempointer__m-adaptive")]),
 }
 FIGURES = ("fig_accuracy_vs_length.pdf", "fig_pareto_tokens_accuracy.pdf",
            "fig_k_ablation.pdf", "fig_amortization.pdf", "fig_kv_memory.pdf",
@@ -204,6 +205,20 @@ def observed_score(run: Run | None, name: str, rows: list[dict] | None = None) -
     return value
 
 
+def score_with_ci(run: Run | None, name: str) -> str:
+    """Mean and 95% example-bootstrap interval from the same scored rows."""
+    rs = system_rows(run, name)
+    values = [float(r["score"]) for r in rs]
+    if not values:
+        return TBD
+    from analysis.stats import bootstrap_mean_ci
+    point, lo, hi = bootstrap_mean_ci(values, n_boot=10000, seed=42)
+    mean_text = f"{point * 100:.1f}"
+    if run is not None and len(rs) < run.expected():
+        mean_text += r"\textsuperscript{*}"
+    return f"{mean_text} [{lo * 100:.1f}, {hi * 100:.1f}]"
+
+
 def common_rows(run: Run | None, names: tuple[str, ...]) -> dict[str, list[dict]]:
     """Return each system's rows restricted to the same example IDs."""
     by_name = {name: {r["example_id"]: r for r in system_rows(run, name)} for name in names}
@@ -278,14 +293,13 @@ def write_tables(runs: dict[str, Run], out: Path) -> None:
             elif name.endswith("_m1"):
                 label += " ($m=1$)"
             rows.append([BENCH_LABELS[bench], label, sample_count(run, name),
-                         observed_score(run, name), fmt(avg(rs, "active_tokens"), "int"),
+                         score_with_ci(run, name), fmt(avg(rs, "active_tokens"), "int"),
                          fmt(avg(rs, "latency_ms"), "int")])
     # Two textual columns require an explicit layout.
-    _table_custom("tab_main.tex", "Main benchmark results. Score is the task metric (\\%). "
-                  "Samples show scored/expected and outstanding errors. An asterisk marks a "
-                  "score from fewer than expected examples; missing examples are not zeros. "
-                  "Latency is per scored answer.", "tab:main",
-                  "llrrrr", ["Benchmark", "System", "$n/N$ (errors)", "Score", "Tokens", "Latency (ms)"], rows, out,
+    _table_custom("tab_main.tex", "Main results. Score: mean [95\\% example-bootstrap CI] in percent. "
+                  "Tokens and latency are per-answer means. An asterisk marks fewer scored "
+                  "than scheduled examples; missing examples are not zeros.", "tab:main",
+                  "llrlrr", ["Benchmark", "System", "$n/N$", "Score [95\\% CI]", "Tokens", "Latency (ms)"], rows, out,
                   compact=True)
 
     ruler = main_run(runs, "ruler")
@@ -314,35 +328,35 @@ def write_tables(runs: dict[str, Run], out: Path) -> None:
     kv = main_run(runs, "kv_compare")
     kv_names = ["sempointer", "sempointer__substrate-kv", "full",
                 "kvpress_snapkv_0.3", "kvpress_tova_0.3", "kvpress_knorm_0.3"]
-    rows = [[latex(name), sample_count(kv, name), observed_score(kv, name),
+    rows = [[latex(name), sample_count(kv, name), score_with_ci(kv, name),
              fmt(field(kv, name, "active_tokens"), "int"),
              fmt(field(kv, name, "latency_ms"), "int"), fmt(field(kv, name, "peak_vram_mb"), "int")]
             for name in kv_names] if kv else [[TBD] * 6]
-    _table_custom("tab_kvcompare.tex", "KV comparison on scheduled examples. Samples show "
-                  "scored/expected and outstanding errors; a score with no scored examples is TBD. "
-                  "Peak VRAM is the recorded per-answer peak.", "tab:kvcompare", "llrrrr",
-                  ["System", "$n/N$ (errors)", "Score (\\%)", "Tokens", "Latency (ms)", "VRAM (MiB)"],
+    _table_custom("tab_kvcompare.tex", "KV comparison at 4k. Score: mean [95\\% CI] in percent. "
+                  "Latency is total per answer; peak VRAM is per-answer peak.", "tab:kvcompare", "lllrrr",
+                  ["System", "$n/N$", "Score [95\\% CI]", "Tokens", "Latency (ms)", "VRAM (MiB)"],
                   rows, out, compact=True)
 
     abl = runs.get("paper_ablation")
     for filename, (heading, variants) in ABLATIONS.items():
-        rows = [[latex(label), sample_count(abl, name), observed_score(abl, name),
+        rows = [[latex(label), sample_count(abl, name), score_with_ci(abl, name),
                  fmt(avg((rs := system_rows(abl, name)), "active_tokens"), "int")]
                 for label, name in variants] if abl else [[TBD] * 4]
-        table(filename, f"{heading} ablation on RULER. Scores are percentages; "
-              "samples show scored/expected and outstanding errors. An asterisk marks a partial score.",
-              filename.removesuffix(".tex").replace("tab_", "tab:").replace("_", "-"),
-              [heading, "$n/N$ (errors)", "Score (\\%)", "Tokens"], rows, out)
+        _table_custom(filename, f"{heading} ablation on RULER (4k/8k). Score: mean "
+                      "[95\\% example-bootstrap CI] in percent.",
+                      filename.removesuffix(".tex").replace("tab_", "tab:").replace("_", "-"),
+                      "lrll", [heading, "$n/N$", "Score [95\\% CI]", "Tokens"], rows, out)
 
-    sub_rows = [[label, sample_count(kv, name), observed_score(kv, name),
+    sub_rows = [[label, sample_count(kv, name), score_with_ci(kv, name),
                  fmt(field(kv, name, "ttft_ms"), "int"),
+                 fmt(field(kv, name, "latency_ms"), "int"),
                  fmt(field(kv, name, "peak_vram_mb"), "int")]
                 for label, name in (("$M_{\\mathrm{text}}$", "sempointer"),
-                                    ("$M_{\\mathrm{kv}}$", "sempointer__substrate-kv"))] if kv else [[TBD] * 5]
-    _table_custom("tab_substrate.tex", "Substrate comparison; TTFT and VRAM are measured "
-                  "per scored answer. Samples show scored/expected and outstanding errors.",
-                  "tab:substrate", "llrrr",
-                  ["Substrate", "$n/N$ (errors)", "Score (\\%)", "TTFT (ms)", "VRAM (MiB)"],
+                                    ("$M_{\\mathrm{kv}}$", "sempointer__substrate-kv"))] if kv else [[TBD] * 6]
+    _table_custom("tab_substrate.tex", "Text versus cached KV at 4k. Score: mean [95\\% CI] in percent; "
+                  "TTFT excludes the full per-answer setup counted in total latency.",
+                  "tab:substrate", "lllrrr",
+                  ["Substrate", "$n/N$", "Score [95\\% CI]", "TTFT (ms)", "Total (ms)", "VRAM (MiB)"],
                   sub_rows, out)
 
     efficiency = runs.get("paper_efficiency")

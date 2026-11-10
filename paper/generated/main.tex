@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Same-run results. Score is mean [95\% example-bootstrap CI] in percent; tokens, answer latency, and TTFT are per-query means. Ingestion is excluded. LoCoMo uses our token-F1 adaptation.}
+\label{tab:main}
+\begin{tabular}{llrlrrr}
+\toprule
+Task & System & $n$ & Score [95\% CI] & Tokens & Answer ms & TTFT ms \\
+\midrule
+RULER & SemPointer & 180 & 62.1 [55.5, 68.7] & 2,201 & 1,252 & 594 \\
+RULER & BM25-2 & 180 & 59.7 [52.9, 66.6] & 1,381 & 1,051 & 442 \\
+RULER & BM25-4 & 180 & 62.3 [55.7, 68.9] & 2,416 & 1,485 & 849 \\
+LongBench & SemPointer & 600 & 10.4 [9.2, 11.7] & 1,878 & 1,732 & 457 \\
+LongBench & BM25-4 & 600 & 10.6 [9.4, 11.8] & 2,100 & 1,867 & 494 \\
+LoCoMo & SemPointer & 497 & 6.9 [6.1, 7.7] & 1,896 & 1,849 & 476 \\
+LoCoMo & BM25-4 & 497 & 7.2 [6.4, 8.1] & 2,122 & 1,918 & 519 \\
+\bottomrule
+\end{tabular}
+\end{table}

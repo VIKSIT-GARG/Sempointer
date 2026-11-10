@@ -1,0 +1,7 @@
+family,task,split,metric,protocol,system,n_scored,n_errors,n_skipped,score_mean,active_tokens_mean,generation_ms_mean,latency_ms_mean,peak_vram_mb_mean
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,18,0,0,0.022222222222222223,2363.6666666666665,1659.3924341173583,1661.7983440583985,3606.4844835069443
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,18,0,0,0.022222222222222223,2363.6666666666665,1659.614404673145,1660.3597666641388,3606.4844835069443
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,18,0,0,0.15000000000000002,3381.3333333333335,2031.3372075486566,2032.0825695396504,3763.350531684028
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,18,0,0,0.061111111111111116,2666.722222222222,1774.7219863198957,1815.4917838174797,3654.302300347222
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,full_context,10,0,8,0.13999999999999999,5616.0,2774.612499010982,2774.612499010982,4114.67705078125
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer,18,0,0,0.0,2666.9444444444443,1751.5678230039257,1753.973732944966,3654.3263888888887

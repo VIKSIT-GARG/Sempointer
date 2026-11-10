@@ -1,0 +1,25 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{All 229 lower-scoring bounded-pointer cases versus budget-filling BM25 at 4K. Omission counts require aligned fine-grained annotations: bounded omits annotated units while BM25 retains all. Zero does not establish complete evidence. The last column counts cases where pointer-off reaches or exceeds BM25; columns overlap and are not causal labels.}
+\label{tab:loss-families}
+\begin{tabular}{lrrrr}
+\toprule
+Family & Losses & Summary tasks & Omissions & Off reaches BM25 \\
+\midrule
+RULER & 14 & 0 & 9 & 1 \\
+LongBench & 31 & 16 & 0 & 11 \\
+LoCoMo & 35 & 0 & 6 & 5 \\
+LongMemEval & 11 & 0 & 0 & 2 \\
+BABILong & 8 & 0 & 0 & 1 \\
+LongBench v2 & 5 & 0 & 0 & 0 \\
+InfiniteBench & 18 & 6 & 0 & 6 \\
+LooGLE & 29 & 19 & 0 & 4 \\
+L-Eval & 35 & 18 & 0 & 4 \\
+SCROLLS & 43 & 32 & 3 & 13 \\
+\textbf{Total} & 229 & 91 & 18 & 47 \\
+\bottomrule
+\end{tabular}
+\end{table}

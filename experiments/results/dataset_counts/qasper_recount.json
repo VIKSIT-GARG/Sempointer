@@ -1,0 +1,46 @@
+[
+  {
+    "source": {
+      "family": "qasper_original",
+      "task": "qasper",
+      "path": "/home/viksit/Projects/tokens2/datasets/originals/qasper/qasper-test-and-evaluator-v0.3.tgz",
+      "adapter": "qasper",
+      "split": "test",
+      "member": "qasper-test-v0.3.json",
+      "max_new_tokens": 128,
+      "extra": {},
+      "key": "qasper_original/qasper/test"
+    },
+    "counts": {
+      "all_partition_entries": 1451,
+      "all_partition_labeled": 1451,
+      "test_partition_entries": 1144,
+      "test_partition_labeled": 1144,
+      "test_partition_before_token_guards": 1144
+    },
+    "seconds": 0.1661994457244873,
+    "status": "counted"
+  },
+  {
+    "source": {
+      "family": "qasper_original",
+      "task": "qasper",
+      "path": "/home/viksit/Projects/tokens2/datasets/originals/qasper/qasper-train-dev-v0.3.tgz",
+      "adapter": "qasper",
+      "split": "validation",
+      "member": "qasper-dev-v0.3.json",
+      "max_new_tokens": 128,
+      "extra": {},
+      "key": "qasper_original/qasper/validation"
+    },
+    "counts": {
+      "all_partition_entries": 1005,
+      "all_partition_labeled": 1005,
+      "test_partition_entries": 785,
+      "test_partition_labeled": 785,
+      "test_partition_before_token_guards": 785
+    },
+    "seconds": 0.34207582473754883,
+    "status": "counted"
+  }
+]

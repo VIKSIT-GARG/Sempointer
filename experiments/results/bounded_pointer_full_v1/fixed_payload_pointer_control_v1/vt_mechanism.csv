@@ -1,0 +1,149 @@
+example_id,on_score,off_score,pointer_only_gold_names,payload_gold_names,num_chains,num_hops,all_assigned_names_are_gold,descriptor_section
+ruler/vt/test:ruler_cache::seed20261114:vt-4096-18,0.2,0.0,"[""FDAQN"", ""PLEZK"", ""VWZJE"", ""FDYAH""]","[""RPWYR""]",1,4,True,"[P4] sky blue sun yellow go back grass green
+[P6] green sky blue sun yellow go back grass FDYAH VAR VWZJE
+[P1] grass green sky blue sun yellow go back VAR FDAQN RPWYR
+[P2] grass green sky blue sun yellow go back VAR PLEZK FDAQN
+[P3] green sky blue sun yellow go back grass VAR VWZJE PLEZK
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-4096-24,0.2,0.2,"[""KTXGI"", ""UBGVQ"", ""BVIVM"", ""YQBLO""]","[""FZZEN""]",1,4,True,"[P4] sky blue sun yellow go back grass green
+[P2] green sky blue sun yellow go back grass VAR UBGVQ KTXGI
+[P1] grass green sky blue sun yellow go back VAR KTXGI FZZEN
+[P3] green sky blue sun yellow go back grass VAR BVIVM UBGVQ
+[P5] go back grass green sky blue sun yellow YQBLO VAR BVIVM
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-4096-23,0.8,0.4,"[""ILLCH"", ""SNIQV"", ""KUEPZ""]","[""YSLKT"", ""EWBHU""]",1,4,True,"[P6] sky blue sun yellow go back VAR grass green KUEPZ SNIQ
+[P3] go back grass green sky blue sun yellow VAR ILLCH EWBHU
+[P5] green sky blue sun yellow go back grass VAR SNIQV ILLCH
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-4096-6,0.4,0.4,"[""DBFIJ"", ""LOVSG"", ""WEWAC""]","[""XOKXI"", ""HIOPD""]",1,4,True,"[P1] go back grass green sky blue sun yellow VAR DBFIJ HIOPD
+[P5] back grass green sky blue sun yellow go VAR WEWAC LOVSG
+[P4] go back grass green sky blue sun yellow VAR LOVSG DBFIJ
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-4096-10,0.8,0.2,"[""GHXSW"", ""WHMOK"", ""BIHZU"", ""YXMEY""]","[""QOUBR""]",1,4,True,"[P3] green sky blue sun yellow go back grass
+[P0] grass green sky blue sun yellow go back
+[P4] go back grass green sky blue sun yellow VAR BIHZU WHMOK
+[P5] go back grass green sky blue sun yellow VAR YXMEY BIHZU
+[P2] GHXSW VAR sun yellow go back grass green sky blue QOUBR
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-4096-21,0.6,0.2,"[""ZSQWC"", ""UJLYI"", ""WEDWR"", ""RNSHQ""]","[""TOZVY""]",1,4,True,"[P0] grass green sky blue sun yellow go back
+[P3] grass green sky blue sun yellow go back
+[P6] grass green sky blue sun yellow go back VAR RNSHQ WEDWR
+[P5] grass green sky blue sun yellow go back VAR WEDWR UJLYI
+[P2] ZSQWC VAR sun yellow go back grass green sky blue TOZVY
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-16384-18,1.0,1.0,[],"[""KATYR"", ""TPIKD"", ""GCVPB"", ""HEWLC"", ""SRRAS""]",1,4,True,"[P18] VAR HEWLC GCVPB blue sun yellow go back grass green sky
+[P30] sky blue sun yellow go back grass green
+[P1] yellow go back grass green sky blue sun
+[P6] sun yellow go back grass green sky blue
+[P14] sun yellow go back grass green sky blue
+[P19] sun yellow go back grass green sky blue
+[P24] back grass green sky blue sun yellow go
+[P29] back grass green sky blue sun yellow go
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-16384-14,1.0,0.6,"[""DYKCQ""]","[""CQDGQ"", ""OAVXQ"", ""BPCBB"", ""IJTKI""]",1,4,True,"[P25] VAR DYKCQ IJTKI green sky blue sun yellow go back grass
+[P30] green sky blue sun yellow go back grass
+[P1] yellow go back grass green sky blue sun
+[P7] sun yellow go back grass green sky blue
+[P11] back grass green sky blue sun yellow go
+[P13] back grass green sky blue sun yellow go
+[P24] go back grass green sky blue sun yellow
+[P27] go back grass green sky blue sun yellow
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-16384-6,1.0,0.4,"[""XCLUO"", ""SMQVJ"", ""HOAAR""]","[""JDTKM"", ""RLDZD""]",1,4,True,"[P26] VAR XCLUO SMQVJ green sky blue sun yellow go back grass
+[P29] VAR HOAAR SMQVJ green sky blue sun yellow go back grass
+[P25] CLUO RLDZD grass green sky blue sun yellow go back VAR
+[P24] go back grass green sky blue sun yellow VAR
+[P30] sky blue sun yellow go back grass green
+[P1] yellow go back grass green sky blue sun
+[P22] go back grass green sky blue sun yellow
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-16384-8,1.0,1.0,[],"[""DOVPV"", ""IVECZ"", ""QOUBR"", ""GHXSW"", ""WHMOK""]",1,4,True,"[P30] sky blue sun yellow go back grass green
+[P1] yellow go back grass green sky blue sun
+[P13] sun yellow go back grass green sky blue
+[P18] yellow go back grass green sky blue sun
+[P24] sun yellow go back grass green sky blue
+[P29] back grass green sky blue sun yellow go
+[P3] grass green sky blue sun yellow go back
+[P4] sun yellow go back grass green sky blue
+[P5] grass green sky blue sun yellow go back
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-16384-4,1.0,0.0,[],"[""VEOTK"", ""OXFTI"", ""PSCEW"", ""ZLDBQ"", ""JKUFP""]",1,4,True,"[P11] 51541 VEOTK VAR blue sun yellow go back grass
+[P30] sky blue sun yellow go back grass green
+[P1] yellow go back grass green sky blue sun
+[P7] sun yellow go back grass green sky blue
+[P13] back grass green sky blue sun yellow go
+[P15] back grass green sky blue sun yellow go
+[P19] go back grass green sky blue sun yellow
+[P2] grass green sky blue sun yellow go back
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-16384-19,0.8,0.8,"[""AIPIB""]","[""MZOKF"", ""KDCZV"", ""JSBIN"", ""UPCJF""]",1,4,True,"[P22] VAR AIPIB UPCJF back grass green sky blue sun yellow go
+[P30] sky blue sun yellow go back grass green
+[P1] yellow go back grass green sky blue sun
+[P7] sun yellow go back grass green sky blue
+[P11] back grass green sky blue sun yellow go
+[P13] back grass green sky blue sun yellow go
+[P19] back grass green sky blue sun yellow go
+[P24] sun yellow go back grass green sky blue
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-8192-5,0.6,0.0,"[""AQOEC"", ""INHFT""]","[""FUTVQ"", ""VEOTK"", ""OXFTI""]",1,4,True,"[P8] VAR INHFT AQOEC grass green sky blue sun yellow go back
+[P4] VAR sun AQOEC FUTVQ yellow go back grass green sky blue
+[P10] VAR yellow VEOTK INHFT go back grass green sky blue sun
+[P13] go back grass green sky blue sun yellow
+[P1] yellow go back grass green sky blue sun
+[P5] yellow go back grass green sky blue sun
+[P7] yellow go back grass green sky blue sun
+[P3] grass green sky blue sun yellow go back
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-8192-26,0.6,0.0,"[""KDFXY""]","[""MQGUW"", ""ELDVZ"", ""PLIUY"", ""FOJQL""]",1,4,True,"[P3] VAR KDFXY MQGUW grass green sky blue sun yellow go back
+[P9] VAR sun ELDVZ KDFXY yellow go back grass green sky blue
+[P14] go back grass green sky blue sun yellow
+[P2] yellow go back grass green sky blue sun
+[P5] yellow go back grass green sky blue sun
+[P7] yellow go back grass green sky blue sun
+[P12] go back grass green sky blue sun yellow
+[P8] grass green sky blue sun yellow go back
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-8192-29,0.8,0.0,"[""TPRWH""]","[""FRQSU"", ""KQQGZ"", ""YPXVM"", ""DWCGW""]",1,4,True,"[P5] VAR TPRWH FRQSU grass green sky blue sun yellow go back
+[P11] VAR KQQGZ TPRWH sun yellow go back grass green sky blue
+[P1] yellow go back grass green sky blue sun
+[P7] yellow go back grass green sky blue sun
+[P4] sun yellow go back grass green sky blue
+[P9] sun yellow go back grass green sky blue
+[P12] sun yellow go back grass green sky blue
+[P3] grass green sky blue sun yellow go back
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-8192-7,1.0,0.6,"[""JVEQX""]","[""DXSRD"", ""QNFFM"", ""CQWPD"", ""USOTT""]",1,4,True,"[P3] VAR JVEQX DXSRD grass green sky blue sun yellow go back
+[P10] VAR QNFFM JVEQX grass green sky blue sun yellow go
+[P1] yellow go back grass green sky blue sun
+[P5] yellow go back grass green sky blue sun
+[P12] sun yellow go back grass green sky blue
+[P7] sun yellow go back grass green sky blue
+[P9] sun yellow go back grass green sky blue
+[P6] grass green sky blue sun yellow go back
+
+"
+ruler/vt/test:ruler_cache::seed20261114:vt-8192-2,0.8,0.6,"[""YHZFP""]","[""DSYIN"", ""XLGIL"", ""DBIPA"", ""ICRVG""]",1,4,True,"[P5] VAR XLGIL DSYIN grass green sky blue sun yellow go back
+[P8] VAR YHZFP sky ICRVG blue sun yellow go back grass green
+[P14] back grass green sky blue sun yellow go
+[P1] yellow go back grass green sky blue sun
+[P7] back grass green sky blue sun yellow go
+[P12] back grass green sky blue sun yellow go
+[P3] sun yellow go back grass green sky blue
+[P9] blue sun yellow go back grass green sky
+
+"

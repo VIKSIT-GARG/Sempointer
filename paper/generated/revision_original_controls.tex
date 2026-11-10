@@ -1,0 +1,19 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{All original-index Qwen3.5 controls, using scored shared IDs. Signed cost changes are SemPointer relative to the named baseline; negative means lower cost. Baselines have different coverage. These historical controls are distinct from the bounded architecture.}
+\label{tab:original-controls}
+\begin{tabular}{lrrrr}
+\toprule
+Baseline & $n$ & W/T/L & $\Delta$ input (\%) & $\Delta$ gen. (\%) \\
+\midrule
+BM25-2 & 936 & 180/619/137 & +178.03 & +65.39 \\
+BM25-4 & 936 & 137/624/175 & +48.88 & +21.36 \\
+Matched-token BM25 & 936 & 140/611/185 & +0.00 & -6.00 \\
+Pointer-off & 936 & 145/657/134 & +92.14 & +39.62 \\
+Full context & 233 & 26/134/73 & -64.15 & -49.46 \\
+\bottomrule
+\end{tabular}
+\end{table}

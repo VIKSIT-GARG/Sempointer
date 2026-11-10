@@ -1,0 +1,26 @@
+% Derived from retained records; rebuild with paper/build_revision_tables.py.
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Complete retained V1 ablation: 120 Qwen2.5 questions per arm. Scores use the historical RULER metric. These variant comparisons are exploratory, can alter selection/payload, and are not the newer fixed-payload descriptor intervention.}
+\label{tab:legacy-ablation}
+\begin{tabular}{lrrrr}
+\toprule
+Arm & Score & Input & Answer ms & TTFT ms \\
+\midrule
+V1 default text & 52.58 & 1,693 & 1,277 & 413 \\
+Random IDs & 53.25 & 1,711 & 1,285 & 418 \\
+No pointers & 41.25 & 1,479 & 1,130 & 358 \\
+Lead descriptors & 44.08 & 1,712 & 1,282 & 415 \\
+8-token descriptors & 47.42 & 1,605 & 1,208 & 387 \\
+32-token descriptors & 57.58 & 1,858 & 1,408 & 457 \\
+One selected block & 46.25 & 1,190 & 1,140 & 294 \\
+Adaptive block count & 55.92 & 2,688 & 1,528 & 670 \\
+Two selection hops & 52.25 & 2,187 & 1,715 & 544 \\
+Dense selector & 43.75 & 1,663 & 1,001 & 396 \\
+BM25 selector & 64.75 & 1,675 & 1,001 & 399 \\
+Attention selector & 33.42 & 1,691 & 1,264 & 409 \\
+\bottomrule
+\end{tabular}
+\end{table}

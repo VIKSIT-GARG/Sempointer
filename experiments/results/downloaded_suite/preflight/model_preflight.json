@@ -1,0 +1,20 @@
+{
+  "model": "/home/viksit/Projects/tokens2/experiments/../models/Qwen2.5-3B-Instruct",
+  "tokenizer_and_config_available": true,
+  "model_commit": null,
+  "config_sha256": "c3110e61c84ed7499bc19248dd30acebea0a63fbdb6a72fcde3989be6f2ad143",
+  "tokenizer_commit": null,
+  "tokenizer_sha256": "e360e6f6266884e6667874f3a7d158ca20c4639e2e1dc80427e1edc2c69a38c7",
+  "weights": {
+    "available": true,
+    "files": [
+      "model-00001-of-00002.safetensors",
+      "model-00002-of-00002.safetensors"
+    ],
+    "missing": []
+  },
+  "local_weights": {
+    "model-00001-of-00002.safetensors": "67347b23fb4165b652eb6611f5e1f2a06dfcddba8e909df1b2b0b1857bee06c2",
+    "model-00002-of-00002.safetensors": "a40d941d0e7e0b966ad8b62bb6d6b7c88cce1299197b599d9d0a4ce59aabfc1d"
+  }
+}

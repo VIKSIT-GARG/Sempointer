@@ -1,0 +1,13 @@
+{
+  "purpose": "Source before BF16 precision pilot, native batching and shared-budget derivation",
+  "files": {
+    "modal_suite.py": "3d7d51011ff28ef9ea7228e06cf14cf5695f56c76416fc858296e94f55f4eeec",
+    "modal_client.py": "e7c3043c2bfd972bba58fc9922ccac8d33853e3e3b7586483075e6bcf19cf668",
+    "prepare_modal.py": "4f5296e54c5496e23f2461419555a4f0348547c60d00a6315f073da2215bafb7",
+    "evaluation/qwen35.py": "7a19e1f9b0711a2a14f19fe43e0bcfc7955e384fd0ad706f457b947e3c53060f",
+    "evaluation/cloud_worker.py": "2cd75df389d7ed2dd2a44f9e7cff7bcaba821925e92b8cf78b5d3aa4a51f7262",
+    "evaluation/cloud_policy.py": "aae7357039d6025c18d13bf94bc1ae05faa7ac8f6dab4572ebd9b46a2d2f3baa",
+    "evaluation/runner.py": "8a0041584e99801fd576c2f0c3084dd14072d2a76e367850d40b1b2aa96377e2",
+    "run_modal_suite.sh": "38a259db7ea94bb8b0d98e2e8564ac32caeab406f27618fe3080deab0372cc3b"
+  }
+}

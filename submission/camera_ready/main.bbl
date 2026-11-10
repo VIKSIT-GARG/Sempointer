@@ -1,0 +1,410 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{21}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{Robertson and
+  Zaragoza}{2009}]{robertson2009bm25}
+\begin{barticle}
+\bauthor{\bsnm{Robertson}, \binits{S.}},
+\bauthor{\bsnm{Zaragoza}, \binits{H.}}:
+\batitle{The probabilistic relevance framework: {BM25} and beyond}.
+\bjtitle{Foundations and Trends in Information Retrieval}
+\bvolume{3}(\bissue{4}),
+\bfpage{333}--\blpage{389}
+(\byear{2009})
+\end{barticle}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Lewis et~al.}{2020}]{lewis2020rag}
+\begin{bchapter}
+\bauthor{\bsnm{Lewis}, \binits{P.}},
+\bauthor{\bsnm{Perez}, \binits{E.}},
+\bauthor{\bsnm{Piktus}, \binits{A.}},
+\bauthor{\bsnm{Petroni}, \binits{F.}},
+\bauthor{\bsnm{Karpukhin}, \binits{V.}},
+\bauthor{\bsnm{Goyal}, \binits{N.}},
+\bauthor{\bsnm{K{\"u}ttler}, \binits{H.}},
+\bauthor{\bsnm{Lewis}, \binits{M.}},
+\bauthor{\bsnm{Yih}, \binits{W.-t.}},
+\bauthor{\bsnm{Rockt{\"a}schel}, \binits{T.}},
+\bauthor{\bsnm{Riedel}, \binits{S.}},
+\bauthor{\bsnm{Kiela}, \binits{D.}}:
+\bctitle{Retrieval-augmented generation for knowledge-intensive {NLP} tasks}.
+In: \bbtitle{Advances in Neural Information Processing Systems (NeurIPS)},
+vol. \bseriesno{33}
+(\byear{2020})
+\end{bchapter}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Mohtashami and
+  Jaggi}{2023}]{mohtashami2023landmark}
+\begin{bchapter}
+\bauthor{\bsnm{Mohtashami}, \binits{A.}},
+\bauthor{\bsnm{Jaggi}, \binits{M.}}:
+\bctitle{Landmark attention: Random-access infinite context length for
+  transformers}.
+In: \bbtitle{Advances in Neural Information Processing Systems (NeurIPS)},
+vol. \bseriesno{36}
+(\byear{2023})
+\end{bchapter}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Mu et~al.}{2023}]{mu2023gist}
+\begin{bchapter}
+\bauthor{\bsnm{Mu}, \binits{J.}},
+\bauthor{\bsnm{Li}, \binits{X.L.}},
+\bauthor{\bsnm{Goodman}, \binits{N.}}:
+\bctitle{Learning to compress prompts with gist tokens}.
+In: \bbtitle{Advances in Neural Information Processing Systems (NeurIPS)},
+vol. \bseriesno{36}
+(\byear{2023})
+\end{bchapter}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Cheng et~al.}{2024}]{cheng2024xrag}
+\begin{bchapter}
+\bauthor{\bsnm{Cheng}, \binits{X.}},
+\bauthor{\bsnm{Wang}, \binits{X.}},
+\bauthor{\bsnm{Zhang}, \binits{X.}},
+\bauthor{\bsnm{Ge}, \binits{T.}},
+\bauthor{\bsnm{Chen}, \binits{S.-Q.}},
+\bauthor{\bsnm{Wei}, \binits{F.}},
+\bauthor{\bsnm{Zhang}, \binits{H.}},
+\bauthor{\bsnm{Zhao}, \binits{D.}}:
+\bctitle{{xRAG}: Extreme context compression for retrieval-augmented generation
+  with one token}.
+In: \bbtitle{Advances in Neural Information Processing Systems (NeurIPS)},
+vol. \bseriesno{37}
+(\byear{2024})
+\end{bchapter}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Taguchi et~al.}{2025}]{taguchi2025adaptivek}
+\begin{bchapter}
+\bauthor{\bsnm{Taguchi}, \binits{C.}},
+\bauthor{\bsnm{Maekawa}, \binits{S.}},
+\bauthor{\bsnm{Bhutani}, \binits{N.}}:
+\bctitle{Efficient context selection for long-context {QA}: No tuning, no
+  iteration, just {Adaptive-$k$}}.
+In: \bbtitle{Proceedings of the 2025 Conference on Empirical Methods in Natural
+  Language Processing},
+pp. \bfpage{20105}--\blpage{20130}
+(\byear{2025}).
+\doiurl{10.18653/v1/2025.emnlp-main.1017}
+\end{bchapter}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Li et~al.}{2024}]{li2024snapkv}
+\begin{bchapter}
+\bauthor{\bsnm{Li}, \binits{Y.}},
+\bauthor{\bsnm{Huang}, \binits{Y.}},
+\bauthor{\bsnm{Yang}, \binits{B.}},
+\bauthor{\bsnm{Venkitesh}, \binits{B.}},
+\bauthor{\bsnm{Locatelli}, \binits{A.}},
+\bauthor{\bsnm{Ye}, \binits{H.}},
+\bauthor{\bsnm{Cai}, \binits{T.}},
+\bauthor{\bsnm{Lewis}, \binits{P.}},
+\bauthor{\bsnm{Chen}, \binits{D.}}:
+\bctitle{{SnapKV}: {LLM} knows what you are looking for before generation}.
+In: \bbtitle{Advances in Neural Information Processing Systems (NeurIPS)},
+vol. \bseriesno{37}
+(\byear{2024})
+\end{bchapter}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{Lu et~al.}{2024}]{lu2024turborag}
+\begin{botherref}
+\oauthor{\bsnm{Lu}, \binits{S.}},
+\oauthor{\bsnm{Wang}, \binits{H.}},
+\oauthor{\bsnm{Rong}, \binits{Y.}},
+\oauthor{\bsnm{Chen}, \binits{Z.}},
+\oauthor{\bsnm{Tang}, \binits{Y.}}:
+{TurboRAG}: Accelerating retrieval-augmented generation with precomputed {KV}
+  caches for chunked text.
+arXiv preprint arXiv:2410.07590
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{Dettmers et~al.}{2023}]{dettmers2023qlora}
+\begin{bchapter}
+\bauthor{\bsnm{Dettmers}, \binits{T.}},
+\bauthor{\bsnm{Pagnoni}, \binits{A.}},
+\bauthor{\bsnm{Holtzman}, \binits{A.}},
+\bauthor{\bsnm{Zettlemoyer}, \binits{L.}}:
+\bctitle{{QLoRA}: Efficient finetuning of quantized {LLMs}}.
+In: \bbtitle{Advances in Neural Information Processing Systems (NeurIPS)},
+vol. \bseriesno{36}
+(\byear{2023})
+\end{bchapter}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Hsieh et~al.}{2024}]{hsieh2024ruler}
+\begin{bchapter}
+\bauthor{\bsnm{Hsieh}, \binits{C.-P.}},
+\bauthor{\bsnm{Sun}, \binits{S.}},
+\bauthor{\bsnm{Kriman}, \binits{S.}},
+\bauthor{\bsnm{Acharya}, \binits{S.}},
+\bauthor{\bsnm{Rekesh}, \binits{D.}},
+\bauthor{\bsnm{Jia}, \binits{F.}},
+\bauthor{\bsnm{Zhang}, \binits{Y.}},
+\bauthor{\bsnm{Ginsburg}, \binits{B.}}:
+\bctitle{{RULER}: What's the real context size of your long-context language
+  models?}
+In: \bbtitle{Conference on Language Modeling (COLM)}
+(\byear{2024})
+\end{bchapter}
+\endbibitem
+
+%%% 11
+\bibitem[\protect\citeauthoryear{Bai et~al.}{2024}]{bai2024longbench}
+\begin{bchapter}
+\bauthor{\bsnm{Bai}, \binits{Y.}},
+\bauthor{\bsnm{Lv}, \binits{X.}},
+\bauthor{\bsnm{Zhang}, \binits{J.}},
+\bauthor{\bsnm{Lyu}, \binits{H.}},
+\bauthor{\bsnm{Tang}, \binits{J.}},
+\bauthor{\bsnm{Huang}, \binits{Z.}},
+\bauthor{\bsnm{Du}, \binits{Z.}},
+\bauthor{\bsnm{Liu}, \binits{X.}},
+\bauthor{\bsnm{Zeng}, \binits{A.}},
+\bauthor{\bsnm{Hou}, \binits{L.}},
+\bauthor{\bsnm{Dong}, \binits{Y.}},
+\bauthor{\bsnm{Tang}, \binits{J.}},
+\bauthor{\bsnm{Li}, \binits{J.}}:
+\bctitle{{LongBench}: A bilingual, multitask benchmark for long context
+  understanding}.
+In: \bbtitle{Proceedings of the 62nd Annual Meeting of the Association for
+  Computational Linguistics (ACL)},
+pp. \bfpage{3119}--\blpage{3137}
+(\byear{2024})
+\end{bchapter}
+\endbibitem
+
+%%% 12
+\bibitem[\protect\citeauthoryear{Maharana et~al.}{2024}]{maharana2024locomo}
+\begin{bchapter}
+\bauthor{\bsnm{Maharana}, \binits{A.}},
+\bauthor{\bsnm{Lee}, \binits{D.-H.}},
+\bauthor{\bsnm{Tulyakov}, \binits{S.}},
+\bauthor{\bsnm{Bansal}, \binits{M.}},
+\bauthor{\bsnm{Barbieri}, \binits{F.}},
+\bauthor{\bsnm{Fang}, \binits{Y.}}:
+\bctitle{Evaluating very long-term conversational memory of {LLM} agents}.
+In: \bbtitle{Proceedings of the 62nd Annual Meeting of the Association for
+  Computational Linguistics (ACL)},
+pp. \bfpage{13851}--\blpage{13870}
+(\byear{2024})
+\end{bchapter}
+\endbibitem
+
+%%% 13
+\bibitem[\protect\citeauthoryear{Wu et~al.}{2024}]{wu2024longmemeval}
+\begin{botherref}
+\oauthor{\bsnm{Wu}, \binits{D.}},
+\oauthor{\bsnm{Wang}, \binits{H.}},
+\oauthor{\bsnm{Yu}, \binits{W.}},
+\oauthor{\bsnm{Zhang}, \binits{Y.}},
+\oauthor{\bsnm{Chang}, \binits{K.-W.}},
+\oauthor{\bsnm{Yu}, \binits{D.}}:
+{LongMemEval}: Benchmarking chat assistants on long-term interactive memory.
+arXiv preprint arXiv:2410.10813
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 14
+\bibitem[\protect\citeauthoryear{Kuratov et~al.}{2024}]{kuratov2024babilong}
+\begin{bchapter}
+\bauthor{\bsnm{Kuratov}, \binits{Y.}},
+\bauthor{\bsnm{Bulatov}, \binits{A.}},
+\bauthor{\bsnm{Anokhin}, \binits{P.}},
+\bauthor{\bsnm{Rodkin}, \binits{I.}},
+\bauthor{\bsnm{Sorokin}, \binits{D.}},
+\bauthor{\bsnm{Sorokin}, \binits{A.}},
+\bauthor{\bsnm{Burtsev}, \binits{M.}}:
+\bctitle{{BABILong}: Testing the limits of {LLMs} with long context
+  reasoning-in-a-haystack}.
+In: \bbtitle{Advances in Neural Information Processing Systems (NeurIPS),
+  Datasets and Benchmarks Track}
+(\byear{2024}).
+\burl{https://arxiv.org/abs/2406.10149}
+\end{bchapter}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Bai et~al.}{2024}]{bai2024longbenchv2}
+\begin{botherref}
+\oauthor{\bsnm{Bai}, \binits{Y.}},
+\oauthor{\bsnm{Tu}, \binits{S.}},
+\oauthor{\bsnm{Zhang}, \binits{J.}},
+\oauthor{\bsnm{Peng}, \binits{H.}},
+\oauthor{\bsnm{Wang}, \binits{X.}},
+\oauthor{\bsnm{Lv}, \binits{X.}},
+\oauthor{\bsnm{Cao}, \binits{S.}},
+\oauthor{\bsnm{Xu}, \binits{J.}},
+\oauthor{\bsnm{Hou}, \binits{L.}},
+\oauthor{\bsnm{Dong}, \binits{Y.}},
+\oauthor{\bsnm{Tang}, \binits{J.}},
+\oauthor{\bsnm{Li}, \binits{J.}}:
+{LongBench v2}: Towards deeper understanding and reasoning on realistic
+  long-context multitasks.
+arXiv preprint arXiv:2412.15204
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Zhang et~al.}{2024}]{zhang2024infinitebench}
+\begin{botherref}
+\oauthor{\bsnm{Zhang}, \binits{X.}},
+\oauthor{\bsnm{Chen}, \binits{Y.}},
+\oauthor{\bsnm{Hu}, \binits{S.}},
+\oauthor{\bsnm{Xu}, \binits{Z.}},
+\oauthor{\bsnm{Chen}, \binits{J.}},
+\oauthor{\bsnm{Hao}, \binits{M.K.}},
+\oauthor{\bsnm{Han}, \binits{X.}},
+\oauthor{\bsnm{Thai}, \binits{Z.L.}},
+\oauthor{\bsnm{Wang}, \binits{S.}},
+\oauthor{\bsnm{Liu}, \binits{Z.}},
+\oauthor{\bsnm{Sun}, \binits{M.}}:
+{$\infty$Bench}: Extending long context evaluation beyond 100k tokens.
+arXiv preprint arXiv:2402.13718
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{Li et~al.}{2024}]{li2024loogle}
+\begin{bchapter}
+\bauthor{\bsnm{Li}, \binits{J.}},
+\bauthor{\bsnm{Wang}, \binits{M.}},
+\bauthor{\bsnm{Zheng}, \binits{Z.}},
+\bauthor{\bsnm{Zhang}, \binits{M.}}:
+\bctitle{{LooGLE}: Can long-context language models understand long contexts?}
+In: \bbtitle{Proceedings of the 62nd Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)},
+pp. \bfpage{16304}--\blpage{16333}
+(\byear{2024}).
+\doiurl{10.18653/v1/2024.acl-long.859}
+\end{bchapter}
+\endbibitem
+
+%%% 18
+\bibitem[\protect\citeauthoryear{An et~al.}{2024}]{an2024leval}
+\begin{bchapter}
+\bauthor{\bsnm{An}, \binits{C.}},
+\bauthor{\bsnm{Gong}, \binits{S.}},
+\bauthor{\bsnm{Zhong}, \binits{M.}},
+\bauthor{\bsnm{Zhao}, \binits{X.}},
+\bauthor{\bsnm{Li}, \binits{M.}},
+\bauthor{\bsnm{Zhang}, \binits{J.}},
+\bauthor{\bsnm{Kong}, \binits{L.}},
+\bauthor{\bsnm{Qiu}, \binits{X.}}:
+\bctitle{{L-Eval}: Instituting standardized evaluation for long context
+  language models}.
+In: \bbtitle{Proceedings of the 62nd Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)},
+pp. \bfpage{14388}--\blpage{14411}
+(\byear{2024}).
+\doiurl{10.18653/v1/2024.acl-long.776}
+\end{bchapter}
+\endbibitem
+
+%%% 19
+\bibitem[\protect\citeauthoryear{Shaham et~al.}{2022}]{shaham2022scrolls}
+\begin{bchapter}
+\bauthor{\bsnm{Shaham}, \binits{U.}},
+\bauthor{\bsnm{Segal}, \binits{E.}},
+\bauthor{\bsnm{Ivgi}, \binits{M.}},
+\bauthor{\bsnm{Efrat}, \binits{A.}},
+\bauthor{\bsnm{Yoran}, \binits{O.}},
+\bauthor{\bsnm{Haviv}, \binits{A.}},
+\bauthor{\bsnm{Gupta}, \binits{A.}},
+\bauthor{\bsnm{Xiong}, \binits{W.}},
+\bauthor{\bsnm{Geva}, \binits{M.}},
+\bauthor{\bsnm{Berant}, \binits{J.}},
+\bauthor{\bsnm{Levy}, \binits{O.}}:
+\bctitle{{SCROLLS}: Standardized comparison over long language sequences}.
+In: \bbtitle{Proceedings of the 2022 Conference on Empirical Methods in Natural
+  Language Processing},
+pp. \bfpage{12007}--\blpage{12021}
+(\byear{2022}).
+\burl{https://aclanthology.org/2022.emnlp-main.823/}
+\end{bchapter}
+\endbibitem
+
+%%% 20
+\bibitem[\protect\citeauthoryear{Holm}{1979}]{holm1979}
+\begin{barticle}
+\bauthor{\bsnm{Holm}, \binits{S.}}:
+\batitle{A simple sequentially rejective multiple test procedure}.
+\bjtitle{Scandinavian Journal of Statistics}
+\bvolume{6}(\bissue{2}),
+\bfpage{65}--\blpage{70}
+(\byear{1979})
+\end{barticle}
+\endbibitem
+
+%%% 21
+\bibitem[\protect\citeauthoryear{{Qwen Team}}{2024}]{qwen2025qwen25}
+\begin{botherref}
+\oauthor{\bsnm{{Qwen Team}}}:
+{Qwen2.5} technical report.
+arXiv preprint arXiv:2412.15115
+(2024)
+\end{botherref}
+\endbibitem
+
+\end{thebibliography}

@@ -1,0 +1,13 @@
+family,task,split,metric,protocol,system,n_scored,n_errors,n_skipped,score_mean,active_tokens_mean,generation_ms_mean,latency_ms_mean,peak_vram_mb_mean
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,1,0,0,1.0,1157.0,13345.330802025273,13345.466703001875,3514.8193359375
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,1,0,0,1.0,2194.0,1772.9813220212236,1773.1172229978256,3760.15771484375
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,1,0,0,1.0,1237.0,1151.6436910023913,1181.6143679898232,3531.94091796875
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,full_context,1,0,0,1.0,4070.0,2894.0077069564722,2894.0077069564722,4177.93017578125
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,sempointer,1,0,0,1.0,1238.0,1070.660377969034,1072.8581480216235,3531.99658203125
+ruler,niah_single_1,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,1,0,0,1.0,1157.0,1034.3795840162784,1036.5773540688679,3513.9755859375
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_4,1,0,0,0.0,3366.0,3928.490021964535,3929.3059029150754,4016.5654296875
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_matched_budget,1,0,0,0.0,2398.0,3296.1316779837944,3342.7588379126973,3799.42529296875
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,full_context,1,0,0,0.0,3826.0,4229.399853036739,4229.399853036739,4117.5888671875
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,sempointer,1,0,0,0.0,2398.0,3415.083603991661,3417.671376024373,3799.42529296875
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,pointer_off,1,0,0,0.0,2329.0,3424.1749420179985,3426.76271405071,3781.9501953125
+ruler,cwe,test,all_containment,project RULER generator; documented upstream deviations,bm25_2,1,0,0,0.0,2329.0,3472.8565079858527,3473.672388936393,3781.9501953125

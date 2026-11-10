@@ -1,0 +1,8 @@
+{
+  "purpose": "Original local preparation and launcher before concurrent counting; not a results snapshot",
+  "files": {
+    "prepare_modal.py": "4ed4b3e8147b29afd43b7d2f30935c88d282dababcda464c9ba2b0fceaa52e39",
+    "run_modal_suite.sh": "8fcb38f205f99c4726cf0689fe94a0420a9509e6ba9638d648dfef617bdfa41f",
+    "MODAL_TEN_BENCHMARKS.md": "a7afe24dbce4c6c8ee9ca9048b1d4f298b729f84f78e8e3b035d7d1f067be745"
+  }
+}
